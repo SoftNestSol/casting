@@ -1,0 +1,46 @@
+.container {
+  padding: 1em;
+  background-color: #f5f5f5;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 18vw;
+  margin: 2em;
+  height: 2em;
+  padding: 0.5em;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.memberCard {
+  background-color: white;
+  border-radius: 8px;
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 16vw;
+  align-items: center;
+}
+
+.profilePhoto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.memberDetail {
+  text-align: center;
+}
+
+.header {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 1em;
+}/*# sourceMappingURL=member-card.module.css.map */
