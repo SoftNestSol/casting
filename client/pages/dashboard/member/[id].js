@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 const MemberPage = () => {
-
 	const [members, setMembers] = useState([]);
 	const router = useRouter();
 	const { id } = router.query;
@@ -26,6 +25,7 @@ const MemberPage = () => {
 
 	return (
 		<div>
+			<Link href="/dashboard/member">asdasd</Link>
 			<h1>Member Page</h1>
 			<p>{member.name}</p>
 			<p>{member.age}</p>
