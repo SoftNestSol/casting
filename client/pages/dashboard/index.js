@@ -1,6 +1,6 @@
-// Dashboard.js
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
 import MemberCard from "./member-card";
 
 import styles from "../../styles/dashboard/member-card.module.scss";

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 const MemberPage = () => {
 	const [members, setMembers] = useState([]);
 	const router = useRouter();

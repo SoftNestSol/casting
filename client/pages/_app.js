@@ -1,13 +1,16 @@
+import { AuthContextProvider } from "../contexts/auth.context";
+import { CastingsContextProvider } from "../contexts/castings.context";
+
 import "../styles/globals.css";
-import Test from "./test/test";
 
-
-function MyApp({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
 	return (
-		<>
-			<Component {...pageProps} />
-		</>
+		<AuthContextProvider>
+			<CastingsContextProvider>
+				<Component {...pageProps} />
+			</CastingsContextProvider>
+		</AuthContextProvider>
 	);
-}
+};
 
-export default MyApp;
+export default App;
