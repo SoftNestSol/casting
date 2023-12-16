@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #111111;
+  padding: 0 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+}
+.container ul {
+  list-style: none;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-weight: 100;
+}
+.container ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  position: relative;
+}
+.container ul li a:hover {
+  color: #bfa75d;
+}
+.container ul li a.active {
+  color: #bfa75d;
+}
+.container ul .logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container ul .user-icon {
+  position: absolute;
+  right: 0;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container ul .user-icon:hover {
+  color: #bfa75d;
+}/*# sourceMappingURL=navbar.module.css.map */
