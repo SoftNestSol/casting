@@ -7,6 +7,10 @@ const { getFirestore, collection, getDocs, addDoc } = require("firebase/firestor
 //firebase storage
 const { getStorage, ref, uploadBytes, getDownloadURL } = require("firebase/storage");
 
+const { getAuth, signInWithEmailAndPassword } = require("firebase/auth");
+
+//firebase auth
+
 //firebase config object
 const firebaseConfig = {
 	apiKey: "AIzaSyBvsPQCT1pTzIkxW3xcCKDQXCxZQzJTJ4s",
@@ -18,8 +22,10 @@ const firebaseConfig = {
 	measurementId: "G-3HDH7RE6E2"
 };
 
-//initialize firebase app with storage and firestore
+//initialize firebase app with storage and firestore, auth
 const app = initializeApp(firebaseConfig);
+const FirebaseApp = app;
+const auth = getAuth(app);
 const db = getFirestore();
 const storage = getStorage();
 
@@ -82,11 +88,9 @@ module.exports = {
 	getDownloadURL,
 	colRef,
 	AddDoc,
-	uploadBytes
+	uploadBytes,
+	firebaseConfig,
+	FirebaseApp,
+	auth,
+	signInWithEmailAndPassword
 };
-
-//root -> images / vasile
-//         images/ maria
-//
-//
-//

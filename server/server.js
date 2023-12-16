@@ -1,14 +1,7 @@
 const functions = require("firebase-functions");
 const {
-	uploadToStorage,
-	createNewPersonRef,
-	imagesRef,
-	colRef,
-	AddDoc,
-	getDownloadURL,
-	uploadBytes,
-	getMembersData
-} = require("./firestore");
+
+} = require("./admin");
 const express = require("express");
 const cors = require("cors");
 
@@ -28,6 +21,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors(corsOptions));
+
+app.get("/firebase-config", (req, res) => {
+	res.status(200).json({ message: "Firebase app object", firebase: FirebaseApp });
+});
+
 
 app.post("/register", filesUpload, async (req, res) => {
 	const { name, age } = req.body;
@@ -56,6 +54,18 @@ app.post("/register", filesUpload, async (req, res) => {
 	await AddDoc(colRef, data);
 
 	//  res.status(200).json({message: "Member added successfully"});
+});
+
+app.post("/login", async (req, res) => {
+	const { email, password } = req.body;
+
+	try {
+		const user = await signInWithEmailAndPassword(auth, email, password);
+
+		res.status(200).json({ message: "User logged in successfully" });
+	} catch (error) {
+		res.status(500).json({ message: "Something went wrong" });
+	}
 });
 
 app.get("/getMembers", async (req, res) => {

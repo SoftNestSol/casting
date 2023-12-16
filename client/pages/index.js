@@ -16,7 +16,11 @@ export default function Home() {
 				/>
 			</Head>
 
-			<main className={styles.main}></main>
+
+
+			<main className={styles.main}>
+				test
+			</main>
 		</div>
 	);
 }
