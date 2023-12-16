@@ -2,13 +2,14 @@ import { AuthContext } from "../../contexts/auth.context";
 import { CastingsContext } from "../../contexts/castings.context";
 import styles from "../../styles/register/register.module.scss";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import { signInWithEmailAndPassword, auth } from "../../contexts/firebase";
 
-
 const LoginPage = () => {
+	//
 
-	
+	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -22,27 +23,29 @@ const LoginPage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		
+
 		signInWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
-
-			const user = userCredential.user;
-			console.log(user);
-		})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-		});
-
+			.then((userCredential) => {
+				const user = userCredential.user;
+				router.push(`/profile/${userCredential.user.uid}`);
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+			});
 	};
 
 	return (
 		<div className={styles.container}>
-			<h1 className = "h1">Login</h1>
-			<form  className = "form" onSubmit={handleSubmit}>
+			<h1 className="h1">Login</h1>
+			<form
+				className="form"
+				onSubmit={handleSubmit}
+			>
 				<div>
-					<label className = "label" >Email:</label>
-					<input className ={styles.input}
+					<label className="label">Email:</label>
+					<input
+						className={styles.input}
 						type="email"
 						value={email}
 						onChange={handleEmailChange}
@@ -50,15 +53,21 @@ const LoginPage = () => {
 					/>
 				</div>
 				<div>
-					<label className = {styles.label}>Password:</label>
-					<input className = {styles.input}
+					<label className={styles.label}>Password:</label>
+					<input
+						className={styles.input}
 						type="password"
 						value={password}
 						onChange={handlePasswordChange}
 						name="password"
 					/>
 				</div>
-				<button className = {styles.button} type="submit">Login</button>
+				<button
+					className={styles.button}
+					type="submit"
+				>
+					Login
+				</button>
 			</form>
 		</div>
 	);

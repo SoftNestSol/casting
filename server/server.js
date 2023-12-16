@@ -1,7 +1,5 @@
 const functions = require("firebase-functions");
-const {
-
-} = require("./admin");
+const { AdminApp } = require("./admin");
 const express = require("express");
 const cors = require("cors");
 
@@ -25,7 +23,6 @@ app.use(cors(corsOptions));
 app.get("/firebase-config", (req, res) => {
 	res.status(200).json({ message: "Firebase app object", firebase: FirebaseApp });
 });
-
 
 app.post("/register", filesUpload, async (req, res) => {
 	const { name, age } = req.body;
