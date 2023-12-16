@@ -2,7 +2,7 @@
 const { initializeApp } = require("firebase/app");
 
 //firebase firestore
-const { getFirestore, collection, getDocs, addDoc } = require("firebase/firestore");
+const { getFirestore, collection, getDocs, addDoc, setDoc, doc, getDoc } = require("firebase/firestore");
 
 //firebase storage
 const { getStorage, ref, uploadBytes, getDownloadURL } = require("firebase/storage");
@@ -94,5 +94,11 @@ module.exports = {
 	firebaseConfig,
 	FirebaseApp,
 	auth,
-	signInWithEmailAndPassword
+	signInWithEmailAndPassword,
+	ref, 
+	imagesRef,
+	storage,
+	setDoc,
+	doc,
+	getDoc
 };

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import {auth}	from "./firebase"
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "./firebase";
+import { useRouter } from "next/router";
 
 export const AuthContext = createContext({});
 
@@ -11,15 +12,22 @@ export const useAuthContext = () => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-
 	const [callback, setCallback] = useState(false);
-	const [currentUser, setCurrentUser] = useState(null);        
-	const [loading,setLoading] = useState(true);
-	
-	function register (email,password) { 
-			return auth.createUserWithEmailAndPassword(email,password);
-	}
+	const [currentUser, setCurrentUser] = useState(null);
+	const [loading, setLoading] = useState(true);
 
+	const router = useRouter();
+
+	const logout = async () => {
+		try {
+			await signOut(auth);
+			setCurrentUser(null);
+			router.push("/login");
+		} catch (error) {
+			console.error("Error signing out: ", error);
+			// Handle error (e.g., show error message)
+		}
+	};
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -28,10 +36,6 @@ export const AuthContextProvider = ({ children }) => {
 		});
 		return () => unsubscribe;
 	}, []);
-	
-
-	
-
 
 	const state = {
 		currentUser,
@@ -40,6 +44,7 @@ export const AuthContextProvider = ({ children }) => {
 		setLoading,
 		callback,
 		setCallback,
+		logout
 	};
 
 	return <AuthContext.Provider value={state}>{!loading && children}</AuthContext.Provider>;

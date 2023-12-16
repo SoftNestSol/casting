@@ -1,5 +1,3 @@
-import { AuthContext } from "../../contexts/auth.context";
-import { CastingsContext } from "../../contexts/castings.context";
 import styles from "../../styles/register/register.module.scss";
 import { useState } from "react";
 import { useRouter } from "next/router";
