@@ -1,7 +1,7 @@
 import { AuthContextProvider } from "../contexts/auth.context";
 import { CastingsContextProvider } from "../contexts/castings.context";
 
-import "../styles/globals.css";
+import "../styles/globals.scss";
 
 const App = ({ Component, pageProps }) => {
 	return (

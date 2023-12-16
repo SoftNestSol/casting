@@ -1,68 +1,139 @@
-// navbar.module.scss
-@import "colors.scss"; // Import global styles
+@import "colors.scss";
+
 .container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	position: absolute;
 	width: 100%;
-	background-color: $color-background;
-	padding: 0 2rem;
-	font-family: "Poppins", sans-serif;
-	font-weight: 100; // ExtraLight font weight
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-image-slice: 1;
+	border-image-source: radial-gradient(
+		50% 75% at 50% 75%,
+		#bfa75d 0%,
+		$color-background 107.5%,
+		$color-background 100%
+	);
+
 	ul {
-		list-style: none;
-		width: 60%;
+		position: relative;
+		width: fit-content;
+		height: 4rem;
+		margin: 0 auto;
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		padding: 0;
-		margin: 0;
-		font-weight: 100; // ExtraLight font weight
+		gap: 8rem;
+
 		li {
+			list-style: none;
+
 			a {
 				text-decoration: none;
-				color: #ffffff; // Replace with the exact color from your design
-				font-size: 1rem; // Adjust font-size as needed
+				color: #ffffff;
+				font-size: 1rem;
+				font-weight: 200;
 				position: relative;
 
-				// Hover effect
 				&:hover {
-					color: #bfa75d; // Adjust hover color as needed
+					color: #bfa75d;
 				}
 
-				// Active link styles can be added here
 				&.active {
-					color: #bfa75d; // Adjust active link color as needed
+					color: #bfa75d;
+				}
+			}
+
+			&.logo {
+				a {
+					width: 60px;
+					display: inline-block;
+
+					img {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+
+			&.profile {
+				position: absolute;
+				right: calc(-32px - 6rem);
+				display: flex;
+
+				a {
+					display: flex;
+
+					img {
+						width: 2rem;
+						height: 2rem;
+					}
 				}
 			}
 		}
-
-		// Logo styles, assuming the logo is in the center of the navbar
-		.logo {
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		// User icon styles
-
-		.usericon {
-			position: relative;
-			width: 2rem;
-			
-			&:hover {
-				fill: #bfa75d; // Assuming you want to change the fill on hover, not the color
-			}
-		}
 	}
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
-	.container {
-		// Adjust styles for mobile view if necessary
-	}
-}
+// .container {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	width: 100%;
+// 	background-color: $color-background;
+// 	padding: 0 2rem;
+// 	font-family: "Poppins", sans-serif;
+// 	font-weight: 100; // ExtraLight font weight
+// 	ul {
+// 		list-style: none;
+// 		width: 60%;
+// 		display: flex;
+// 		justify-content: space-between;
+// 		align-items: center;
+// 		padding: 0;
+// 		margin: 0;
+// 		font-weight: 100; // ExtraLight font weight
+// 		li {
+// 			a {
+// 				text-decoration: none;
+// 				color: #ffffff; // Replace with the exact color from your design
+// 				font-size: 1rem; // Adjust font-size as needed
+// 				position: relative;
+
+// 				// Hover effect
+// 				&:hover {
+// 					color: #bfa75d; // Adjust hover color as needed
+// 				}
+
+// 				// Active link styles can be added here
+// 				&.active {
+// 					color: #bfa75d; // Adjust active link color as needed
+// 				}
+// 			}
+// 		}
+
+// 		// Logo styles, assuming the logo is in the center of the navbar
+// 		.logo {
+// 			position: absolute;
+// 			left: 50%;
+// 			transform: translateX(-50%);
+// 			display: flex;
+// 			justify-content: center;
+// 			align-items: center;
+// 		}
+
+// 		// User icon styles
+
+// 		.usericon {
+// 			position: relative;
+// 			width: 2rem;
+
+// 			&:hover {
+// 				fill: #bfa75d; // Assuming you want to change the fill on hover, not the color
+// 			}
+// 		}
+// 	}
+// }
+
+// // Responsive adjustments
+// @media (max-width: 768px) {
+// 	.container {
+// 		// Adjust styles for mobile view if necessary
+// 	}
+// }
