@@ -38,14 +38,10 @@
   justify-content: center;
   align-items: center;
 }
-.container ul .user-icon {
-  position: absolute;
-  right: 0;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.container ul .usericon {
+  position: relative;
+  width: 2rem;
 }
-.container ul .user-icon:hover {
-  color: #bfa75d;
+.container ul .usericon:hover {
+  fill: #bfa75d;
 }/*# sourceMappingURL=navbar.module.css.map */

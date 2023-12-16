@@ -17,7 +17,6 @@
 		align-items: center;
 		padding: 0;
 		margin: 0;
-
 		font-weight: 100; // ExtraLight font weight
 		li {
 			a {
@@ -50,15 +49,12 @@
 
 		// User icon styles
 
-		.user-icon {
-			position: absolute;
-			right: 0;
-			transform: translateX(-50%);
-			display: flex;
-			justify-content: center;
-			align-items: center;
+		.usericon {
+			position: relative;
+			width: 2rem;
+			
 			&:hover {
-				color: #bfa75d; // Adjust hover color as needed
+				fill: #bfa75d; // Assuming you want to change the fill on hover, not the color
 			}
 		}
 	}
