@@ -16,8 +16,9 @@
 	ul {
 		position: relative;
 		width: fit-content;
-		height: 4rem;
+		height: 4.5rem;
 		margin: 0 auto;
+		padding-top: 0.5rem;
 		display: flex;
 		align-items: center;
 		gap: 8rem;
@@ -28,8 +29,8 @@
 			a {
 				text-decoration: none;
 				color: #ffffff;
-				font-size: 1rem;
-				font-weight: 200;
+				font-size: 1.075rem;
+				font-weight: 100;
 				position: relative;
 
 				&:hover {
@@ -43,7 +44,7 @@
 
 			&.logo {
 				a {
-					width: 60px;
+					width: 75px;
 					display: inline-block;
 
 					img {
