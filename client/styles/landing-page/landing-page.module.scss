@@ -1,0 +1,62 @@
+@import "../colors.scss";
+.spline {
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+.button_container {
+	position: absolute; /* Absolute positioning relative to the nearest positioned ancestor */
+	top: 70%; /* Center vertically */
+	left: 50%; /* Center horizontally */
+	transform: translate(-50%, -50%); /* Adjust for the size of the container */
+	z-index: 1000; /* Ensures it's above most other elements */
+	display: flex; /* Use flexbox to align children */
+	justify-content: center; /* Center children horizontally */
+	align-items: center; /* Center children vertically */
+	width: 28rem; /* Set a specific width for the container */
+	height: 4.3rem; /* Set a specific height for the container */
+}
+
+.button {
+	color: #000;
+	font-weight: bold;
+	font-size: 1.5rem;
+	border-radius: 129px;
+	width: 100%; /* Make the button fill the container */
+	height: 100%; /* Make the button fill the container */
+	font-size: 2rem;
+	background: radial-gradient(67% 120% at 50% 50%, #bfa75d 0%, #000 100%, #000 100%);
+	text-align: center; /* Center text horizontally */
+	display: flex; /* Use flexbox to align text */
+	justify-content: center; /* Center text horizontally in flexbox */
+	align-items: center; /* Center text vertically in flexbox */
+	cursor: pointer;
+	text-transform: uppercase;
+}
+.hero_cards {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	.card {
+		background: #1e1e1e; // Semi-transparent black background
+		border-radius: 20px; // Rounded corners
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Subtle shadow
+		color: white; // White text
+		padding: 2rem; // Padding inside the card
+		max-width: 600px; // Maximum width of the card
+		margin: 2rem; // Margin around the card
+
+		h1 {
+			font-size: 1.5rem; // Heading font size
+			margin-bottom: 1rem; // Space below the heading
+		}
+
+		p {
+			font-size: 1rem; // Paragraph font size
+			line-height: 1.5; // Line height for the paragraph
+		}
+	}
+}

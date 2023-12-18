@@ -1,7 +1,10 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
+import styles from "../styles/landing-page/landing-page.module.scss";
 
-export default function Home() {
+import Spline from "@splinetool/react-spline";
+
+export default function LandingPage() {
 	return (
 		<div>
 			<Head>
@@ -18,6 +21,41 @@ export default function Home() {
 
 			<main>
 				<Navbar />
+				<content className={styles.pagecontainer}>
+					<div className={styles.spline}>
+						<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
+					</div>
+					<div className={styles.button_container}>
+						<div className={styles.button}>APLICĂ ACUM</div>
+					</div>
+					<div className={styles.hero_text}>
+						<h1>Your Chance</h1>
+						<h2>MY CASTING</h2>
+						<div className={styles.hero_cards}>
+							<div className={styles.card}>
+								<h1>Spațiul dedicat creației și inspirației infinite.</h1>
+								<p>
+									Vrem ca atât tu, cât și noi, să avem o experiență plăcută și unică în fiecare
+									proiect în care colaborăm.
+								</p>
+							</div>
+							<div className={styles.card}>
+								<h1>Spațiul dedicat creației și inspirației infinite.</h1>
+								<p>
+									Vrem ca atât tu, cât și noi, să avem o experiență plăcută și unică în fiecare
+									proiect în care colaborăm.
+								</p>
+							</div>
+							<div className={styles.card}>
+								<h1>Spațiul dedicat creației și inspirației infinite.</h1>
+								<p>
+									Vrem ca atât tu, cât și noi, să avem o experiență plăcută și unică în fiecare
+									proiect în care colaborăm.
+								</p>
+							</div>
+						</div>
+					</div>
+				</content>
 			</main>
 		</div>
 	);
