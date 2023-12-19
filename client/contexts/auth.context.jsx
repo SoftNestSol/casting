@@ -1,5 +1,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import {
+	onAuthStateChanged,
+	signOut,
+	setPersistence,
+	browserSessionPersistence
+} from "firebase/auth";
 import { auth } from "./firebase";
 import { useRouter } from "next/router";
 
@@ -25,11 +30,11 @@ export const AuthContextProvider = ({ children }) => {
 			router.push("/login");
 		} catch (error) {
 			console.error("Error signing out: ", error);
-			// Handle error (e.g., show error message)
 		}
 	};
 
 	useEffect(() => {
+		setPersistence(auth, browserSessionPersistence);
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
 			setCurrentUser(user);
 			setLoading(false);

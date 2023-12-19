@@ -3,6 +3,7 @@ const { AdminApp } = require("./admin");
 const express = require("express");
 const cors = require("cors");
 
+
 const corsOptions = {
 	origin: "http://localhost:3000",
 	optionsSuccessStatus: 200,
@@ -20,50 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors(corsOptions));
 
-app.get("/firebase-config", (req, res) => {
-	res.status(200).json({ message: "Firebase app object", firebase: FirebaseApp });
-});
-
-app.post("/register", filesUpload, async (req, res) => {
-	const { name, age } = req.body;
-
-	const files = req.files;
-
-	const data = {
-		name,
-		age,
-		imageArray: []
-	};
-
-	try {
-		for (let i = 0; i < files.length; i++) {
-			const file = files[i];
-			const imgRf = createNewPersonRef(name, file.originalname);
-			console.log("inainte de upload");
-			const snapshot = await uploadBytes(imgRf, file.buffer);
-			console.log("dupa upload");
-			const imageSource = await getDownloadURL(snapshot.ref);
-			data.imageArray.push(imageSource);
-		}
-	} catch (error) {
-		res.status(500).json({ message: "Something went wrong" });
-	}
-	await AddDoc(colRef, data);
-
-	//  res.status(200).json({message: "Member added successfully"});
-});
-
-app.post("/login", async (req, res) => {
-	const { email, password } = req.body;
-
-	try {
-		const user = await signInWithEmailAndPassword(auth, email, password);
-
-		res.status(200).json({ message: "User logged in successfully" });
-	} catch (error) {
-		res.status(500).json({ message: "Something went wrong" });
-	}
-});
 
 app.get("/getMembers", async (req, res) => {
 	try {

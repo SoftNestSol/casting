@@ -1,0 +1,93 @@
+// Assuming this is UserProfile.module.scss
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin: 2rem auto;
+	padding: 1.5rem;
+	border-radius: 12px;
+	background-color: #1e1e1e; // Dark background for container
+	color: #fff; // Light text color for contrast
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); // Deeper shadow for a "pop-out" effect
+}
+
+.formLabel {
+	margin-bottom: 0.5rem;
+	font-weight: bold;
+	color: #9d9d9d; // Lighter label color for a friendly feel
+}
+
+.formControl {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid #393939; // Subtle border color
+	border-radius: 8px;
+	background-color: #292929; // Slightly lighter background for input fields
+	color: #fff; // White color for text to be easily readable
+	box-sizing: border-box;
+
+	&::placeholder {
+		// Style for placeholders
+		color: #9d9d9d;
+	}
+	input {
+		width: 60%;
+	}
+
+	&:focus {
+		border-color: #50b4e6; // Brighter color for focus
+		outline: none;
+		box-shadow: 0 0 0 2px rgba(80, 180, 230, 0.5); // Corresponding box-shadow color
+	}
+}
+
+.btn {
+	padding: 0.75rem 1.5rem;
+	margin: 1rem 0.25rem;
+
+	font-size: 1rem;
+	font-weight: 500; // Slightly bolder font
+	text-align: center;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out; // Smooth transition for all properties
+	text-transform: uppercase; // Uppercase text for buttons
+	letter-spacing: 1px; // More spacing between letters for readability
+
+	&.btnPrimary {
+		width: 20%;
+		background-color: #50b4e6; // Cheerful blue color
+		border: 1px solid #50b4e6; // Matching border color
+		color: #1e1e1e; // Dark text color for contrast
+
+		&:hover {
+			background-color: #68c1e8; // A lighter hover state for the blue
+			border-color: #68c1e8;
+		}
+	}
+
+	&.btnSecondary {
+		width: 20%;
+		margin-left: 0.8rem;
+		background-color: #f0a500; // Cheerful orange color
+		border: 1px solid #f0a500;
+		color: #1e1e1e;
+
+		&:hover {
+			background-color: #f0b800; // A lighter hover state for the orange
+			border-color: #f0b800;
+		}
+	}
+}
+
+.imgThumbnail {
+	display: inline-block;
+	width: 12vw;
+	height: 18vh;
+	object-fit: cover; // Cover the image to avoid stretching
+	margin: 0.5rem 0; // Margin for spacing
+	border-radius: 8px; // Rounded corners for a modern look
+	border: 1px solid #393939; // Subtle border
+}

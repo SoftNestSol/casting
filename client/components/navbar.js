@@ -5,8 +5,13 @@ import logo from "../public/logo.png";
 import ProfileIcon from "../public/usericon.svg";
 
 import styles from "../styles/navbar.module.scss";
+import { useAuthContext } from "../contexts/auth.context";
 
 const Navbar = () => {
+	const { currentUser } = useAuthContext();
+
+	const dynamicLink = currentUser ? `/profile/${currentUser.id}` : "/login";
+
 	return (
 		<div className={styles.container}>
 			<ul>
@@ -36,7 +41,7 @@ const Navbar = () => {
 				</li>
 
 				<li className={styles.profile}>
-					<Link href="/login">
+					<Link href={dynamicLink}>
 						<Image
 							alt="Profile Icon"
 							src={ProfileIcon}
