@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
+import Carousel from "./servicii-section";
 import styles from "../styles/landing-page/landing-page.module.scss";
-
-import Spline from "@splinetool/react-spline";
+import React, { Suspense } from "react";
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 export default function LandingPage() {
 	return (
@@ -25,11 +26,14 @@ export default function LandingPage() {
 					<div className={styles.spline}>
 						<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
 					</div>
+
 					<div className={styles.button_container}>
 						<div className={styles.button}>APLICĂ ACUM</div>
 					</div>
 					<div className={styles.hero_text}>
-						<h1>Your Chance</h1>
+						<h1>
+							<span>Your</span> <span>Chance</span>
+						</h1>
 						<h2>MY CASTING</h2>
 						<div className={styles.hero_cards}>
 							<div className={styles.card}>
@@ -55,6 +59,7 @@ export default function LandingPage() {
 							</div>
 						</div>
 					</div>
+					<Carousel />
 				</content>
 			</main>
 		</div>
