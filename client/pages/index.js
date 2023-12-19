@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
+import Carousel from "./servicii-section";
 import styles from "../styles/landing-page/landing-page.module.scss";
 import React, { Suspense } from "react";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
@@ -18,8 +19,6 @@ export default function LandingPage() {
 					href="/favicon.ico"
 				/>
 			</Head>
-
-		
 
 			<main>
 				<content className={styles.pagecontainer}>
