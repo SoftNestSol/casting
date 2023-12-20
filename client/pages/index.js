@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Navbar from "../components/navbar";
+// import Scene from "../components/spline";
 import Carousel from "./servicii-section";
+import CTA from "./cta-section";
 import styles from "../styles/landing-page/landing-page.module.scss";
 import React, { Suspense } from "react";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
@@ -24,6 +25,7 @@ export default function LandingPage() {
 				<content className={styles.pagecontainer}>
 					<div className={styles.spline}>
 						<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
+						{/* <Scene /> */}
 					</div>
 
 					<div className={styles.button_container}>
@@ -59,6 +61,7 @@ export default function LandingPage() {
 						</div>
 					</div>
 					<Carousel />
+					<CTA />
 				</content>
 			</main>
 		</div>

@@ -1,11 +1,47 @@
+@import "../colors.scss";
+
 .carousel {
 	position: relative;
-	overflow: hidden;
+	// overflow: hidden;
 	width: 100%;
 	height: 50vh;
-	margin: auto;
+	margin-top: 10rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.card {
+	background: radial-gradient(75% 300% at 50% 50%, #6c6c6c 0%, #000 99.99%, #000 100%);
+
+	border-radius: 20px; // Rounded corners
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Subtle shadow
+	color: #fff; // White text
+	width: 50%; // Card width
+	display: flex; // Enable flexbox layout
+	flex-direction: row; // Arrange children in a row
+	align-items: center; // Center children vertically
+	padding: 2em; // Padding inside the card
+	margin: 2em auto; // Center card with vertical margin
+	border: hwb(45 37% 25% / 0.623) solid 1px; // White border
+
+	padding: rem;
+}
+.text {
+	width: 60%; // Allocate width for text container
+	padding-right: 3em; // Space between text and image
+}
+.imageWrapper {
+	position: relative; // Required for 'fill' layout
+	width: 40%; // or whatever width you need
+	height: 15rem; // or whatever height you need
 }
 
+.image {
+	flex-shrink: 0; // Prevent the image from shrinking
+	border-radius: 10px; // Rounded corners for the image
+	overflow: hidden; // Clip the image to the border radius
+	width: 2rem;
+}
 .carouselInner {
 	display: flex;
 	transition: transform 0.3s ease-out;
@@ -13,25 +49,28 @@
 
 .carouselItem {
 	min-width: 100%;
-	padding: 20px;
-	background-color: #00000000;
+	padding: 10rem;
+	background-color: #56565600;
 	color: #fff;
 	text-align: center;
+	display: flex;
+	align-items: center; // Center vertically
+	justify-content: flex-start;
 }
 
 .title {
-	font-size: 24px;
-	margin-bottom: 10px;
+	font-size: 2rem; // Larger font size for the title
+	margin-bottom: 0.5em; // Space below the title
 }
 
 .description {
-	font-size: 16px;
+	font-size: 1.4rem; // Adjust font size for the description if needed
 }
 
 .carouselControls {
 	position: absolute;
 	top: 50%;
-	width: 100%;
+	width: 80%;
 	display: flex;
 	justify-content: space-between;
 	transform: translateY(-50%);
@@ -48,7 +87,7 @@
 
 .carouselIndicators {
 	position: absolute;
-	bottom: 10px;
+	bottom: -4rem;
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
