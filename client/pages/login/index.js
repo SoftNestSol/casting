@@ -25,7 +25,7 @@ const LoginPage = () => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				const user = userCredential.user;
-				router.push(`/profile/${userCredential.user.uid}`);
+				router.push(`/profile/${user.uid}`);
 			})
 			.catch((error) => {
 				const errorCode = error.code;
@@ -34,39 +34,41 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div className={styles.container}>
-			<h1 className="h1">Login</h1>
-			<form
-				className="form"
-				onSubmit={handleSubmit}
-			>
-				<div>
-					<label className="label">Email:</label>
-					<input
-						className={styles.input}
-						type="email"
-						value={email}
-						onChange={handleEmailChange}
-						name="email"
-					/>
-				</div>
-				<div>
-					<label className={styles.label}>Password:</label>
-					<input
-						className={styles.input}
-						type="password"
-						value={password}
-						onChange={handlePasswordChange}
-						name="password"
-					/>
-				</div>
-				<button
-					className={styles.button}
-					type="submit"
+		<div className={styles.loginContainer}>
+			<div className={styles.loginBox}>
+				<h1 className={styles.loginTitle}>AUTENTIFICĂ-TE</h1>
+				<form
+					onSubmit={handleSubmit}
+					className={styles.loginForm}
 				>
-					Login
-				</button>
-			</form>
+					<label>Email</label>
+					<div className={styles.inputGroup}>
+						<input
+							className={styles.loginInput}
+							type="email"
+							value={email}
+							onChange={handleEmailChange}
+							name="email"
+						/>
+					</div>
+					<label>Parola</label>
+					<div className={styles.inputGroup}>
+						<input
+							className={styles.loginInput}
+							type="password"
+							value={password}
+							onChange={handlePasswordChange}
+							name="password"
+						/>
+					</div>
+					<button
+						className={styles.loginButton}
+						type="submit"
+					>
+						Login
+					</button>
+				</form>
+			</div>
 		</div>
 	);
 };
