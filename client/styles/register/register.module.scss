@@ -27,7 +27,7 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background: linear-gradient(to bottom right, #bfa65d18 0%, #bfa65d00 10%);
+			background: linear-gradient(to bottom right, #bfa65d18 0%, #bfa65d00 0%);
 			border-radius: 20px;
 			overflow: hidden;
 			background-size: 150% 100%;
@@ -94,7 +94,7 @@
 }
 
 .loginButton {
-	background: radial-gradient(67% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
+	background: radial-gradient(67% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 70%);
 	color: $text-box;
 	border: none;
 	border-radius: 16px;
@@ -102,12 +102,12 @@
 	cursor: pointer;
 	font-size: 1.5rem;
 	font-weight: bold;
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	transition: background-color 0.3s;
 
 	&:hover {
-		background: linear-gradient(rgba(169, 137, 44, 0.8), rgba(99, 79, 20, 1));
+		background: radial-gradient(100% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
 	}
 }
 
