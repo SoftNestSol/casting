@@ -7,25 +7,18 @@
 	width: 100%;
 	min-height: 100vh;
 	padding-top: 5rem;
-	background: $color-background; 
-}
-
-.containerFormular {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	gap: 5%;
+	background: $color-background; // Background color from colors.scss
 }
 
 .loginBox {
-	margin-top: 5rem;
 	position: relative;
-	width: 90%;
 	background: #1e1e1e;
 	border-radius: 20px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	color: white;
 	padding: 2rem;
+	margin: 2rem;
+	width: 50%;
 	overflow: hidden;
 	&::before {
 		content: "";
@@ -69,13 +62,11 @@
 	color: $color-accent; // Accent color from colors.scss
 	text-align: center;
 	margin-bottom: 2rem;
-	font-size: 3rem;
+	font-size: 2rem;
 	font-family: "Poppins", sans-serif;
 	font-weight: 200 bold;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
-	text-align: left;
-	margin-bottom: 4rem;
 }
 
 .loginForm {
@@ -84,44 +75,21 @@
 	gap: 1rem;
 }
 
-.label
-{
-	font-size: 1.2rem;
-	font-weight: 200;
+.inputGroup {
+	width: 100%;
+	margin: 0 auto;
 	margin-bottom: 1rem;
-	font-family: "Poppins", sans-serif;
 }
 
-
 .loginInput {
-	
 	background: $input; // Input background
 	border: 1px solid #444; // Input border
 	border-radius: 16px;
 	padding: 0.75rem;
 	color: white; // Text color
-	font-size: 1.2rem;
+	font-size: 1rem;
 	outline: none;
 	width: 100%;
-	height: 8vh;
-	margin-bottom: 2rem;
-	border-radius: 12px;
-	&::after {
-		content: "";
-		position: absolute;
-		top: 2px;
-		left: 2px;
-		right: 0;
-		bottom: -2px;
-		border-radius: 20px;
-		pointer-events: none;
-		box-shadow:
-			0 0 0 0px hwb(45 37% 25%),
-			/* Outermost border */ 0 0 0 2px hwb(45 37% 25% / 0),
-			/* Second layer */ 0 0 0 3px hwb(45 37% 25% / 0),
-			/* Third layer */ 0 0 0 4px hwb(45 37% 25% / 0.273); /* Fourth layer */
-	}
-	
 }
 
 .loginButton {
@@ -135,9 +103,7 @@
 	font-weight: bold;
 	width: 60%;
 	margin: 0 auto;
-	transition: background-color 1s;
-	margin-top: 2rem;
-
+	transition: background-color 0.3s;
 
 	&:hover {
 		background: radial-gradient(100% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);

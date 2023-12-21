@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "../../contexts/auth.context";
 
-import styles from "../../styles/register/register.module.scss";
+import styles from "../../styles/login/login.module.scss";
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ const LoginPage = () => {
 					onSubmit={handleFormSubmit}
 					className={styles.loginForm}
 				>
-					<label>Email</label>
+					<label className = "label">Email</label>
 					<div className={styles.inputGroup}>
 						<input
 							className={styles.loginInput}
@@ -32,7 +32,7 @@ const LoginPage = () => {
 							name="email"
 						/>
 					</div>
-					<label>Parola</label>
+					<label className = "label">Parola</label>
 					<div className={styles.inputGroup}>
 						<input
 							className={styles.loginInput}
