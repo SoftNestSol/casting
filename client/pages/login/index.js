@@ -1,36 +1,17 @@
-import styles from "../../styles/register/register.module.scss";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useAuthContext } from "../../contexts/auth.context";
 
-import { signInWithEmailAndPassword, auth } from "../../contexts/firebase";
+import styles from "../../styles/register/register.module.scss";
 
 const LoginPage = () => {
-	//
-
-	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	const handleEmailChange = (e) => {
-		setEmail(e.target.value);
-	};
+	const { signIn } = useAuthContext();
 
-	const handlePasswordChange = (e) => {
-		setPassword(e.target.value);
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				const user = userCredential.user;
-				router.push(`/profile/${user.uid}`);
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-			});
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+		await signIn(email, password);
 	};
 
 	return (
@@ -38,7 +19,7 @@ const LoginPage = () => {
 			<div className={styles.loginBox}>
 				<h1 className={styles.loginTitle}>AUTENTIFICĂ-TE</h1>
 				<form
-					onSubmit={handleSubmit}
+					onSubmit={handleFormSubmit}
 					className={styles.loginForm}
 				>
 					<label>Email</label>
@@ -47,7 +28,7 @@ const LoginPage = () => {
 							className={styles.loginInput}
 							type="email"
 							value={email}
-							onChange={handleEmailChange}
+							onChange={(event) => setEmail(event.target.value)}
 							name="email"
 						/>
 					</div>
@@ -57,7 +38,7 @@ const LoginPage = () => {
 							className={styles.loginInput}
 							type="password"
 							value={password}
-							onChange={handlePasswordChange}
+							onChange={(event) => setPassword(event.target.value)}
 							name="password"
 						/>
 					</div>

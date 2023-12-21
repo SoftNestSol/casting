@@ -1,30 +1,7 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import {
-	db,
-	getDocs,
-	uploadToStorage,
-	getMembersData,
-	storageRef,
-	imagesRef,
-	createNewPersonRef,
-	uploadBytes,
-	getDownloadURL,
-	colRef,
-	AddDoc,
-	firebaseConfig,
-	FirebaseApp,
-	auth,
-	signInWithEmailAndPassword,
-	ref,
-	storage,
-	setDoc,
-	doc
-} from "../../contexts/firebase";
+import { useAuthContext } from "../../contexts/auth.context";
 
 import styles from "../../styles/register/register.module.scss";
-import { addDoc } from "firebase/firestore";
 
 const RegisterPage = () => {
 	const [userData, setUserData] = useState({
@@ -40,154 +17,142 @@ const RegisterPage = () => {
 		description: "",
 		files: []
 	});
-	const [error, setError] = useState("");
-	const router = useRouter();
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
+	const { signUp } = useAuthContext();
+
+	const handleInputChange = (event) => {
 		setUserData((prevState) => ({
 			...prevState,
-			[name]: value
+			[event.target.name]: event.target.value
 		}));
 	};
 
-	const handleFileChange = (e) => {
+	const handleFileChange = (event) => {
 		setUserData((prevState) => ({
 			...prevState,
-			files: [...e.target.files]
+			files: [...event.target.files]
 		}));
 	};
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		try {
-			const userCredential = await createUserWithEmailAndPassword(
-				auth,
-				userData.email,
-				userData.password
-			);
-			const uid = userCredential.user.uid;
-
-			const imageArray = await Promise.all(
-				userData.files.map(async (file) => {
-					const storageRef = ref(storage, `photos/${uid}/${file.name}`);
-					const snapshot = await uploadBytes(storageRef, file);
-					return getDownloadURL(snapshot.ref);
-				})
-			);
-
-			const userProfileData = {
-				name: userData.name,
-				age: userData.age,
-				sex: userData.sex,
-				height: userData.height,
-				weight: userData.weight,
-				eyeColor: userData.eyeColor,
-				hairColor: userData.hairColor,
-				description: userData.description,
-				photos: imageArray
-			};
-
-			await setDoc(doc(db, "users", uid), userProfileData);
-
-			router.push("/login");
-		} catch (error) {
-			setError(error.message);
-		}
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+		await signUp(userData);
 	};
 
 	return (
-		<div className={styles.container}>
-			<h1 className={styles.h1}>Register</h1>
-			{error && <p className={styles.error}>{error}</p>}
-			<form
-				onSubmit={handleSubmit}
-				className={styles.form}
-			>
-				<label>Name</label>
-				<input
-					type="text"
-					name="name"
-					value={userData.name}
-					onChange={handleChange}
-				/>
-
-				<label>Email</label>
-				<input
-					type="email"
-					name="email"
-					value={userData.email}
-					onChange={handleChange}
-				/>
-				<label>Pasword</label>
-				<input
-					type="password"
-					name="password"
-					value={userData.password}
-					onChange={handleChange}
-				/>
-				<label>Age</label>
-				<input
-					type="number"
-					name="age"
-					value={userData.age}
-					onChange={handleChange}
-				/>
-				<label>Gender</label>
-				<input
-					type="text"
-					name="sex"
-					value={userData.sex}
-					onChange={handleChange}
-				/>
-				<label>Height</label>
-				<input
-					type="number"
-					name="height"
-					value={userData.height}
-					onChange={handleChange}
-				/>
-				<label>Weight</label>
-				<input
-					type="number"
-					name="weight"
-					value={userData.weight}
-					onChange={handleChange}
-				/>
-				<label>EyeColor</label>
-				<input
-					type="text"
-					name="eyeColor"
-					value={userData.eyeColor}
-					onChange={handleChange}
-				/>
-				<label>HairColor</label>
-				<input
-					type="text"
-					name="hairColor"
-					value={userData.hairColor}
-					onChange={handleChange}
-				/>
-				<label>Select at least 3 photos</label>
-				<input
-					type="file"
-					name="files"
-					multiple
-					onChange={handleFileChange}
-				/>
-				<label>Tell us something about you</label>
-				<textarea
-					name="description"
-					value={userData.description}
-					onChange={handleChange}
-				></textarea>
-				<button
-					className={styles.button}
-					type="submit"
+		<div className={styles.loginContainer}>
+			<div className={styles.loginBox}>
+				<h1 className={styles.h1}>Register</h1>
+				<form
+					onSubmit={handleFormSubmit}
+					className={styles.loginForm}
 				>
-					Register
-				</button>
-			</form>
+					<label>Name</label>
+					<input
+						className={styles.loginInput}
+						type="text"
+						name="name"
+						value={userData.name}
+						onChange={handleInputChange}
+					/>
+
+					<label>Email</label>
+					<input
+						className={styles.loginInput}
+						type="email"
+						name="email"
+						value={userData.email}
+						onChange={handleInputChange}
+					/>
+
+					<label>Pasword</label>
+					<input
+						className={styles.loginInput}
+						type="password"
+						name="password"
+						value={userData.password}
+						onChange={handleInputChange}
+					/>
+
+					<label>Age</label>
+					<input
+						className={styles.loginInput}
+						type="number"
+						name="age"
+						value={userData.age}
+						onChange={handleInputChange}
+					/>
+
+					<label>Gender</label>
+					<input
+						className={styles.loginInput}
+						type="text"
+						name="sex"
+						value={userData.sex}
+						onChange={handleInputChange}
+					/>
+
+					<label>Height</label>
+					<input
+						className={styles.loginInput}
+						type="number"
+						name="height"
+						value={userData.height}
+						onChange={handleInputChange}
+					/>
+
+					<label>Weight</label>
+					<input
+						className={styles.loginInput}
+						type="number"
+						name="weight"
+						value={userData.weight}
+						onChange={handleInputChange}
+					/>
+
+					<label>EyeColor</label>
+					<input
+						className={styles.loginInput}
+						type="text"
+						name="eyeColor"
+						value={userData.eyeColor}
+						onChange={handleInputChange}
+					/>
+
+					<label>HairColor</label>
+					<input
+						className={styles.loginInput}
+						type="text"
+						name="hairColor"
+						value={userData.hairColor}
+						onChange={handleInputChange}
+					/>
+
+					<label>Select at least 3 photos</label>
+					<input
+						className={styles.loginInput}
+						type="file"
+						name="files"
+						multiple
+						onChange={handleFileChange}
+					/>
+
+					<label>Tell us something about you</label>
+					<textarea
+						className={styles.loginInput}
+						name="description"
+						value={userData.description}
+						onChange={handleInputChange}
+					></textarea>
+
+					<button
+						className={styles.loginButton}
+						type="submit"
+					>
+						Register
+					</button>
+				</form>
+			</div>
 		</div>
 	);
 };

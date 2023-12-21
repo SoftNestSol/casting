@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { db, doc, getDoc, setDoc } from "../../contexts/firebase";
+import { db, doc, getDoc, setDoc } from "../../config/firebase";
 import { useAuthContext } from "../../contexts/auth.context";
 import styles from "../../styles/profile/profile.module.scss";
 
