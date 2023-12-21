@@ -3,6 +3,7 @@ import React from "react";
 import styles from "../styles/landing-page/cta.module.scss";
 import Frame from "../public/frame.svg";
 import Image from "next/image";
+import Link from "next/link";
 const CTA = () => {
 	return (
 		<div className={styles.sectionContainer}>
@@ -12,7 +13,7 @@ const CTA = () => {
 					viitorii noștri actori. Aici găsești proiectele perfecte pentru tine și poți discuta liber
 					despre nevoile și dorințele tale.
 				</p>
-				<div className={styles.applyButton}>APLICĂ ACUM</div>
+				<Link className={styles.applyButton} href = "/register">APLICĂ ACUM</Link>
 			</div>
 			<div className={styles.imageContainer}>
 				<div className={styles.imageFrame}>

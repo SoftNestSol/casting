@@ -17,6 +17,21 @@
 	gap: 5%;
 }
 
+.loginSubtitle
+{
+	font-size: 1.2rem;
+	font-weight: 200;
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	margin-left: 1rem;
+	font-family: "Poppins", sans-serif;
+
+	&:hover{
+		color: white;
+	}
+}
+
+
 .loginBox {
 	margin-top: 5rem;
 	position: relative;
@@ -144,4 +159,3 @@
 	}
 }
 
-// Add any additional styles for hover, focus, and active states as needed.

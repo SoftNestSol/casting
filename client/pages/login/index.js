@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../../contexts/auth.context";
+import Link from "next/link";
 
 import styles from "../../styles/login/login.module.scss";
 
@@ -22,7 +23,7 @@ const LoginPage = () => {
 					onSubmit={handleFormSubmit}
 					className={styles.loginForm}
 				>
-					<label className = "label">Email</label>
+					<label className="label">Email</label>
 					<div className={styles.inputGroup}>
 						<input
 							className={styles.loginInput}
@@ -32,7 +33,7 @@ const LoginPage = () => {
 							name="email"
 						/>
 					</div>
-					<label className = "label">Parola</label>
+					<label className="label">Parola</label>
 					<div className={styles.inputGroup}>
 						<input
 							className={styles.loginInput}
@@ -42,6 +43,21 @@ const LoginPage = () => {
 							name="password"
 						/>
 					</div>
+					<Link
+						className={styles.forgotPassword}
+						href="/login"
+					>
+						Ai uitat parola?
+					</Link>
+					<p className={styles.forgotPassword}>
+						Nu ai cont?{" "}
+						<Link
+							className={styles.LinkField}
+							href="/register"
+						>
+							Inregistreaza-te
+						</Link>
+					</p>
 					<button
 						className={styles.loginButton}
 						type="submit"

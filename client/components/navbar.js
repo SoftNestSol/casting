@@ -16,11 +16,11 @@ const Navbar = () => {
 		<div className={styles.container}>
 			<ul>
 				<li>
-					<Link href="/casting">casting-uri</Link>
+					<Link href="/casting">Casting-uri</Link>
 				</li>
 
 				<li>
-					<Link href="/portofoliu">portofoliu</Link>
+					<Link href="/portofoliu">Portofoliu</Link>
 				</li>
 
 				<li className={styles.logo}>
@@ -33,11 +33,11 @@ const Navbar = () => {
 				</li>
 
 				<li>
-					<Link href="/despre-noi">despre noi</Link>
+					<Link href="/despre-noi">Despre noi</Link>
 				</li>
 
 				<li>
-					<Link href="/contact">contact</Link>
+					<Link href="/contact">Contact</Link>
 				</li>
 
 				<li className={styles.profile}>

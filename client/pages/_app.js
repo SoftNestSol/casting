@@ -1,6 +1,6 @@
 import { AuthContextProvider } from "../contexts/auth.context";
 import { CastingsContextProvider } from "../contexts/castings.context";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 

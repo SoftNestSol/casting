@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../../contexts/auth.context";
+import Link from "next/link";
 
 import styles from "../../styles/register/register.module.scss";
 
@@ -65,7 +66,13 @@ const RegisterPage = () => {
 	return (
 		<div className={styles.loginContainer}>
 			<div className={styles.loginBox}>
-				<h1 className={styles.loginTitle}>Inregistreaza-te</h1>
+				<h1 className={styles.loginTitle}>Inregistreaza-te
+				<span className={styles.loginSubtitle}><Link className={styles.loginSubtitle} href = "/login">
+					Ai deja un cont?{" "}
+				</Link></span>
+				
+				</h1>
+			
 				<form
 					onSubmit={handleFormSubmit}
 					className={styles.loginForm}
@@ -215,10 +222,10 @@ const RegisterPage = () => {
 								<option value="bald">Chel</option>
 							</select>
 
-							<label className={styles.label}>Selecteaza cel putin 3 poze</label>
+							<label className={styles.label}>Selecteaza cel putin 3 poze cu tine</label>
 							<input
 								required
-								className={styles.loginInput}
+								className={[styles.loginInput]}
 								type="file"
 								name="files"
 								multiple
