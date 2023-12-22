@@ -4,11 +4,14 @@ import {
 	onAuthStateChanged,
 	browserLocalPersistence,
 	createUserWithEmailAndPassword,
+	EmailAuthProvider,
+	reauthenticateWithCredential,
 	setPersistence,
 	signInWithEmailAndPassword,
-	signOut
+	signOut,
+	updatePassword
 } from "firebase/auth";
-import { addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 import { auth, storage, usersCollection } from "../config/firebase";
@@ -55,9 +58,10 @@ export const AuthContextProvider = ({ children }) => {
 
 			delete userData.email;
 			delete userData.password;
+			delete userData.confirmPassword;
 			delete userData.files;
 
-			await addDoc(usersCollection, {
+			await setDoc(doc(usersCollection, userCredential.user.uid), {
 				...userData,
 				photos
 			});
@@ -89,6 +93,16 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
+	const changePassword = async (currentPassword, newPassword) => {
+		try {
+			const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
+			await reauthenticateWithCredential(auth.currentUser, credential);
+			await updatePassword(auth.currentUser, newPassword);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	const state = {
 		// States
 		currentUser,
@@ -98,7 +112,8 @@ export const AuthContextProvider = ({ children }) => {
 		// Methods
 		signUp,
 		signIn,
-		logout
+		logout,
+		changePassword
 	};
 
 	return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;

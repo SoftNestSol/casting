@@ -25,16 +25,16 @@ const RegisterPage = () => {
 		password: "",
 		name: "",
 		dateOfBirth: "",
-		sex: "",
+		gender: "",
 		height: "",
 		weight: "",
 		eyeColor: "",
 		hairColor: "",
-		hairLenght: "",
+		hairLength: "",
 		description: "",
-		phone: "",
-		judet: "",
-		oras: "",
+		phoneNumber: "",
+		county: "",
+		city: "",
 		files: [],
 		confirmPassword: ""
 	});
@@ -66,13 +66,18 @@ const RegisterPage = () => {
 	return (
 		<div className={styles.loginContainer}>
 			<div className={styles.loginBox}>
-				<h1 className={styles.loginTitle}>Inregistreaza-te
-				<span className={styles.loginSubtitle}><Link className={styles.loginSubtitle} href = "/login">
-					Ai deja un cont?{" "}
-				</Link></span>
-				
+				<h1 className={styles.loginTitle}>
+					Inregistreaza-te
+					<span className={styles.loginSubtitle}>
+						<Link
+							className={styles.loginSubtitle}
+							href="/login"
+						>
+							Ai deja un cont?{" "}
+						</Link>
+					</span>
 				</h1>
-			
+
 				<form
 					onSubmit={handleFormSubmit}
 					className={styles.loginForm}
@@ -104,8 +109,8 @@ const RegisterPage = () => {
 								required
 								className={styles.loginInput}
 								type="text"
-								name="phone"
-								value={userData.phone}
+								name="phoneNumber"
+								value={userData.phoneNumber}
 								onChange={handleInputChange}
 							/>
 
@@ -114,8 +119,8 @@ const RegisterPage = () => {
 								required
 								className={styles.loginInput}
 								type="text"
-								name="judet"
-								value={userData.judet}
+								name="county"
+								value={userData.county}
 								onChange={handleInputChange}
 							/>
 
@@ -124,8 +129,8 @@ const RegisterPage = () => {
 								required
 								className={styles.loginInput}
 								type="text"
-								name="oras"
-								value={userData.oras}
+								name="city"
+								value={userData.city}
 								onChange={handleInputChange}
 							/>
 
@@ -143,8 +148,8 @@ const RegisterPage = () => {
 							<select
 								required
 								className={styles.loginInput}
-								name="sex"
-								value={userData.sex}
+								name="gender"
+								value={userData.gender}
 								onChange={handleInputChange}
 							>
 								<option value="">Selecteaza...</option>
@@ -211,8 +216,8 @@ const RegisterPage = () => {
 							<select
 								required
 								className={styles.loginInput}
-								name="hairLenght"
-								value={userData.hairLenght}
+								name="hairLength"
+								value={userData.hairLength}
 								onChange={handleInputChange}
 							>
 								<option value="">Selecteaza...</option>

@@ -21,6 +21,15 @@ a {
 	text-decoration: none;
 }
 
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
@@ -28,5 +37,6 @@ a {
 }
 
 .main-content {
-	padding: 0rem;
+	position: relative;
+	top: 4.5rem;
 }
