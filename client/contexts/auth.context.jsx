@@ -79,7 +79,7 @@ export const AuthContextProvider = ({ children }) => {
 			setCurrentUser(userCredential.user);
 			router.push(`/profile/${userCredential.user.uid}`);
 		} catch (error) {
-			console.error(error.response.data.message);
+			console.error(error);
 		}
 	};
 
@@ -89,7 +89,7 @@ export const AuthContextProvider = ({ children }) => {
 			setCurrentUser(null);
 			router.push("/");
 		} catch (error) {
-			console.error(error.response.data.message);
+			console.error(error);
 		}
 	};
 
