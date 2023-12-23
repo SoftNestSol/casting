@@ -1,0 +1,31 @@
+@import "../colors.scss"; // Import the color definitions
+
+.heading_text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	color: #fff; // Default text color to white
+	padding: 4rem; // Adjust the padding as needed
+	text-align: center; // Center-align text
+	margin-top: 4em;
+
+	h1 {
+		margin: 0 0 -0.5rem; // Space between the headings
+		font-size: 4.5rem; // Adjust font size as needed
+		font-weight: 550; // Bold font weight for headings
+	}
+
+	h1:nth-of-type(2) {
+		color: $color-accent; // Use the accent color for the second heading
+		margin: 0 0 2rem; // Increase space after the second heading if needed
+	}
+
+	p {
+		font-weight: 400; // Lighter font weight for the paragraph
+		color: aliceblue; // Light blue color for the paragraph
+		font-size: 1.2rem; // Adjust paragraph font size as needed
+		max-width: 900px; // Maximum width of the paragraph for better readability
+		margin: 0 auto; // Center the paragraph within its container
+	}
+}

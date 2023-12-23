@@ -1,0 +1,60 @@
+@import "../colors.scss"; // Assuming this file contains your color definitions
+
+.projectCard {
+	background-color: #141414; // Dark background color
+	color: #fff; // White text color
+	overflow: hidden; // Ensures child elements adhere to the border radius
+	display: flex;
+	flex-direction: row; // Children laid out in a row
+	align-items: stretch; // Stretch children to fill the height
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	box-shadow: 0px 4px 37.7px 22px rgba(0, 0, 0, 0.04);
+}
+
+.imageWrapper {
+	position: relative; // Needed for absolute positioning of the decoration
+	flex: 1; // Flex grow factor is 1, will take up half the space
+	background: #191919; // Background color for the image wrapper
+	display: flex; // Use flex to center the image
+	align-items: center; // Center image vertically
+	justify-content: center; // Center image horizontally
+	padding: 3rem;
+
+	img {
+		width: 6rem; // Set a fixed width for the image
+		border-radius: 8px 0 0 8px; // Only round the left side corners
+		position: relative; // Ensures the image is above the decoration
+		z-index: 2; // Higher than the decoration's z-index
+	}
+
+	.decoration {
+		// Assuming .decoration is the class for the decorative element
+		position: absolute;
+		bottom: 0; // Align to the bottom of the .imageWrapper
+		left: 0; // Align to the left of the .imageWrapper
+		width: 100%; // Decoration should span the entire width of the container
+		height: auto; // Maintain the aspect ratio of the decorative image
+		z-index: 1; // Below the actual image
+	}
+}
+
+.textContent {
+	flex: 1; // Flex grow factor is 1, will take up half the space
+	text-align: center; // Center text horizontally
+	display: flex; // Use flex to structure the text content
+	flex-direction: column; // Stack children vertically
+	justify-content: center; // Center content vertically
+	padding: 2rem; // Padding inside the text content
+
+	.projectTitle {
+		margin-bottom: 1rem; // Space between the title and description
+		font-size: 1.5rem; // Title font size
+		color: $color-accent; // Accent color for the title
+	}
+
+	.projectDescription {
+		font-size: 1rem; // Description font size
+		color: aliceblue; // Light blue color for the description
+	}
+}

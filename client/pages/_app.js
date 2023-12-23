@@ -11,7 +11,7 @@ const App = ({ Component, pageProps }) => {
 		<AuthContextProvider>
 			<CastingsContextProvider>
 				<Navbar />
-				<div className="main-content"> 
+				<div className="main-content">
 					<Component {...pageProps} />
 				</div>
 			</CastingsContextProvider>
