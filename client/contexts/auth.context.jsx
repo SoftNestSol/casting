@@ -96,8 +96,8 @@ export const AuthContextProvider = ({ children }) => {
 	const changePassword = async (currentPassword, newPassword) => {
 		try {
 			const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
-			await reauthenticateWithCredential(auth.currentUser, credential);
-			await updatePassword(auth.currentUser, newPassword);
+			await reauthenticateWithCredential(currentUser, credential);
+			await updatePassword(currentUser, newPassword);
 		} catch (error) {
 			console.error(error);
 		}

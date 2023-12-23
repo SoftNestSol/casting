@@ -7,7 +7,7 @@
 	width: 100%;
 	min-height: 100vh;
 	padding-top: 5rem;
-	background: $color-background; 
+	background: $color-background;
 }
 
 .containerFormular {
@@ -17,8 +17,7 @@
 	gap: 5%;
 }
 
-.loginSubtitle
-{
+.loginSubtitle {
 	font-size: 1.2rem;
 	font-weight: 200;
 	margin-bottom: 1rem;
@@ -26,11 +25,10 @@
 	margin-left: 1rem;
 	font-family: "Poppins", sans-serif;
 
-	&:hover{
+	&:hover {
 		color: white;
 	}
 }
-
 
 .loginBox {
 	margin-top: 5rem;
@@ -99,17 +97,14 @@
 	gap: 1rem;
 }
 
-.label
-{
+.label {
 	font-size: 1.2rem;
 	font-weight: 200;
 	margin-bottom: 1rem;
 	font-family: "Poppins", sans-serif;
 }
 
-
 .loginInput {
-	
 	background: $input; // Input background
 	border: 1px solid #444; // Input border
 	border-radius: 16px;
@@ -136,26 +131,38 @@
 			/* Second layer */ 0 0 0 3px hwb(45 37% 25% / 0),
 			/* Third layer */ 0 0 0 4px hwb(45 37% 25% / 0.273); /* Fourth layer */
 	}
-	
 }
 
 .loginButton {
-	background: radial-gradient(67% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 70%);
-	color: $text-box;
-	border: none;
-	border-radius: 16px;
-	padding: 0.75rem;
-	cursor: pointer;
-	font-size: 1.5rem;
+	color: #000;
 	font-weight: bold;
-	width: 60%;
-	margin: 0 auto;
-	transition: background-color 1s;
-	margin-top: 2rem;
+	font-size: 1.5rem;
+	border-radius: 129px;
+	width: 100%; /* Make the button fill the container */
+	height: 100%; /* Make the button fill the container */
+	font-size: 1.5rem;
+	padding: 0.5rem;
+	background: radial-gradient(75% 300% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
+	text-align: center; /* Center text horizontally */
+	display: flex; /* Use flexbox to align text */
+	justify-content: center; /* Center text horizontally in flexbox */
+	align-items: center; /* Center text vertically in flexbox */
+	cursor: pointer;
+	text-transform: uppercase;
+	// background: radial-gradient(67% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 70%);
+	// color: $text-box;
+	// border: none;
+	// border-radius: 16px;
+	// padding: 0.75rem;
+	// cursor: pointer;
+	// font-size: 1.5rem;
+	// font-weight: bold;
+	// width: 60%;
+	// margin: 0 auto;
+	// transition: background-color 1s;
+	// margin-top: 2rem;
 
-
-	&:hover {
-		background: radial-gradient(100% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
-	}
+	// &:hover {
+	// 	background: radial-gradient(100% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
+	// }
 }
-
