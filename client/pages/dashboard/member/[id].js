@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { getMembersData } from "../../../config/firebase";
 
 const MemberPage = () => {
 	const [members, setMembers] = useState([]);
@@ -8,14 +9,9 @@ const MemberPage = () => {
 	const { id } = router.query;
 
 	useEffect(() => {
-		fetch("http://localhost:4000/getMembers", {
-			method: "GET",
-			credentials: "include"
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				setMembers(data);
-			});
+		getMembersData().then((data) => {
+			setMembers(data);
+		});
 	}, []);
 
 	const member = members.find((m) => m.id.toString() === id);

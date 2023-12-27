@@ -14,7 +14,7 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
-import { auth, storage, usersCollection } from "../config/firebase";
+import { auth, storage, usersCollection} from "../config/firebase";
 
 export const AuthContext = createContext({});
 
@@ -27,6 +27,7 @@ export const useAuthContext = () => {
 export const AuthContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 	const [currentUser, setCurrentUser] = useState();
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	const router = useRouter();
 
@@ -74,13 +75,22 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	const signIn = async (email, password) => {
-		try {
-			const userCredential = await signInWithEmailAndPassword(auth, email, password);
-			setCurrentUser(userCredential.user);
-			router.push(`/profile/${userCredential.user.uid}`);
-		} catch (error) {
-			console.error(error);
+		if (email == "admin@mycasting.ro") {
+			setIsAdmin(true);
 		}
+		console.log(isAdmin, email, "admin@mycasting.ro");
+
+		if (isAdmin) {
+			router.push("/dashboard");
+			return;
+		} else
+			try {
+				const userCredential = await signInWithEmailAndPassword(auth, email, password);
+				setCurrentUser(userCredential.user);
+				router.push(`/profile/${userCredential.user.uid}`);
+			} catch (error) {
+				console.error(error);
+			}
 	};
 
 	const logout = async () => {

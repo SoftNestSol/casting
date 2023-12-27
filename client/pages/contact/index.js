@@ -121,7 +121,7 @@ const Contact = () => {
 							/>
 							Am citit si sunt de acord cu{" "}
 							<Link
-								href="#"
+								href="/terms"
 								className={styles.formLink}
 							>
 								termenii si conditiile

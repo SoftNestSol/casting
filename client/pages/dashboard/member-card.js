@@ -6,7 +6,7 @@ const MemberCard = ({ member }) => {
 	return (
 		<div className={styles.memberCard}>
 			<Image
-				src={member.imageArray[0]}
+				src={member.photos[0]}
 				className={styles.profilePhoto}
 				alt="Profile"
 				width={100}

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { collection, getFirestore } from "firebase/firestore";
+import { collection, getFirestore, getDocs } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 import { constants } from "./constants.js";
@@ -25,7 +25,7 @@ export const usersCollection = collection(db, "users");
 export default app;
 
 // //reference to firestore collection and storage
-// const colRef = collection(db, "Members");
+
 // const storageRef = ref(storage);
 // const imagesRef = ref(storage, "images");
 
@@ -61,12 +61,12 @@ export default app;
 // 	return getDownloadURL(storageRef);
 // };
 
-// //get all members from firestore via an array of objects
-// const getMembersData = async () => {
-// 	const arr = [];
-// 	const querySnapshot = await getDocs(colRef);
-// 	querySnapshot.forEach((doc) => {
-// 		arr.push(doc.data());
-// 	});
-// 	return arr;
-// };
+//get all members from firestore via an array of objects
+export const getMembersData = async () => {
+	const arr = [];
+	const querySnapshot = await getDocs(collection(db, "users"));
+	querySnapshot.forEach((doc) => {
+		arr.push(doc.data());
+	});
+	return arr;
+};

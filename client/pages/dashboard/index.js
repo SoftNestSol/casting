@@ -4,19 +4,16 @@ import { useEffect, useState } from "react";
 import MemberCard from "./member-card";
 
 import styles from "../../styles/dashboard/member-card.module.scss";
+import { getMembersData } from "../../config/firebase";
 
 const Dashboard = () => {
 	const [members, setMembers] = useState([]);
 
 	useEffect(() => {
-		fetch("http://localhost:4000/getMembers", {
-			method: "GET",
-			credentials: "include"
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				setMembers(data);
-			});
+		getMembersData().then((data) => {
+			setMembers(data);
+		});
+		console.log(members);
 	}, []);
 
 	return (
