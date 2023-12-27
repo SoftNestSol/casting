@@ -14,7 +14,7 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
-import { auth, storage, usersCollection} from "../config/firebase";
+import { auth, storage, usersCollection } from "../config/firebase";
 
 export const AuthContext = createContext({});
 
@@ -32,14 +32,26 @@ export const AuthContextProvider = ({ children }) => {
 	const router = useRouter();
 
 	useEffect(() => {
+		if (!router.isReady) return;
 		setPersistence(auth, browserLocalPersistence);
-		return () =>
-			onAuthStateChanged(auth, (user) => {
-				if (user === null) return;
+
+		const unsubscribe = onAuthStateChanged(auth, (user) => {
+			setLoading(false);
+			if (user) {
 				setCurrentUser(user);
-				setLoading(false);
-			});
-	}, []);
+
+				if (router.pathname === "/profile/[uid]" && router.query.uid !== user.uid) {
+					router.push(`/profile/${user.uid}`);
+				}
+			} else {
+				if (router.pathname.startsWith("/profile")) {
+					router.push("/login");
+				}
+			}
+		});
+
+		return () => unsubscribe();
+	}, [router]);
 
 	const signUp = async (userData) => {
 		try {
@@ -75,11 +87,6 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	const signIn = async (email, password) => {
-		if (email == "admin@mycasting.ro") {
-			setIsAdmin(true);
-		}
-		console.log(isAdmin, email, "admin@mycasting.ro");
-
 		if (isAdmin) {
 			router.push("/dashboard");
 			return;
@@ -96,8 +103,7 @@ export const AuthContextProvider = ({ children }) => {
 	const logout = async () => {
 		try {
 			await signOut(auth);
-			setCurrentUser(null);
-			router.push("/");
+			router.replace("/");
 		} catch (error) {
 			console.error(error);
 		}

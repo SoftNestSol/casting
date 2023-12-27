@@ -40,12 +40,6 @@ const ProfilePage = () => {
 	const { currentUser, loading, logout, changePassword } = useAuthContext();
 
 	useEffect(() => {
-		if (loading) return;
-		if (!currentUser) return router.push("/login");
-		if (currentUser.uid !== uid) return router.push(`/profile/${currentUser.uid}`);
-	}, [currentUser, loading, uid]);
-
-	useEffect(() => {
 		if (!currentUser || !uid || currentUser.uid !== uid) return;
 
 		const fetchData = async () => {
