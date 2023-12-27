@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "../../styles/contact/contact.module.scss";
 import Link from "next/link";
 
@@ -37,6 +38,7 @@ const Contact = () => {
 
 	return (
 		<>
+			<h2 className={styles.heading2}>Studioul Nostru</h2>
 			<div className={styles.container}>
 				<div className={styles.detailsContainer}>
 					<div className={styles.address}>
@@ -140,9 +142,23 @@ const Contact = () => {
 				<div className={styles.contactInfo}>
 					<h2 className={styles.heading}>Contacteaza-ne prin telefon</h2>
 					<p className={styles.textContact}>
+						<Image
+							className={styles.Image}
+							src="/images/carousel/Carousel1.jpg"
+							alt="text"
+							width={70}
+							height={70}
+						/>
 						David - <span> 0745 123 456 </span>{" "}
 					</p>
 					<p className={styles.textContact}>
+						<Image
+							className={styles.Image}
+							src="/images/carousel/Carousel1.jpg"
+							alt="text"
+							width={70}
+							height={70}
+						/>
 						Dana - <span> 0745 123 456 </span>{" "}
 					</p>
 				</div>

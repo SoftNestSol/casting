@@ -7,17 +7,14 @@
 	align-items: flex-start;
 	width: 100%;
 	height: 100%;
-	margin-top: 10%;
+	margin-top: 6%;
 	gap: 10%;
-	border-bottom-width: 3px;
-	border-bottom-style: solid;
-	border-image-slice: 1;
-	border-image-source: radial-gradient(
-		50% 75% at 50% 75%,
-		#bfa75d 0%,
-		$color-background 50%,
-		$color-background 100%
-	);
+}
+
+.Image
+{
+	border-radius: 50%;
+	margin-right: 5%;
 }
 
 .detailsContainer {
@@ -75,6 +72,22 @@
 	}
 }
 
+.heading2 {
+	text-align: left;
+	padding-left: 8vw;
+	color: $color-accent;
+	font-size: 3rem;
+	margin-top: 12%;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-image-slice: 1;
+	border-image-source: radial-gradient(
+		30% 75% at 20% 75%,
+		#bfa75d 0%,
+		$color-background 50%,
+		$color-background 100%
+	);
+}
 
 .containerFormular {
 	display: flex;
@@ -92,7 +105,7 @@
 	width: 50%;
 	margin-bottom: 4rem;
 	overflow: hidden;
-	
+
 	&::before {
 		content: "";
 		position: absolute;
@@ -132,23 +145,23 @@
 }
 
 .heading {
-	text-align: center; 
+	text-align: center;
 	color: $color-accent;
-	margin-bottom: 2rem; 
-	font-size: 2rem; 
+	margin-bottom: 2rem;
+	font-size: 2rem;
 }
 
 .formLabel {
 	font-size: 1rem;
 	color: $color-text;
 	margin-top: 0.5rem;
-	margin-bottom: 0.25rem; 
-	align-self: flex-start; 
+	margin-bottom: 0.25rem;
+	align-self: flex-start;
 }
 
 .formInput,
 .formTextarea {
-	width: calc(100% - 2rem); 
+	width: calc(100% - 2rem);
 	background-color: $input;
 	border: 1px solid lighten($input, 10%);
 	border-radius: 16px;
@@ -191,52 +204,45 @@
 	margin-right: 0.5rem;
 }
 
-
-
 .checkboxLabel {
 	font-size: 1rem;
 	color: $color-text;
 }
 
-
-.formLabelChecked
-{
+.formLabelChecked {
 	font-size: 1rem;
 	color: $color-text;
 	margin-top: 1rem;
 	margin-bottom: 0.25rem;
-	align-self: flex-start;	
+	align-self: flex-start;
 }
 
-.formLink
-{
+.formLink {
 	color: $color-accent;
 	text-decoration: none;
 	margin-top: 1rem;
 	align-self: flex-start;
 
-	&:hover
-	{
+	&:hover {
 		text-decoration: underline;
 	}
 }
 
-
-.contactInfo
-{
+.contactInfo {
 	margin-top: 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
 
-.textContact{
+.textContact {
 	position: relative;
 	background: #1e1e1e;
 	border-radius: 20px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	color: white;
 	padding: 2rem;
+	font-size: 1.2rem;
 	width: 100%;
 	overflow: hidden;
 	&::before {
@@ -275,12 +281,9 @@
 			/* Second layer */ 0 0 0 3px hwb(45 37% 25% / 0),
 			/* Third layer */ 0 0 0 4px hwb(45 37% 25% / 0.273); /* Fourth layer */
 	}
-
 }
 
-
-.secondContainer
-{
+.secondContainer {
 	display: flex;
 	margin-top: 7%;
 	flex-direction: row;
