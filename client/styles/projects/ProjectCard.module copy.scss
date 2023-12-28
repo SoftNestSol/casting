@@ -3,11 +3,22 @@
 .projectCard {
 	background-color: #141414;
 	display: flex;
-	margin: 8rem 0;
+	margin: 2rem 0;
 	overflow: hidden;
 
 	&.projectCardReverse {
 		flex-direction: row-reverse;
+
+		.textContent {
+			text-align: right;
+			// Adjust padding as needed for reversed layout
+			padding-left: 3rem;
+			padding-right: 0;
+		}
+
+		.imageWrapper {
+			// Adjustments for the image wrapper in reversed layout if needed
+		}
 	}
 }
 
