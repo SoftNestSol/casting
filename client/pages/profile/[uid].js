@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { deleteObject, getDownloadURL, ref, refFromURL, uploadBytes } from "firebase/storage";
 
 import { useAuthContext } from "../../contexts/auth.context";
-import { db } from "../../config/firebase";
+import { db, storage } from "../../config/firebase";
 
 import styles from "../../styles/profile/profile.module.scss";
 
@@ -20,7 +22,9 @@ const profileDataInitialState = {
 	hairColor: "",
 	hairLength: "",
 	eyeColor: "",
-	description: ""
+	description: "",
+	photos: [],
+	files: []
 };
 
 const securityDataInitialState = {
@@ -32,6 +36,7 @@ const securityDataInitialState = {
 const ProfilePage = () => {
 	const [section, setSection] = useState("profile");
 	const [profileData, setProfileData] = useState(profileDataInitialState);
+	const [initialPhotos, setInitialPhotos] = useState([]);
 	const [securityData, setSecurityData] = useState(securityDataInitialState);
 
 	const router = useRouter();
@@ -45,11 +50,14 @@ const ProfilePage = () => {
 		const fetchData = async () => {
 			try {
 				const user = await getDoc(doc(db, "users", uid));
-				if (user.exists())
-					setProfileData({
-						...user.data(),
-						email: currentUser.email
-					});
+				if (!user.exists()) return;
+
+				setProfileData({
+					...user.data(),
+					email: currentUser.email,
+					files: []
+				});
+				setInitialPhotos(user.data().photos);
 			} catch (error) {
 				console.error(error);
 			}
@@ -62,6 +70,21 @@ const ProfilePage = () => {
 		setProfileData({ ...profileData, [event.target.name]: event.target.value });
 	};
 
+	const handleFileInputChange = (event) => {
+		[...event.target.files].forEach((file) => {
+			const reader = new FileReader();
+
+			reader.onload = () =>
+				setProfileData((prevState) => ({
+					...prevState,
+					photos: [reader.result, ...prevState.photos],
+					files: [file, ...prevState.files]
+				}));
+
+			reader.readAsDataURL(file);
+		});
+	};
+
 	const handleSecurityInputChange = (event) => {
 		setSecurityData({ ...securityData, [event.target.name]: event.target.value });
 	};
@@ -71,7 +94,30 @@ const ProfilePage = () => {
 
 		try {
 			if (section === "profile") {
-				await updateDoc(doc(db, "users", uid), profileData);
+				const photos = await Promise.all(
+					profileData.files.map(async (file) => {
+						const photoRef = ref(storage, `photos/${uid}/${file.name}`);
+						const snapshot = await uploadBytes(photoRef, file);
+						return getDownloadURL(snapshot.ref);
+					})
+				);
+
+				delete profileData.files;
+
+				profileData.photos.forEach((photo) => photo.startsWith("https://") && photos.push(photo));
+
+				initialPhotos.forEach(async (photo) => {
+					if (!photos.includes(photo)) {
+						const photoRef = ref(storage, photo);
+						await deleteObject(photoRef);
+					}
+				});
+
+				await updateDoc(doc(db, "users", uid), {
+					...profileData,
+					photos
+				});
+
 				alert("Datele au fost actualizate cu succes!");
 			}
 
@@ -81,6 +127,7 @@ const ProfilePage = () => {
 
 				await changePassword(securityData.currentPassword, securityData.newPassword);
 				setSecurityData(securityDataInitialState);
+
 				alert("Parola a fost schimbata cu succes!");
 			}
 		} catch (error) {
@@ -172,7 +219,7 @@ const ProfilePage = () => {
 									value={profileData.city}
 								/>
 
-								<label htmlFor="gender">Gender</label>
+								<label htmlFor="gender">Gen</label>
 								<select
 									id="gender"
 									name="gender"
@@ -271,6 +318,50 @@ const ProfilePage = () => {
 									onChange={handleProfileInputChange}
 									value={profileData.description}
 								/>
+
+								<label htmlFor="photos">Fotografii</label>
+								<label
+									className={styles.upload}
+									htmlFor="photos"
+								/>
+								<input
+									id="photos"
+									name="photos"
+									onChange={handleFileInputChange}
+									type="file"
+									multiple
+								/>
+
+								{profileData.photos.length > 0 ? (
+									<div className={styles.photos}>
+										{profileData.photos.map((photo, index) => (
+											<div
+												className={styles.photo}
+												key={index}
+											>
+												<Image
+													alt={`Photo ${index + 1}`}
+													src={photo}
+													height={125}
+													width={100}
+												/>
+
+												<div
+													className={styles.remove}
+													onClick={() => {
+														const photos = profileData.photos;
+														const files = profileData.files;
+														photos.splice(index, 1);
+														files.splice(index, 1);
+														setProfileData({ ...profileData, photos, files });
+													}}
+												>
+													Sterge
+												</div>
+											</div>
+										))}
+									</div>
+								) : null}
 							</div>
 						) : null}
 

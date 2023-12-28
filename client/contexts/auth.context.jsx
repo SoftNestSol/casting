@@ -63,8 +63,8 @@ export const AuthContextProvider = ({ children }) => {
 
 			const photos = await Promise.all(
 				userData.files.map(async (file) => {
-					const storageRef = ref(storage, `photos/${userCredential.user.uid}/${file.name}`);
-					const snapshot = await uploadBytes(storageRef, file);
+					const photoRef = ref(storage, `photos/${userCredential.user.uid}/${file.name}`);
+					const snapshot = await uploadBytes(photoRef, file);
 					return getDownloadURL(snapshot.ref);
 				})
 			);
