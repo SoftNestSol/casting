@@ -85,7 +85,7 @@
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 		color: white;
 		padding: 3rem;
-		width: 450px;
+		width: min(100%, 450px);
 		margin: 0.5rem;
 		overflow: hidden;
 		display: flex;
@@ -137,14 +137,6 @@
 		p {
 			font-size: 1.3rem; /* Paragraph font size */
 			line-height: 1.5; /* Line height for the paragraph */
-		}
-	}
-}
-
-@media screen and (max-width: 768px) {
-	.hero_cards {
-		.card {
-			width: 100%;
 		}
 	}
 }

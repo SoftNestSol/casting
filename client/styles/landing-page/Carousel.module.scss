@@ -4,8 +4,7 @@
 	position: relative;
 	// overflow: hidden;
 	max-width: 1024px;
-	height: 50vh;
-	margin: 10rem auto 0;
+	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,31 +15,29 @@
 	border-radius: 20px; // Rounded corners
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Subtle shadow
 	color: #fff; // White text
-	max-width: 700px;
+	width: min(calc(100vw - 6rem), 900px);
 	display: flex; // Enable flexbox layout
 	flex-direction: row; // Arrange children in a row
 	align-items: center; // Center children vertically
-	padding: 2em; // Padding inside the card
+	padding: 4rem 3rem; // Padding inside the card
 	margin: 2em auto; // Center card with vertical margin
 	border: hwb(45 37% 25% / 0.623) solid 1px; // White border
-
-	padding: rem;
+	gap: 3rem;
 }
 .text {
-	width: 60%; // Allocate width for text container
-	padding-right: 3em; // Space between text and image
+	flex: 1;
 }
 .imageWrapper {
 	position: relative; // Required for 'fill' layout
-	width: 40%; // or whatever width you need
-	height: 15rem; // or whatever height you need
+	height: 18rem; // or whatever height you need
+	flex: 1;
 }
 
 .image {
 	flex-shrink: 0; // Prevent the image from shrinking
 	border-radius: 10px; // Rounded corners for the image
 	overflow: hidden; // Clip the image to the border radius
-	width: 2rem;
+	width: 4rem;
 }
 .carouselInner {
 	display: flex;
@@ -52,25 +49,25 @@
 	padding: 10rem;
 	background-color: #56565600;
 	color: #fff;
-	text-align: center;
 	display: flex;
 	align-items: center; // Center vertically
 	justify-content: flex-start;
 }
 
 .title {
-	font-size: 2rem; // Larger font size for the title
+	font-size: 1.8rem; // Larger font size for the title
 	margin-bottom: 0.5em; // Space below the title
 }
 
 .description {
-	font-size: 1.4rem; // Adjust font size for the description if needed
+	font-size: 1.3rem; // Adjust font size for the description if needed
+	font-weight: 300;
 }
 
 .carouselControls {
 	position: absolute;
 	top: 50%;
-	width: 80%;
+	width: 95%;
 	display: flex;
 	justify-content: space-between;
 	transform: translateY(-50%);
@@ -87,7 +84,7 @@
 
 .carouselIndicators {
 	position: absolute;
-	bottom: -4rem;
+	bottom: -6rem;
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
@@ -101,4 +98,15 @@
 	border-radius: 50%;
 	display: inline-block;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+	.card {
+		flex-direction: column;
+
+		.imageWrapper {
+			width: 100%;
+			flex: unset;
+		}
+	}
 }
