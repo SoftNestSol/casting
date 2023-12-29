@@ -1,5 +1,9 @@
 @import "../colors.scss";
 
+.pagecontainer {
+	overflow-x: hidden;
+}
+
 .spline {
 	height: 100vh;
 	top: 0;
@@ -60,20 +64,20 @@
 	}
 
 	h2 {
-		font-size: 2rem;
+		font-size: 1.75rem;
 		font-weight: 400;
-		color: $color-text;
+		color: $color-accent;
 		text-align: center;
 		margin-bottom: 2rem;
 	}
 }
 
 .hero_cards {
+	padding: 0 2rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	padding-left: 12rem;
-	padding-right: 12rem;
+	flex-wrap: wrap;
 	.card {
 		position: relative;
 		background: #1e1e1e;
@@ -81,7 +85,7 @@
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 		color: white;
 		padding: 4rem;
-		max-width: 600px;
+		width: 500px;
 		margin: 0.5rem;
 		overflow: hidden;
 		display: flex;
@@ -133,6 +137,14 @@
 		p {
 			font-size: 1.3rem; /* Paragraph font size */
 			line-height: 1.5; /* Line height for the paragraph */
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.hero_cards {
+		.card {
+			width: 100%;
 		}
 	}
 }

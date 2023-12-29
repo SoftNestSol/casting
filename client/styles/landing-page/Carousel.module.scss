@@ -3,9 +3,9 @@
 .carousel {
 	position: relative;
 	// overflow: hidden;
-	width: 100%;
+	max-width: 1024px;
 	height: 50vh;
-	margin-top: 10rem;
+	margin: 10rem auto 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,7 +16,7 @@
 	border-radius: 20px; // Rounded corners
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Subtle shadow
 	color: #fff; // White text
-	width: 50%; // Card width
+	max-width: 700px;
 	display: flex; // Enable flexbox layout
 	flex-direction: row; // Arrange children in a row
 	align-items: center; // Center children vertically
@@ -101,8 +101,4 @@
 	border-radius: 50%;
 	display: inline-block;
 	cursor: pointer;
-}
-
-.active {
-	background-color: #fff;
 }

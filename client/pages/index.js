@@ -23,7 +23,7 @@ export default function LandingPage() {
 			</Head>
 
 			<main>
-				<content className={styles.pagecontainer}>
+				<div className={styles.pagecontainer}>
 					<div className={styles.spline}>
 						<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
 					</div>
@@ -67,7 +67,7 @@ export default function LandingPage() {
 					</div>
 					<Carousel />
 					<CTA />
-				</content>
+				</div>
 			</main>
 		</div>
 	);

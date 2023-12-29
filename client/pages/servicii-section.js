@@ -14,6 +14,12 @@ const slides = [
 		description:
 			"Găsește talentul perfect pentru proiectul tău! Echipa noastră specializată în casting te ajută să selectezi actorii și modelele ideale pentru orice tip de producție, fie că este vorba de film, reclame sau proiecte fotografice. Avem o bază de date extinsă și variată, garantând potrivirea perfectă pentru viziunea ta artistică.",
 		image: "/images/carousel/Carousel1.jpg"
+	},
+	{
+		title: "Casdasdadsd",
+		description:
+			"Găsește talentul perfect pentru proiectul tău! Echipa noastră specializată în casting te ajută să selectezi actorii și modelele ideale pentru orice tip de producție, fie că este vorba de film, reclame sau proiecte fotografice. Avem o bază de date extinsă și variată, garantând potrivirea perfectă pentru viziunea ta artistică.",
+		image: "/images/carousel/Carousel1.jpg"
 	}
 	// ...other slides
 ];
@@ -37,7 +43,7 @@ const Carousel = () => {
 			>
 				{slides.map((slide, index) => (
 					<div
-						className={styles.carouselItem}
+						className={`${styles.carouselItem} ${index === activeIndex ? styles.active : ""}`}
 						key={index}
 					>
 						<div className={styles.card}>
