@@ -1,9 +1,13 @@
 @import "colors.scss";
 
 .container {
-	top: 0;
 	position: absolute;
+	top: 0;
+	z-index: 2;
+
 	width: 100%;
+
+	background: #111;
 	border-bottom-width: 3px;
 	border-bottom-style: solid;
 	border-image-slice: 1;
@@ -14,25 +18,41 @@
 		$color-background 100%
 	);
 
+	.hamburger {
+		position: absolute;
+		top: 50%;
+		left: 3rem;
+		transform: translateY(-50%);
+
+		font-size: 2rem;
+
+		display: none;
+		cursor: pointer;
+	}
+
 	ul {
 		position: relative;
+
 		width: fit-content;
 		height: 4.5rem;
 		margin: 0 auto;
 		padding-top: 0.5rem;
+
 		display: flex;
 		align-items: center;
-		gap: 8rem;
+		gap: 4rem;
 
 		li {
 			list-style: none;
 
 			a {
-				text-decoration: none;
+				position: relative;
+
 				color: #ffffff;
 				font-size: 1.075rem;
 				font-weight: 100;
-				position: relative;
+				text-decoration: none;
+				text-transform: lowercase;
 
 				&:hover {
 					color: #bfa75d;
@@ -44,9 +64,7 @@
 			}
 
 			&.logo {
-				padding-right: 1rem;
-				padding-bottom: 2rem;
-				padding-top: 1rem;
+				margin-top: -0.5rem;
 				a {
 					width: 75px;
 					display: inline-block;
@@ -57,88 +75,91 @@
 					}
 				}
 			}
+		}
+	}
 
-			&.profile {
-				position: absolute;
-				right: calc(-32px - 6rem);
-				display: flex;
+	.profile {
+		position: absolute;
+		top: 50%;
+		right: 3rem;
+		transform: translateY(-50%);
 
-				a {
-					display: flex;
+		font-size: 1.5rem;
 
-					img {
-						width: 2rem;
-						height: 2rem;
-					}
+		a {
+			display: flex;
+		}
+	}
+}
+
+.menu {
+	display: none;
+}
+
+@media screen and (max-width: 1024px) {
+	.container {
+		.hamburger {
+			display: flex;
+		}
+
+		ul {
+			li {
+				display: none;
+
+				&.logo {
+					display: block;
 				}
+			}
+		}
+	}
+
+	.menu {
+		position: fixed;
+		top: 4.5rem;
+		left: 0;
+		z-index: 1;
+
+		width: 100%;
+		height: calc(100vh - 4.5rem);
+		padding: 3rem;
+
+		background-color: rgb(17, 17, 17, 0.9);
+
+		display: block;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 100ms ease-in-out,
+			visibility 100ms ease-in-out;
+
+		&.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		ul {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			gap: 1rem;
+
+			li {
+				font-size: 2rem;
+				font-weight: 300;
+				text-transform: lowercase;
 			}
 		}
 	}
 }
 
-// .container {
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// 	width: 100%;
-// 	background-color: $color-background;
-// 	padding: 0 2rem;
-// 	font-family: "Poppins", sans-serif;
-// 	font-weight: 100; // ExtraLight font weight
-// 	ul {
-// 		list-style: none;
-// 		width: 60%;
-// 		display: flex;
-// 		justify-content: space-between;
-// 		align-items: center;
-// 		padding: 0;
-// 		margin: 0;
-// 		font-weight: 100; // ExtraLight font weight
-// 		li {
-// 			a {
-// 				text-decoration: none;
-// 				color: #ffffff; // Replace with the exact color from your design
-// 				font-size: 1rem; // Adjust font-size as needed
-// 				position: relative;
+@media screen and (max-width: 768px) {
+	.container {
+		.hamburger {
+			left: 2rem;
+		}
 
-// 				// Hover effect
-// 				&:hover {
-// 					color: #bfa75d; // Adjust hover color as needed
-// 				}
-
-// 				// Active link styles can be added here
-// 				&.active {
-// 					color: #bfa75d; // Adjust active link color as needed
-// 				}
-// 			}
-// 		}
-
-// 		// Logo styles, assuming the logo is in the center of the navbar
-// 		.logo {
-// 			position: absolute;
-// 			left: 50%;
-// 			transform: translateX(-50%);
-// 			display: flex;
-// 			justify-content: center;
-// 			align-items: center;
-// 		}
-
-// 		// User icon styles
-
-// 		.usericon {
-// 			position: relative;
-// 			width: 2rem;
-
-// 			&:hover {
-// 				fill: #bfa75d; // Assuming you want to change the fill on hover, not the color
-// 			}
-// 		}
-// 	}
-// }
-
-// // Responsive adjustments
-// @media (max-width: 768px) {
-// 	.container {
-// 		// Adjust styles for mobile view if necessary
-// 	}
-// }
+		.profile {
+			right: 2rem;
+		}
+	}
+}
