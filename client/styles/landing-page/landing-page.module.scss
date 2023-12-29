@@ -5,11 +5,14 @@
 }
 
 .spline {
-	height: 100vh;
 	top: 0;
 	left: 0;
 	z-index: -1;
 	width: 100%;
+
+	canvas {
+		height: max(80vh, 600px) !important;
+	}
 }
 .button_container {
 	position: absolute; /* Absolute positioning relative to the nearest positioned ancestor */
@@ -73,7 +76,7 @@
 }
 
 .hero_cards {
-	padding: 0 2rem;
+	padding: 0 1.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -90,6 +93,10 @@
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
+
+		h1 {
+			text-align: left;
+		}
 
 		::before {
 			content: "";
@@ -137,6 +144,14 @@
 		p {
 			font-size: 1.3rem; /* Paragraph font size */
 			line-height: 1.5; /* Line height for the paragraph */
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.hero_cards {
+		.card {
+			padding: 3rem 2rem;
 		}
 	}
 }

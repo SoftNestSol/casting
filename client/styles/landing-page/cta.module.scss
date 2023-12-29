@@ -1,32 +1,37 @@
 // SCSS styles
 .sectionContainer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	background: linear-gradient(0, #696969 -5%, rgba(0, 0, 0, 0) 50%);
 	// color: #fff;
-	padding: 16rem;
+	padding: 3rem 3rem;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: min(100%, 1400px);
+	margin: 0 auto;
+	gap: 6rem;
 }
 
 .textContent {
-	// max-width: 50%;
-	font-size: 6rem;
+	max-width: 600px;
+	font-size: 2rem;
 }
 
 .description {
 	margin-bottom: 30px;
-	width: 75%;
-	font-size: 1.7rem;
+	font-size: 1.3rem;
+	font-weight: 300;
 }
 
 .applyButton {
 	color: #000;
 	font-weight: bold;
-	font-size: 1.5rem;
 	border-radius: 129px;
-	width: 60%; /* Make the button fill the container */
-	height: 4.5rem; /* Make the button fill the container */
-	font-size: 2rem;
+	width: fit-content;
+	padding: 0.5rem 4rem;
+	font-size: 1.5rem;
 	background: radial-gradient(75% 300% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
 	text-align: center; /* Center text horizontally */
 	display: flex; /* Use flexbox to align text */
@@ -38,11 +43,30 @@
 
 .imageContainer {
 	position: relative;
-	width: 40%; // Adjust based on your design
+	width: 500px;
 }
 
 .imageFrame {
 	// Assuming you want to replicate the geometric shapes around the image
 
 	// Add the image styling here
+}
+
+@media screen and (max-width: 1000px) {
+	.wrapper {
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	.imageContainer {
+		width: unset;
+	}
+
+	.textContent {
+		order: 2;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
 }
