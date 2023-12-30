@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { collection, getFirestore, getDocs } from "firebase/firestore";
+import { collection, getFirestore, getDocs, getDoc, doc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 import { constants } from "./constants.js";
@@ -69,4 +69,19 @@ export const getMembersData = async () => {
 		arr.push(doc.data());
 	});
 	return arr;
+};
+
+export const getUserData = async (uid) => {
+	const docRef = doc(db, "users", uid);
+	const docSnap = await getDoc(docRef);
+
+	if (docSnap.exists()) {
+		return docSnap.data();
+	} else try{
+		throw new Error("No such document!");
+	}
+	catch
+	{
+		console.log("No such document!");
+	}
 };

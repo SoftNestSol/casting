@@ -3,9 +3,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../../../styles/profile/profile.module.scss";
 import { getMembersData } from "../../../config/firebase";
+import { getUserData } from "../../../config/firebase";
 
 const MemberPage = () => {
-	const [users, setUsers] = useState([]);
+
+
 	const [user, setUser] = useState(null);
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
@@ -14,17 +16,15 @@ const MemberPage = () => {
 		if (!router.isReady) return;
 
 		const uid = router.query.uid;
-
 		setLoading(true);
-		getMembersData()
-			.then((data) => {
-				setUsers(data);
-				const foundUser = data.find((user) => user.uid === uid);
-				setUser(foundUser);
+
+		getUserData(uid)
+			.then((userData) => {
+				setUser(userData);
 				setLoading(false);
 			})
 			.catch((error) => {
-				console.error("Error fetching data: ", error);
+				console.error("Error fetching user data: ", error);
 				setLoading(false);
 			});
 	}, [router.isReady, router.query.uid]);
