@@ -1,24 +1,26 @@
-// member-card.module.scss
+@import "../colors.scss";
 .container {
 	padding: 1em;
-	background-color: #f5f5f5;
 }
 
 
 .tableHeader {
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
+	font-size: 1.2em;
+	font-weight: bold;
 	gap: 18vw;
-	margin: 2em;
+	margin: 2em auto;
 	height: 2em;
 	padding: 0.5em;
-	background-color: white;
+	width: 98%;
+	background-color: $color-accent;
 	border-radius: 8px;
 }
 
 .memberCard {
-	background-color: white;
+	background-color: $text-box;
 	border-radius: 8px;
 	margin: 1em;
 	display: flex;
@@ -29,14 +31,16 @@
 
 .profilePhoto {
 
-	width: 100px;
-	height: 100px;
+	width: 5em;
+	height: 5em;
 	border-radius: 50%;
 	object-fit: cover;
+	object-position: center;
+	box-sizing: border-box;
 }
 
 .memberDetail {
-	text-align: center;
+	text-align: left;
 }
 
 
@@ -46,7 +50,6 @@
 	font-weight: bold;
 	text-align: center;
 	margin: 0 auto;
-
 	margin-top: 1em;
 
 

@@ -12,8 +12,8 @@ const MemberCard = ({ member }) => {
 				width={100}
 				height={100}
 			/>
-			<div className={styles.memberDetail}>{`Sex: ${member.sex}`}</div>
-			<div className={styles.memberDetail}>{`Varsta: ${member.age}`}</div>
+			<div className={styles.memberDetail}>{`Sex: ${member.gender}`}</div>
+			<div className={styles.memberDetail}>{`Varsta: ${member.dateOfBirth}`}</div>
 			<div className={styles.memberDetail}>{`Inaltime: ${member.height}`}</div>
 			<div className={styles.memberDetail}>{`Greutate: ${member.weight}`}</div>
 		</div>
