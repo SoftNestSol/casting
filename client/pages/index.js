@@ -24,9 +24,9 @@ export default function LandingPage() {
 
 			<main>
 				<div className={styles.pagecontainer}>
-					<div className={styles.spline}>
+					{/* <div className={styles.spline}>
 						<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
-					</div>
+					</div> */}
 
 					<div className={styles.button_container}>
 						<Link

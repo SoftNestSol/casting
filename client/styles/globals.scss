@@ -8,10 +8,55 @@
 	box-sizing: border-box;
 }
 
+.spline.hidden {
+	display: none;
+}
+
+.spline-loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	font-size: 1.5rem;
+	text-align: center;
+	z-index: 10; // High enough to be on top of the Spline component
+}
+
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.spline-loading {
+	animation: blink 1.5s ease-in-out infinite;
+}
+
+.spline {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: 100%;
+
+	canvas {
+		height: max(120vh, 600px) !important;
+	}
+}
+
 html,
 body {
 	font-family: "Poppins";
-
 	background-color: #111111;
 	color: #ffffff;
 }

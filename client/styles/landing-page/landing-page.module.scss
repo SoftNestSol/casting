@@ -1,32 +1,32 @@
 @import "../colors.scss";
 
 .pagecontainer {
+	position: relative; // Ensuring that it's a positioned ancestor for absolute children
 	overflow-x: hidden;
+	pointer-events: none;
 }
-
 .spline {
+	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -1;
+	z-index: 0; // Keeping it behind other elements
 	width: 100%;
-
-	canvas {
-		height: max(80vh, 600px) !important;
-	}
+	height: 100%; // Full viewport height
+	// Additional styling if required
 }
 .button_container {
-	position: absolute; /* Absolute positioning relative to the nearest positioned ancestor */
-	top: 70%; /* Center vertically */
-	left: 50%; /* Center horizontally */
-	transform: translate(-50%, -50%); /* Adjust for the size of the container */
-	z-index: 1000; /* Ensures it's above most other elements */
-	display: flex; /* Use flexbox to align children */
-	justify-content: center; /* Center children horizontally */
-	align-items: center; /* Center children vertically */
-	width: 28rem; /* Set a specific width for the container */
-	height: 4.3rem; /* Set a specific height for the container */
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000; // Above the Spline component
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 28rem;
+	height: 4.3rem;
+	// Remaining styles...
 }
-
 .button {
 	color: #000;
 	font-weight: bold;
@@ -44,10 +44,14 @@
 	text-transform: uppercase;
 }
 .hero_text {
+	position: relative; // Make it positioned
+	z-index: 2; // Above the Spline but below interactive elements
+	margin-top: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	z-index: 5;
 
 	h1 {
 		font-size: 5rem;
@@ -76,16 +80,20 @@
 }
 
 .hero_cards {
-	padding: 0 1.5rem;
+	position: relative;
+	z-index: 2; // Same reasoning as .hero_text
+	// padding: 0 1.5rem;
+	margin-top: 40vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	z-index: 3;
 	.card {
 		position: relative;
 		background: #1e1e1e;
 		border-radius: 20px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 4px 8px rgba(8, 7, 7, 0.2);
 		color: white;
 		padding: 3rem;
 		width: min(100%, 450px);
