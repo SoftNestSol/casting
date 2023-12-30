@@ -31,7 +31,7 @@ const Dashboard = () => {
 					key={member.id}
 					className={styles.memberCard}
 				>
-					<Link href={`/dashboard/member/${member.id}`}>
+					<Link href={`/dashboard/member/${member.uid}`}>
 						<MemberCard member={member} />
 					</Link>
 				</div>

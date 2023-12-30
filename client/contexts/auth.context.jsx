@@ -76,7 +76,8 @@ export const AuthContextProvider = ({ children }) => {
 
 			await setDoc(doc(usersCollection, userCredential.user.uid), {
 				...userData,
-				photos
+				photos,
+				uid: userCredential.user.uid
 			});
 
 			setCurrentUser(userCredential.user);
