@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { deleteObject, getDownloadURL, ref, refFromURL, uploadBytes } from "firebase/storage";
+import  useAuthRedirect  from "../../components/redirect-hook";
 
 import { useAuthContext } from "../../contexts/auth.context";
 import { db, storage } from "../../config/firebase";
@@ -34,6 +35,7 @@ const securityDataInitialState = {
 };
 
 const ProfilePage = () => {
+	useAuthRedirect("/login", (user) => user);
 	const [section, setSection] = useState("profile");
 	const [profileData, setProfileData] = useState(profileDataInitialState);
 	const [initialPhotos, setInitialPhotos] = useState([]);

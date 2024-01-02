@@ -11,7 +11,8 @@ import {
 	signOut,
 	updatePassword
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { adminsCollection } from "../config/firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 import { auth, storage, usersCollection } from "../config/firebase";
@@ -24,10 +25,16 @@ export const useAuthContext = () => {
 	return authContext;
 };
 
+export const checkIfAdmin = async (uid) => {
+	const docRef = doc(adminsCollection, uid);
+	const docSnap = await getDoc(docRef);
+
+	return docSnap.exists();
+};
+
 export const AuthContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 	const [currentUser, setCurrentUser] = useState();
-	const [isAdmin, setIsAdmin] = useState(false);
 
 	const router = useRouter();
 
@@ -36,7 +43,10 @@ export const AuthContextProvider = ({ children }) => {
 		setPersistence(auth, browserLocalPersistence);
 
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			setLoading(false);
+			if (router.isReady) {
+				setLoading(false);
+			}
+
 			if (user) {
 				setCurrentUser(user);
 
@@ -88,22 +98,25 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	const signIn = async (email, password) => {
-		if (isAdmin) {
-			router.push("/dashboard");
-			return;
-		} else
-			try {
-				const userCredential = await signInWithEmailAndPassword(auth, email, password);
-				setCurrentUser(userCredential.user);
+		try {
+			const userCredential = await signInWithEmailAndPassword(auth, email, password);
+			setCurrentUser(userCredential.user);
+
+			const isAdmin = await checkIfAdmin(userCredential.user.uid);
+			if (isAdmin) {
+				router.push("/dashboard");
+			} else {
 				router.push(`/profile/${userCredential.user.uid}`);
-			} catch (error) {
-				console.error(error);
 			}
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	const logout = async () => {
 		try {
 			await signOut(auth);
+			setCurrentUser(null);
 			router.replace("/");
 		} catch (error) {
 			console.error(error);
@@ -130,7 +143,8 @@ export const AuthContextProvider = ({ children }) => {
 		signUp,
 		signIn,
 		logout,
-		changePassword
+		changePassword,
+		checkIfAdmin
 	};
 
 	return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;

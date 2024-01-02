@@ -21,6 +21,7 @@ export const db = getFirestore();
 export const storage = getStorage(app);
 
 export const usersCollection = collection(db, "users");
+export const adminsCollection = collection(db, "admins");
 
 export default app;
 

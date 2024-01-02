@@ -5,13 +5,14 @@ import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa6";
 import { HiMenu } from "react-icons/hi";
 
-import { useAuthContext } from "../contexts/auth.context";
+import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 
 import styles from "../styles/navbar.module.scss";
 import Logo from "../public/logo.png";
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	const router = useRouter();
 
@@ -20,6 +21,14 @@ const Navbar = () => {
 	useEffect(() => {
 		setIsMenuOpen(false);
 	}, [router]);
+
+	useEffect(() => {
+		if (currentUser) {
+			checkIfAdmin(currentUser.uid).then(setIsAdmin);
+		} else {
+			setIsAdmin(false);
+		}
+	}, [currentUser]);
 
 	return (
 		<>
@@ -60,7 +69,7 @@ const Navbar = () => {
 
 				<div className={styles.profile}>
 					{currentUser ? (
-						<Link href={`/profile/${currentUser.uid}`}>
+						<Link href={isAdmin ? `/dashboard` : `/profile/${currentUser.uid}`}>
 							<FaUser />
 						</Link>
 					) : (
