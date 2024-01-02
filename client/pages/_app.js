@@ -24,15 +24,19 @@ const App = ({ Component, pageProps }) => {
 	return (
 		<AuthContextProvider>
 			<CastingsContextProvider>
-				<Navbar />
-				<div className="main-content">
-					<div className={`spline ${isLandingPage ? "" : "hidden"}`}>
-						{showLoading && <div className="loader"></div>}
-						{/* Spline component is always rendered */}
-						<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
+				<DashboardContextProvider>
+					<Navbar />
+
+					<div className="main-content">
+						<div className={`spline ${isLandingPage ? "" : "hidden"}`}>
+							{showLoading && <div className="loader"></div>}
+							{/* Spline component is always rendered */}
+							<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
+						</div>
+
+						<Component {...pageProps} />
 					</div>
-					<Component {...pageProps} />
-				</div>
+				</DashboardContextProvider>
 			</CastingsContextProvider>
 		</AuthContextProvider>
 	);
