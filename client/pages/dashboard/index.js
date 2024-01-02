@@ -22,13 +22,13 @@ const Dashboard = () => {
 	};
 
 	const handleAgeChange = (e) => {
-		const [minim, maxim] = e.target.value.split("-").map(Number);
-		setAgeRange({ minim, maxim });
+		const [min, max] = e.target.value.split("-").map(Number);
+		setAgeRange({ min, max });
 	};
 
 	const handleHeightChange = (e) => {
-		const [minim, maxim] = e.target.value.split("-").map(Number);
-		setHeightRange({ minim, maxim });
+		const [min, max] = e.target.value.split("-").map(Number);
+		setHeightRange({ min, max });
 	};
 
 	const handleWeightChange = (e) => {
