@@ -6,6 +6,7 @@ import Spline from "@splinetool/react-spline";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.scss";
+import { DashboardContextProvider } from "../contexts/dashboard.context";
 
 const App = ({ Component, pageProps }) => {
 	const router = useRouter();
@@ -32,20 +33,22 @@ const App = ({ Component, pageProps }) => {
 	return (
 		<AuthContextProvider>
 			<CastingsContextProvider>
-				<Navbar />
-				<div className="main-content">
-					<div className={`spline ${isLandingPage ? "" : "hidden"}`}>
-						{!isSplineLoaded && (
-							<div className="spline-loading">Loading 3D content, please wait...</div>
-						)}
+				<DashboardContextProvider>
+					<Navbar />
+					<div className="main-content">
+						<div className={`spline ${isLandingPage ? "" : "hidden"}`}>
+							{!isSplineLoaded && (
+								<div className="spline-loading">Loading 3D content, please wait...</div>
+							)}
 
-						<Spline
-							scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode"
-							onLoad={onLoadFunction}
-						/>
+							<Spline
+								scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode"
+								onLoad={onLoadFunction}
+							/>
+						</div>
+						<Component {...pageProps} />
 					</div>
-					<Component {...pageProps} />
-				</div>
+				</DashboardContextProvider>
 			</CastingsContextProvider>
 		</AuthContextProvider>
 	);

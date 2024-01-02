@@ -43,25 +43,28 @@ export const AuthContextProvider = ({ children }) => {
 		setPersistence(auth, browserLocalPersistence);
 
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			if (router.isReady) {
-				setLoading(false);
-			}
-
+			setLoading(false);
 			if (user) {
 				setCurrentUser(user);
+
+				if (router.pathname === "/dashboard" && !checkIfAdmin(user.uid)) {
+					router.push(`/profile/${user.uid}`);
+				}
 
 				if (router.pathname === "/profile/[uid]" && router.query.uid !== user.uid) {
 					router.push(`/profile/${user.uid}`);
 				}
 			} else {
 				if (router.pathname.startsWith("/profile")) {
-					router.push("/login");
+					router.push(`/profile/${user.uid}`);
+				} else if (router.pathname === "/dashboard") {
+					router.push("/");
 				}
 			}
 		});
 
 		return () => unsubscribe();
-	}, [router]);
+	}, [router, auth]);
 
 	const signUp = async (userData) => {
 		try {

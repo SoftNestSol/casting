@@ -1,8 +1,7 @@
 @import "../colors.scss";
 .container {
-	padding: 1em;
+	margin-top: 5em;
 }
-
 
 .tableHeader {
 	display: flex;
@@ -30,7 +29,6 @@
 }
 
 .profilePhoto {
-
 	width: 5em;
 	height: 5em;
 	border-radius: 50%;
@@ -43,14 +41,9 @@
 	text-align: left;
 }
 
-
-.header
-{
+.header {
 	font-size: 1.5em;
 	font-weight: bold;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: 1em;
-
-
 }

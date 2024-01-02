@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "../../styles/dashboard/member-card.module.scss";
 
 const MemberCard = ({ member }) => {
