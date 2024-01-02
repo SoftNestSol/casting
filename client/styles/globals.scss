@@ -27,9 +27,9 @@
 	content: "";
 	position: absolute;
 	border-radius: 50%;
-	animation: pulsOut 2.2s ease-in-out infinite;
+	animation: pulsOut 2.5s ease-in-out infinite;
 	filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));
-	-webkit-animation: pulsOut 2.2s ease-in-out infinite;
+	-webkit-animation: pulsOut 3s ease-in-out infinite;
 }
 .loader:before {
 	width: 100%;
