@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../../../styles/profile/profile.module.scss";
+import photoStyles from "../../../styles/dashboard/photo.module.scss";
 import { getMembersData } from "../../../config/firebase";
 import { getUserData } from "../../../config/firebase";
 
 const MemberPage = () => {
-
-
 	const [user, setUser] = useState(null);
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
@@ -92,11 +90,10 @@ const MemberPage = () => {
 										className={styles.photo}
 										key={index}
 									>
-										<Image
+										<img
 											alt={`Photo ${index + 1}`}
 											src={photo}
-											height={125}
-											width={100}
+											className={photoStyles.photo}
 										/>
 									</div>
 								))}

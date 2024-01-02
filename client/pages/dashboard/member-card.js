@@ -6,15 +6,14 @@ const MemberCard = ({ member }) => {
 		
 		return <div>No member data available</div>;
 	}
-	const imgSrc = member.photos[0];
+	const imgSrc = member.photos[1];
 	return (
 		<div className={styles.memberCard}>
-			<Image
+			<img
 				src={imgSrc}
 				className={styles.profilePhoto}
 				alt="Profile"
-				width={200}
-				height={200}
+				
 			/>
 			<div className={styles.memberDetail}>{`Sex: ${member.gender}`}</div>
 			<div className={styles.memberDetail}>{`Varsta: ${member.dateOfBirth}`}</div>

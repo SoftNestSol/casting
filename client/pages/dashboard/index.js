@@ -6,10 +6,8 @@ import MemberCard from "./member-card";
 import styles from "../../styles/dashboard/member-card.module.scss";
 import { getMembersData } from "../../config/firebase";
 import { useAuthContext, checkIfAdmin } from "../../contexts/auth.context";
-import useAuthRedirect from "../../components/redirect-hook";
 
 const Dashboard = () => {
-	useAuthRedirect("/login", (user) => user && checkIfAdmin(user.uid));
 	const [members, setMembers] = useState([]);
 	const { currentUser, logout } = useAuthContext();
 	const router = useRouter();
