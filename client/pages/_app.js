@@ -6,6 +6,7 @@ import Spline from "@splinetool/react-spline";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.scss";
+import { DashboardContextProvider } from "../contexts/dashboard.context";
 
 const App = ({ Component, pageProps }) => {
 	const router = useRouter();

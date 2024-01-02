@@ -4,32 +4,31 @@ import styles from "../../../styles/profile/profile.module.scss";
 import photoStyles from "../../../styles/dashboard/photo.module.scss";
 import { getMembersData } from "../../../config/firebase";
 import { getUserData } from "../../../config/firebase";
+import { useDashboardContext } from "../../../contexts/dashboard.context";
 
 const MemberPage = () => {
 	const [user, setUser] = useState(null);
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
 
+	const { ComputeAge } = useDashboardContext();
+
 	useEffect(() => {
 		if (!router.isReady) return;
 
 		const uid = router.query.uid;
-		setLoading(true);
 
 		getUserData(uid)
 			.then((userData) => {
 				setUser(userData);
-				setLoading(false);
 			})
 			.catch((error) => {
 				console.error("Error fetching user data: ", error);
+			})
+			.finally(() => {
 				setLoading(false);
 			});
 	}, [router.isReady, router.query.uid]);
-
-	if (loading) {
-		return <div>Loading...</div>;
-	}
 
 	if (!user) {
 		return <div>No user data found.</div>;
@@ -41,7 +40,7 @@ const MemberPage = () => {
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
 				<div className={styles.content}>
-					<h1>Profilul meu</h1>
+					<h1>Profilul {user.name}</h1>
 					<div className={styles.fields}>
 						<p>
 							<strong>Nume:</strong> {user.name}
@@ -62,7 +61,7 @@ const MemberPage = () => {
 							<strong>Gen:</strong> {user.gender}
 						</p>
 						<p>
-							<strong>Data nasterii:</strong> {user.dateOfBirth}
+							<strong>Varsta:</strong> {ComputeAge(user.dateOfBirth)}
 						</p>
 						<p>
 							<strong>Inaltime:</strong> {user.height}
@@ -84,7 +83,7 @@ const MemberPage = () => {
 						</p>
 
 						{user.photos && user.photos.length > 0 && (
-							<div className={styles.photos}>
+							<div className={photoStyles.photos}>
 								{user.photos.map((photo, index) => (
 									<div
 										className={styles.photo}
