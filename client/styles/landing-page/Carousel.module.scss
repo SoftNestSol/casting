@@ -8,6 +8,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	pointer-events: auto;
 }
 .card {
 	background: radial-gradient(75% 300% at 50% 50%, #6c6c6c 0%, #000 99.99%, #000 100%);
