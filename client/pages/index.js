@@ -2,6 +2,7 @@ import Head from "next/head";
 // import Scene from "../components/spline";
 import Carousel from "./servicii-section";
 import CTA from "./cta-section";
+import TextRain from "./text-overlay";
 import styles from "../styles/landing-page/landing-page.module.scss";
 import React, { Suspense } from "react";
 import Link from "next/link";
@@ -24,9 +25,7 @@ export default function LandingPage() {
 
 			<main>
 				<div className={styles.pagecontainer}>
-					{/* <div className={styles.spline}>
-						<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
-					</div> */}
+					<TextRain />
 
 					<div className={styles.button_container}>
 						<Link
