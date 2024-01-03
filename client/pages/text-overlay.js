@@ -13,7 +13,7 @@ const TextRain = () => {
 	const [isMobile, setIsMobile] = useState(false);
 
 	const updateScreenSize = () => {
-		setIsMobile(window.innerWidth < 768); // or whatever breakpoint you choose
+		setIsMobile(window.innerWidth < 768);
 	};
 
 	useEffect(() => {
@@ -27,7 +27,7 @@ const TextRain = () => {
 
 	useEffect(() => {
 		const activeTexts = isMobile
-			? predefinedTexts.filter((_, index) => index % 2 === 0) // For mobile, use every other text to reduce number
+			? predefinedTexts.filter((_, index) => index % 2 === 0)
 			: predefinedTexts;
 
 		setTexts(
@@ -52,7 +52,6 @@ const TextRain = () => {
 					className={`${styles.rainText} ${getBlurClass(text.size)}`}
 					style={{
 						animationDuration: `${text.speed}s`,
-						animationDelay: `-${text.delay}s`,
 						fontSize: `${text.size}rem`,
 						left: `${text.left}%`
 					}}
