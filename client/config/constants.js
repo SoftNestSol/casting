@@ -1,5 +1,5 @@
 export const constants = {
-	FIREBASE_API_KEY: "AIzaSyBvsPQCT1pTzIkxW3xcCKDQXCxZQzJTJ4s"
+	FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY
 };
 
 Object.entries(constants).forEach(([key, value]) => {

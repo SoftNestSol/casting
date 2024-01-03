@@ -1,7 +1,9 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { getMembersData } from "../config/firebase";
-import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 import { useRouter } from "next/router";
+import { collection, getDocs } from "firebase/firestore";
+
+import { db } from "../config/firebase";
+import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 
 export const DashboardContext = createContext({});
 
@@ -25,6 +27,15 @@ export const DashboardContextProvider = ({ children }) => {
 	const [ageRange, setAgeRange] = useState({ min: null, max: null });
 	const [heightRange, setHeightRange] = useState({ min: null, max: null });
 	const [weightRange, setWeightRange] = useState({ min: null, max: null });
+
+	const getMembersData = async () => {
+		const arr = [];
+		const querySnapshot = await getDocs(collection(db, "users"));
+		querySnapshot.forEach((doc) => {
+			arr.push(doc.data());
+		});
+		return arr;
+	};
 
 	useEffect(() => {
 		const checkAdminAndFetchMembers = async () => {

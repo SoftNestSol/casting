@@ -24,27 +24,3 @@ export const usersCollection = collection(db, "users");
 export const adminsCollection = collection(db, "admins");
 
 export default app;
-
-//get all members from firestore via an array of objects
-export const getMembersData = async () => {
-	const arr = [];
-	const querySnapshot = await getDocs(collection(db, "users"));
-	querySnapshot.forEach((doc) => {
-		arr.push(doc.data());
-	});
-	return arr;
-};
-
-export const getUserData = async (uid) => {
-	const docRef = doc(db, "users", uid);
-	const docSnap = await getDoc(docRef);
-
-	if (docSnap.exists()) {
-		return docSnap.data();
-	} else
-		try {
-			throw new Error("No such document!");
-		} catch {
-			console.log("No such document!");
-		}
-};

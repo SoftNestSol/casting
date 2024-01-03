@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { doc, getDoc } from "firebase/firestore";
+
+import { db } from "../../../config/firebase";
+import { useDashboardContext } from "../../../contexts/dashboard.context";
+
 import styles from "../../../styles/profile/profile.module.scss";
 import photoStyles from "../../../styles/dashboard/photo.module.scss";
-import { getMembersData } from "../../../config/firebase";
-import { getUserData } from "../../../config/firebase";
-import { useDashboardContext } from "../../../contexts/dashboard.context";
 
 const MemberPage = () => {
 	const [user, setUser] = useState(null);
@@ -12,6 +14,20 @@ const MemberPage = () => {
 	const [loading, setLoading] = useState(true);
 
 	const { ComputeAge } = useDashboardContext();
+
+	const getUserData = async (uid) => {
+		const docRef = doc(db, "users", uid);
+		const docSnap = await getDoc(docRef);
+
+		if (docSnap.exists()) {
+			return docSnap.data();
+		} else
+			try {
+				throw new Error("No such document!");
+			} catch {
+				console.log("No such document!");
+			}
+	};
 
 	useEffect(() => {
 		if (!router.isReady) return;
