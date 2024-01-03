@@ -34,22 +34,46 @@
 	-webkit-transform: translateX(-50%);
 }
 .button {
+	// Existing styles
 	color: #000;
 	font-weight: bold;
-	font-size: 1.5rem;
-	border-radius: 129px;
-	width: 100%; /* Make the button fill the container */
-	height: 100%; /* Make the button fill the container */
 	font-size: 2rem;
-	background: radial-gradient(75% 300% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
-	text-align: center; /* Center text horizontally */
-	display: flex; /* Use flexbox to align text */
-	justify-content: center; /* Center text horizontally in flexbox */
-	align-items: center; /* Center text vertically in flexbox */
+	border-radius: 129px;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(75% 300% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%);
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	cursor: pointer;
 	text-transform: uppercase;
 	pointer-events: auto;
+	position: relative;
+	overflow: hidden;
+	transition:
+		transform 0.3s,
+		box-shadow 0.3s; // Include transform in the transition
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: -10%;
+		left: -110%;
+		width: 120%;
+		height: 120%;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+		transition: left 0.7s ease;
+	}
+
+	&:hover {
+		transform: scale(1.05); // Slightly increase the size of the button
+		&:before {
+			left: 110%;
+		}
+	}
 }
+
 .hero_text {
 	position: relative;
 	z-index: 5; // Consolidate to a single z-index declaration
@@ -85,21 +109,20 @@
 
 .hero_cards {
 	position: relative;
-	z-index: 2; // Same reasoning as .hero_text
 	// padding: 0 1.5rem;
 	margin-top: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	z-index: 3;
+	z-index: 5;
 	.card {
 		position: relative;
 		background: #1e1e1e;
 		border-radius: 20px;
 		box-shadow: 0 4px 8px rgba(8, 7, 7, 0.2);
 		color: white;
-		padding: 3rem;
+		padding: 3.7rem;
 		width: min(100%, 450px);
 		margin: 0.5rem;
 		overflow: hidden;

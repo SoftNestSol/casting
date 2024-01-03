@@ -48,18 +48,17 @@ export default function LandingPage() {
 								</p>
 							</div>
 							<div className={styles.card}>
-								<h1>Spațiul dedicat creației și inspirației infinite.</h1>
+								<h1>Colaborări Vaste și Diverse</h1>
 								<p>
-									Vrem ca atât tu, cât și noi, să avem o experiență plăcută și unică în fiecare
-									proiect în care colaborăm.
+									Avem proiecte de colaborare atât cu firme de producție internaționale/nationale,
+									cât și proiecte individuale cu producție proprie.
 								</p>
 							</div>
 							<div className={styles.card}>
-								<h1>Spațiul dedicat creației și inspirației infinite.</h1>
-								<p>
-									Vrem ca atât tu, cât și noi, să avem o experiență plăcută și unică în fiecare
-									proiect în care colaborăm.
-								</p>
+								<h1>
+									Casa creativității, unde artiștii își pot aduce ideile pe ecran alături de noi
+								</h1>
+								<p>Dacă ai o idee și nu știi cum să o pui în practică, suntem aici să te ajutăm</p>
 							</div>
 						</div>
 					</div>
