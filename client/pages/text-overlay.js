@@ -1,42 +1,49 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/landing-page/TextRain.module.scss";
 
+const predefinedTexts = [
+	{ content: "MY CASTING", speed: 22.5, size: 10, left: 10 },
+	{ content: "MY CASTING", speed: 27.5, size: 6, left: 30 },
+	{ content: "MY CASTING", speed: 25, size: 8, left: 60 },
+	{ content: "MY CASTING", speed: 20, size: 12, left: 80 }
+];
+
 const TextRain = () => {
 	const [texts, setTexts] = useState([]);
+	const [isMobile, setIsMobile] = useState(false);
+
+	const updateScreenSize = () => {
+		setIsMobile(window.innerWidth < 768); // or whatever breakpoint you choose
+	};
 
 	useEffect(() => {
-		const numberOfTexts = 6; // Example number
-		const exclusionZone = 29; // Percentage of the central area to avoid, 15% on each side of the center
+		window.addEventListener("resize", updateScreenSize);
+		updateScreenSize();
 
-		// Generate an array of texts with unique styles (speed, size, and horizontal position)
-		const tempTexts = Array.from({ length: numberOfTexts }).map((_, index) => {
-			// Calculate the horizontal position, excluding the center of the screen
-			let left;
-			if (index % 2 === 0) {
-				// Even indices on the left
-				left = Math.random() * ((50 - exclusionZone / 2) / 2);
-			} else {
-				// Odd indices on the right
-				left = Math.random() * ((50 - exclusionZone / 2) / 2) + (50 + 30 / 2);
-			}
-
-			return {
-				content: "MY CASTING".split("").reverse(),
-				speed: Math.random() * (400 - 300) + 300, // Random speed between 300 and 400 seconds
-				size: Math.random() * (15 - 5) + 5, // Random size between 5em and 15em
-				delay: Math.random() * 10, // Random delay to stagger the animation start
-				left: left // Horizontal position, avoiding the center
-			};
-		});
-
-		setTexts(tempTexts);
+		return () => {
+			window.removeEventListener("resize", updateScreenSize);
+		};
 	}, []);
-	// Function to determine the appropriate blur class
+
+	useEffect(() => {
+		const activeTexts = isMobile
+			? predefinedTexts.filter((_, index) => index % 2 === 0) // For mobile, use every other text to reduce number
+			: predefinedTexts;
+
+		setTexts(
+			activeTexts.map((text) => ({
+				...text,
+				content: text.content.split("")
+			}))
+		);
+	}, [isMobile]);
+
 	const getBlurClass = (size) => {
-		if (size < 8) return styles.blurSmaller; // If font size is small
-		if (size > 12) return styles.blurLarger; // If font size is large
-		return styles.blurMiddle; // Middle size
+		if (size <= 8) return styles.blurSmaller;
+		if (size >= 12) return styles.blurLarger;
+		return styles.blurMiddle;
 	};
+
 	return (
 		<div className={styles.textRain}>
 			{texts.map((text, index) => (
@@ -46,15 +53,17 @@ const TextRain = () => {
 					style={{
 						animationDuration: `${text.speed}s`,
 						animationDelay: `-${text.delay}s`,
-						fontSize: `${text.size}em`,
+						fontSize: `${text.size}rem`,
 						left: `${text.left}%`
 					}}
 				>
-					{/* Render the letters */}
 					{text.content.map((letter, index) => (
 						<span
 							key={index}
 							dangerouslySetInnerHTML={{ __html: letter }}
+							style={{
+								height: `calc(${text.size}rem - 1rem)`
+							}}
 						/>
 					))}
 				</div>

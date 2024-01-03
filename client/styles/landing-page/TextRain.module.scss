@@ -1,7 +1,7 @@
 /* components/TextRain.module.css */
 
 .textRain {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -13,38 +13,38 @@
 .rainText {
 	position: absolute;
 	top: -100px;
-	writing-mode: vertical-rl;
-	transform: rotate(180deg);
 	animation: rain linear infinite;
 	-webkit-animation: rain linear infinite;
-	font-size: 10em; /* Increase the font size */
+	font-size: 10rem; /* Increase the font size */
 	color: rgba(255, 255, 255, 0.025); /* More faded by reducing opacity */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	span {
-		transform: rotate(90deg);
-		display: inline-block;
-
-		&:not(:last-child) {
-			margin-bottom: 1rem;
-		}
+		font-weight: 300;
+		height: 7.5rem;
 	}
 }
 
 /* Define blur classes based on font size */
-.blur-smaller {
-	filter: blur(3px); /* More blur for smaller text */
+.blurSmaller {
+	filter: blur(4px); /* More blur for smaller text */
 }
 
-.blur-larger {
-	filter: blur(3px); /* More blur for larger text */
+.blurLarger {
+	filter: blur(2px); /* More blur for larger text */
 }
 
-.blur-middle {
-	filter: blur(1px); /* Less blur for middle-sized text */
+.blurMiddle {
+	filter: blur(3px); /* Less blur for middle-sized text */
 }
 
 @keyframes rain {
-	to {
-		transform: translateY(100vh) rotate(180deg); /* Move to bottom of the viewport */
+	0% {
+		transform: translateY(-100%); /* Start above the screen */
+	}
+	100% {
+		transform: translateY(100vh); /* Move to bottom of the viewport */
 	}
 }
