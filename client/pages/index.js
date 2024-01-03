@@ -6,8 +6,7 @@ import TextRain from "./text-overlay";
 import styles from "../styles/landing-page/landing-page.module.scss";
 import React, { Suspense } from "react";
 import Link from "next/link";
-// const Spline = React.lazy(() => import("@splinetool/react-spline"));
-import Spline from "@splinetool/react-spline";
+
 export default function LandingPage() {
 	return (
 		<div>

@@ -52,13 +52,12 @@ const Carousel = () => {
 								<p className={styles.description}>{slide.description}</p>
 							</div>
 							<div className={styles.imageWrapper}>
-								{/* You may need to add this wrapper */}
 								<Image
 									className={styles.image}
 									src={slide.image}
 									alt="Description"
-									layout="fill"
-									objectFit="cover" // This will cover the area without stretching the image
+									width={500}
+									height={500}
 								/>
 							</div>
 						</div>

@@ -16,7 +16,7 @@ const App = ({ Component, pageProps }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setShowLoading(false);
-		}, 2500); // Set this to your desired loading message display time
+		}, 2500);
 
 		return () => clearTimeout(timer);
 	}, []);
@@ -25,11 +25,17 @@ const App = ({ Component, pageProps }) => {
 		<AuthContextProvider>
 			<CastingsContextProvider>
 				<DashboardContextProvider>
+					{showLoading && (
+						<>
+							<div className={`loader ${showLoading ? "loader_active" : ""}`}></div>
+							<div className="loader_background"></div>
+						</>
+					)}
+
 					<Navbar />
 
 					<div className="main-content">
 						<div className={`spline ${isLandingPage ? "" : "hidden"}`}>
-							{showLoading && <div className="loader"></div>}
 							{/* Spline component is always rendered */}
 							<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
 						</div>
