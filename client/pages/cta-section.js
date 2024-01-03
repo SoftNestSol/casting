@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "../styles/landing-page/cta.module.scss";
 import Frame from "../public/frame.svg";
+import MyImage from "../public/images/CTAimage.jpg";
 import Image from "next/image";
 import Link from "next/link";
 const CTA = () => {
@@ -25,6 +26,11 @@ const CTA = () => {
 					<Image
 						alt="frame"
 						src={Frame}
+					/>
+					<Image
+						className={styles.CTAimage}
+						alt="Your Image Description"
+						src={MyImage}
 					/>
 				</div>
 			</div>

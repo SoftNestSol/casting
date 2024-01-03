@@ -52,7 +52,14 @@
 
 	// Add the image styling here
 }
-
+.CTAimage {
+	position: absolute;
+	top: 5.75em;
+	left: 6.6em;
+	width: 76%;
+	height: 67%;
+	object-fit: cover;
+}
 @media screen and (max-width: 1000px) {
 	.wrapper {
 		flex-direction: column;
