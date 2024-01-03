@@ -20,8 +20,9 @@ const profileDataInitialState = {
 	height: "",
 	weight: "",
 	hairColor: "",
-	hairLength: "",
 	eyeColor: "",
+	school: "",
+	nationality: "",
 	description: "",
 	photos: [],
 	files: []
@@ -279,21 +280,6 @@ const ProfilePage = () => {
 									<option value="other">Altul</option>
 								</select>
 
-								<label htmlFor="hairLength">Lungime par</label>
-								<select
-									id="hairLength"
-									name="hairLength"
-									onChange={handleProfileInputChange}
-									required
-									value={profileData.hairLength}
-								>
-									<option value="">Selecteaza...</option>
-									<option value="short">Scurt</option>
-									<option value="medium">Mediu</option>
-									<option value="long">Lung</option>
-									<option value="bald">Chel</option>
-								</select>
-
 								<label htmlFor="eyeColor">Culoare ochi</label>
 								<select
 									id="eyeColor"
@@ -310,6 +296,26 @@ const ProfilePage = () => {
 									<option value="gray">Galbeni</option>
 									<option value="other">Alta</option>
 								</select>
+
+								<label htmlFor="school">Scoala absolvita</label>
+								<input
+									id="school"
+									name="school"
+									onChange={handleProfileInputChange}
+									required
+									type="text"
+									value={profileData.school}
+								/>
+
+								<label htmlFor="nationality">Nationalitate</label>
+								<input
+									id="nationality"
+									name="nationality"
+									onChange={handleProfileInputChange}
+									required
+									type="text"
+									value={profileData.nationality}
+								/>
 
 								<label htmlFor="description">Descriere</label>
 								<textarea

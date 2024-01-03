@@ -8,9 +8,28 @@ export const useCastingsContext = () => {
 	return castingsContext;
 };
 
+const sampleCasting = {
+	title: "Figuratie speciala reclama farmacie",
+	project: "Farmacie",
+	lookingFor: ["Femei", "Barbati"],
+	ageRange: [18, 30],
+	startDate: new Date(2024, 0, 7),
+	endDate: new Date(2024, 0, 10),
+	location: "Bucuresti",
+	compensation: 1200,
+	country: "Romania",
+	description:
+		"Cautam femei si barbati figuratie speciala pentru o reclama la farmacie. Filmarile au loc in perioada 13-15 Noiembrie (1 sau 2 zile)."
+};
+
 export const CastingsContextProvider = ({ children }) => {
 	const [callback, setCallback] = useState(false);
-	const [castings, setCastings] = useState([]);
+	const [castings, setCastings] = useState([
+		sampleCasting,
+		sampleCasting,
+		sampleCasting,
+		sampleCasting
+	]);
 
 	const state = {
 		callback,

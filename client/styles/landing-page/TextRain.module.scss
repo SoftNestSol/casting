@@ -7,7 +7,7 @@
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	z-index: 0; /* Adjust as needed to fit your z-index scale */
+	z-index: 0;
 }
 
 .rainText {
@@ -19,6 +19,15 @@
 	-webkit-animation: rain linear infinite;
 	font-size: 10em; /* Increase the font size */
 	color: rgba(255, 255, 255, 0.025); /* More faded by reducing opacity */
+
+	span {
+		transform: rotate(90deg);
+		display: inline-block;
+
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
 }
 
 /* Define blur classes based on font size */

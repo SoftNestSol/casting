@@ -42,7 +42,7 @@ const Navbar = () => {
 
 				<ul>
 					<li>
-						<Link href="/casting">Castinguri</Link>
+						<Link href="/castings">Castinguri</Link>
 					</li>
 
 					<li>
@@ -83,7 +83,7 @@ const Navbar = () => {
 			<div className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`}>
 				<ul>
 					<li>
-						<Link href="/casting">Castinguri</Link>
+						<Link href="/castings">Castinguri</Link>
 					</li>
 
 					<li>

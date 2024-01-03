@@ -21,7 +21,7 @@ const TextRain = () => {
 			}
 
 			return {
-				content: "MY CASTING MY CASTING MY CASTING", // The text to rain down
+				content: "MY CASTING".split("").reverse(),
 				speed: Math.random() * (400 - 300) + 300, // Random speed between 300 and 400 seconds
 				size: Math.random() * (15 - 5) + 5, // Random size between 5em and 15em
 				delay: Math.random() * 10, // Random delay to stagger the animation start
@@ -50,7 +50,13 @@ const TextRain = () => {
 						left: `${text.left}%`
 					}}
 				>
-					{text.content}
+					{/* Render the letters */}
+					{text.content.map((letter, index) => (
+						<span
+							key={index}
+							dangerouslySetInnerHTML={{ __html: letter }}
+						/>
+					))}
 				</div>
 			))}
 		</div>
