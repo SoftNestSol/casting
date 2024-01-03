@@ -12,10 +12,8 @@
 
 .rainText {
 	position: absolute;
-	top: -100px;
 	animation: rain linear infinite;
 	-webkit-animation: rain linear infinite;
-	font-size: 10rem; /* Increase the font size */
 	color: rgba(255, 255, 255, 0.025); /* More faded by reducing opacity */
 	display: flex;
 	flex-direction: column;
