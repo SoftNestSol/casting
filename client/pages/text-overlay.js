@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/landing-page/TextRain.module.scss";
 
 const predefinedTexts = [
-	{ content: "MY CASTING", speed: 22.5, size: 10, left: 10 },
-	{ content: "MY CASTING", speed: 27.5, size: 6, left: 30 },
-	{ content: "MY CASTING", speed: 25, size: 8, left: 60 },
-	{ content: "MY CASTING", speed: 20, size: 12, left: 80 }
+	{ content: "MY CASTING", speed: 46, size: 10, left: 10 },
+	{ content: "MY CASTING", speed: 42, size: 6, left: 30 },
+	{ content: "MY CASTING", speed: 45, size: 8, left: 60 },
+	{ content: "MY CASTING", speed: 55, size: 12, left: 80 }
 ];
 
 const TextRain = () => {
