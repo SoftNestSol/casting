@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.scss";
 import Head from "next/head";
+import Image from "next/image";
 import { DashboardContextProvider } from "../contexts/dashboard.context";
 const App = ({ Component, pageProps }) => {
 	const router = useRouter();
@@ -19,27 +20,14 @@ const App = ({ Component, pageProps }) => {
 			setShowLoading(false);
 		}, 2500);
 
-		// Check for mobile screen size
-		const checkMobile = () => {
-			setIsMobile(window.innerWidth < 768); // or any other width you consider as mobile
-		};
-
-		// Set initial value
-		checkMobile();
-
-		// Add resize listener
-		window.addEventListener("resize", checkMobile);
-
-		// Cleanup
 		return () => {
 			clearTimeout(timer);
-			window.removeEventListener("resize", checkMobile);
 		};
 	}, []);
 	return (
 		<>
 			<Head>
-				<title>Castings</title>
+				<title>MyCasting</title>
 				<meta
 					name="viewport"
 					content="initial-scale=1.0, width=device-width"
@@ -69,19 +57,21 @@ const App = ({ Component, pageProps }) => {
 						<Navbar />
 
 						<div className="main-content">
-							{isLandingPage && (
-								<div className={`spline ${isLandingPage ? "" : "hidden"}`}>
-									{/* Conditional rendering based on screen size */}
-									{isMobile ? (
-										<img
-											src="/images/splineImg.png"
-											alt="Mobile Image"
-										/>
-									) : (
-										<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
-									)}
-								</div>
-							)}
+							<div
+								className={`spline-desktop ${isLandingPage ? "" : "hidden"}`}
+							>
+								<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
+							</div>
+							<div className={`spline-mobile ${isLandingPage ? "" : "hidden"}`}>
+								<img
+									className="splineImage"
+									src="/images/splineImg.png"
+									alt="Mobile Image"
+									// layout="responsive"
+									// width={800} // Adjust as needed
+									// height={800} // Adjust as needed
+								/>
+							</div>
 
 							<Component {...pageProps} />
 						</div>

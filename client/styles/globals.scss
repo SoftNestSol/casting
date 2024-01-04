@@ -15,10 +15,6 @@ body {
 	color: #ffffff;
 }
 
-.spline.hidden {
-	display: none;
-}
-
 .loader {
 	position: absolute;
 	left: 50%;
@@ -106,19 +102,6 @@ body:has(.loader_active) {
 	animation: blink 1.5s ease-in-out infinite;
 }
 
-.spline {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	width: 100%;
-	overflow: hidden; /* to handle overflow of Spline or image */
-
-	canvas {
-		height: max(120vh, 600px) !important;
-	}
-}
-
 a {
 	color: inherit;
 	text-decoration: none;
@@ -139,24 +122,43 @@ li {
 	}
 }
 /* Style for mobile image */
-.spline img {
-	width: 100%; /* full width of the container */
-	height: auto; /* maintain aspect ratio */
-	display: none; /* hide by default, will be shown on mobile via media query */
-}
 
 /* Media query for mobile devices */
-@media screen and (max-width: 768px) {
-	.spline canvas {
-		display: none; /* hide Spline on mobile */
-	}
 
-	.spline img {
+.spline-desktop.hidden {
+	display: none;
+}
+.spline-desktop {
+	display: block; // Display the Spline component by default
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: 100%;
+
+	canvas {
+		height: max(120vh, 600px) !important;
+	}
+	// Hide the Spline component on mobile
+	@media screen and (max-width: 768px) {
+		display: none;
+	}
+}
+
+.spline-mobile img {
+	display: none; // Hide the mobile image by default
+
+	// Display the mobile image on mobile devices
+	@media screen and (max-width: 768px) {
+		margin-bottom: -55rem;
+		margin-top: 5rem;
 		display: block;
+		position: relative;
 		/*showimageonmobile*/
-		width: 300%;
-		height: 300%;
-		object-fit: cover;
+		width: 330%;
+		height: 330%;
+		//height: 200%;
+		object-fit: fill;
 		//object-position: center;
 		transform: translate(-35%);
 		-webkit-transform: translate(-35%);
@@ -165,6 +167,6 @@ li {
 		-o-transform: translate(-35%);
 	}
 }
-
-/* Rest of your existing CSS */
-/* ... */
+.spline-mobile.hidden {
+	display: none;
+}
