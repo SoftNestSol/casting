@@ -8,8 +8,7 @@
 	align-items: flex-start;
 	width: 100%;
 	height: 70vh;
-	margin-top: 5%;
-	gap: 1%;
+	margin-top: 4.5rem;
 	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		url("/images/about-us.jpeg");
@@ -19,9 +18,8 @@
 	padding-bottom: 5%;
 }
 
-.heading
-{
-	font-size: 4rem;
+.heading {
+	font-size: 3.5rem;
 	font-weight: 600;
 	color: $color-text;
 	margin-bottom: 1rem;
@@ -34,10 +32,10 @@
 .verticalText {
 	position: absolute; /* Position the text absolutely within the container */
 	bottom: 8em; /* Align to the bottom of the container */
-	left: 0; 
+	left: 0;
 	writing-mode: vertical-lr;
 	text-orientation: upright;
-	font-size: 1.2rem;
+	font-size: 1.125rem;
 	font-weight: 600;
 	color: $color-text;
 	margin-left: 1rem;
@@ -52,7 +50,7 @@
 	padding-right: 10%;
 	width: 100%;
 	height: 80vh;
-	flex: 1; 
+	flex: 1;
 	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		url("/images/about_second.jpeg");
@@ -60,7 +58,6 @@
 	background-repeat: no-repeat;
 	background-position: center;
 }
-
 
 .thirdContainer {
 	display: flex;
@@ -70,13 +67,13 @@
 	padding-left: 10%;
 	width: 100%;
 	height: 80vh;
-	flex: 1; 
+	flex: 1;
 	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		url("/images/about_third.jpeg");
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position:50% 50%;
+	background-position: 50% 50%;
 }
 
 .fourthContainer {
@@ -87,7 +84,7 @@
 	width: 100%;
 	height: 80vh;
 	padding-right: 10%;
-	flex: 1; 
+	flex: 1;
 	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
 		url("/images/about_fourth.jpeg");
@@ -97,17 +94,59 @@
 }
 
 .text {
-	font-size: 1.2rem;
-	font-weight: 600;
+	font-size: 1.125rem;
+	font-weight: 500;
 	color: $color-text;
 	max-width: 50%;
 }
 
-
-.subtitle
-{
-	font-size: 1.5rem;
-	font-weight: 600;
+.subtitle {
+	font-size: 1.125rem;
+	font-weight: 500;
 	color: $color-text;
-	margin-bottom: 1rem;
+	margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+	.container {
+		padding: 0;
+	}
+
+	.heading {
+		margin: 0 auto 1rem;
+	}
+
+	.subtitle {
+		margin: 0 auto;
+	}
+
+	.secondContainer {
+		padding-right: 10%;
+	}
+
+	.thirdContainer {
+		padding-left: 10%;
+	}
+
+	.fourthContainer {
+		padding-right: 10%;
+	}
+
+	.text {
+		max-width: 90%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.heading {
+		font-size: 2.5rem;
+	}
+
+	.text {
+		font-size: 1rem;
+	}
+
+	.subtitle {
+		font-size: 1rem;
+	}
 }

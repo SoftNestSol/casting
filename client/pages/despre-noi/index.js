@@ -1,7 +1,3 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Image from "next/image";
-
 import styles from "../../styles/about-us/about-us.module.scss";
 
 const AboutUs = () => {
