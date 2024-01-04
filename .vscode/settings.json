@@ -7,7 +7,7 @@
 	"prettier.bracketSpacing": true,
 	"prettier.bracketSameLine": false,
 	"prettier.jsxSingleQuote": false,
-	"prettier.printWidth": 100,
+	"prettier.printWidth": 80,
 	"prettier.quoteProps": "as-needed",
 	"prettier.semi": true,
 	"prettier.singleAttributePerLine": true,
@@ -33,5 +33,14 @@
 	},
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	},
+
+	"eslint.workingDirectories": [
+		{
+			"pattern": "client/*/"
+		},
+		{
+			"pattern": "server/*/"
+		}
+	]	
 }

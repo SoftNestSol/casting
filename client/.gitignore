@@ -1,15 +1,18 @@
 # dependencies
-/node_modules
+node_modules
 
 # next.js
-/.next
-/.firebase
+.next
+
+# firebase
+.firebase
 
 # production
-/build
+build
 
 # misc
 .env.local
+firebase-debug.log
 
 # css
 *.css
