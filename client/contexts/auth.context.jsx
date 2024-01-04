@@ -118,6 +118,7 @@ export const AuthContextProvider = ({ children }) => {
 
 	const logout = async () => {
 		try {
+			if (!currentUser) return;
 			await signOut(auth);
 			setCurrentUser(null);
 			router.replace("/");

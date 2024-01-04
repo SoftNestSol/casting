@@ -231,9 +231,16 @@
 		text-transform: uppercase;
 
 		cursor: pointer;
-	}
+		transition: background 100ms ease-in-out;
 
-	@media screen and (max-width: 1024px) {
+		&:hover {
+			background: #e3c772;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.wrapper {
 		padding: 0;
 
 		.container {
@@ -243,8 +250,10 @@
 			border-radius: unset;
 		}
 	}
+}
 
-	@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
+	.wrapper {
 		.container {
 			padding: 3rem 2rem;
 

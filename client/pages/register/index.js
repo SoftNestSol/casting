@@ -1,315 +1,355 @@
-import { useState, useEffect } from "react";
-import { useAuthContext } from "../../contexts/auth.context";
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
-import styles from "../../styles/register/register.module.scss";
+import { useAuthContext } from "../../contexts/auth.context";
 
-const RegisterPage = () => {
-	const [spokenLanguages, setSpokenLanguages] = useState([]);
-	const [userData, setUserData] = useState({
-		name: "",
-		email: "",
-		phoneNumber: "",
-		county: "",
-		city: "",
-		gender: "",
-		dateOfBirth: "",
-		height: "",
-		weight: "",
-		hairColor: "",
-		eyeColor: "",
-		school: "",
-		nationality: "",
-		spokenLanguages: [],
-		description: "",
-		files: [],
-		confirmPassword: ""
-	});
+import styles from "../../styles/auth/auth.module.scss";
+
+const userDataInitialState = {
+	name: "",
+	email: "",
+	password: "",
+	confirmPassword: "",
+	phoneNumber: "",
+	county: "",
+	city: "",
+	gender: "",
+	dateOfBirth: "",
+	height: "",
+	weight: "",
+	hairColor: "",
+	eyeColor: "",
+	school: "",
+	nationality: "",
+	spokenLanguages: [],
+	description: "",
+	photos: [],
+	files: []
+};
+
+const Register = () => {
+	const [userData, setUserData] = useState(userDataInitialState);
 
 	const { signUp } = useAuthContext();
 
-	function formatDate(date) {
-		let d = new Date(date),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
+	const handleInputChange = (event) => {
+		setUserData({ ...userData, [event.target.name]: event.target.value });
+	};
 
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
-
-		return [year, month, day].join("-");
-	}
-
-	const handleLanguageInputChange = (event, index) => {
-		const { value } = event.target;
-		setSpokenLanguages((prevLanguages) => {
-			const updatedLanguages = [...prevLanguages];
-			updatedLanguages[index] = value;
-			return updatedLanguages;
+	const handleSpokenLanguagesInputChange = (event, index) => {
+		setUserData((prevState) => {
+			const updatedLanguages = [...prevState.spokenLanguages];
+			updatedLanguages[index] = event.target.value;
+			return { ...prevState, spokenLanguages: updatedLanguages };
 		});
 	};
 
-	const handleInputChange = (event) => {
-		setUserData((prevState) => ({
-			...prevState,
-			[event.target.name]: event.target.value
-		}));
-	};
+	const handleFileInputChange = (event) => {
+		[...event.target.files].forEach((file) => {
+			const reader = new FileReader();
 
-	const handleFileChange = (event) => {
-		setUserData((prevState) => ({
-			...prevState,
-			files: [...event.target.files]
-		}));
+			reader.onload = () =>
+				setUserData((prevState) => ({
+					...prevState,
+					photos: [reader.result, ...prevState.photos],
+					files: [file, ...prevState.files]
+				}));
+
+			reader.readAsDataURL(file);
+		});
 	};
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
+		if (userData.spokenLanguages.length === 0) return alert("Adauga cel putin o limba vorbita!");
+		if (userData.files.length === 0) return alert("Adauga cel putin o fotografie!");
 		if (userData.password !== userData.confirmPassword) return;
-		userData.spokenLanguages = spokenLanguages;
 		await signUp(userData);
 	};
 
 	return (
-		<div className={styles.loginContainer}>
-			<div className={styles.loginBox}>
-				<h1 className={styles.loginTitle}>
-					Inregistreaza-te
-					<span className={styles.loginSubtitle}>
-						<Link
-							className={styles.loginSubtitle}
-							href="/login"
+		<div className={styles.wrapper}>
+			<div className={styles.container}>
+				<div className={styles.top_section}>
+					<h1>Inregistreaza-te</h1>
+				</div>
+
+				<form onSubmit={handleFormSubmit}>
+					<div className={styles.fields}>
+						<label htmlFor="name">Nume</label>
+						<input
+							id="name"
+							name="name"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.name}
+						/>
+
+						<label htmlFor="email">Email</label>
+						<input
+							id="email"
+							name="email"
+							onChange={handleInputChange}
+							required
+							type="email"
+							value={userData.email}
+						/>
+
+						<label htmlFor="phoneNumber">Telefon</label>
+						<input
+							id="phoneNumber"
+							name="phoneNumber"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.phoneNumber}
+						/>
+
+						<label htmlFor="county">Judet</label>
+						<input
+							id="county"
+							name="county"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.county}
+						/>
+
+						<label htmlFor="city">Oras</label>
+						<input
+							id="city"
+							name="city"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.city}
+						/>
+
+						<label htmlFor="gender">Gen</label>
+						<select
+							id="gender"
+							name="gender"
+							onChange={handleInputChange}
+							required
+							value={userData.gender}
 						>
-							Ai deja un cont?{" "}
-						</Link>
-					</span>
-				</h1>
+							<option value="">Selecteaza...</option>
+							<option value="male">Masculin</option>
+							<option value="female">Feminin</option>
+						</select>
 
-				<form
-					onSubmit={handleFormSubmit}
-					className={styles.loginForm}
-				>
-					<div className={styles.containerFormular}>
-						<div className={styles.separatorOne}>
-							<label className={styles.label}>Numele tau Complet</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="text"
-								name="name"
-								value={userData.name}
-								onChange={handleInputChange}
-							/>
+						<label htmlFor="dateOfBirth">Data nasterii</label>
+						<input
+							id="dateOfBirth"
+							name="dateOfBirth"
+							onChange={handleInputChange}
+							required
+							type="date"
+							value={userData.dateOfBirth}
+						/>
 
-							<label className={styles.label}>Email</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="email"
-								name="email"
-								value={userData.email}
-								onChange={handleInputChange}
-							/>
+						<label htmlFor="height">Inaltime (cm)</label>
+						<input
+							id="height"
+							name="height"
+							onChange={handleInputChange}
+							required
+							type="number"
+							value={userData.height}
+						/>
 
-							<label className={styles.label}>Telefon</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="text"
-								name="phoneNumber"
-								value={userData.phoneNumber}
-								onChange={handleInputChange}
-							/>
+						<label htmlFor="weight">Greutate (kg)</label>
+						<input
+							id="weight"
+							name="weight"
+							onChange={handleInputChange}
+							required
+							type="number"
+							value={userData.weight}
+						/>
 
-							<label className={styles.label}>Judet</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="text"
-								name="county"
-								value={userData.county}
-								onChange={handleInputChange}
-							/>
+						<label htmlFor="hairColor">Culoare par</label>
+						<select
+							id="hairColor"
+							name="hairColor"
+							onChange={handleInputChange}
+							required
+							value={userData.hairColor}
+						>
+							<option value="">Selecteaza...</option>
+							<option value="black">Negru</option>
+							<option value="brown">Castaniu</option>
+							<option value="blonde">Blond</option>
+							<option value="red">Rosu</option>
+							<option value="gray">Gri</option>
+							<option value="other">Altul</option>
+						</select>
 
-							<label className={styles.label}>Oras</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="text"
-								name="city"
-								value={userData.city}
-								onChange={handleInputChange}
-							/>
+						<label htmlFor="eyeColor">Culoare ochi</label>
+						<select
+							id="eyeColor"
+							name="eyeColor"
+							onChange={handleInputChange}
+							required
+							value={userData.eyeColor}
+						>
+							<option value="">Selecteaza...</option>
+							<option value="brown">Caprui</option>
+							<option value="blue">Albastri</option>
+							<option value="green">Verzi</option>
+							<option value="hazel">Negri</option>
+							<option value="gray">Galbeni</option>
+							<option value="other">Alta</option>
+						</select>
 
-							<label className={styles.label}>Data de Nastere</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="date"
-								name="dateOfBirth"
-								value={userData.dateOfBirth ? formatDate(userData.dateOfBirth) : ""}
-								onChange={handleInputChange}
-							/>
+						<label htmlFor="school">Scoala absolvita</label>
+						<input
+							id="school"
+							name="school"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.school}
+						/>
 
-							<label className={styles.label}>Sexul tau</label>
-							<select
-								required
-								className={styles.loginInput}
-								name="gender"
-								value={userData.gender}
-								onChange={handleInputChange}
+						<label htmlFor="nationality">Nationalitate</label>
+						<input
+							id="nationality"
+							name="nationality"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.nationality}
+						/>
+
+						<label htmlFor="spokenLanguages">Limbi vorbite</label>
+						{userData.spokenLanguages.map((language, index) => (
+							<div
+								className={styles.input_container}
+								key={index}
 							>
-								<option value="">Selecteaza...</option>
-								<option value="male">Masculin</option>
-								<option value="female">Feminin</option>
-							</select>
-
-							<label className={styles.label}>Inaltime</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="number"
-								name="height"
-								value={userData.height}
-								onChange={handleInputChange}
-							/>
-
-							<label className={styles.label}>Greutate</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="number"
-								name="weight"
-								value={userData.weight}
-								onChange={handleInputChange}
-							/>
-						</div>
-						<div className={styles.separatorTwo}>
-							<label className={styles.label}>Culoare Ochilor</label>
-							<select
-								required
-								className={styles.loginInput}
-								name="eyeColor"
-								value={userData.eyeColor}
-								onChange={handleInputChange}
-							>
-								<option value="">Selecteaza...</option>
-								<option value="brown">Caprui</option>
-								<option value="blue">Albastri</option>
-								<option value="green">Verzi</option>
-								<option value="hazel">Negri</option>
-								<option value="gray">Galbeni</option>
-								<option value="other">Alta</option>
-							</select>
-
-							<label className={styles.label}>Culoarea Parului</label>
-							<select
-								required
-								className={styles.loginInput}
-								name="hairColor"
-								value={userData.hairColor}
-								onChange={handleInputChange}
-							>
-								<option value="">Selecteaza...</option>
-								<option value="black">Negru</option>
-								<option value="brown">Castaniu</option>
-								<option value="blonde">Blond</option>
-								<option value="red">Rosu</option>
-								<option value="gray">Gri</option>
-								<option value="other">Altul</option>
-							</select>
-
-							<label className={styles.label}>Scoala absolvita</label>
-							<input
-								required
-								type="text"
-								className={styles.loginInput}
-								name="school"
-								value={userData.school}
-								onChange={handleInputChange}
-							/>
-
-							<label className={styles.label}>Nationalitate</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="text"
-								name="nationality"
-								value={userData.nationality}
-								onChange={handleInputChange}
-							/>
-
-							<label className={styles.label}>Limbi Straine</label>
-							{spokenLanguages.map((language, index) => (
 								<input
-									key={index}
+									id="spokenLanguages"
+									name="spokenLanguages"
+									onChange={(event) => handleSpokenLanguagesInputChange(event, index)}
 									required
 									type="text"
-									className={styles.loginInput}
 									value={language}
-									onChange={(event) => handleLanguageInputChange(event, index)}
 								/>
-							))}
-							<button
-								onClick={() => setSpokenLanguages((prevLanguages) => [...prevLanguages, ""])}
-								className={styles.loginButton}
-							>
-								Add Language
-							</button>
+								<button
+									onClick={() => {
+										const spokenLanguages = userData.spokenLanguages;
+										spokenLanguages.splice(index, 1);
+										setUserData({ ...userData, spokenLanguages });
+									}}
+									type="button"
+								>
+									Sterge
+								</button>
+							</div>
+						))}
+						<button
+							onClick={() => {
+								setUserData({
+									...userData,
+									spokenLanguages: [...userData.spokenLanguages, ""]
+								});
+							}}
+							type="button"
+						>
+							Adauga limba
+						</button>
 
-							<label className={styles.label}>Selecteaza cel putin 3 poze cu tine</label>
-							<input
-								required
-								className={[styles.loginInput]}
-								type="file"
-								name="files"
-								multiple
-								onChange={handleFileChange}
-							/>
+						<label htmlFor="description">Descriere</label>
+						<textarea
+							id="description"
+							name="description"
+							onChange={handleInputChange}
+							placeholder="Spune-ne ceva despre tine (experienta, interese, etc)"
+							value={userData.description}
+						/>
 
-							<label className={styles.label}>
-								Spune-ne ceva despre tine (experienta, interese, etc...)
-							</label>
-							<textarea
-								className={styles.loginInput}
-								name="description"
-								value={userData.description}
-								onChange={handleInputChange}
-							></textarea>
+						<label htmlFor="photos">Fotografii</label>
+						<label
+							className={styles.upload}
+							htmlFor="photos"
+						/>
+						<input
+							id="photos"
+							name="photos"
+							onChange={handleFileInputChange}
+							type="file"
+							multiple
+						/>
 
-							<label className={styles.label}>Parola</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="password"
-								name="password"
-								value={userData.password}
-								onChange={handleInputChange}
-							/>
+						{userData.photos.length > 0 ? (
+							<div className={styles.photos}>
+								{userData.photos.map((photo, index) => (
+									<div
+										className={styles.photo}
+										key={index}
+									>
+										<Image
+											alt={`Photo ${index + 1}`}
+											src={photo}
+											height={180}
+											width={140}
+										/>
 
-							<label className={styles.label}>Confirma Parola</label>
-							<input
-								required
-								className={styles.loginInput}
-								type="password"
-								name="confirmPassword"
-								value={userData.confirmPassword}
-								onChange={handleInputChange}
-							/>
+										<div
+											className={styles.remove}
+											onClick={() => {
+												const photos = userData.photos;
+												const files = userData.files;
+												photos.splice(index, 1);
+												files.splice(index, 1);
+												setUserData({ ...userData, photos, files });
+											}}
+										>
+											Sterge
+										</div>
+									</div>
+								))}
+							</div>
+						) : null}
 
-							{userData.password !== userData.confirmPassword && <p>Parolele sunt diferite!</p>}
-						</div>
+						<label htmlFor="password">Parola</label>
+						<input
+							id="password"
+							name="password"
+							onChange={handleInputChange}
+							required
+							type="password"
+							value={userData.password}
+						/>
+
+						<label htmlFor="confirmPassword">
+							Confirma parola
+							{userData.password !== userData.confirmPassword ? " (parolele nu sunt identice)" : ""}
+						</label>
+						<input
+							id="confirmPassword"
+							name="confirmPassword"
+							onChange={handleInputChange}
+							required
+							type="password"
+							value={userData.confirmPassword}
+						/>
 					</div>
-					<button
-						className={styles.loginButton}
-						type="submit"
-					>
-						Register
-					</button>
+
+					<button type="submit">Creeaza cont</button>
 				</form>
+
+				<div className={styles.bottom_section}>
+					<h3>
+						<Link href="/login">Ai deja un cont?</Link>
+					</h3>
+				</div>
 			</div>
 		</div>
 	);
 };
 
-export default RegisterPage;
+export default Register;

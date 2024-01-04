@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useAuthContext } from "../../contexts/auth.context";
 import Link from "next/link";
 
-import styles from "../../styles/login/login.module.scss";
+import { useAuthContext } from "../../contexts/auth.context";
 
-const LoginPage = () => {
+import styles from "../../styles/auth/auth.module.scss";
+
+const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -16,58 +17,50 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div className={styles.loginContainer}>
-			<div className={styles.loginBox}>
-				<h1 className={styles.loginTitle}>AUTENTIFICĂ-TE</h1>
-				<form
-					onSubmit={handleFormSubmit}
-					className={styles.loginForm}
-				>
-					<label className="label">Email</label>
-					<div className={styles.inputGroup}>
+		<div className={styles.wrapper}>
+			<div className={styles.container}>
+				<div className={styles.top_section}>
+					<h1 className={styles.title}>Autentifica-te</h1>
+				</div>
+
+				<form onSubmit={handleFormSubmit}>
+					<div className={styles.fields}>
+						<label htmlFor="email">Email</label>
 						<input
-							className={styles.loginInput}
+							id="email"
+							name="email"
+							onChange={(event) => setEmail(event.target.value)}
+							required
 							type="email"
 							value={email}
-							onChange={(event) => setEmail(event.target.value)}
-							name="email"
 						/>
-					</div>
-					<label className="label">Parola</label>
-					<div className={styles.inputGroup}>
+
+						<label htmlFor="password">Parola</label>
 						<input
-							className={styles.loginInput}
+							id="password"
+							name="password"
+							onChange={(event) => setPassword(event.target.value)}
+							required
 							type="password"
 							value={password}
-							onChange={(event) => setPassword(event.target.value)}
-							name="password"
 						/>
 					</div>
-					<Link
-						className={styles.forgotPassword}
-						href="/login"
-					>
-						Ai uitat parola?
-					</Link>
-					<p className={styles.forgotPassword}>
-						Nu ai cont?{" "}
-						<Link
-							className={styles.LinkField}
-							href="/register"
-						>
-							Inregistreaza-te
-						</Link>
-					</p>
-					<button
-						className={styles.loginButton}
-						type="submit"
-					>
-						Login
-					</button>
+
+					<button type="submit">Intra in cont</button>
 				</form>
+
+				<div className={styles.bottom_section}>
+					<h3>
+						<Link href="/login">Ai uitat parola?</Link>
+					</h3>
+
+					<h3>
+						Nu ai un cont? <Link href="/register">Inregistreaza-te</Link>
+					</h3>
+				</div>
 			</div>
 		</div>
 	);
 };
 
-export default LoginPage;
+export default Login;

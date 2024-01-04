@@ -104,6 +104,12 @@ const ProfilePage = () => {
 
 		try {
 			if (section === "profile") {
+				if (profileData.files.length === 0 && profileData.photos.length === 0)
+					return alert("Adauga cel putin o fotografie!");
+
+				if (profileData.spokenLanguages.length === 0)
+					return alert("Adauga cel putin o limba vorbita!");
+
 				const photos = await Promise.all(
 					profileData.files.map(async (file) => {
 						const photoRef = ref(storage, `photos/${uid}/${file.name}`);
@@ -252,23 +258,23 @@ const ProfilePage = () => {
 									value={profileData.dateOfBirth}
 								/>
 
-								<label htmlFor="height">Inaltime</label>
+								<label htmlFor="height">Inaltime (cm)</label>
 								<input
 									id="height"
 									name="height"
 									onChange={handleProfileInputChange}
 									required
-									type="text"
+									type="number"
 									value={profileData.height}
 								/>
 
-								<label htmlFor="weight">Greutate</label>
+								<label htmlFor="weight">Greutate (kg)</label>
 								<input
 									id="weight"
 									name="weight"
 									onChange={handleProfileInputChange}
 									required
-									type="text"
+									type="number"
 									value={profileData.weight}
 								/>
 
@@ -369,6 +375,7 @@ const ProfilePage = () => {
 									id="description"
 									name="description"
 									onChange={handleProfileInputChange}
+									placeholder="Spune-ne ceva despre tine (experienta, interese, etc)"
 									value={profileData.description}
 								/>
 
