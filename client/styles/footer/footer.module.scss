@@ -1,67 +1,77 @@
-@import '../colors.scss';
+@import "../colors.scss";
 
 .footer {
-  background-color: $text-box; // Set background color based on your theme
-  color: #fff; // Set text color based on your theme
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+	position: relative;
+	background-color: $text-box; // Set background color based on your theme
+	color: #fff; // Set text color based on your theme
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-image-slice: 1;
+	border-image-source: radial-gradient(
+		50% 75% at 50% 25%,
+		#bfa75d 0%,
+		$color-background 107.5%,
+		$color-background 100%
+	);
 
-  .footerContent {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: start;
-    margin-bottom: 1rem;
+	.footerContent {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: start;
+		margin-bottom: 1rem;
 
-    .logoSection {
-      margin: 2rem;
-    }
+		.logoSection {
+			margin: 2rem;
+		}
 
-    .linksSection {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
+		.linksSection {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
 
-      div {
-        display: flex;
-        flex-direction: column;
+			div {
+				display: flex;
+				flex-direction: column;
 
-        h5 {
-          margin-bottom: 0.5rem;
-        }
+				h5 {
+					margin-bottom: 0.5rem;
+				}
 
-        a {
-          color: #fff; // Set anchor text color
-          text-decoration: none;
-          margin-bottom: 0.25rem;
+				a {
+					color: #fff; // Set anchor text color
+					text-decoration: none;
+					margin-bottom: 0.25rem;
 
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  }
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
 
-  .footerBottom {
-    width: 100%;
-    // Style for the bottom section of the footer
-    .disputeSection {
-      display: flex;
+	.footerBottom {
+		width: 100%;
+		// Style for the bottom section of the footer
+		.disputeSection {
+			display: flex;
 			justify-content: center;
-    }
-  }
+		}
+	}
 }
 
 // Media queries for responsiveness
 @media (max-width: 768px) {
-  .footer {
-    .footerContent {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+	.footer {
+		.footerContent {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
 }
