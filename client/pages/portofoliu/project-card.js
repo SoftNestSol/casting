@@ -12,6 +12,7 @@ const ProjectCard = ({ title, description, type, imageUrl, reverse }) => {
 		<div className={cardClasses}>
 			<div className={styles.imageWrapper}>
 				<Image
+					alt={title}
 					src={Frame}
 					className={styles.decoration}
 				/>
