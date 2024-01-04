@@ -54,6 +54,8 @@
 				text-decoration: none;
 				text-transform: lowercase;
 
+				transition: color 100ms ease-in-out;
+
 				&:hover {
 					color: #bfa75d;
 				}
@@ -88,6 +90,11 @@
 
 		a {
 			display: flex;
+			transition: color 100ms ease-in-out;
+
+			&:hover {
+				color: #bfa75d;
+			}
 		}
 	}
 }
