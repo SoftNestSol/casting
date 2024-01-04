@@ -8,11 +8,15 @@
 	box-sizing: border-box;
 }
 
+
+
 html,
 body {
 	font-family: "Poppins";
 	background-color: #111111;
 	color: #ffffff;
+	overflow-x: hidden;
+	overflow-y:auto;
 }
 
 .spline.hidden {
