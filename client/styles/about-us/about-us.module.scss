@@ -1,6 +1,7 @@
 @import "../colors.scss";
 
 .container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -9,13 +10,32 @@
 	width: 100%;
 	height: 70vh;
 	margin-top: 4.5rem;
-	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		url("/images/about-us.jpeg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
 	padding-bottom: 5%;
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		object-fit: cover;
+	}
+
+	.gradient {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background-image: linear-gradient(
+				to top,
+				rgba(17, 17, 17, 1),
+				rgba(17, 17, 17, 0)
+			),
+			linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0));
+	}
 }
 
 .heading {
@@ -23,6 +43,7 @@
 	font-weight: 600;
 	color: $color-text;
 	margin-bottom: 1rem;
+	z-index: 2;
 }
 
 .accent {
@@ -31,7 +52,7 @@
 
 .verticalText {
 	position: absolute; /* Position the text absolutely within the container */
-	bottom: 8em; /* Align to the bottom of the container */
+	bottom: 1rem; /* Align to the bottom of the container */
 	left: 0;
 	writing-mode: vertical-lr;
 	text-orientation: upright;
@@ -40,9 +61,11 @@
 	color: $color-text;
 	margin-left: 1rem;
 	color: $color-accent;
+	z-index: 2;
 }
 
 .secondContainer {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -51,15 +74,35 @@
 	width: 100%;
 	height: 80vh;
 	flex: 1;
-	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		url("/images/about_second.jpeg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		object-fit: cover;
+	}
+
+	.gradient {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background-image: linear-gradient(
+				to top,
+				rgba(17, 17, 17, 1),
+				rgba(17, 17, 17, 0)
+			),
+			linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0));
+	}
 }
 
 .thirdContainer {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -68,15 +111,35 @@
 	width: 100%;
 	height: 80vh;
 	flex: 1;
-	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		url("/images/about_third.jpeg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		object-fit: cover;
+	}
+
+	.gradient {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background-image: linear-gradient(
+				to top,
+				rgba(17, 17, 17, 1),
+				rgba(17, 17, 17, 0)
+			),
+			linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0));
+	}
 }
 
 .fourthContainer {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -85,12 +148,31 @@
 	height: 80vh;
 	padding-right: 10%;
 	flex: 1;
-	background-image: linear-gradient(to top, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0)),
-		url("/images/about_fourth.jpeg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		object-fit: cover;
+	}
+
+	.gradient {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background-image: linear-gradient(
+				to top,
+				rgba(17, 17, 17, 1),
+				rgba(17, 17, 17, 0)
+			),
+			linear-gradient(to right, rgba(17, 17, 17, 1), rgba(17, 17, 17, 0));
+	}
 }
 
 .text {
@@ -98,6 +180,7 @@
 	font-weight: 500;
 	color: $color-text;
 	max-width: 50%;
+	z-index: 2;
 }
 
 .subtitle {
@@ -105,6 +188,7 @@
 	font-weight: 500;
 	color: $color-text;
 	margin: 0;
+	z-index: 2;
 }
 
 @media screen and (max-width: 800px) {
@@ -139,6 +223,7 @@
 
 @media screen and (max-width: 600px) {
 	.heading {
+		margin: 0 auto 0.5rem;
 		font-size: 2.5rem;
 	}
 

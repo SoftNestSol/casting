@@ -15,11 +15,15 @@ const ProjectCard = ({ title, description, type, imageUrl, reverse }) => {
 					alt={title}
 					src={Frame}
 					className={styles.decoration}
+					width={100}
+					height={100}
 				/>
-				<img
+				<Image
 					src={imageUrl}
 					alt={title}
 					className={styles.projectImage}
+					width={500}
+					height={500}
 				/>
 			</div>
 			<div className={styles.textContent}>

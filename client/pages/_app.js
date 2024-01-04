@@ -27,7 +27,9 @@ const App = ({ Component, pageProps }) => {
 				<DashboardContextProvider>
 					{showLoading && (
 						<>
-							<div className={`loader ${showLoading ? "loader_active" : ""}`}></div>
+							<div
+								className={`loader ${showLoading ? "loader_active" : ""}`}
+							></div>
 							<div className="loader_background"></div>
 						</>
 					)}
