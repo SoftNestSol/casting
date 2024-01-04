@@ -369,7 +369,6 @@ const ProfilePage = () => {
 									id="description"
 									name="description"
 									onChange={handleProfileInputChange}
-									rows={5}
 									value={profileData.description}
 								/>
 
