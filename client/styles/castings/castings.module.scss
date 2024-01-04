@@ -37,10 +37,8 @@
 
 				h3 {
 					margin-bottom: 0;
-					color: #ffffff80;
-				}
 
-				h3 {
+					color: #ffffff80;
 					font-size: 1.125rem;
 
 					span {
@@ -113,6 +111,14 @@
 		.castings {
 			.casting {
 				width: 100%;
+
+				.casting_head {
+					h3 {
+						span {
+							font-size: 2rem;
+						}
+					}
+				}
 
 				.casting_body {
 					width: calc(100% - 25px);
