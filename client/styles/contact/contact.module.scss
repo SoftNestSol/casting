@@ -9,10 +9,22 @@
 	height: 100%;
 	margin-top: 6%;
 	gap: 10%;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+		margin-top: 10%;
+		gap: 5%;
+	}
+
+	// Adjust layout for mobile phones
+	@media (max-width: 480px) {
+		margin-top: 3%;
+		gap: 2%;
+	}
 }
 
-.Image
-{
+.Image {
 	border-radius: 50%;
 	margin-right: 5%;
 }
@@ -29,6 +41,16 @@
 	font-size: 1.2rem;
 	border-radius: 20px;
 	padding: 2.5rem;
+	@media (max-width: 768px) {
+		margin-left: 0;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+	}
+	@media (max-width: 480px) {
+		margin-left: 0;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+	}
 }
 
 .address {
@@ -57,6 +79,16 @@
 	align-items: center;
 	width: 100%;
 	margin-right: 3rem;
+	@media (max-width: 768px) {
+		width: 100%;
+		height: 40vh;
+	}
+
+	@media (max-width: 480px) {
+		width: 100%;
+		height: 30vh;
+		margin: 0 auto;
+	}
 }
 
 .map {
@@ -69,6 +101,17 @@
 	&:hover {
 		opacity: 1;
 		transition: ease-in 0.5s all;
+	}
+
+	@media (max-width: 768px) {
+		width: 100%;
+		height: 40vh;
+	}
+
+	@media (max-width: 480px) {
+		width: 80%;
+		height: 30vh;
+		margin: 0 auto;
 	}
 }
 
@@ -87,6 +130,25 @@
 		$color-background 50%,
 		$color-background 100%
 	);
+	@media (max-width: 768px) {
+		font-size: 2rem;
+		padding-left: 0;
+		margin: 0 auto;
+		margin-top: 20%;
+	}
+	@media (max-width: 480px) {
+		font-size: 1.5rem;
+		padding-left: 0;
+		margin: 0 auto;
+		margin-top: 30%;
+		text-align: center;
+		border-image-source: radial-gradient(
+		30% 75% at 50% 75%,
+		#bfa75d 0%,
+		$color-background 50%,
+		$color-background 100%
+	);
+	}
 }
 
 .containerFormular {
@@ -142,6 +204,16 @@
 			/* Second layer */ 0 0 0 3px hwb(45 37% 25% / 0),
 			/* Third layer */ 0 0 0 4px hwb(45 37% 25% / 0.273); /* Fourth layer */
 	}
+
+	@media (max-width: 768px) {
+		width: 70%;
+	}
+
+	@media (max-width: 480px) {
+		width: 90%;
+		padding: 1rem;
+		margin-left: 1rem;
+	}
 }
 
 .heading {
@@ -185,12 +257,24 @@
 	font-size: 1.5rem;
 	padding: 0.5rem;
 	margin: 2rem auto;
-	background: radial-gradient(75% 300% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
+	background: radial-gradient(
+		75% 300% at 50% 50%,
+		hwb(45 37% 25%) 0%,
+		#000 100%,
+		#000 100%
+	);
 	text-align: center; /* Center text horizontally */
 	display: flex; /* Use flexbox to align text */
 	justify-content: center; /* Center text horizontally in flexbox */
 	align-items: center; /* Center text vertically in flexbox */
 	cursor: pointer;
+	@media (max-width: 768px) {
+		width: 80%;
+	}
+
+	@media (max-width: 480px) {
+		width: 100%;
+	}
 }
 
 .checkboxContainer {
@@ -288,4 +372,10 @@
 	margin-top: 7%;
 	flex-direction: row;
 	gap: 10%;
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+		gap: 5%;
+		margin-top: 3%;
+	}
 }

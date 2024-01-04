@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.scss";
 import Head from "next/head";
+import Footer from "../components/footer";
 import Image from "next/image";
 import { DashboardContextProvider } from "../contexts/dashboard.context";
 const App = ({ Component, pageProps }) => {
@@ -75,6 +76,7 @@ const App = ({ Component, pageProps }) => {
 
 							<Component {...pageProps} />
 						</div>
+						<Footer/>
 					</DashboardContextProvider>
 				</CastingsContextProvider>
 			</AuthContextProvider>

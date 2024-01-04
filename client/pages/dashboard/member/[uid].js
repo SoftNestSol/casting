@@ -13,6 +13,7 @@ const MemberPage = () => {
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
 
+
 	const { ComputeAge } = useDashboardContext();
 
 	const getUserData = async (uid) => {
@@ -89,13 +90,20 @@ const MemberPage = () => {
 							<strong>Culoare par:</strong> {user.hairColor}
 						</p>
 						<p>
-							<strong>Lungime par:</strong> {user.hairLength}
+							<strong>Nationalitate:</strong> {user.nationality}
 						</p>
 						<p>
 							<strong>Culoare ochi:</strong> {user.eyeColor}
 						</p>
 						<p>
 							<strong>Descriere:</strong> {user.description}
+						</p>
+						<p>
+							<strong>Ultima scoala absolvita:</strong> {user.school}
+						</p>
+						<p>
+							<strong>Limbi straine:</strong>{" "}
+							{user.spokenLanguages.map((language) => `${language} `)}
 						</p>
 
 						{user.photos && user.photos.length > 0 && (
