@@ -4,7 +4,7 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 
 const corsOptions = {
-	origin: "http://localhost:3000",
+	origin: "46.214.10.153",
 	optionsSuccessStatus: 200,
 	credentials: true,
 	allowedHeaders: [

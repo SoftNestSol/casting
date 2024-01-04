@@ -28,13 +28,16 @@ const Contact = () => {
 		if (termsAccepted === true) {
 			try {
 				console.log("am ajuns pe client");
-				const response = await fetch("https://europe-west1-mycasting-c5275.cloudfunctions.net/api/contact", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(formData)
-				});
+				const response = await fetch(
+					"https://europe-west1-mycasting-c5275.cloudfunctions.net/api/contact",
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(formData)
+					}
+				);
 
 				const data = await response.json();
 				console.log(data);
@@ -56,14 +59,16 @@ const Contact = () => {
 					<div className={styles.address}>
 						<h1>Adresa</h1>
 						<p className={styles.text}>
-							Strada 1 Decembrie 1918, nr. 12, <span> 550009 Sibiu, Romania </span>{" "}
+							Strada 1 Decembrie 1918, nr. 12,{" "}
+							<span> 550009 Sibiu, Romania </span>{" "}
 						</p>
 					</div>
 
 					<div className={styles.schendule}>
 						<h2>Program</h2>
 						<p className={styles.text}>
-							Luni - Vineri: <span> 10:00 - 18:00 </span> <span> Sambata: 10:00 - 14:00 </span>{" "}
+							Luni - Vineri: <span> 10:00 - 18:00 </span>{" "}
+							<span> Sambata: 10:00 - 14:00 </span>{" "}
 						</p>
 					</div>
 				</div>
