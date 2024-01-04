@@ -4,6 +4,18 @@ import Link from "next/link";
 
 import styles from "../../styles/register/register.module.scss";
 
+// Helper function to handle language input change
+const handleLanguageInputChange = (event, index) => {
+	const { value } = event.target;
+	setSpokenLanguages((prevLanguages) => {
+		const updatedLanguages = [...prevLanguages];
+		updatedLanguages[index] = value;
+		return updatedLanguages;
+	});
+};
+
+
+
 function formatDate(date) {
 	let d = new Date(date),
 		month = "" + (d.getMonth() + 1),
@@ -20,6 +32,7 @@ const RegisterPage = () => {
 	//
 
 	const [letRegister, setLetRegister] = useState(false);
+	const [spokenLanguages, setSpokenLanguages] = useState([]);
 	const [userData, setUserData] = useState({
 		email: "",
 		password: "",
@@ -30,11 +43,13 @@ const RegisterPage = () => {
 		weight: "",
 		eyeColor: "",
 		hairColor: "",
-		hairLength: "",
+		nationality: "",
 		description: "",
 		phoneNumber: "",
 		county: "",
 		city: "",
+		school: "",
+		spokenLanguages: [],
 		files: [],
 		confirmPassword: ""
 	});
@@ -144,6 +159,16 @@ const RegisterPage = () => {
 								onChange={handleInputChange}
 							/>
 
+							<label className={styles.label}>Nationalitate</label>
+							<input
+								required
+								className={styles.loginInput}
+								type="text"
+								name="nationality"
+								value={userData.nationality}
+								onChange={handleInputChange}
+							/>
+
 							<label className={styles.label}>Sexul tau</label>
 							<select
 								required
@@ -212,20 +237,30 @@ const RegisterPage = () => {
 								<option value="other">Altul</option>
 							</select>
 
-							<label className={styles.label}>Lungimea Parului</label>
-							<select
+							<label className={styles.label}>Ultima Scoala Absolvita</label>
+							<input
 								required
+								type="text"
 								className={styles.loginInput}
 								name="hairLength"
-								value={userData.hairLength}
+								value={userData.school}
 								onChange={handleInputChange}
-							>
-								<option value="">Selecteaza...</option>
-								<option value="short">Scurt</option>
-								<option value="medium">Mediu</option>
-								<option value="long">Lung</option>
-								<option value="bald">Chel</option>
-							</select>
+							/>
+
+							<label className={styles.label}>Limbi Straine</label>
+							{spokenLanguages.map((language, index) => (
+								<input
+									key={index}
+									required
+									type="text"
+									className={styles.loginInput}
+									value={language}
+									onChange={(event) => handleLanguageInputChange(event, index)}
+								/>
+							))}
+							<button onClick={() => setSpokenLanguages((prevLanguages) => [...prevLanguages, ""])}>
+								Add Language
+							</button>
 
 							<label className={styles.label}>Selecteaza cel putin 3 poze cu tine</label>
 							<input
