@@ -21,20 +21,20 @@ const RegisterPage = () => {
 
 	const [letRegister, setLetRegister] = useState(false);
 	const [userData, setUserData] = useState({
-		email: "",
-		password: "",
 		name: "",
-		dateOfBirth: "",
-		gender: "",
-		height: "",
-		weight: "",
-		eyeColor: "",
-		hairColor: "",
-		hairLength: "",
-		description: "",
+		email: "",
 		phoneNumber: "",
 		county: "",
 		city: "",
+		gender: "",
+		dateOfBirth: "",
+		height: "",
+		weight: "",
+		hairColor: "",
+		eyeColor: "",
+		school: "",
+		nationality: "",
+		description: "",
 		files: [],
 		confirmPassword: ""
 	});
@@ -166,8 +166,7 @@ const RegisterPage = () => {
 								value={userData.height}
 								onChange={handleInputChange}
 							/>
-						</div>
-						<div className={styles.separatorTwo}>
+
 							<label className={styles.label}>Greutate</label>
 							<input
 								required
@@ -177,7 +176,8 @@ const RegisterPage = () => {
 								value={userData.weight}
 								onChange={handleInputChange}
 							/>
-
+						</div>
+						<div className={styles.separatorTwo}>
 							<label className={styles.label}>Culoare Ochilor</label>
 							<select
 								required
@@ -190,7 +190,7 @@ const RegisterPage = () => {
 								<option value="brown">Caprui</option>
 								<option value="blue">Albastri</option>
 								<option value="green">Verzi</option>
-								<option value="hazel">Negrii</option>
+								<option value="hazel">Negri</option>
 								<option value="gray">Galbeni</option>
 								<option value="other">Alta</option>
 							</select>
@@ -212,20 +212,25 @@ const RegisterPage = () => {
 								<option value="other">Altul</option>
 							</select>
 
-							<label className={styles.label}>Lungimea Parului</label>
-							<select
+							<label className={styles.label}>Scoala absolvita</label>
+							<input
 								required
 								className={styles.loginInput}
-								name="hairLength"
-								value={userData.hairLength}
+								type="text"
+								name="school"
+								value={userData.school}
 								onChange={handleInputChange}
-							>
-								<option value="">Selecteaza...</option>
-								<option value="short">Scurt</option>
-								<option value="medium">Mediu</option>
-								<option value="long">Lung</option>
-								<option value="bald">Chel</option>
-							</select>
+							/>
+
+							<label className={styles.label}>Nationalitate</label>
+							<input
+								required
+								className={styles.loginInput}
+								type="text"
+								name="nationality"
+								value={userData.nationality}
+								onChange={handleInputChange}
+							/>
 
 							<label className={styles.label}>Selecteaza cel putin 3 poze cu tine</label>
 							<input
