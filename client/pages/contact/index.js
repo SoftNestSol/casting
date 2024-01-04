@@ -5,6 +5,21 @@ import Link from "next/link";
 import { useState } from "react";
 
 const Contact = () => {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		message: ""
+	});
+
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+
+		setFormData({
+			...formData,
+			[name]: value
+		});
+	};
+
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 
@@ -12,16 +27,13 @@ const Contact = () => {
 
 		if (termsAccepted === true) {
 			try {
-				const response = await fetch("http://localhost:4000/contact", {
+				console.log("am ajuns pe client");
+				const response = await fetch("https://europe-west1-mycasting-c5275.cloudfunctions.net/api/contact", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
-					body: JSON.stringify({
-						name: name.value,
-						email: email.value,
-						message: message.value
-					})
+					body: JSON.stringify(formData)
 				});
 
 				const data = await response.json();
@@ -59,7 +71,7 @@ const Contact = () => {
 				<div className={styles.mapContainer}>
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0318333092523!2d26.08833338847682!3d44.432509227112675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff41eff5cb87%3A0xbfb28c887b0e969b!2sSector%205%2C%20Bucharest%20030167!5e0!3m2!1sen!2sro!4v1703352547288!5m2!1sen!2sro"
-						referrerpolicy="no-referrer-when-downgrade"
+						referrerPolicy="no-referrer-when-downgrade"
 						className={styles.map}
 						allowFullScreen=""
 						loading="lazy"
@@ -79,10 +91,12 @@ const Contact = () => {
 							Nume
 						</label>
 						<input
+							onChange={handleInputChange}
 							type="text"
 							id="name"
 							name="name"
 							required
+							value={formData.name}
 							className={styles.formInput}
 						/>
 
@@ -93,10 +107,12 @@ const Contact = () => {
 							Email
 						</label>
 						<input
+							onChange={handleInputChange}
 							type="email"
 							id="email"
 							name="email"
 							required
+							value={formData.email}
 							className={styles.formInput}
 						/>
 
@@ -107,10 +123,12 @@ const Contact = () => {
 							Mesaj
 						</label>
 						<textarea
+							onChange={handleInputChange}
 							id="message"
 							name="message"
 							rows="4"
 							required
+							value={formData.message}
 							className={styles.formTextarea}
 						></textarea>
 
@@ -144,7 +162,7 @@ const Contact = () => {
 					<p className={styles.textContact}>
 						<Image
 							className={styles.Image}
-							src="/images/carousel/Carousel1.jpg"
+							src="/images/carousel/2.jpg"
 							alt="text"
 							width={70}
 							height={70}
@@ -154,7 +172,7 @@ const Contact = () => {
 					<p className={styles.textContact}>
 						<Image
 							className={styles.Image}
-							src="/images/carousel/Carousel1.jpg"
+							src="/images/carousel/6.jpg"
 							alt="text"
 							width={70}
 							height={70}

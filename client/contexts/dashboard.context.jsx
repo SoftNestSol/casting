@@ -68,8 +68,8 @@ export const DashboardContextProvider = ({ children }) => {
 
 		filteredMembers = filteredMembers.filter((member) => {
 			return (
-				(!ageRange.min || ComputeAge(member.birthDate) >= ageRange.min) &&
-				(!ageRange.max || ComputeAge(member.birthDate) <= ageRange.max)
+				(!ageRange.min || ComputeAge(member.dateOfBirth) >= Number(ageRange.min)) &&
+				(!ageRange.max || ComputeAge(member.dateOfBirth) <= Number(ageRange.max))
 			);
 		});
 
