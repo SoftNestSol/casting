@@ -139,14 +139,10 @@
 	font-size: 1.5rem;
 	border-radius: 129px;
 	width: 100%; /* Make the button fill the container */
-	height: 100%; /* Make the button fill the container */
 	font-size: 1.5rem;
 	padding: 0.5rem;
 	background: radial-gradient(75% 300% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
 	text-align: center; /* Center text horizontally */
-	display: flex; /* Use flexbox to align text */
-	justify-content: center; /* Center text horizontally in flexbox */
-	align-items: center; /* Center text vertically in flexbox */
 	cursor: pointer;
 	text-transform: uppercase;
 	// background: radial-gradient(67% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 70%);
@@ -165,4 +161,8 @@
 	// &:hover {
 	// 	background: radial-gradient(100% 120% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
 	// }
+
+	&:not(:last-child) {
+		margin-bottom: 2rem;
+	}
 }

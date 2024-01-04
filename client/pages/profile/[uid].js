@@ -23,6 +23,7 @@ const profileDataInitialState = {
 	eyeColor: "",
 	school: "",
 	nationality: "",
+	spokenLanguages: [],
 	description: "",
 	photos: [],
 	files: []
@@ -69,6 +70,14 @@ const ProfilePage = () => {
 
 	const handleProfileInputChange = (event) => {
 		setProfileData({ ...profileData, [event.target.name]: event.target.value });
+	};
+
+	const handleSpokenLanguagesInputChange = (event, index) => {
+		setProfileData((prevState) => {
+			const updatedLanguages = [...prevState.spokenLanguages];
+			updatedLanguages[index] = event.target.value;
+			return { ...prevState, spokenLanguages: updatedLanguages };
+		});
 	};
 
 	const handleFileInputChange = (event) => {
@@ -317,6 +326,44 @@ const ProfilePage = () => {
 									value={profileData.nationality}
 								/>
 
+								<label htmlFor="spokenLanguages">Limbi vorbite</label>
+								{profileData.spokenLanguages.map((language, index) => (
+									<div
+										className={styles.input_container}
+										key={index}
+									>
+										<input
+											id="spokenLanguages"
+											name="spokenLanguages"
+											onChange={(event) => handleSpokenLanguagesInputChange(event, index)}
+											required
+											type="text"
+											value={language}
+										/>
+										<button
+											onClick={() => {
+												const spokenLanguages = profileData.spokenLanguages;
+												spokenLanguages.splice(index, 1);
+												setProfileData({ ...profileData, spokenLanguages });
+											}}
+											type="button"
+										>
+											Sterge
+										</button>
+									</div>
+								))}
+								<button
+									onClick={() => {
+										setProfileData({
+											...profileData,
+											spokenLanguages: [...profileData.spokenLanguages, ""]
+										});
+									}}
+									type="button"
+								>
+									Adauga limba
+								</button>
+
 								<label htmlFor="description">Descriere</label>
 								<textarea
 									id="description"
@@ -348,8 +395,8 @@ const ProfilePage = () => {
 												<Image
 													alt={`Photo ${index + 1}`}
 													src={photo}
-													height={125}
-													width={100}
+													height={180}
+													width={140}
 												/>
 
 												<div

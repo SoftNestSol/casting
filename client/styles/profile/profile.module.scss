@@ -57,6 +57,9 @@
 
 			h1 {
 				margin: unset;
+
+				font-size: 2.5rem;
+				font-weight: 600;
 			}
 
 			form {
@@ -69,9 +72,29 @@
 					flex-direction: column;
 					gap: 0.5rem;
 
+					.input_container {
+						display: flex;
+
+						input {
+							border-top-right-radius: 0;
+							border-bottom-right-radius: 0;
+						}
+
+						button {
+							width: fit-content;
+							padding: 0 1rem;
+
+							border-top-left-radius: 0;
+							border-top-right-radius: 0.5rem;
+							border-bottom-right-radius: 0.5rem;
+							border-bottom-left-radius: 0;
+						}
+					}
+
 					input,
 					select,
 					textarea {
+						width: 100%;
 						padding: 0.75rem;
 
 						outline: none;
@@ -82,6 +105,14 @@
 						&[type="file"] {
 							display: none;
 						}
+
+						&[type="date"] {
+							cursor: pointer;
+						}
+					}
+
+					select {
+						cursor: pointer;
 					}
 
 					label {
@@ -137,6 +168,10 @@
 
 							background-color: rgba(191, 167, 93, 0.25);
 						}
+					}
+
+					button {
+						margin-top: 0;
 					}
 				}
 
@@ -208,17 +243,41 @@
 		.container {
 			padding: 3rem 2rem;
 
+			flex-direction: column;
+
 			.sidebar {
-				position: absolute;
-				top: 0;
-				left: 0;
-				transform: translateX(-100%);
+				width: 100%;
 
-				width: fit-content;
-				height: 100%;
-				padding: 3rem;
+				ul {
+					gap: 0.5rem;
 
-				background-color: #1e1e1e;
+					li {
+						background: #292929;
+						border-radius: 2rem;
+
+						font-size: 1rem;
+						text-transform: uppercase;
+						text-align: center;
+
+						&.active {
+							border: 1px solid #bfa75d;
+
+							&::before {
+								display: none;
+							}
+						}
+					}
+				}
+
+				button {
+					margin-top: 1rem;
+				}
+			}
+
+			.content {
+				h1 {
+					font-size: 2rem;
+				}
 			}
 		}
 	}

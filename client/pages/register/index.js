@@ -4,22 +4,8 @@ import Link from "next/link";
 
 import styles from "../../styles/register/register.module.scss";
 
-function formatDate(date) {
-	let d = new Date(date),
-		month = "" + (d.getMonth() + 1),
-		day = "" + d.getDate(),
-		year = d.getFullYear();
-
-	if (month.length < 2) month = "0" + month;
-	if (day.length < 2) day = "0" + day;
-
-	return [year, month, day].join("-");
-}
-
 const RegisterPage = () => {
-	//
-
-	const [letRegister, setLetRegister] = useState(false);
+	const [spokenLanguages, setSpokenLanguages] = useState([]);
 	const [userData, setUserData] = useState({
 		name: "",
 		email: "",
@@ -34,12 +20,34 @@ const RegisterPage = () => {
 		eyeColor: "",
 		school: "",
 		nationality: "",
+		spokenLanguages: [],
 		description: "",
 		files: [],
 		confirmPassword: ""
 	});
 
 	const { signUp } = useAuthContext();
+
+	function formatDate(date) {
+		let d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [year, month, day].join("-");
+	}
+
+	const handleLanguageInputChange = (event, index) => {
+		const { value } = event.target;
+		setSpokenLanguages((prevLanguages) => {
+			const updatedLanguages = [...prevLanguages];
+			updatedLanguages[index] = value;
+			return updatedLanguages;
+		});
+	};
 
 	const handleInputChange = (event) => {
 		setUserData((prevState) => ({
@@ -57,9 +65,8 @@ const RegisterPage = () => {
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-		if (userData.password !== userData.confirmPassword) {
-			return;
-		}
+		if (userData.password !== userData.confirmPassword) return;
+		userData.spokenLanguages = spokenLanguages;
 		await signUp(userData);
 	};
 
@@ -215,8 +222,8 @@ const RegisterPage = () => {
 							<label className={styles.label}>Scoala absolvita</label>
 							<input
 								required
-								className={styles.loginInput}
 								type="text"
+								className={styles.loginInput}
 								name="school"
 								value={userData.school}
 								onChange={handleInputChange}
@@ -231,6 +238,24 @@ const RegisterPage = () => {
 								value={userData.nationality}
 								onChange={handleInputChange}
 							/>
+
+							<label className={styles.label}>Limbi Straine</label>
+							{spokenLanguages.map((language, index) => (
+								<input
+									key={index}
+									required
+									type="text"
+									className={styles.loginInput}
+									value={language}
+									onChange={(event) => handleLanguageInputChange(event, index)}
+								/>
+							))}
+							<button
+								onClick={() => setSpokenLanguages((prevLanguages) => [...prevLanguages, ""])}
+								className={styles.loginButton}
+							>
+								Add Language
+							</button>
 
 							<label className={styles.label}>Selecteaza cel putin 3 poze cu tine</label>
 							<input
@@ -275,14 +300,12 @@ const RegisterPage = () => {
 							{userData.password !== userData.confirmPassword && <p>Parolele sunt diferite!</p>}
 						</div>
 					</div>
-					{
-						<button
-							className={styles.loginButton}
-							type="submit"
-						>
-							Register
-						</button>
-					}
+					<button
+						className={styles.loginButton}
+						type="submit"
+					>
+						Register
+					</button>
 				</form>
 			</div>
 		</div>

@@ -39,36 +39,52 @@ const Dashboard = () => {
 	return (
 		<>
 			<div className={styles.container}>
-				{/* UI controls for filters */}
+
 				<select onChange={handleGenderChange}>
 					<option value="">Select Gender</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
-					{/* Other gender options */}
+
 				</select>
 
 				<select onChange={handleAgeChange}>
 					<option value="">Select Age</option>
+					<option value="0-18">0-18</option>
 					<option value="18-25">18-25</option>
 					<option value="25-35">25-35</option>
-					{/* Other age options */}
+					<option value="35-45">35-45</option>
+					<option value="45-55">45-55</option>
+					<option value="55-65">55-65</option>
+					<option value="65-75">65-75</option>
+	
 				</select>
 
 				<select onChange={handleHeightChange}>
 					<option value="">Select Height</option>
+					<option value="130-140">130-140</option>
+					<option value="140-150">140-150</option>
 					<option value="150-160">150-160</option>
 					<option value="160-170">160-170</option>
-					{/* Other height options */}
+					<option value="170-180">170-180</option>
+					<option value="180-190">180-190</option>
+					<option value="190-200">190-200</option>
+				
 				</select>
 
 				<select onChange={handleWeightChange}>
 					<option value="">Select Weight</option>
 					<option value="50-60">50-60</option>
 					<option value="60-70">60-70</option>
-					{/* Other weight options */}
+					<option value="70-80">70-80</option>
+					<option value="80-90">80-90</option>
+					<option value="90-100">90-100</option>
+					<option value="100-110">100-110</option>
+					<option value="110-120">110-120</option>
+					<option value="120-200">120-200</option>
+
 				</select>
 
-				{/* UI controls for filters */}
+
 
 				<div className={styles.container}>
 					<h1 className={styles.header}>Membrii Inscrisi</h1>
