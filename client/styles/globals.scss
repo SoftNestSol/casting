@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
 *,
 *::before,
@@ -10,7 +10,7 @@
 
 html,
 body {
-	font-family: "Poppins", sans-serif;
+	font-family: "Poppins";
 	background-color: #111111;
 	color: #ffffff;
 }
@@ -112,6 +112,7 @@ body:has(.loader_active) {
 	left: 0;
 	z-index: 0;
 	width: 100%;
+	overflow: hidden; /* to handle overflow of Spline or image */
 
 	canvas {
 		height: max(120vh, 600px) !important;
@@ -137,3 +138,33 @@ li {
 		color-scheme: dark;
 	}
 }
+/* Style for mobile image */
+.spline img {
+	width: 100%; /* full width of the container */
+	height: auto; /* maintain aspect ratio */
+	display: none; /* hide by default, will be shown on mobile via media query */
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+	.spline canvas {
+		display: none; /* hide Spline on mobile */
+	}
+
+	.spline img {
+		display: block;
+		/*showimageonmobile*/
+		width: 300%;
+		height: 300%;
+		object-fit: cover;
+		//object-position: center;
+		transform: translate(-35%);
+		-webkit-transform: translate(-35%);
+		-moz-transform: translate(-35%);
+		-ms-transform: translate(-35%);
+		-o-transform: translate(-35%);
+	}
+}
+
+/* Rest of your existing CSS */
+/* ... */
