@@ -33,6 +33,35 @@ const App = ({ Component, pageProps }) => {
 					name="viewport"
 					content="initial-scale=1.0, width=device-width"
 				/>
+				<meta
+					property="og:title"
+					content="MyCasting - Your Chance"
+				/>
+				<meta
+					property="og:description"
+					content="MyCasting - Your Chance"
+				></meta>
+				<meta
+					property="og:image"
+					content="https://70bb-46-214-10-153.ngrok-free.app//opengraph-image.png"
+				/>
+				<meta
+					property="og:url"
+					content="https://70bb-46-214-10-153.ngrok-free.app/"
+				/>
+				<meta
+					property="og:image:type"
+					content="<article>"
+				/>
+				<meta
+					property="og:image:width"
+					content="1200"
+				/>
+				<meta
+					property="og:image:height"
+					content="630"
+				/>
+
 				<link
 					rel="icon"
 					href="/favicon.ico?"

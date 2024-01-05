@@ -23,7 +23,7 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
-		align-items: start;
+		align-items: flex-start;
 		margin-bottom: 1rem;
 
 		.logoSection {
@@ -44,7 +44,7 @@
 				}
 
 				a {
-					color: #fff; // Set anchor text color
+					color: #fff; 
 					text-decoration: none;
 					margin-bottom: 0.25rem;
 

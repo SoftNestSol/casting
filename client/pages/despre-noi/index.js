@@ -29,14 +29,12 @@ const AboutUs = () => {
 				/>
 				<div className={styles.gradient} />
 				<p className={styles.text}>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-					euismod, nisl eget aliquam ultricies, nunc nisl ultricies nunc, nec
-					aliquam nisl nisl nec nisl. Donec euismod, nisl eget aliquam
-					ultricies, nunc nisl ultricies nunc, nec aliquam nisl nisl nec nisl.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-					euismod, nisl eget aliquam ultricies, nunc nisl ultricies nunc, nec
-					aliquam nisl nisl nec nisl. Donec euismod, nisl eget aliquam
-					ultricies, nunc nisl ultricies nunc, nec aliquam nisl nisl nec nisl
+					Compania noastră se distinge pe piața castingului prin abordarea
+					inovatoare și dedicarea față de artiști. Ne mândrim cu faptul că
+					suntem prima companie de casting din Romania, in colaborare directă cu
+					China, lucrând îndeaproape cu echipe de filmare din China. Unicitatea
+					noastră nu constă doar în această conexiune internațională, ci și în
+					modul în care comunicăm și ascultăm fiecare actor.
 				</p>
 			</div>
 
@@ -49,14 +47,13 @@ const AboutUs = () => {
 				/>
 				<div className={styles.gradient} />
 				<p className={styles.text}>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-					euismod, nisl eget aliquam ultricies, nunc nisl ultricies nunc, nec
-					aliquam nisl nisl nec nisl. Donec euismod, nisl eget aliquam
-					ultricies, nunc nisl ultricies nunc, nec aliquam nisl nisl nec nisl.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-					euismod, nisl eget aliquam ultricies, nunc nisl ultricies nunc, nec
-					aliquam nisl nisl nec nisl. Donec euismod, nisl eget aliquam
-					ultricies, nunc nisl ultricies nunc, nec aliquam nisl nisl nec nisl
+					Istoricul companiei noastre, myCasting, este marcat de momente cheie
+					care reflectă angajamentul nostru față de inovație și creativitate.
+					Compania a fost fondată din dorința de a crea un spațiu unde
+					creativitatea poate fi celebrată și transformată în realitate, pe
+					micile sau marile ecrane. Am vrut să oferim fiecărui individ - fie că
+					este actor experimentat sau un entuziast al artei - oportunitatea de
+					a-și pune în valoare talentul și ideile.
 				</p>
 			</div>
 
@@ -69,14 +66,31 @@ const AboutUs = () => {
 				/>
 				<div className={styles.gradient} />
 				<p className={styles.text}>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-					euismod, nisl eget aliquam ultricies, nunc nisl ultricies nunc, nec
-					aliquam nisl nisl nec nisl. Donec euismod, nisl eget aliquam
-					ultricies, nunc nisl ultricies nunc, nec aliquam nisl nisl nec nisl.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-					euismod, nisl eget aliquam ultricies, nunc nisl ultricies nunc, nec
-					aliquam nisl nisl nec nisl. Donec euismod, nisl eget aliquam
-					ultricies, nunc nisl ultricies nunc, nec aliquam nisl nisl nec nisl
+					Ne angajăm să educăm artiștii, subliniind importanța exprimării libere
+					și a dialogului deschis, mai ales în situațiile dificile întâmpinate
+					în timpul filmărilor. Aceasta abordare centrată pe actor ne-a adus
+					aprecierea profundă din partea acestora în cele două proiecte majore
+					pe care le-am realizat, evidențiindu-ne ca o companie care pune cu
+					adevărat valoare pe bunăstarea și dezvoltarea profesională a
+					clienților noștri.
+				</p>
+			</div>
+
+			<div className={styles.fifthContainer}>
+				<Image
+					alt={"About us"}
+					src="/images/carousel/6.jpg"
+					width={1000}
+					height={1000}
+				/>
+				<div className={styles.gradient} />
+				<p className={styles.text}>
+					Un aspect distinctiv al companiei noastre este colaborarea cu China.
+					Această decizie a fost animată de dorința de a explora noi frontiere
+					în industria de entertainment și de a construi un pod cultural între
+					Est și Vest. Prin această colaborare unică, am reușit să aducem o nouă
+					perspectivă în cadrul proiectelor noastre și să oferim oportunități
+					unice actorilor noștri.
 				</p>
 			</div>
 		</>

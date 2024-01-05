@@ -4,6 +4,11 @@ import Link from "next/link";
 import styles from "../styles/footer/footer.module.scss"; // ensure the path is correct
 
 const Footer = () => {
+
+	const todayDate = new Date();
+	const year = todayDate.getFullYear();
+
+
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.footerContent}>
@@ -27,19 +32,19 @@ const Footer = () => {
 						<Link href="/portofoliu">Portofoliu</Link>
 					</div>
 					<div className={styles.address}>
-						<h5>Adresa</h5>
-						<p>str. Splaiul Independentei, nr 7A, București</p>
-						<p> Telefon: +40 723 982 119</p>
+						<h5>Contact</h5>
+						<p>Strada Splaiul Unirii nr. 80-82, etaj 1, Bucuresti</p>
+						<p> Telefon: +40 750429949</p>
 						<p>Email: contact@mycasting.ro </p>
 					</div>
 					<div className={styles.schedule}>
 						<h5>Program</h5>
-						<p>L-V | 11:00 - 19:00</p>
+						<p>L-V | 10:00 - 17:00</p>
 					</div>
 					<div className={styles.social}>{/* Social links go here */}</div>
 				</div>
 			</div>
-			<p>© 2021 MyCasting. Toate drepturile rezervate.</p>
+			<p>© {year} MyCasting. Toate drepturile rezervate.</p>
 			<div className={styles.footerBottom}>
 				<div className={styles.disputeSection}>
 					<Link href="https://anpc.ro/ce-este-sal/">
