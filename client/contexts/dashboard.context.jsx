@@ -10,7 +10,9 @@ export const DashboardContext = createContext({});
 export const useDashboardContext = () => {
 	const dashboardContext = useContext(DashboardContext);
 	if (!dashboardContext) {
-		throw new Error("useDashboardContext must be used within a DashboardContextProvider");
+		throw new Error(
+			"useDashboardContext must be used within a DashboardContextProvider"
+		);
 	}
 	return dashboardContext;
 };
@@ -35,6 +37,13 @@ export const DashboardContextProvider = ({ children }) => {
 			arr.push(doc.data());
 		});
 		return arr;
+	};
+
+	const resetAllFilters = () => {
+		setGenderFilter("");
+		setAgeRange({ min: null, max: null });
+		setHeightRange({ min: null, max: null });
+		setWeightRange({ min: null, max: null });
 	};
 
 	useEffect(() => {
@@ -63,13 +72,17 @@ export const DashboardContextProvider = ({ children }) => {
 		let filteredMembers = [...members];
 
 		if (genderFilter) {
-			filteredMembers = filteredMembers.filter((member) => member.gender === genderFilter);
+			filteredMembers = filteredMembers.filter(
+				(member) => member.gender === genderFilter
+			);
 		}
 
 		filteredMembers = filteredMembers.filter((member) => {
 			return (
-				(!ageRange.min || ComputeAge(member.dateOfBirth) >= Number(ageRange.min)) &&
-				(!ageRange.max || ComputeAge(member.dateOfBirth) <= Number(ageRange.max))
+				(!ageRange.min ||
+					ComputeAge(member.dateOfBirth) >= Number(ageRange.min)) &&
+				(!ageRange.max ||
+					ComputeAge(member.dateOfBirth) <= Number(ageRange.max))
 			);
 		});
 
@@ -114,8 +127,13 @@ export const DashboardContextProvider = ({ children }) => {
 		setHeightRange,
 		weightRange,
 		setWeightRange,
-		ComputeAge
+		ComputeAge,
+		resetAllFilters
 	};
 
-	return <DashboardContext.Provider value={contextValue}>{children}</DashboardContext.Provider>;
+	return (
+		<DashboardContext.Provider value={contextValue}>
+			{children}
+		</DashboardContext.Provider>
+	);
 };

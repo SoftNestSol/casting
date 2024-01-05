@@ -28,14 +28,15 @@ const App = ({ Component, pageProps }) => {
 	return (
 		<>
 			<Head>
-				<title>MyCasting</title>
+				<title>MyCasting - Your Chance</title>
 				<meta
 					name="viewport"
 					content="initial-scale=1.0, width=device-width"
 				/>
 				<link
 					rel="icon"
-					href="/favicon.ico"
+					href="/favicon.ico?"
+					type="image/x-icon"
 				/>
 				<link
 					rel="stylesheet"
@@ -76,7 +77,7 @@ const App = ({ Component, pageProps }) => {
 
 							<Component {...pageProps} />
 						</div>
-						<Footer/>
+						<Footer />
 					</DashboardContextProvider>
 				</CastingsContextProvider>
 			</AuthContextProvider>

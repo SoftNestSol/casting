@@ -42,20 +42,23 @@ const Footer = () => {
 			<p>© 2021 MyCasting. Toate drepturile rezervate.</p>
 			<div className={styles.footerBottom}>
 				<div className={styles.disputeSection}>
-				
-					<Image
-						src="/images/sal.png"
-						alt="Sal"
-						width={200}
-						height={50}
-					/>
+					<Link href="https://anpc.ro/ce-este-sal/">
+						<Image
+							src="/images/sal.png"
+							alt="Sal"
+							width={200}
+							height={50}
+						/>
+					</Link>
 
-					<Image
-						src="/images/sol.png"
-						alt="Sol"
-						width={200}
-						height={50}
-					/>
+					<Link href="https://anpc.ro/ce-este-sal/">
+						<Image
+							src="/images/sol.png"
+							alt="Sol"
+							width={200}
+							height={50}
+						/>
+					</Link>
 				</div>
 			</div>
 		</footer>

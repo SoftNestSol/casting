@@ -1,6 +1,6 @@
 @import "../colors.scss";
 .container {
-	margin-top: 5em;
+	margin-top: 6em;
 }
 
 .tableHeader {
@@ -46,4 +46,40 @@
 	font-weight: bold;
 	text-align: center;
 	margin: 0 auto;
+}
+
+
+.selection
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+	margin: 1em auto;
+
+}
+
+.logout
+{
+	background-color: $text-box;
+	color: white;
+	font-family: "Popins", sans-serif;
+	padding: 0.5em 1em;
+	
+}
+
+.search
+{
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+	gap: 1em;
+	margin: 2em 1em;
+}
+
+.button
+{
+	color: white;
+	font-family: "Popins", sans-serif;
+	background-color: $color-accent;
 }
