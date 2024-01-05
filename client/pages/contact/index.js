@@ -59,23 +59,22 @@ const Contact = () => {
 					<div className={styles.address}>
 						<h1>Adresa</h1>
 						<p className={styles.text}>
-							Strada 1 Decembrie 1918, nr. 12,{" "}
-							<span> 550009 Sibiu, Romania </span>{" "}
+							Strada Splaiul Unirii nr. 80-82 <span>Etaj 1, Bucuresti</span>{" "}
 						</p>
 					</div>
 
 					<div className={styles.schendule}>
 						<h2>Program</h2>
 						<p className={styles.text}>
-							Luni - Vineri: <span> 10:00 - 18:00 </span>{" "}
-							<span> Sambata: 10:00 - 14:00 </span>{" "}
+							Luni - Vineri: <span> 10:00 - 17:00 </span>{" "}
+							<span> Sambata: Inchis </span>{" "}
 						</p>
 					</div>
 				</div>
 
 				<div className={styles.mapContainer}>
 					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0318333092523!2d26.08833338847682!3d44.432509227112675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff41eff5cb87%3A0xbfb28c887b0e969b!2sSector%205%2C%20Bucharest%20030167!5e0!3m2!1sen!2sro!4v1703352547288!5m2!1sen!2sro"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1424.8181656663737!2d26.10977102591637!3d44.420107797960355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff1b82584185%3A0xe45711d9b408a16e!2sSplaiul%20Unirii%2080%2C%20Bucure%C8%99ti!5e0!3m2!1sro!2sro!4v1704497593509!5m2!1sro!2sro"
 						referrerPolicy="no-referrer-when-downgrade"
 						className={styles.map}
 						allowFullScreen=""
