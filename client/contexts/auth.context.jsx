@@ -21,8 +21,18 @@ export const AuthContext = createContext({});
 
 export const useAuthContext = () => {
 	const authContext = useContext(AuthContext);
-	if (!authContext) throw new Error("Something went wrong with the React Context API!");
+	if (!authContext)
+		throw new Error("Something went wrong with the React Context API!");
 	return authContext;
+};
+
+export const resizedName = (fileName) => {
+	const lastDotIndex = fileName.lastIndexOf(".");
+	const resizedName =
+		fileName.substring(0, lastDotIndex) +
+		"_600x800" +
+		fileName.substring(lastDotIndex);
+	return resizedName;
 };
 
 export const checkIfAdmin = async (uid) => {
@@ -51,7 +61,10 @@ export const AuthContextProvider = ({ children }) => {
 					router.push(`/profile/${user.uid}`);
 				}
 
-				if (router.pathname === "/profile/[uid]" && router.query.uid !== user.uid) {
+				if (
+					router.pathname === "/profile/[uid]" &&
+					router.query.uid !== user.uid
+				) {
 					router.push(`/profile/${user.uid}`);
 				}
 			} else {
@@ -76,9 +89,14 @@ export const AuthContextProvider = ({ children }) => {
 
 			const photos = await Promise.all(
 				userData.files.map(async (file) => {
-					const photoRef = ref(storage, `photos/${userCredential.user.uid}/${file.name}`);
+					const photoRef = ref(
+						storage,
+						`photos/${userCredential.user.uid}/${file.name}`
+					);
 					const snapshot = await uploadBytes(photoRef, file);
-					return getDownloadURL(snapshot.ref);
+					const url = await getDownloadURL(snapshot.ref);
+					console.log(url, resizedName(url));
+					return resizedName(url);
 				})
 			);
 
@@ -94,7 +112,9 @@ export const AuthContextProvider = ({ children }) => {
 			});
 
 			setCurrentUser(userCredential.user);
+
 			router.push(`/profile/${userCredential.user.uid}`);
+			router.reload();
 		} catch (error) {
 			console.error(error);
 		}
@@ -102,7 +122,11 @@ export const AuthContextProvider = ({ children }) => {
 
 	const signIn = async (email, password) => {
 		try {
-			const userCredential = await signInWithEmailAndPassword(auth, email, password);
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
 			setCurrentUser(userCredential.user);
 
 			const isAdmin = await checkIfAdmin(userCredential.user.uid);
@@ -129,7 +153,10 @@ export const AuthContextProvider = ({ children }) => {
 
 	const changePassword = async (currentPassword, newPassword) => {
 		try {
-			const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
+			const credential = EmailAuthProvider.credential(
+				currentUser.email,
+				currentPassword
+			);
 			await reauthenticateWithCredential(currentUser, credential);
 			await updatePassword(currentUser, newPassword);
 		} catch (error) {
@@ -148,7 +175,8 @@ export const AuthContextProvider = ({ children }) => {
 		signIn,
 		logout,
 		changePassword,
-		checkIfAdmin
+		checkIfAdmin,
+		resizedName
 	};
 
 	return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;

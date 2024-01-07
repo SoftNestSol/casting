@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { deleteObject, getDownloadURL, ref, refFromURL, uploadBytes } from "firebase/storage";
+import {
+	deleteObject,
+	getDownloadURL,
+	ref,
+	refFromURL,
+	uploadBytes
+} from "firebase/storage";
 
 import { useAuthContext } from "../../contexts/auth.context";
 import { db, storage } from "../../config/firebase";
@@ -44,7 +50,8 @@ const ProfilePage = () => {
 	const router = useRouter();
 	const { uid } = router.query;
 
-	const { currentUser, loading, logout, changePassword } = useAuthContext();
+	const { currentUser, loading, logout, changePassword, resizedName } =
+		useAuthContext();
 
 	useEffect(() => {
 		if (!currentUser || !uid || currentUser.uid !== uid) return;
@@ -96,7 +103,10 @@ const ProfilePage = () => {
 	};
 
 	const handleSecurityInputChange = (event) => {
-		setSecurityData({ ...securityData, [event.target.name]: event.target.value });
+		setSecurityData({
+			...securityData,
+			[event.target.name]: event.target.value
+		});
 	};
 
 	const handleFormSubmit = async (event) => {
@@ -114,13 +124,17 @@ const ProfilePage = () => {
 					profileData.files.map(async (file) => {
 						const photoRef = ref(storage, `photos/${uid}/${file.name}`);
 						const snapshot = await uploadBytes(photoRef, file);
-						return getDownloadURL(snapshot.ref);
+						const url = await getDownloadURL(snapshot.ref);
+
+						return resizedName(url);
 					})
 				);
 
 				delete profileData.files;
 
-				profileData.photos.forEach((photo) => photo.startsWith("https://") && photos.push(photo));
+				profileData.photos.forEach(
+					(photo) => photo.startsWith("https://") && photos.push(photo)
+				);
 
 				initialPhotos.forEach(async (photo) => {
 					if (!photos.includes(photo)) {
@@ -141,7 +155,10 @@ const ProfilePage = () => {
 				if (securityData.newPassword !== securityData.confirmPassword)
 					return alert("Parolele nu sunt identice!");
 
-				await changePassword(securityData.currentPassword, securityData.newPassword);
+				await changePassword(
+					securityData.currentPassword,
+					securityData.newPassword
+				);
 				setSecurityData(securityDataInitialState);
 
 				alert("Parola a fost schimbata cu succes!");
@@ -341,7 +358,9 @@ const ProfilePage = () => {
 										<input
 											id="spokenLanguages"
 											name="spokenLanguages"
-											onChange={(event) => handleSpokenLanguagesInputChange(event, index)}
+											onChange={(event) =>
+												handleSpokenLanguagesInputChange(event, index)
+											}
 											required
 											type="text"
 											value={language}
