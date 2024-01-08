@@ -96,7 +96,7 @@ const App = ({ Component, pageProps }) => {
 							<div className={`spline-mobile ${isLandingPage ? "" : "hidden"}`}>
 								<img
 									className="splineImage"
-									src="/images/splineImg.png"
+									src="/images/splineImg.jpg"
 									alt="Mobile Image"
 									// layout="responsive"
 									// width={800} // Adjust as needed
