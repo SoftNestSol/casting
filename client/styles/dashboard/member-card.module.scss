@@ -1,4 +1,5 @@
 @import "../colors.scss";
+
 .container {
 	margin-top: 6em;
 }
@@ -30,56 +31,66 @@
 
 .profilePhoto {
 	width: 5em;
-	height: 5em;
-	border-radius: 50%;
-	object-fit: cover;
-	object-position: center;
-	box-sizing: border-box;
+	height: 5em; // Asumând că acesta este stilul pentru profil
+	// Restul stilurilor pentru .profilePhoto
 }
 
-.memberDetail {
-	text-align: left;
+@media (max-width: 1024px) {
+	.tableHeader {
+		display: none;
+	}
+	.memberCard {
+		gap: 10vw;
+	}
 }
 
-.header {
-	font-size: 1.5em;
-	font-weight: bold;
-	text-align: center;
-	margin: 0 auto;
+@media (max-width: 768px) {
+	.tableHeader,
+	.memberCard {
+		flex-direction: column;
+		gap: 1em;
+	}
+
+	.profilePhoto {
+		width: 4em;
+		height: 4em;
+	}
 }
 
+@media (max-width: 600px) {
+	.container {
+		margin-top: 4em;
+	}
 
-.selection
-{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 2em;
-	margin: 1em auto;
+	.tableHeader,
+	.memberCard {
+		width: 95%;
+	}
 
-}
+	.profilePhoto {
+		width: 3.5em;
+		height: 3.5em;
+	}
 
-.logout
-{
-	background-color: $text-box;
-	color: white;
-	font-family: "Popins", sans-serif;
-	padding: 0.5em 1em;
-	
-}
+	.memberCard {
+		display: flex;
+		flex-direction: row; // Schimbă direcția în row pentru mobil
+		align-items: center; // Alinează elementele vertical
+		justify-content: space-between; // Distribuie spațiu între poza de profil și text
 
-.search
-{
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-start;
-	gap: 1em;
-	margin: 2em 1em;
-}
+		.profilePhoto {
+			// Ajustează dimensiunile dacă este necesar
+			width: 4em;
+			height: 4em;
+		}
 
-.button
-{
-	color: white;
-	font-family: "Popins", sans-serif;
-	background-color: $color-accent;
+		.textContent {
+			// Asumând că textul este într-o diviziune cu clasa textContent
+			display: flex;
+			flex-direction: column; // Textul va fi aranjat vertical
+			align-items: flex-start; // Alinează textul la stânga
+			gap: 0.5em; // Spațiu între elementele textuale
+			// Alte stiluri necesare pentru text
+		}
+	}
 }
