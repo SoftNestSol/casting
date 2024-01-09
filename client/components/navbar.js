@@ -42,6 +42,10 @@ const Navbar = () => {
 
 				<ul>
 					<li>
+						<Link href="/servicii">Servicii</Link>
+					</li>
+
+					<li>
 						<Link href="/castings">Castinguri</Link>
 					</li>
 
@@ -64,6 +68,9 @@ const Navbar = () => {
 
 					<li>
 						<Link href="/contact">Contact</Link>
+					</li>
+					<li>
+						<Link href="/servicii">Limba</Link>
 					</li>
 				</ul>
 

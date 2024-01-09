@@ -30,11 +30,11 @@ const AboutUs = () => {
 				<div className={styles.gradient} />
 				<p className={styles.text}>
 					Compania noastră se distinge pe piața castingului prin abordarea
-					inovatoare și dedicarea față de artiști. Ne mândrim cu faptul că
-					suntem prima companie de casting din Romania, in colaborare directă cu
-					China, lucrând îndeaproape cu echipe de filmare din China. Unicitatea
-					noastră nu constă doar în această conexiune internațională, ci și în
-					modul în care comunicăm și ascultăm fiecare actor.
+					inovatoae și dedicarea față de artiști. Ne dorim ca această colaborare
+					internațională să vă ofere șansa unor experiențe unice și diferite în
+					carierele voastre ca actori. Unicitatea noastră nu constă doar în
+					această conexiune internațională pe care o avem cu echipele din China
+					, ci și în modul în care comunicăm și ascultăm fiecare actor.
 				</p>
 			</div>
 

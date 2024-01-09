@@ -18,7 +18,7 @@ const slides = [
 	{
 		title: "Casting Modele",
 		description:
-			"Filmele, videoclipurile muzicale, reclamele, campaniile foto și multe alte producții creative caută persoane cu experiență în modelling. Lumea frumuseții devine din ce în ce mai incluzivă, iar apelurile pentru apariții diverse se extind în cele din urmă! Prin urmare, vă invităm pe toți cei care aveți ambiții și experiențe în modelling să vă depuneți candidaturile și să creșteți alături de noi la MyCasting!",
+			"Filmele, videoclipurile muzicale, reclamele, campaniile foto și multe alte producții creative caută persoane cu experiență în modelling. Lumea frumuseții devine din ce în ce mai incluzivă, iar apelurile pentru apariții diverse se extind în cele din urmă! Prin urmare, vă invităm pe toți cei care aveți ambiții și experiențe în modelling să vă alăturați echipei noastre și să creșteți alături de noi la MyCasting!",
 		image: "/images/carousel/3.jpg"
 	},
 	{
@@ -36,7 +36,7 @@ const slides = [
 	{
 		title: "Portofolii profesionale",
 		description:
-			"Indiferent dacă sunteți actor, model, muzician sau aspirant în industria filmului, vă așteptăm la studio-ul nostru pentru fotografii profesionale gratuite. Ideal pentru cei fără portrete profesionale sau care doresc să le reîmprospăteze. Contactați-ne pentru o programare și veniți să ne cunoașteți la sediu, îmbunătățind astfel portofoliul vostru.",
+			"Indiferent dacă sunteți actor, model, muzician sau aspirant în industria filmului, vă așteptăm la studio-ul nostru pentru fotografii profesionale. Ideal pentru cei fără portrete profesionale sau care doresc să le reîmprospăteze. Contactați-ne pentru o programare și veniți să ne cunoașteți la sediu, îmbunătățind astfel portofoliul vostru.",
 		image: "/images/carousel/6.jpg"
 	}
 	// ...other slides
@@ -46,7 +46,9 @@ const Carousel = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const goToPrevSlide = () => {
-		setActiveIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+		setActiveIndex(
+			(prevIndex) => (prevIndex - 1 + slides.length) % slides.length
+		);
 	};
 
 	const goToNextSlide = () => {
@@ -55,13 +57,16 @@ const Carousel = () => {
 
 	return (
 		<div className={styles.carousel}>
+			<h1>CU CE NE OCUPĂM</h1>
 			<div
 				className={styles.carouselInner}
 				style={{ transform: `translateX(-${activeIndex * 100}%)` }}
 			>
 				{slides.map((slide, index) => (
 					<div
-						className={`${styles.carouselItem} ${index === activeIndex ? styles.active : ""}`}
+						className={`${styles.carouselItem} ${
+							index === activeIndex ? styles.active : ""
+						}`}
 						key={index}
 					>
 						<div className={styles.card}>
@@ -100,7 +105,9 @@ const Carousel = () => {
 				{slides.map((_, index) => (
 					<span
 						key={index}
-						className={`${styles.indicator} ${index === activeIndex ? styles.active : ""}`}
+						className={`${styles.indicator} ${
+							index === activeIndex ? styles.active : ""
+						}`}
 						onClick={() => setActiveIndex(index)}
 					></span>
 				))}

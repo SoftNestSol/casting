@@ -4,6 +4,16 @@
 	// color: #fff;
 	padding: 3rem 3rem;
 	pointer-events: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	h1 {
+		font-size: 1.6em;
+		font-weight: 400;
+		margin-top: 3em;
+		margin-bottom: 3em;
+	}
 }
 
 .wrapper {
@@ -33,7 +43,12 @@
 	width: fit-content;
 	padding: 0.5rem 4rem;
 	font-size: 1.5rem;
-	background: radial-gradient(75% 300% at 50% 50%, hwb(45 37% 25%) 0%, #000 100%, #000 100%);
+	background: radial-gradient(
+		75% 300% at 50% 50%,
+		hwb(45 37% 25%) 0%,
+		#000 100%,
+		#000 100%
+	);
 	text-align: center; /* Center text horizontally */
 	display: flex; /* Use flexbox to align text */
 	justify-content: center; /* Center text horizontally in flexbox */

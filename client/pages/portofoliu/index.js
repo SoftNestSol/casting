@@ -27,11 +27,12 @@ const Projects = () => {
 				<h1>Proiectele</h1>
 				<h1>Noastre</h1>
 				<p>
-					Talentul apare în fiecare persoană, indiferent de vârstă, sex, etnie sau naționalitate.
-					Tot ce trebuie să facem este să privim cu atenție și să-l îmbrățișăm. Asta facem la
-					MyCasting. Găsim talente de orice fel pentru proiecte creative. Oferim o colaborare
-					fiabilă, eficientă și de succes pentru studiouri și un spațiu creativ, sigur pentru actori
-					să experimenteze, să învețe și să-și atingă obiectivele.
+					Talentul este în fiecare persoană , indiferent de vârstă, sex, etnie
+					sau naționalitate, iar obiectul principal al echipei myCasting este de
+					a-l pune în evidență și de a-l valorfiica. Noi suntem detectivi în
+					căutarea talentelor din fiecare dintre voi. Oferim o colaborare
+					fiabilă, eficientă și de succes pentru cei ce se înscriu în baza
+					noastră de date și își oferă șansa unor noi oportunități .
 				</p>
 			</div>
 
