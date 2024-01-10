@@ -38,7 +38,9 @@ const ProjectCard = ({ title, description, type, imageUrls, reverse }) => {
 					{/* Display the first image or a placeholder if no images are provided */}
 					<Image
 						src={
-							imageUrls.length > 0 ? imageUrls[0] : "/path/to/placeholder.jpg"
+							imageUrls && imageUrls.length > 0
+								? imageUrls[0]
+								: "/path/to/placeholder.jpg"
 						}
 						alt={title}
 						className={styles.projectImage}
@@ -67,16 +69,17 @@ const ProjectCard = ({ title, description, type, imageUrls, reverse }) => {
 				</button>{" "}
 				{/* Close button */}
 				<div className={styles.modalContent}>
-					{imageUrls.map((url, index) => (
-						<Image
-							key={index}
-							src={url}
-							alt={`${title} image ${index + 1}`}
-							layout="responsive"
-							width={500}
-							height={500}
-						/>
-					))}
+					{imageUrls &&
+						imageUrls.map((url, index) => (
+							<Image
+								key={index}
+								src={url}
+								alt={`${title} image ${index + 1}`}
+								layout="responsive"
+								width={500}
+								height={500}
+							/>
+						))}
 				</div>
 			</Modal>
 		</>

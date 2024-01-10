@@ -69,8 +69,9 @@ const Navbar = () => {
 					<li>
 						<Link href="/contact">Contact</Link>
 					</li>
+
 					<li>
-						<Link href="/servicii">Limba</Link>
+						<Link href="/">Limba</Link>
 					</li>
 				</ul>
 
@@ -90,6 +91,10 @@ const Navbar = () => {
 			<div className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`}>
 				<ul>
 					<li>
+						<Link href="/servicii">Servicii</Link>
+					</li>
+
+					<li>
 						<Link href="/castings">Castinguri</Link>
 					</li>
 
@@ -103,6 +108,10 @@ const Navbar = () => {
 
 					<li>
 						<Link href="/contact">Contact</Link>
+					</li>
+
+					<li>
+						<Link href="/">Limba</Link>
 					</li>
 				</ul>
 			</div>
