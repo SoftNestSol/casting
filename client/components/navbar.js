@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa6";
 import { HiMenu } from "react-icons/hi";
-
+import LanguageSwitcher from "./langSwithcer";
 import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 
 import styles from "../styles/navbar.module.scss";
@@ -71,7 +71,7 @@ const Navbar = () => {
 					</li>
 
 					<li>
-						<Link href="/">Limba</Link>
+						<LanguageSwitcher />
 					</li>
 				</ul>
 
