@@ -5,23 +5,24 @@ import Frame from "../public/frame.svg";
 import MyImage from "../public/images/CTAimage.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { FormattedMessage } from "react-intl";
+
 const CTA = () => {
 	return (
 		<div className={styles.sectionContainer}>
-			<h1>ÎNSCRIE-TE ÎN BAZA DE DATE</h1>
+			<h1>
+				<FormattedMessage id="cta_title" />
+			</h1>
 			<div className={styles.wrapper}>
 				<div className={styles.textContent}>
 					<p className={styles.description}>
-						Suntem o agenție proaspătă și ne dorim să ne diferențiem prin
-						comunicarea deschisă cu viitorii noștri actori. Aici găsești
-						proiectele perfecte pentru tine și poți discuta liber despre nevoile
-						și dorințele tale.
+						<FormattedMessage id="cta_description" />
 					</p>
 					<Link
 						className={styles.applyButton}
 						href="/register"
 					>
-						APLICĂ ACUM
+						<FormattedMessage id="apply_now" />
 					</Link>
 				</div>
 				<div className={styles.imageContainer}>

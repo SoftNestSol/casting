@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import styles from "../../styles/servicii/servicii.module.scss";
-
+import { FormattedMessage } from "react-intl";
 const services = [
 	{
 		title: "Casting Actori",
@@ -46,8 +46,9 @@ const Services = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.top_section}>
-				<h1>Serviciile</h1>
-				<h1>Noastre</h1>
+				<h1>
+					<FormattedMessage id="services_title" />
+				</h1>
 			</div>
 
 			<div className={styles.services}>
@@ -64,8 +65,12 @@ const Services = () => {
 							/>
 						</div>
 						<div className={styles.service_text}>
-							<h2>{service.title}</h2>
-							<p>{service.description}</p>
+							<h2>
+								<FormattedMessage id={`service_${index + 1}_title`} />
+							</h2>
+							<p>
+								<FormattedMessage id={`service_${index + 1}_description`} />
+							</p>
 						</div>
 					</div>
 				))}

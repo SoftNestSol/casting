@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/landing-page/Carousel.module.scss";
 import Image from "next/image";
+import { FormattedMessage } from "react-intl";
 
 const slides = [
 	{
@@ -57,7 +58,9 @@ const Carousel = () => {
 
 	return (
 		<div className={styles.carousel}>
-			<h1>CU CE NE OCUPĂM</h1>
+			<h1>
+				<FormattedMessage id="what_we_do" />
+			</h1>
 			<div
 				className={styles.carouselInner}
 				style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -71,8 +74,12 @@ const Carousel = () => {
 					>
 						<div className={styles.card}>
 							<div className={styles.text}>
-								<h2 className={styles.title}>{slide.title}</h2>
-								<p className={styles.description}>{slide.description}</p>
+								<h2 className={styles.title}>
+									<FormattedMessage id={`service_${index + 1}_title`} />
+								</h2>
+								<p className={styles.description}>
+									<FormattedMessage id={`service_${index + 1}_description`} />
+								</p>
 							</div>
 							<div className={styles.imageWrapper}>
 								<Image
