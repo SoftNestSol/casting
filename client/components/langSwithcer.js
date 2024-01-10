@@ -1,26 +1,26 @@
 import React from "react";
 import { useRouter } from "next/router";
-import styles from "../styles/navbar.module.scss"; // Schimbă cu calea către fișierul tău SCSS
+import { GrLanguage } from "react-icons/gr";
+
+import styles from "../styles/navbar.module.scss";
 
 export default function LanguageSwitcher() {
 	const router = useRouter();
-	const { locale, locales, asPath } = router;
+	const { locale, asPath } = router;
 
-	const changeLanguage = (newLocale) => {
+	const changeLanguage = () => {
+		const newLocale = locale === "ro" ? "en" : "ro";
 		router.push(asPath, asPath, { locale: newLocale });
 	};
 
 	return (
-		<div className={styles.languageSwitcher}>
-			{locales.map((lang) => (
-				<button
-					key={lang}
-					onClick={() => changeLanguage(lang)}
-					className={locale === lang ? styles.active : ""}
-				>
-					{lang.toUpperCase()}
-				</button>
-			))}
+		<div
+			className={styles.language_switcher}
+			onClick={changeLanguage}
+		>
+			<span>
+				<GrLanguage />
+			</span>
 		</div>
 	);
 }

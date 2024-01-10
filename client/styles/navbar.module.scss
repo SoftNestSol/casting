@@ -1,9 +1,9 @@
 @import "colors.scss";
 
 .container {
-	position: absolute;
+	position: fixed;
 	top: 0;
-	z-index: 2;
+	z-index: 100;
 
 	width: 100%;
 
@@ -41,6 +41,10 @@
 		display: flex;
 		align-items: center;
 		gap: 4rem;
+
+		span {
+			visibility: hidden;
+		}
 
 		li {
 			list-style: none;
@@ -80,20 +84,26 @@
 		}
 	}
 
-	.profile {
+	.buttons {
 		position: absolute;
 		top: 50%;
 		right: 3rem;
 		transform: translateY(-50%);
+		display: flex;
+		gap: 2rem;
 
-		font-size: 1.5rem;
+		.profile,
+		.language_switcher {
+			a,
+			span {
+				font-size: 1.5rem;
+				display: flex;
+				transition: color 100ms ease-in-out;
+				cursor: pointer;
 
-		a {
-			display: flex;
-			transition: color 100ms ease-in-out;
-
-			&:hover {
-				color: #bfa75d;
+				&:hover {
+					color: #bfa75d;
+				}
 			}
 		}
 	}
@@ -124,7 +134,7 @@
 		position: fixed;
 		top: 4.5rem;
 		left: 0;
-		z-index: 1;
+		z-index: 99;
 
 		width: 100%;
 		height: calc(100vh - 4.5rem);
@@ -165,26 +175,9 @@
 			left: 2rem;
 		}
 
-		.profile {
+		.buttons {
 			right: 2rem;
-		}
-	}
-}
-.languageSwitcher {
-	button {
-		background: none;
-		border: none;
-		cursor: pointer;
-		margin: 0 5px;
-		padding: 5px 10px;
-		border-radius: 5px;
-
-		&:hover {
-			background-color: #f0f0f0;
-		}
-
-		&.active {
-			background-color: #ddd;
+			gap: 1rem;
 		}
 	}
 }

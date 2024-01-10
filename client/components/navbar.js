@@ -71,20 +71,26 @@ const Navbar = () => {
 					</li>
 
 					<li>
-						<LanguageSwitcher />
+						<span>Invisible</span>
 					</li>
 				</ul>
 
-				<div className={styles.profile}>
-					{currentUser ? (
-						<Link href={isAdmin ? `/dashboard` : `/profile/${currentUser.uid}`}>
-							<FaUser />
-						</Link>
-					) : (
-						<Link href="/login">
-							<FaUser />
-						</Link>
-					)}
+				<div className={styles.buttons}>
+					<LanguageSwitcher />
+
+					<div className={styles.profile}>
+						{currentUser ? (
+							<Link
+								href={isAdmin ? `/dashboard` : `/profile/${currentUser.uid}`}
+							>
+								<FaUser />
+							</Link>
+						) : (
+							<Link href="/login">
+								<FaUser />
+							</Link>
+						)}
+					</div>
 				</div>
 			</div>
 
@@ -108,10 +114,6 @@ const Navbar = () => {
 
 					<li>
 						<Link href="/contact">Contact</Link>
-					</li>
-
-					<li>
-						<Link href="/">Limba</Link>
 					</li>
 				</ul>
 			</div>
