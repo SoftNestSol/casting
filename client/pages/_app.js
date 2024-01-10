@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { AuthContextProvider } from "../contexts/auth.context";
 import { CastingsContextProvider } from "../contexts/castings.context";
 import Navbar from "../components/navbar";
@@ -10,11 +10,26 @@ import Head from "next/head";
 import Footer from "../components/footer";
 import Image from "next/image";
 import { DashboardContextProvider } from "../contexts/dashboard.context";
+
+import { IntlProvider } from "react-intl";
+import en from "../i18n/en.json";
+import ro from "../i18n/ro.json";
+
+const messages = {
+	en,
+	ro
+};
+function getDirection(locale) {
+	return "itr";
+}
+
 const App = ({ Component, pageProps }) => {
 	const router = useRouter();
 	const [showLoading, setShowLoading] = useState(true);
 	const [isMobile, setIsMobile] = useState(false);
 	const isLandingPage = router.pathname === "/";
+
+	const { locale } = useRouter();
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -66,8 +81,12 @@ const App = ({ Component, pageProps }) => {
 									// height={800} // Adjust as needed
 								/>
 							</div>
-
-							<Component {...pageProps} />
+							<IntlProvider
+								locale={locale}
+								messages={messages[locale]}
+							>
+								<Component {...pageProps} />
+							</IntlProvider>
 						</div>
 						<Footer />
 					</DashboardContextProvider>

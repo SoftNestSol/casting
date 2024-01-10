@@ -7,7 +7,14 @@ import styles from "../styles/landing-page/landing-page.module.scss";
 import React, { Suspense } from "react";
 import Link from "next/link";
 
-export default function LandingPage() {
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
+
+export default function LandingPage({ dir }) {
+	const { locales } = useRouter();
+	const intl = useIntl();
+
+	const test = intl.formatMessage({ id: "test" });
 	return (
 		<div>
 			<Head>
@@ -33,32 +40,49 @@ export default function LandingPage() {
 						>
 							APLICĂ ACUM
 						</Link>
+						<div>
+							{[...locales].sort().map((locale) => (
+								<Link
+									key={locale}
+									href="/"
+									locale={locale}
+								>
+									<div>{locale}</div>
+								</Link>
+							))}
+						</div>
 					</div>
 					<div className={styles.hero_text}>
 						<h1>
 							<span>Your</span> <span>Chance</span>
 						</h1>
 						<h2>MY CASTING</h2>
+						<h2>{test}</h2>
 						<div className={styles.hero_cards}>
 							<div className={styles.card}>
 								<h1>Spațiul dedicat creației și inspirației infinite.</h1>
 								<p>
-									Vrem ca atât tu, cât și noi, să avem o experiență plăcută și unică în fiecare
-									proiect în care colaborăm.
+									Vrem ca atât tu, cât și noi, să avem o experiență plăcută și
+									unică în fiecare proiect în care colaborăm.
 								</p>
 							</div>
 							<div className={styles.card}>
 								<h1>Colaborări Vaste și Diverse</h1>
 								<p>
-									Avem proiecte de colaborare atât cu firme de producție internaționale/nationale,
-									cât și proiecte individuale cu producție proprie.
+									Avem proiecte de colaborare atât cu firme de producție
+									internaționale/nationale, cât și proiecte individuale cu
+									producție proprie.
 								</p>
 							</div>
 							<div className={styles.card}>
 								<h1>
-									Casa creativității, unde artiștii își pot aduce ideile pe ecran alături de noi
+									Casa creativității, unde artiștii își pot aduce ideile pe
+									ecran alături de noi
 								</h1>
-								<p>Dacă ai o idee și nu știi cum să o pui în practică, suntem aici să te ajutăm</p>
+								<p>
+									Dacă ai o idee și nu știi cum să o pui în practică, suntem
+									aici să te ajutăm
+								</p>
 							</div>
 						</div>
 					</div>
