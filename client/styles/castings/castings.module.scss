@@ -108,6 +108,15 @@
 			}
 		}
 	}
+
+	.no_castings {
+		margin-top: 5rem;
+		text-align: center;
+
+		h2 {
+			font-size: 1.5rem;
+		}
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -138,6 +147,12 @@
 					width: calc(100% - 25px);
 					padding: 1rem;
 				}
+			}
+		}
+
+		.no_castings {
+			h2 {
+				font-size: 1.25rem;
 			}
 		}
 	}
