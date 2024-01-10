@@ -72,7 +72,7 @@
 	top: 5.75em;
 	left: 6.6em;
 	width: 76%;
-	height: 67%;
+	height: 67.2%;
 	object-fit: cover;
 }
 @media screen and (max-width: 1000px) {
@@ -83,6 +83,9 @@
 
 	.imageContainer {
 		width: unset;
+		.CTAimage {
+			width: 67.5%;
+		}
 	}
 
 	.textContent {
