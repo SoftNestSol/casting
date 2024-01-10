@@ -4,8 +4,14 @@
 	background-color: #141414;
 	display: flex;
 	margin-top: 4rem;
+	margin-bottom: 4rem;
 	overflow: hidden;
+	cursor: pointer;
+	transition: box-shadow 0.3s ease; // Smooth transition for the hover effect
 
+	&:hover {
+		box-shadow: 0 0 55px 0px hsla(41, 46%, 52%, 0.514);
+	}
 	&.projectCardReverse {
 		flex-direction: row-reverse;
 	}
@@ -105,4 +111,75 @@
 			font-size: 1.5rem;
 		}
 	}
+}
+.modal {
+	background-color: rgba(0, 0, 0, 0.9); // Transparent black background
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.modalContent {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr); // Four columns by default
+	gap: 10px;
+	padding: 20px;
+	max-height: 70vh; // Maximum height before scrolling
+	overflow-y: auto; // Enables vertical scrolling
+	height: 100%;
+	img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		transition:
+			transform 0.3s ease,
+			z-index 0.3s ease;
+		z-index: 1; // Ensure images are above the grid background
+
+		&:hover {
+			transform: scale(1.1);
+			//Scaleuponhoverz-index: 2;
+			//Bringthehoveredimageaboveothersobject-fit: contain;
+			//Maintainaspectratioonhover:;
+			-webkit-transform: scale(1.1);
+			-moz-transform: scale(1.1);
+			-ms-transform: scale(1.1);
+			-o-transform: scale(1.1);
+			z-index: 2;
+		}
+	}
+}
+
+// Responsive adjustments for smaller screens
+@media screen and (max-width: 800px) {
+	.modalContent {
+		grid-template-columns: repeat(3, 1fr); // Three columns for medium screens
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.modalContent {
+		grid-template-columns: repeat(2, 1fr); // Two columns for small screens
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.modalContent {
+		grid-template-columns: 1fr; // One column for very small screens
+	}
+}
+
+.closeButton {
+	position: absolute;
+	top: 40px;
+	right: 10px;
+	z-index: 3000;
+	background: transparent;
+	border: none;
+	color: white; // Adjust color as needed
+	font-size: 5rem;
+	//1 px border
+	-webkit-text-stroke: 1px black;
+	cursor: pointer;
 }
