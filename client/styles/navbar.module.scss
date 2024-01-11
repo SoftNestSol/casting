@@ -94,8 +94,12 @@
 
 		.profile,
 		.language_switcher {
+			display: flex;
+			align-items: center;
+
 			a,
 			span {
+				position: relative;
 				font-size: 1.5rem;
 				display: flex;
 				transition: color 100ms ease-in-out;
@@ -104,6 +108,10 @@
 				&:hover {
 					color: #bfa75d;
 				}
+			}
+
+			span {
+				display: inline-block;
 			}
 		}
 	}

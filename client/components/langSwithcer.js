@@ -1,6 +1,6 @@
 import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import { GrLanguage } from "react-icons/gr";
 
 import styles from "../styles/navbar.module.scss";
 
@@ -19,7 +19,21 @@ export default function LanguageSwitcher() {
 			onClick={changeLanguage}
 		>
 			<span>
-				<GrLanguage />
+				{locale === "ro" ? (
+					<Image
+						alt="RO"
+						src="/romania-flag.png"
+						width={30}
+						height={30}
+					/>
+				) : (
+					<Image
+						alt="EN"
+						src="/usa-flag.png"
+						width={30}
+						height={30}
+					/>
+				)}
 			</span>
 		</div>
 	);
