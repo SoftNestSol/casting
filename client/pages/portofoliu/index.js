@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "../../styles/projects/projects.module.scss";
 import ProjectCard from "./project-card";
+import { FormattedMessage } from "react-intl";
 
 const projects = [
 	{
@@ -34,15 +35,14 @@ const Projects = () => {
 	return (
 		<>
 			<div className={styles.heading_text}>
-				<h1>Proiectele</h1>
-				<h1>Noastre</h1>
+				<h1>
+					<FormattedMessage id="projects_title" />
+				</h1>
+				<h1>
+					<FormattedMessage id="projects_title_2" />
+				</h1>
 				<p>
-					Talentul este în fiecare persoană , indiferent de vârstă, sex, etnie
-					sau naționalitate, iar obiectul principal al echipei myCasting este de
-					a-l pune în evidență și de a-l valorfiica. Noi suntem detectivi în
-					căutarea talentelor din fiecare dintre voi. Oferim o colaborare
-					fiabilă, eficientă și de succes pentru cei ce se înscriu în baza
-					noastră de date și își oferă șansa unor noi oportunități .
+					<FormattedMessage id="projects_description" />
 				</p>
 			</div>
 

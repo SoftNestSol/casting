@@ -20,7 +20,7 @@ const Login = () => {
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
 				<div className={styles.top_section}>
-					<h1 className={styles.title}>Autentifica-te</h1>
+					<h1 className={styles.title}>Autentifică-te</h1>
 				</div>
 
 				<form onSubmit={handleFormSubmit}>
@@ -35,7 +35,7 @@ const Login = () => {
 							value={email}
 						/>
 
-						<label htmlFor="password">Parola</label>
+						<label htmlFor="password">Parolă</label>
 						<input
 							id="password"
 							name="password"

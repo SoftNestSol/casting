@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa6";
 import { HiMenu } from "react-icons/hi";
-import LanguageSwitcher from "./langSwithcer";
+import GoogleTranslate from "./google-translate";
 import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 
 import styles from "../styles/navbar.module.scss";
@@ -67,7 +67,7 @@ const Navbar = () => {
 					</li>
 
 					<li>
-						<Link href="/contact">Contact</Link>
+						<Link href="/contact">Contacteaza-ne</Link>
 					</li>
 
 					<li>
@@ -76,7 +76,7 @@ const Navbar = () => {
 				</ul>
 
 				<div className={styles.buttons}>
-					<LanguageSwitcher />
+					<GoogleTranslate />
 
 					<div className={styles.profile}>
 						{currentUser ? (

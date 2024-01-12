@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAuthContext } from "../../contexts/auth.context";
 
 import styles from "../../styles/auth/auth.module.scss";
+import { FormattedMessage } from "react-intl";
 
 const userDataInitialState = {
 	name: "",
@@ -72,12 +73,16 @@ const Register = () => {
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
 				<div className={styles.top_section}>
-					<h1>Inregistreaza-te</h1>
+					<h1>
+						<FormattedMessage id="create_account" />
+					</h1>
 				</div>
 
 				<form onSubmit={handleFormSubmit}>
 					<div className={styles.fields}>
-						<label htmlFor="name">Nume</label>
+						<label htmlFor="name">
+							<FormattedMessage id="name" />
+						</label>
 						<input
 							id="name"
 							name="name"
@@ -87,7 +92,9 @@ const Register = () => {
 							value={userData.name}
 						/>
 
-						<label htmlFor="email">Email</label>
+						<label htmlFor="email">
+							<FormattedMessage id="email" />
+						</label>
 						<input
 							id="email"
 							name="email"
@@ -97,7 +104,9 @@ const Register = () => {
 							value={userData.email}
 						/>
 
-						<label htmlFor="phoneNumber">Telefon</label>
+						<label htmlFor="phoneNumber">
+							<FormattedMessage id="phone" />
+						</label>
 						<input
 							id="phoneNumber"
 							name="phoneNumber"
@@ -107,7 +116,9 @@ const Register = () => {
 							value={userData.phoneNumber}
 						/>
 
-						<label htmlFor="county">Judet</label>
+						<label htmlFor="county">
+							Județ
+						</label>
 						<input
 							id="county"
 							name="county"
@@ -117,7 +128,9 @@ const Register = () => {
 							value={userData.county}
 						/>
 
-						<label htmlFor="city">Oras</label>
+						<label htmlFor="city">
+							Oraș
+						</label>
 						<input
 							id="city"
 							name="city"
@@ -127,7 +140,9 @@ const Register = () => {
 							value={userData.city}
 						/>
 
-						<label htmlFor="gender">Gen</label>
+						<label htmlFor="gender">
+							<FormattedMessage id = "gender" />
+						</label>
 						<select
 							id="gender"
 							name="gender"
@@ -135,12 +150,16 @@ const Register = () => {
 							required
 							value={userData.gender}
 						>
-							<option value="">Selecteaza...</option>
-							<option value="male">Masculin</option>
-							<option value="female">Feminin</option>
+							<option value="">
+								<FormattedMessage id="select" />
+							</option>
+							<option value="male">M</option>
+							<option value="female">F</option>
 						</select>
 
-						<label htmlFor="dateOfBirth">Data nasterii</label>
+						<label htmlFor="dateOfBirth">
+							<FormattedMessage id="date of birth" />
+						</label>
 						<input
 							id="dateOfBirth"
 							name="dateOfBirth"
@@ -150,7 +169,9 @@ const Register = () => {
 							value={userData.dateOfBirth}
 						/>
 
-						<label htmlFor="height">Inaltime (cm)</label>
+						<label htmlFor="height">
+							<FormattedMessage id="height" />
+						</label>
 						<input
 							id="height"
 							name="height"
@@ -160,7 +181,9 @@ const Register = () => {
 							value={userData.height}
 						/>
 
-						<label htmlFor="weight">Greutate (kg)</label>
+						<label htmlFor="weight">
+							<FormattedMessage id="weight"/>
+						</label>
 						<input
 							id="weight"
 							name="weight"
@@ -170,7 +193,9 @@ const Register = () => {
 							value={userData.weight}
 						/>
 
-						<label htmlFor="hairColor">Culoare par</label>
+						<label htmlFor="hairColor">
+							Culoarea părului
+						</label>
 						<select
 							id="hairColor"
 							name="hairColor"
@@ -178,16 +203,32 @@ const Register = () => {
 							required
 							value={userData.hairColor}
 						>
-							<option value="">Selecteaza...</option>
-							<option value="black">Negru</option>
-							<option value="brown">Castaniu</option>
-							<option value="blonde">Blond</option>
-							<option value="red">Rosu</option>
-							<option value="gray">Gri</option>
-							<option value="other">Altul</option>
+							<option value="">
+								<FormattedMessage id="select" />
+							</option>
+							<option value="black">
+								<FormattedMessage id="black" />
+							</option>
+							<option value="brown">
+								<FormattedMessage id="brown" />
+							</option>
+							<option value="blonde">
+								<FormattedMessage id="blonde" />
+							</option>
+							<option value="red">
+								<FormattedMessage id="red" />
+							</option>
+							<option value="gray">
+								<FormattedMessage id="gray" />
+							</option>
+							<option value="other">
+								<FormattedMessage id="other" />
+							</option>
 						</select>
 
-						<label htmlFor="eyeColor">Culoare ochi</label>
+						<label htmlFor="eyeColor">
+							<FormattedMessage id="eye color" />
+						</label>
 						<select
 							id="eyeColor"
 							name="eyeColor"
@@ -195,16 +236,32 @@ const Register = () => {
 							required
 							value={userData.eyeColor}
 						>
-							<option value="">Selecteaza...</option>
-							<option value="brown">Caprui</option>
-							<option value="blue">Albastri</option>
-							<option value="green">Verzi</option>
-							<option value="hazel">Negri</option>
-							<option value="gray">Galbeni</option>
-							<option value="other">Alta</option>
+							<option value="">
+								<FormattedMessage id="select" />
+							</option>
+							<option value="brown">
+								<FormattedMessage id="brown" />
+							</option>
+							<option value="blue">
+								<FormattedMessage id="blue" />
+							</option>
+							<option value="green">
+								<FormattedMessage id="green" />
+							</option>
+							<option value="black">
+								<FormattedMessage id="black" />
+							</option>
+							<option value="yellow">
+								<FormattedMessage id="yellow" />
+							</option>
+							<option value="other">
+								<FormattedMessage id="other" />
+							</option>
 						</select>
 
-						<label htmlFor="school">Scoala absolvita</label>
+						<label htmlFor="school">
+							<FormattedMessage id="school" />
+						</label>
 						<input
 							id="school"
 							name="school"
@@ -214,7 +271,9 @@ const Register = () => {
 							value={userData.school}
 						/>
 
-						<label htmlFor="nationality">Nationalitate</label>
+						<label htmlFor="nationality">
+							<FormattedMessage id = "nationality" />
+						</label>
 						<input
 							id="nationality"
 							name="nationality"
@@ -224,7 +283,9 @@ const Register = () => {
 							value={userData.nationality}
 						/>
 
-						<label htmlFor="spokenLanguages">Limbi vorbite</label>
+						<label htmlFor="spokenLanguages">
+							Limbi vorbite
+						</label>
 						{userData.spokenLanguages.map((language, index) => (
 							<div
 								className={styles.input_container}
@@ -246,7 +307,7 @@ const Register = () => {
 									}}
 									type="button"
 								>
-									Sterge
+									<FormattedMessage id="delete" />
 								</button>
 							</div>
 						))}
@@ -259,25 +320,31 @@ const Register = () => {
 							}}
 							type="button"
 						>
-							Adauga limba
+							<FormattedMessage id="languages" />
 						</button>
 
-						<label htmlFor="description">Descriere</label>
+						<label htmlFor="description_placeholder">
+							<FormattedMessage id="description_placeholder" />
+						</label>
 						<textarea
 							id="description"
 							name="description"
 							onChange={handleInputChange}
-							placeholder="Spune-ne ceva despre tine (experienta, interese, etc)"
 							value={userData.description}
 						/>
 
-						<label htmlFor="photos">Fotografii</label>
+						<label htmlFor="photos">
+							<FormattedMessage id="photos" />
+						</label>
 						<label
 							className={styles.upload}
 							htmlFor="photos"
-						/>
+						>
+							<FormattedMessage id="load photos" />
+						</label>
+				
 						<input
-							id="photos"
+							id="load photos"
 							name="photos"
 							onChange={handleFileInputChange}
 							type="file"
@@ -308,14 +375,16 @@ const Register = () => {
 												setUserData({ ...userData, photos, files });
 											}}
 										>
-											Sterge
+											<FormattedMessage id="delete" />
 										</div>
 									</div>
 								))}
 							</div>
 						) : null}
 
-						<label htmlFor="password">Parola</label>
+						<label htmlFor="password">
+							Parolă
+						</label>
 						<input
 							id="password"
 							name="password"
@@ -326,7 +395,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="confirmPassword">
-							Confirma parola
+							Confirmă parola
 							{userData.password !== userData.confirmPassword ? " (parolele nu sunt identice)" : ""}
 						</label>
 						<input
@@ -339,12 +408,16 @@ const Register = () => {
 						/>
 					</div>
 
-					<button type="submit">Creeaza cont</button>
+					<button type="submit">
+						Creați un cont
+					</button>
 				</form>
 
 				<div className={styles.bottom_section}>
 					<h3>
-						<Link href="/login">Ai deja un cont?</Link>
+						<Link href="/login">
+							<FormattedMessage id="allready_have_account" />
+						</Link>
 					</h3>
 				</div>
 			</div>
