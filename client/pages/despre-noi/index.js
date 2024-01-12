@@ -8,7 +8,7 @@ const AboutUs = () => {
 			<div className={styles.container}>
 				<Image
 					alt={"About us"}
-					src="/images/about-us.jpeg"
+					src="/images/about-us.jpg"
 					width={1000}
 					height={1000}
 				/>
@@ -23,7 +23,7 @@ const AboutUs = () => {
 			<div className={styles.secondContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/about_second.jpeg"
+					src="/images/about_second.jpg"
 					width={1000}
 					height={1000}
 				/>
@@ -41,7 +41,7 @@ const AboutUs = () => {
 			<div className={styles.thirdContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/about_third.jpeg"
+					src="/images/about_third.jpg"
 					width={1000}
 					height={1000}
 				/>
@@ -60,7 +60,7 @@ const AboutUs = () => {
 			<div className={styles.fourthContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/about_fourth.jpeg"
+					src="/images/about_fourth.jpg"
 					width={1000}
 					height={1000}
 				/>
