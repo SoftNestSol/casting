@@ -5,7 +5,9 @@ import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa6";
 import { HiMenu } from "react-icons/hi";
 import GoogleTranslate from "./google-translate";
+import LanguageSwitcher from "./langSwithcer";
 import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
+import { FormattedMessage } from "react-intl";
 
 import styles from "../styles/navbar.module.scss";
 import Logo from "../public/logo.png";
@@ -42,15 +44,21 @@ const Navbar = () => {
 
 				<ul>
 					<li>
-						<Link href="/servicii">Servicii</Link>
+						<Link href="/servicii">
+						<FormattedMessage id="navbar-service" />
+						</Link>
 					</li>
 
 					<li>
-						<Link href="/castings">Castinguri</Link>
+						<Link href="/castings">
+						<FormattedMessage id="navbar-casting" />
+						</Link>
 					</li>
 
 					<li>
-						<Link href="/portofoliu">Portofoliu</Link>
+						<Link href="/portofoliu">
+						<FormattedMessage id="navbar-projects" />
+						</Link>
 					</li>
 
 					<li className={styles.logo}>
@@ -63,11 +71,15 @@ const Navbar = () => {
 					</li>
 
 					<li>
-						<Link href="/despre-noi">Despre noi</Link>
+						<Link href="/despre-noi">
+						<FormattedMessage id="navbar-about" />
+						</Link>
 					</li>
 
 					<li>
-						<Link href="/contact">Contacteaza-ne</Link>
+						<Link href="/contact">
+						<FormattedMessage id="navbar-contact" />
+						</Link>
 					</li>
 
 					<li>
@@ -76,8 +88,8 @@ const Navbar = () => {
 				</ul>
 
 				<div className={styles.buttons}>
-					<GoogleTranslate />
-
+					
+				<LanguageSwitcher />
 					<div className={styles.profile}>
 						{currentUser ? (
 							<Link
@@ -97,23 +109,33 @@ const Navbar = () => {
 			<div className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`}>
 				<ul>
 					<li>
-						<Link href="/servicii">Servicii</Link>
+						<Link href="/servicii">
+							<FormattedMessage id="navbar-service" />
+						</Link>
 					</li>
 
 					<li>
-						<Link href="/castings">Castinguri</Link>
+						<Link href="/castings">
+							<FormattedMessage id="navbar-casting" />
+						</Link>
 					</li>
 
 					<li>
-						<Link href="/portofoliu">Portofoliu</Link>
+						<Link href="/portofoliu">
+							<FormattedMessage id="navbar-projects" />
+						</Link>
 					</li>
 
 					<li>
-						<Link href="/despre-noi">Despre noi</Link>
+						<Link href="/despre-noi">
+							<FormattedMessage id="navbar-about" />
+						</Link>
 					</li>
 
 					<li>
-						<Link href="/contact">Contact</Link>
+						<Link href="/contact">
+							<FormattedMessage id="navbar-contact" />
+						</Link>
 					</li>
 				</ul>
 			</div>

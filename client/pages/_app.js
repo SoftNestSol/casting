@@ -51,47 +51,50 @@ const App = ({ Component, pageProps }) => {
 				/>
 			</Head>
 
-			<AuthContextProvider>
-				<CastingsContextProvider>
-					<DashboardContextProvider>
-						{showLoading && (
-							<>
+			<IntlProvider
+				locale={locale}
+				messages={messages[locale]}
+			>
+				<AuthContextProvider>
+					<CastingsContextProvider>
+						<DashboardContextProvider>
+							{showLoading && (
+								<>
+									<div
+										className={`loader ${showLoading ? "loader_active" : ""}`}
+									></div>
+									<div className="loader_background"></div>
+								</>
+							)}
+
+							<Navbar />
+
+							<div className="main-content">
 								<div
-									className={`loader ${showLoading ? "loader_active" : ""}`}
-								></div>
-								<div className="loader_background"></div>
-							</>
-						)}
+									className={`spline-desktop ${isLandingPage ? "" : "hidden"}`}
+								>
+									<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
+								</div>
+								<div
+									className={`spline-mobile ${isLandingPage ? "" : "hidden"}`}
+								>
+									<img
+										className="splineImage"
+										src="/images/splineImg.jpg"
+										alt="Mobile Image"
+										// layout="responsive"
+										// width={800} // Adjust as needed
+										// height={800} // Adjust as needed
+									/>
+								</div>
 
-						<Navbar />
-
-						<div className="main-content">
-							<div
-								className={`spline-desktop ${isLandingPage ? "" : "hidden"}`}
-							>
-								<Spline scene="https://prod.spline.design/r0ZUySqcJPwMFSGy/scene.splinecode" />
-							</div>
-							<div className={`spline-mobile ${isLandingPage ? "" : "hidden"}`}>
-								<img
-									className="splineImage"
-									src="/images/splineImg.jpg"
-									alt="Mobile Image"
-									// layout="responsive"
-									// width={800} // Adjust as needed
-									// height={800} // Adjust as needed
-								/>
-							</div>
-							<IntlProvider
-								locale={locale}
-								messages={messages[locale]}
-							>
 								<Component {...pageProps} />
-							</IntlProvider>
-						</div>
-						<Footer />
-					</DashboardContextProvider>
-				</CastingsContextProvider>
-			</AuthContextProvider>
+							</div>
+							<Footer />
+						</DashboardContextProvider>
+					</CastingsContextProvider>
+				</AuthContextProvider>
+			</IntlProvider>
 		</>
 	);
 };

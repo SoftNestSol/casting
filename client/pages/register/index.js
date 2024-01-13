@@ -117,7 +117,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="county">
-							Județ
+							<FormattedMessage id="address" />
 						</label>
 						<input
 							id="county"
@@ -129,7 +129,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="city">
-							Oraș
+							<FormattedMessage id="city" />
 						</label>
 						<input
 							id="city"
@@ -194,7 +194,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="hairColor">
-							Culoarea părului
+							<FormattedMessage id="hair color" />
 						</label>
 						<select
 							id="hairColor"
@@ -284,7 +284,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="spokenLanguages">
-							Limbi vorbite
+							<FormattedMessage id="spoken languages" />
 						</label>
 						{userData.spokenLanguages.map((language, index) => (
 							<div
@@ -383,7 +383,7 @@ const Register = () => {
 						) : null}
 
 						<label htmlFor="password">
-							Parolă
+							<FormattedMessage id="password" />
 						</label>
 						<input
 							id="password"
@@ -395,7 +395,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="confirmPassword">
-							Confirmă parola
+							<FormattedMessage id="confirm_password" />
 							{userData.password !== userData.confirmPassword ? " (parolele nu sunt identice)" : ""}
 						</label>
 						<input
@@ -409,7 +409,7 @@ const Register = () => {
 					</div>
 
 					<button type="submit">
-						Creați un cont
+						<FormattedMessage id="register" />
 					</button>
 				</form>
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../../styles/contact/contact.module.scss";
 import Link from "next/link";
+import { FormattedMessage } from "react-intl";
 
 import { useState } from "react";
 
@@ -53,21 +54,30 @@ const Contact = () => {
 
 	return (
 		<>
-			<h2 className={styles.heading2}>Studioul Nostru</h2>
+			<h2 className={styles.heading2}>
+				<FormattedMessage id="contact title" />
+			</h2>
 			<div className={styles.container}>
 				<div className={styles.detailsContainer}>
 					<div className={styles.address}>
-						<h1>Adresa</h1>
+						<h1>
+							<FormattedMessage id="contact address" />
+						</h1>
 						<p className={styles.text}>
 							Strada Splaiul Unirii nr. 80-82 <span>Etaj 1, Bucuresti</span>{" "}
 						</p>
 					</div>
 
 					<div className={styles.schendule}>
-						<h2>Program</h2>
+						<h2>
+							<FormattedMessage id="contact schendule" />
+						</h2>
 						<p className={styles.text}>
-							Luni - Vineri: <span> 10:00 - 17:00 </span>{" "}
-							<span> Sambata: Inchis </span>{" "}
+							<FormattedMessage id="contact schendule text" />
+							 <span> 10:00 - 17:00 </span>{" "}
+							<span> 
+								<FormattedMessage id="contact schendule text 2" />
+								 </span>{" "}
 						</p>
 					</div>
 				</div>
@@ -86,13 +96,15 @@ const Contact = () => {
 			<div className={styles.secondContainer}>
 				<div className={styles.containerFormular}>
 					<form className={styles.contactForm}>
-						<h2 className={styles.heading}>Contacteaza-ne prin e-mail</h2>
+						<h2 className={styles.heading}>
+							<FormattedMessage id="contact form" />
+						</h2>
 
 						<label
 							htmlFor="name"
 							className={styles.formLabel}
 						>
-							Nume
+							<FormattedMessage id="name" />
 						</label>
 						<input
 							onChange={handleInputChange}
@@ -108,7 +120,7 @@ const Contact = () => {
 							htmlFor="email"
 							className={styles.formLabel}
 						>
-							Email
+							<FormattedMessage id="email" />
 						</label>
 						<input
 							onChange={handleInputChange}
@@ -124,7 +136,7 @@ const Contact = () => {
 							htmlFor="message"
 							className={styles.formLabel}
 						>
-							Mesaj
+							<FormattedMessage id="Message" />
 						</label>
 						<textarea
 							onChange={handleInputChange}
@@ -143,12 +155,13 @@ const Contact = () => {
 								className={styles.formCheckbox}
 								onChange={() => setTermsAccepted(!termsAccepted)}
 							/>
-							Am citit si sunt de acord cu{" "}
+						<FormattedMessage id="contact terms" />{" "}
+						{" "}
 							<Link
 								href="/terms"
 								className={styles.formLink}
 							>
-								termenii si conditiile
+								<FormattedMessage id="contact terms link" />
 							</Link>
 						</label>
 
@@ -157,12 +170,14 @@ const Contact = () => {
 							className={styles.formButton}
 							onClick={handleFormSubmit}
 						>
-							Trimite Mesajul
+							<FormattedMessage id="contact send" />
 						</button>
 					</form>
 				</div>
 				<div className={styles.contactInfo}>
-					<h2 className={styles.heading}>Contacteaza-ne prin telefon</h2>
+					<h2 className={styles.heading}>
+						<FormattedMessage id="contact phone" />
+					</h2>
 					<p className={styles.textContact}>
 						<Image
 							className={styles.Image}

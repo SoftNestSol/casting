@@ -6,10 +6,9 @@ import { FormattedMessage } from "react-intl";
 
 const projects = [
 	{
-		title: "Capcana Diavolului Miliardar",
-		description:
-			"O mini-serie captivantă, filmată în colaborare cu o companie din China. Povestea explorează relațiile între două familii ale căror băieți au crescut împreună în copilărie și care se află acum într-un triunghi amoros complicat. Îndrăgostiți de aceeași fată, relația devine și mai tensionată odată ce o crimă are loc, aducând un element surprinzător în acest triunghi amoros clasic.Este rezultatul unei colaborări fascinante cu o firmă din China, aducând în fața publicului o producție cinematografică ce traversează granițele culturale și aduce laolaltă elemente dramatice și misterioase.",
-		type: "Serial",
+		title: <FormattedMessage id="project_1_title" />,
+		description: <FormattedMessage id="project_1_description" />,
+		type: <FormattedMessage id="project_1_type" />,
 		imageUrls: [
 			"/images/projects/1/1.jpg",
 			"/images/projects/1/2.jpg",
@@ -18,10 +17,9 @@ const projects = [
 		]
 	},
 	{
-		title: "Insărcinată după respingerea masculului Alfa",
-		description:
-			"Povestea se învârte în jurul personajului feminin principal, cea mai tânără dintr-o familie de vârcolaci, având o sora mai mare iubită de toți. Simțindu-se marginalizată deoarece nu se poate transforma în vârcolac ca ceilalți membri ai familiei, ea călătorește într-o lume mistică.Această poveste SF complexă este transpusă într-o miniserie captivantă, filmată într-un timp scurt, unde creativitatea și improvizația decorului au fost realizate în echipă, atât de actori, cât și de echipa de producție. Este o poveste cu adevărat provocatoare, care explorează elemente fantastice și umane într-un mod captivant.",
-		type: "Serial",
+		title: <FormattedMessage id="project_2_title" />,
+		description: <FormattedMessage id="project_2_description" />,
+		type: <FormattedMessage id="project_2_type" />,
 		imageUrls: [
 			"/images/projects/2/1.jpg",
 			"/images/projects/2/2.jpg",
