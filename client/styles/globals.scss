@@ -142,7 +142,7 @@ li {
 		height: max(120vh, 600px) !important;
 	}
 	// Hide the Spline component on mobile
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 500px) {
 		display: none;
 	}
 }
@@ -151,14 +151,14 @@ li {
 	display: none; // Hide the mobile image by default
 
 	// Display the mobile image on mobile devices
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 500px) {
 		margin-bottom: -48rem;
 		margin-top: 5rem;
 		display: block;
 		position: relative;
 		/*showimageonmobile*/
-		width: 280%;
-		height: 280%;
+		width: 280% !important;
+		height: 280% !important;
 		//height: 200%;
 		object-fit: fill;
 		//object-position: center;
@@ -193,8 +193,6 @@ body {
 	top: 0px !important;
 }
 
-
-.VIpgJd-ZVi9od-ORHb-OEVmcd
-{
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
 	display: none !important;
 }
