@@ -1,4 +1,3 @@
-import { Form } from "react-router-dom";
 import { useCastingsContext } from "../../contexts/castings.context";
 
 import styles from "../../styles/castings/castings.module.scss";
@@ -69,7 +68,8 @@ const Castings = () => {
 									}}
 								></h3>
 								<h3>
-									<span>{casting.remainingDays}</span> <FormattedMessage id="casting days" />
+									<span>{casting.remainingDays}</span>{" "}
+									<FormattedMessage id="casting days" />
 								</h3>
 							</div>
 
@@ -80,21 +80,21 @@ const Castings = () => {
 									<div className={styles.casting_field}>
 										<h3>
 											<FormattedMessage id="casting project" />:
-											</h3>
+										</h3>
 										<h4>{casting.project}</h4>
 									</div>
 
 									<div className={styles.casting_field}>
 										<h3>
-											<FormattedMessage id="casting looking" />
-											:</h3>
+											<FormattedMessage id="casting looking" />:
+										</h3>
 										<h4>{casting.lookingFor.join(", ")}</h4>
 									</div>
 
 									<div className={styles.casting_field}>
 										<h3>
-											<FormattedMessage id="casting age" />
-											:</h3>
+											<FormattedMessage id="casting age" />:
+										</h3>
 										<h4>
 											{casting.ageRange[0]} - {casting.ageRange[1]}
 										</h4>
@@ -102,8 +102,8 @@ const Castings = () => {
 
 									<div className={styles.casting_field}>
 										<h3>
-											<FormattedMessage id = "casting time"/>:
-											</h3>
+											<FormattedMessage id="casting time" />:
+										</h3>
 										<h4>
 											{formatDate(casting.startDate)} -{" "}
 											{formatDate(casting.endDate)}
@@ -113,14 +113,14 @@ const Castings = () => {
 									<div className={styles.casting_field}>
 										<h3>
 											<FormattedMessage id="casting location" />:
-											</h3>
+										</h3>
 										<h4>{casting.location}</h4>
 									</div>
 
 									<div className={styles.casting_field}>
 										<h3>
-											<FormattedMessage id="casting duration" />
-											:</h3>
+											<FormattedMessage id="casting duration" />:
+										</h3>
 										<h4>
 											{getDuration(casting.startDate, casting.endDate)} zile
 										</h4>
@@ -128,22 +128,22 @@ const Castings = () => {
 
 									<div className={styles.casting_field}>
 										<h3>
-											<FormattedMessage id="casting compensation" />
-											:</h3>
+											<FormattedMessage id="casting compensation" />:
+										</h3>
 										<h4>{casting.compensation} RON</h4>
 									</div>
 
 									<div className={styles.casting_field}>
 										<h3>
-											<FormattedMessage id="casting country" />:
-											:</h3>
+											<FormattedMessage id="casting country" />: :
+										</h3>
 										<h4>{casting.country}</h4>
 									</div>
 								</div>
 
 								<h3>
-									<FormattedMessage id="casting description" />
-									:</h3>
+									<FormattedMessage id="casting description" />:
+								</h3>
 								<p>{casting.description}</p>
 							</div>
 						</div>
