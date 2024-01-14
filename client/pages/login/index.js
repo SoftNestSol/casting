@@ -59,7 +59,7 @@ const Login = () => {
 
 				<div className={styles.bottom_section}>
 					<h3>
-						<Link href="/login">
+						<Link href="/login/reset-password">
 							<FormattedMessage id="forgot-password" />
 						</Link>
 					</h3>

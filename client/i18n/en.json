@@ -78,6 +78,7 @@
 	"navbar-contact": "Contact Us",
 	"navbar-casting": "Castings",
 	"navbar-service": "Services",
+	"navbar-home": "Home",
 	"about_us": "About",
 	"about_us_2": "Us",
 	"about_us_description": "An agency for you",
@@ -105,5 +106,9 @@
 	"casting location": "Location",
 	"casting description": "Details",
 	"casting compensation": "Pay",
-	"casting country": "Airing Country"
+	"casting country": "Airing Country",
+	"reset-password": "Reset Password",
+	"register": "Register",
+	"reset-password-call": "Send Password Reset Link",
+	"all rights reserved": "All rights reserved"
 }

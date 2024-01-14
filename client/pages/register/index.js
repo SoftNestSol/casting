@@ -338,7 +338,7 @@ const Register = () => {
 						</label>
 						<label
 							className={styles.upload}
-							htmlFor="photos"
+							htmlFor="load photos"
 						>
 							<FormattedMessage id="load photos" />
 						</label>

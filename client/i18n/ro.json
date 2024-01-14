@@ -38,13 +38,14 @@
 	"phone": "Telefon",
 	"address": "Adresa - Judet",
 	"city": "Oras",
+	"register": "Inregistreaza-te",
 	"nationality": "Nationalitate",
 	"languages": "Adauga o Limba",
 	"description": "Descriere",
 	"school": "Ultima Scoala Absolvita",
 	"spoken languages": "Limbi Straine Vorbite",
 	"photos": "Poze",
-	"load photos": "Ai deja un cont?",
+	"load photos": "Incarca Poze",
 	"allready_have_account": "Ai deja un cont?",
 	"add Languages": "Adauga Limbi",
 	"gender": "Gen",
@@ -78,6 +79,7 @@
 	"navbar-contact": "Contact",
 	"navbar-casting": "Castinguri",
 	"navbar-service": "Servicii",
+	"navbar-home": "Prima Pagina",
 	"about_us": "Despre",
 	"about_us_2": "Noi",
 	"about_us_description": "O agentie pentru tine",
@@ -105,6 +107,11 @@
 	"casting location": "Locatie",
 	"casting description": "Detalii",
 	"casting compensation": "Remuneratie",
-	"casting country": "Difuzare"
+	"casting country": "Difuzare",
+	"reset-password": "Reseteaza Parola",
+	"reset-password-call": "Trimite link-ul de resetare",
+	"all rights reserved": "Toate drepturile rezervate",
+	"gray": "Gri",
+	"yellow": "Galben"
 
 }

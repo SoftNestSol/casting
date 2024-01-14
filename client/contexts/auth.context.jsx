@@ -9,7 +9,8 @@ import {
 	setPersistence,
 	signInWithEmailAndPassword,
 	signOut,
-	updatePassword
+	updatePassword,
+	sendPasswordResetEmail
 } from "firebase/auth";
 import { adminsCollection } from "../config/firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
@@ -86,6 +87,10 @@ export const AuthContextProvider = ({ children }) => {
 				userData.email,
 				userData.password
 			);
+			await setPersistence(auth, browserLocalPersistence);
+			await signInWithEmailAndPassword(auth, userData.email, userData.password);
+
+			setTimeout(() => {}, 1000);
 
 			const photos = await Promise.all(
 				userData.files.map(async (file) => {
@@ -151,6 +156,14 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
+	const sendResetPasswordEmail = async (email) => {
+		try {
+			await sendPasswordResetEmail(auth, email);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	const changePassword = async (currentPassword, newPassword) => {
 		try {
 			const credential = EmailAuthProvider.credential(
@@ -176,7 +189,8 @@ export const AuthContextProvider = ({ children }) => {
 		logout,
 		changePassword,
 		checkIfAdmin,
-		resizedName
+		resizedName,
+		sendResetPasswordEmail
 	};
 
 	return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;
