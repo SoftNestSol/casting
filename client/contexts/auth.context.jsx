@@ -121,7 +121,7 @@ export const AuthContextProvider = ({ children }) => {
 			router.push(`/profile/${userCredential.user.uid}`);
 			router.reload();
 		} catch (error) {
-			console.error(error);
+			alert(error);
 		}
 	};
 
@@ -141,7 +141,7 @@ export const AuthContextProvider = ({ children }) => {
 				router.push(`/profile/${userCredential.user.uid}`);
 			}
 		} catch (error) {
-			console.error(error);
+			alert(error);
 		}
 	};
 
@@ -152,7 +152,7 @@ export const AuthContextProvider = ({ children }) => {
 			setCurrentUser(null);
 			router.replace("/");
 		} catch (error) {
-			console.error(error);
+			alert(error);
 		}
 	};
 
@@ -160,7 +160,7 @@ export const AuthContextProvider = ({ children }) => {
 		try {
 			await sendPasswordResetEmail(auth, email);
 		} catch (error) {
-			console.error(error);
+			alert(error);
 		}
 	};
 
@@ -173,7 +173,7 @@ export const AuthContextProvider = ({ children }) => {
 			await reauthenticateWithCredential(currentUser, credential);
 			await updatePassword(currentUser, newPassword);
 		} catch (error) {
-			console.error(error);
+			alert(error);
 		}
 	};
 
