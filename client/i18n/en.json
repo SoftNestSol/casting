@@ -88,7 +88,7 @@
 	"about text 4": "As we expand, we want to stay true to our core values: innovation, creativity and communication. We want to be a company that offers a unique and pleasant experience for each actor we work with. Join us today and be the first to know about our projects!",
 	"contact title": "Our Studio",
 	"contact address": "Address",
-	"contact schendule": "Schendule",
+	"contact schendule": "Schedule",
 	"contact schendule text": "Monday - Friday:",
 	"contact schendule text 2": "Saturday - Sunday: Closed",
 	"contact form": "E-mail us your request",
@@ -110,5 +110,7 @@
 	"reset-password": "Reset Password",
 	"register": "Register",
 	"reset-password-call": "Send Password Reset Link",
-	"all rights reserved": "All rights reserved"
+	"all rights reserved": "All rights reserved",
+	"footer-navigation": "Navigation",
+	"castings-no-casting": "No open casting!"
 }

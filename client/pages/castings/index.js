@@ -151,7 +151,10 @@ const Castings = () => {
 				</div>
 			) : (
 				<div className={styles.no_castings}>
-					<h2>Niciun casting deschis!</h2>
+					
+					<h2>
+						<FormattedMessage id="castings-no-casting" />
+					</h2>
 				</div>
 			)}
 		</div>

@@ -112,6 +112,7 @@
 	"reset-password-call": "Trimite link-ul de resetare",
 	"all rights reserved": "Toate drepturile rezervate",
 	"gray": "Gri",
-	"yellow": "Galben"
-
+	"yellow": "Galben",
+	"footer-navigation": "Navigare",
+	"castings-no-casting":"Niciun casting deschis!"
 }

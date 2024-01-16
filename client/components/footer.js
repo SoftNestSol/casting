@@ -5,10 +5,8 @@ import styles from "../styles/footer/footer.module.scss"; // ensure the path is 
 import { FormattedMessage } from "react-intl";
 
 const Footer = () => {
-
 	const todayDate = new Date();
 	const year = todayDate.getFullYear();
-
 
 	return (
 		<footer className={styles.footer}>
@@ -25,7 +23,9 @@ const Footer = () => {
 				<div className={styles.linksSection}>
 					{/* Navigation links go here */}
 					<div className={styles.menu}>
-						<h5>Navigare</h5>
+						<h5>
+							<FormattedMessage id="footer-navigation" />
+						</h5>
 						<Link href="/">
 							<FormattedMessage id="navbar-home" />
 						</Link>
@@ -57,8 +57,8 @@ const Footer = () => {
 					<div className={styles.social}>{/* Social links go here */}</div>
 				</div>
 			</div>
-			<p>© {year} MyCasting. 
-			{" "} <FormattedMessage id="all rights reserved" />
+			<p>
+				© {year} MyCasting. <FormattedMessage id="all rights reserved" />
 			</p>
 			<div className={styles.footerBottom}>
 				<div className={styles.disputeSection}>
