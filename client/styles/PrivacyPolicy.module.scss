@@ -1,0 +1,62 @@
+// Definirea unor variabile pentru culori și fonturi pentru a ușura întreținerea și actualizarea stilului
+$font-stack: "Helvetica", sans-serif;
+$primary-color: #333;
+$background-color: #f8f8f8;
+$link-color: #1a0dab;
+$spacing-unit: 10px;
+
+.head
+{
+		margin:10%;
+}
+
+.PrivacyPolicyContainer {
+	font-family: $font-stack;
+	color: $primary-color;
+	background-color: $background-color;
+	padding: $spacing-unit * 2;
+	border-radius: $spacing-unit / 2;
+	margin: $spacing-unit auto;
+	max-width: 800px;
+	box-shadow: 0 0 $spacing-unit rgba(0, 0, 0, 0.1);
+
+	.h1 {
+		color: darken($primary-color, 20%);
+		border-bottom: 1px solid lighten($primary-color, 40%);
+		padding-bottom: $spacing-unit / 2;
+	}
+
+	.p {
+		line-height: 1.6;
+		margin-bottom: $spacing-unit;
+	}
+
+	.h2 {
+		margin-top: $spacing-unit * 2;
+	}
+
+	.ul {
+		margin-left: $spacing-unit * 3;
+		list-style-type: square;
+
+		.li {
+			margin-bottom: $spacing-unit / 2;
+		}
+	}
+
+	.a {
+		color: $link-color;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.PrivacyPolicyContainer {
+		padding: $spacing-unit;
+		border-radius: $spacing-unit / 4;
+		margin: $spacing-unit;
+	}
+}

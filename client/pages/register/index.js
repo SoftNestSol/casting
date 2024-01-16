@@ -63,8 +63,10 @@ const Register = () => {
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-		if (userData.spokenLanguages.length === 0) return alert("Adauga cel putin o limba vorbita!");
-		if (userData.files.length === 0) return alert("Adauga cel putin o fotografie!");
+		if (userData.spokenLanguages.length === 0)
+			return alert("Adauga cel putin o limba vorbita!");
+		if (userData.files.length === 0)
+			return alert("Adauga cel putin o fotografie!");
 		if (userData.password !== userData.confirmPassword) return;
 		await signUp(userData);
 	};
@@ -141,7 +143,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="gender">
-							<FormattedMessage id = "gender" />
+							<FormattedMessage id="gender" />
 						</label>
 						<select
 							id="gender"
@@ -182,7 +184,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="weight">
-							<FormattedMessage id="weight"/>
+							<FormattedMessage id="weight" />
 						</label>
 						<input
 							id="weight"
@@ -272,7 +274,7 @@ const Register = () => {
 						/>
 
 						<label htmlFor="nationality">
-							<FormattedMessage id = "nationality" />
+							<FormattedMessage id="nationality" />
 						</label>
 						<input
 							id="nationality"
@@ -294,7 +296,9 @@ const Register = () => {
 								<input
 									id="spokenLanguages"
 									name="spokenLanguages"
-									onChange={(event) => handleSpokenLanguagesInputChange(event, index)}
+									onChange={(event) =>
+										handleSpokenLanguagesInputChange(event, index)
+									}
 									required
 									type="text"
 									value={language}
@@ -331,6 +335,7 @@ const Register = () => {
 							name="description"
 							onChange={handleInputChange}
 							value={userData.description}
+							required
 						/>
 
 						<label htmlFor="photos">
@@ -342,13 +347,14 @@ const Register = () => {
 						>
 							<FormattedMessage id="load photos" />
 						</label>
-				
+
 						<input
 							id="load photos"
 							name="photos"
 							onChange={handleFileInputChange}
 							type="file"
 							multiple
+							required
 						/>
 
 						{userData.photos.length > 0 ? (
@@ -396,7 +402,9 @@ const Register = () => {
 
 						<label htmlFor="confirmPassword">
 							<FormattedMessage id="confirm_password" />
-							{userData.password !== userData.confirmPassword ? " (parolele nu sunt identice)" : ""}
+							{userData.password !== userData.confirmPassword
+								? " (parolele nu sunt identice)"
+								: ""}
 						</label>
 						<input
 							id="confirmPassword"

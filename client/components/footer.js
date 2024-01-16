@@ -47,6 +47,9 @@ const Footer = () => {
 						<p>Strada Splaiul Unirii nr. 80-82, etaj 1, Bucuresti</p>
 						<p> Phone: +40 750429949</p>
 						<p>Email: contact@mycasting.ro </p>
+						<Link href="/terms">
+							<FormattedMessage id="navbar-privacy" />
+						</Link>
 					</div>
 					<div className={styles.schedule}>
 						<h5>
