@@ -152,21 +152,21 @@ li {
 
 	// Display the mobile image on mobile devices
 	@media screen and (max-width: 500px) {
-		margin-bottom: -48rem;
+		margin-bottom: -49rem;
 		margin-top: 5rem;
 		display: block;
 		position: relative;
 		/*showimageonmobile*/
-		width: 250% !important;
-		height: 250% !important;
+		width: 200% !important;
+		height: 200% !important;
 		//height: 200%;
 		object-fit: fill;
 		//object-position: center;
-		transform: translate(-28%);
-		-webkit-transform: translate(-28%);
-		-moz-transform: translate(-28%);
-		-ms-transform: translate(-28%);
-		-o-transform: translate(-28%);
+		transform: translate(-24%);
+		-webkit-transform: translate(-24%);
+		-moz-transform: translate(-24%);
+		-ms-transform: translate(-24%);
+		-o-transform: translate(-24%);
 	}
 }
 .spline-mobile.hidden {

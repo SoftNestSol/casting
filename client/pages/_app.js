@@ -80,7 +80,7 @@ const App = ({ Component, pageProps }) => {
 								>
 									<Image
 										className="splineImage"
-										src="/images/splineimage.jpg"
+										src="/images/spline-image.jpg"
 										alt="Mobile Image"
 										width={3200} // Adjust as needed
 										height={3200} // Adjust as needed
