@@ -157,16 +157,16 @@ li {
 		display: block;
 		position: relative;
 		/*showimageonmobile*/
-		width: 280% !important;
-		height: 280% !important;
+		width: 250% !important;
+		height: 250% !important;
 		//height: 200%;
 		object-fit: fill;
 		//object-position: center;
-		transform: translate(-32%);
-		-webkit-transform: translate(-32%);
-		-moz-transform: translate(-32%);
-		-ms-transform: translate(-32%);
-		-o-transform: translate(-32%);
+		transform: translate(-28%);
+		-webkit-transform: translate(-28%);
+		-moz-transform: translate(-28%);
+		-ms-transform: translate(-28%);
+		-o-transform: translate(-28%);
 	}
 }
 .spline-mobile.hidden {
