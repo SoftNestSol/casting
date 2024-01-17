@@ -6,7 +6,6 @@ import MemberCard from "./member-card";
 import styles from "../../styles/dashboard/member-card.module.scss";
 import { useAuthContext } from "../../contexts/auth.context";
 import { useDashboardContext } from "../../contexts/dashboard.context";
-import { getNumberOfMembers } from "../../config/firebase";
 import { db, aggregationsCollection } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { get } from "http";
@@ -129,9 +128,7 @@ const Dashboard = () => {
 						Reset Filters
 					</button>
 
-					<div className={styles.members}>
-						{numberOfMembers} Membrii Inscrisi
-					</div>
+			
 				</div>
 				<div className={styles.search}>
 					<button
@@ -141,9 +138,9 @@ const Dashboard = () => {
 						Logout
 					</button>
 				</div>
-
+			
 				<div className={styles.container}>
-					<h1 className={styles.header}>Membrii Inscrisi</h1>
+					<h1 className={styles.header}>Membrii Inscrisi :{numberOfMembers} </h1>
 					<div className={styles.tableHeader}>
 						<div>Poza</div>
 						<div>Sex</div>
