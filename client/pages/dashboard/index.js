@@ -1,15 +1,40 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import MemberCard from "./member-card";
 import styles from "../../styles/dashboard/member-card.module.scss";
 import { useAuthContext } from "../../contexts/auth.context";
 import { useDashboardContext } from "../../contexts/dashboard.context";
+import { getNumberOfMembers } from "../../config/firebase";
+import { db, aggregationsCollection } from "../../config/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { get } from "http";
 
 const Dashboard = () => {
+
 	const { currentUser, logout, loading } = useAuthContext();
 	const router = useRouter();
+
+	const getNumberOfMembers = async () => {
+		const docRef = doc(db, "aggregates", "100");
+		const docSnap = await getDoc(docRef);
+	
+		const numberOfMembers = await docSnap.data().userCounter;
+
+		return numberOfMembers;
+	};
+
+	const [numberOfMembers, setNumberOfMembers] = useState(0);
+
+	useEffect(() => {
+		getNumberOfMembers().then((numberOfMembers) => {
+			setNumberOfMembers(numberOfMembers);
+		});
+	}
+	, []);
+	
+
 	const {
 		filtered,
 		setGenderFilter,
@@ -103,6 +128,10 @@ const Dashboard = () => {
 					>
 						Reset Filters
 					</button>
+
+					<div className={styles.members}>
+						{numberOfMembers} Membrii Inscrisi
+					</div>
 				</div>
 				<div className={styles.search}>
 					<button

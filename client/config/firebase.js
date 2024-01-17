@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { collection, getFirestore, getDocs, getDoc, doc } from "firebase/firestore";
+import {
+	collection,
+	getFirestore,
+	getDocs,
+	getDoc,
+	doc,
+	docRef,
+	docSnap
+} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 import { constants } from "./constants.js";
@@ -17,7 +25,7 @@ const config = {
 
 const app = initializeApp(config);
 export const auth = getAuth(app);
-export const db = getFirestore();
+export const db = getFirestore(app);
 export const storage = getStorage(app);
 
 export const usersCollection = collection(db, "users");

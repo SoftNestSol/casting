@@ -12,8 +12,8 @@ import {
 	updatePassword,
 	sendPasswordResetEmail
 } from "firebase/auth";
-import { adminsCollection } from "../config/firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { adminsCollection, aggregationsCollection, db } from "../config/firebase";
+import { doc, setDoc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 import { auth, storage, usersCollection } from "../config/firebase";
@@ -101,6 +101,7 @@ export const AuthContextProvider = ({ children }) => {
 				try {
 					const snapshot = await uploadBytes(photoRef, file);
 					const url = await getDownloadURL(snapshot.ref);
+				
 					return resizedName(url);
 				} catch (uploadError) {
 					if (attempt < MAX_RETRIES) {
@@ -133,7 +134,10 @@ export const AuthContextProvider = ({ children }) => {
 				photos,
 				uid: userCredential.user.uid
 			});
-
+			const docRef = doc(db, aggregationsCollection, "100");
+			await updateDoc(docRef, { 
+				userCounter: increment(1) 
+			})
 			setCurrentUser(userCredential.user);
 
 			router.push(`/profile/${userCredential.user.uid}`);
