@@ -10,9 +10,9 @@ import photoStyles from "../../../styles/dashboard/photo.module.scss";
 
 const MemberPage = () => {
 	const [user, setUser] = useState(null);
+	const [email, setEmail] = useState("");
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
-
 
 	const { ComputeAge } = useDashboardContext();
 
@@ -63,7 +63,7 @@ const MemberPage = () => {
 							<strong>Nume:</strong> {user.name}
 						</p>
 						<p>
-							<strong>Email:</strong> {user.email}
+							<strong>Email:</strong> {email}
 						</p>
 						<p>
 							<strong>Telefon:</strong> {user.phoneNumber}

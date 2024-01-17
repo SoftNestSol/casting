@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import {
 	deleteObject,
 	getDownloadURL,
 	ref,
-	refFromURL,
 	uploadBytes
 } from "firebase/storage";
 
 import { useAuthContext } from "../../contexts/auth.context";
-import { db, storage } from "../../config/firebase";
+import { db, storage, usersCollection } from "../../config/firebase";
 
 import styles from "../../styles/profile/profile.module.scss";
 
@@ -58,8 +57,26 @@ const ProfilePage = () => {
 
 		const fetchData = async () => {
 			try {
-				const user = await getDoc(doc(db, "users", uid));
-				if (!user.exists()) return;
+				let user = await getDoc(doc(db, "users", uid));
+
+				if (!user.exists()) {
+					const data = {
+						...profileDataInitialState,
+						email: currentUser.email,
+						uid
+					};
+
+					delete data.email;
+					delete data.files;
+
+					await setDoc(doc(usersCollection, uid), data);
+
+					return setProfileData({
+						...profileDataInitialState,
+						email: currentUser.email,
+						files: []
+					});
+				}
 
 				setProfileData({
 					...user.data(),
@@ -130,6 +147,7 @@ const ProfilePage = () => {
 					})
 				);
 
+				delete profileData.email;
 				delete profileData.files;
 
 				profileData.photos.forEach(

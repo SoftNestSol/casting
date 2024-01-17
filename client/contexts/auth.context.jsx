@@ -90,20 +90,38 @@ export const AuthContextProvider = ({ children }) => {
 			await setPersistence(auth, browserLocalPersistence);
 			await signInWithEmailAndPassword(auth, userData.email, userData.password);
 
-			setTimeout(() => {}, 1000);
+			const MAX_RETRIES = 3;
 
-			const photos = await Promise.all(
-				userData.files.map(async (file) => {
-					const photoRef = ref(
-						storage,
-						`photos/${userCredential.user.uid}/${file.name}`
-					);
+			const uploadPhotoWithRetry = async (file, attempt = 0) => {
+				const photoRef = ref(
+					storage,
+					`photos/${userCredential.user.uid}/${file.name}`
+				);
+
+				try {
 					const snapshot = await uploadBytes(photoRef, file);
 					const url = await getDownloadURL(snapshot.ref);
-					console.log(url, resizedName(url));
 					return resizedName(url);
-				})
+				} catch (uploadError) {
+					if (attempt < MAX_RETRIES) {
+						console.warn(`Retry ${attempt + 1} for file:`, file.name);
+						return await uploadPhotoWithRetry(file, attempt + 1);
+					}
+
+					console.error(
+						"Final upload attempt failed for file:",
+						file.name,
+						uploadError
+					);
+					return null;
+				}
+			};
+
+			const photoUploadPromises = userData.files.map((file) =>
+				uploadPhotoWithRetry(file)
 			);
+			const photoResults = await Promise.all(photoUploadPromises);
+			const photos = photoResults.filter((url) => url != null);
 
 			delete userData.email;
 			delete userData.password;
