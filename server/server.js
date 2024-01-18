@@ -28,7 +28,6 @@ app.use(cors(corsOptions));
 app.post("/contact", (req, res) => {
 	const { name, email, message } = req.body;
 
-	console.log("am ajuns pe server");
 	// Create a transporter
 	const transporter = nodemailer.createTransport({
 		host: "hosting2303630.online.pro",

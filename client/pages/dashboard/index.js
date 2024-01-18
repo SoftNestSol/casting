@@ -11,14 +11,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { get } from "http";
 
 const Dashboard = () => {
-
 	const { currentUser, logout, loading } = useAuthContext();
 	const router = useRouter();
 
 	const getNumberOfMembers = async () => {
 		const docRef = doc(db, "aggregates", "100");
 		const docSnap = await getDoc(docRef);
-	
+
 		const numberOfMembers = await docSnap.data().userCounter;
 
 		return numberOfMembers;
@@ -30,9 +29,7 @@ const Dashboard = () => {
 		getNumberOfMembers().then((numberOfMembers) => {
 			setNumberOfMembers(numberOfMembers);
 		});
-	}
-	, []);
-	
+	}, []);
 
 	const {
 		filtered,
@@ -127,8 +124,6 @@ const Dashboard = () => {
 					>
 						Reset Filters
 					</button>
-
-			
 				</div>
 				<div className={styles.search}>
 					<button
@@ -138,9 +133,11 @@ const Dashboard = () => {
 						Logout
 					</button>
 				</div>
-			
+
 				<div className={styles.container}>
-					<h1 className={styles.header}>Membrii Inscrisi :{numberOfMembers} </h1>
+					<h1 className={styles.header}>
+						Membrii Inscrisi :{numberOfMembers}{" "}
+					</h1>
 					<div className={styles.tableHeader}>
 						<div>Poza</div>
 						<div>Sex</div>
@@ -150,7 +147,7 @@ const Dashboard = () => {
 					</div>
 					{filtered.map((member) => (
 						<div
-							key={member.id}
+							key={member.uid}
 							className={styles.memberCard}
 						>
 							<Link href={`/dashboard/member/${member.uid}`}>

@@ -66,7 +66,6 @@ const ProfilePage = () => {
 						uid
 					};
 
-					delete data.email;
 					delete data.files;
 
 					await setDoc(doc(usersCollection, uid), data);
@@ -147,7 +146,6 @@ const ProfilePage = () => {
 					})
 				);
 
-				delete profileData.email;
 				delete profileData.files;
 
 				profileData.photos.forEach(

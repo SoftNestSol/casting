@@ -10,7 +10,6 @@ import photoStyles from "../../../styles/dashboard/photo.module.scss";
 
 const MemberPage = () => {
 	const [user, setUser] = useState(null);
-	const [email, setEmail] = useState("");
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
 
@@ -51,8 +50,6 @@ const MemberPage = () => {
 		return <div>No user data found.</div>;
 	}
 
-	console.log(user);
-
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
@@ -63,7 +60,7 @@ const MemberPage = () => {
 							<strong>Nume:</strong> {user.name}
 						</p>
 						<p>
-							<strong>Email:</strong> {email}
+							<strong>Email:</strong> {user.email}
 						</p>
 						<p>
 							<strong>Telefon:</strong> {user.phoneNumber}

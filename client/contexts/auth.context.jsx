@@ -124,7 +124,6 @@ export const AuthContextProvider = ({ children }) => {
 			const photoResults = await Promise.all(photoUploadPromises);
 			const photos = photoResults.filter((url) => url != null);
 
-			delete userData.email;
 			delete userData.password;
 			delete userData.confirmPassword;
 			delete userData.files;

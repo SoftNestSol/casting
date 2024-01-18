@@ -48,6 +48,8 @@ const Register = () => {
 
 	const handleFileInputChange = (event) => {
 		[...event.target.files].forEach((file) => {
+			if (!file.name.match(/\.(jpg|jpeg|png)$/)) return;
+
 			const reader = new FileReader();
 
 			reader.onload = () =>
@@ -343,13 +345,13 @@ const Register = () => {
 						</label>
 						<label
 							className={styles.upload}
-							htmlFor="load photos"
+							htmlFor="photos"
 						>
 							<FormattedMessage id="load photos" />
 						</label>
 
 						<input
-							id="load photos"
+							id="photos"
 							name="photos"
 							onChange={handleFileInputChange}
 							type="file"

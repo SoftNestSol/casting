@@ -28,7 +28,6 @@ const Contact = () => {
 
 		if (termsAccepted === true) {
 			try {
-				console.log("am ajuns pe client");
 				const response = await fetch(
 					"https://europe-west1-mycasting-c5275.cloudfunctions.net/api/contact",
 					{
@@ -74,10 +73,10 @@ const Contact = () => {
 						</h2>
 						<p className={styles.text}>
 							<FormattedMessage id="contact schendule text" />
-							 <span> 10:00 - 17:00 </span>{" "}
-							<span> 
+							<span> 10:00 - 17:00 </span>{" "}
+							<span>
 								<FormattedMessage id="contact schendule text 2" />
-								 </span>{" "}
+							</span>{" "}
 						</p>
 					</div>
 				</div>
@@ -155,8 +154,7 @@ const Contact = () => {
 								className={styles.formCheckbox}
 								onChange={() => setTermsAccepted(!termsAccepted)}
 							/>
-						<FormattedMessage id="contact terms" />{" "}
-						{" "}
+							<FormattedMessage id="contact terms" />{" "}
 							<Link
 								href="/terms"
 								className={styles.formLink}
