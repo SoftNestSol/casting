@@ -184,7 +184,7 @@ const Contact = () => {
 							width={70}
 							height={70}
 						/>
-						David - <span> 0745 123 456 </span>{" "}
+						David - <span> 0755 266 278 </span>{" "}
 					</p>
 					<p className={styles.textContact}>
 						<Image
@@ -194,7 +194,7 @@ const Contact = () => {
 							width={70}
 							height={70}
 						/>
-						Dana - <span> 0745 123 456 </span>{" "}
+						Dana - <span> 0750 429 949 </span>{" "}
 					</p>
 				</div>
 			</div>
