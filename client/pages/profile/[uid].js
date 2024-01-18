@@ -105,6 +105,9 @@ const ProfilePage = () => {
 
 	const handleFileInputChange = (event) => {
 		[...event.target.files].forEach((file) => {
+			if (!file.name.match(/\.(jpg|jpeg|png)$/))
+				return alert("Fisierul nu este o imagine!");
+
 			const reader = new FileReader();
 
 			reader.onload = () =>

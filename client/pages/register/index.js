@@ -48,7 +48,8 @@ const Register = () => {
 
 	const handleFileInputChange = (event) => {
 		[...event.target.files].forEach((file) => {
-			if (!file.name.match(/\.(jpg|jpeg|png)$/)) return;
+			if (!file.name.match(/\.(jpg|jpeg|png)$/))
+				return alert("Fisierul nu este o imagine!");
 
 			const reader = new FileReader();
 
