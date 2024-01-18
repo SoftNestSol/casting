@@ -133,7 +133,7 @@ export const AuthContextProvider = ({ children }) => {
 				photos,
 				uid: userCredential.user.uid
 			});
-			const docRef = doc(db, aggregationsCollection, "100");
+			const docRef = doc(db, "aggregates", "100");
 			await updateDoc(docRef, { 
 				userCounter: increment(1) 
 			})
