@@ -96,7 +96,103 @@ const Register = () => {
 							type="text"
 							value={userData.name}
 						/>
+						<label htmlFor="dateOfBirth">
+							<FormattedMessage id="date of birth" />
+						</label>
+						<input
+							id="dateOfBirth"
+							name="dateOfBirth"
+							onChange={handleInputChange}
+							required
+							type="date"
+							value={userData.dateOfBirth}
+						/>
+						<label htmlFor="height">
+							<FormattedMessage id="height" />
+						</label>
+						<input
+							id="height"
+							name="height"
+							onChange={handleInputChange}
+							required
+							type="number"
+							value={userData.height}
+						/>
 
+						<label htmlFor="weight">
+							<FormattedMessage id="weight" />
+						</label>
+						<input
+							id="weight"
+							name="weight"
+							onChange={handleInputChange}
+							required
+							type="number"
+							value={userData.weight}
+						/>
+						<label htmlFor="nationality">
+							<FormattedMessage id="nationality" />
+						</label>
+						<input
+							id="nationality"
+							name="nationality"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.nationality}
+						/>
+						<label htmlFor="school">
+							<FormattedMessage id="school" />
+						</label>
+						<input
+							id="school"
+							name="school"
+							onChange={handleInputChange}
+							required
+							type="text"
+							value={userData.school}
+						/>
+						<label htmlFor="spokenLanguages">
+							<FormattedMessage id="spoken languages" />
+						</label>
+						{userData.spokenLanguages.map((language, index) => (
+							<div
+								className={styles.input_container}
+								key={index}
+							>
+								<input
+									id="spokenLanguages"
+									name="spokenLanguages"
+									onChange={(event) =>
+										handleSpokenLanguagesInputChange(event, index)
+									}
+									required
+									type="text"
+									value={language}
+								/>
+								<button
+									onClick={() => {
+										const spokenLanguages = userData.spokenLanguages;
+										spokenLanguages.splice(index, 1);
+										setUserData({ ...userData, spokenLanguages });
+									}}
+									type="button"
+								>
+									<FormattedMessage id="delete" />
+								</button>
+							</div>
+						))}
+						<button
+							onClick={() => {
+								setUserData({
+									...userData,
+									spokenLanguages: [...userData.spokenLanguages, ""]
+								});
+							}}
+							type="button"
+						>
+							<FormattedMessage id="languages" />
+						</button>
 						<label htmlFor="email">
 							<FormattedMessage id="email" />
 						</label>
@@ -162,75 +258,6 @@ const Register = () => {
 							<option value="female">F</option>
 						</select>
 
-						<label htmlFor="dateOfBirth">
-							<FormattedMessage id="date of birth" />
-						</label>
-						<input
-							id="dateOfBirth"
-							name="dateOfBirth"
-							onChange={handleInputChange}
-							required
-							type="date"
-							value={userData.dateOfBirth}
-						/>
-
-						<label htmlFor="height">
-							<FormattedMessage id="height" />
-						</label>
-						<input
-							id="height"
-							name="height"
-							onChange={handleInputChange}
-							required
-							type="number"
-							value={userData.height}
-						/>
-
-						<label htmlFor="weight">
-							<FormattedMessage id="weight" />
-						</label>
-						<input
-							id="weight"
-							name="weight"
-							onChange={handleInputChange}
-							required
-							type="number"
-							value={userData.weight}
-						/>
-
-						<label htmlFor="hairColor">
-							<FormattedMessage id="hair color" />
-						</label>
-						<select
-							id="hairColor"
-							name="hairColor"
-							onChange={handleInputChange}
-							required
-							value={userData.hairColor}
-						>
-							<option value="">
-								<FormattedMessage id="select" />
-							</option>
-							<option value="black">
-								<FormattedMessage id="black" />
-							</option>
-							<option value="brown">
-								<FormattedMessage id="brown" />
-							</option>
-							<option value="blonde">
-								<FormattedMessage id="blonde" />
-							</option>
-							<option value="red">
-								<FormattedMessage id="red" />
-							</option>
-							<option value="gray">
-								<FormattedMessage id="gray" />
-							</option>
-							<option value="other">
-								<FormattedMessage id="other" />
-							</option>
-						</select>
-
 						<label htmlFor="eyeColor">
 							<FormattedMessage id="eye color" />
 						</label>
@@ -264,71 +291,38 @@ const Register = () => {
 							</option>
 						</select>
 
-						<label htmlFor="school">
-							<FormattedMessage id="school" />
+						<label htmlFor="hairColor">
+							<FormattedMessage id="hair color" />
 						</label>
-						<input
-							id="school"
-							name="school"
+						<select
+							id="hairColor"
+							name="hairColor"
 							onChange={handleInputChange}
 							required
-							type="text"
-							value={userData.school}
-						/>
-
-						<label htmlFor="nationality">
-							<FormattedMessage id="nationality" />
-						</label>
-						<input
-							id="nationality"
-							name="nationality"
-							onChange={handleInputChange}
-							required
-							type="text"
-							value={userData.nationality}
-						/>
-
-						<label htmlFor="spokenLanguages">
-							<FormattedMessage id="spoken languages" />
-						</label>
-						{userData.spokenLanguages.map((language, index) => (
-							<div
-								className={styles.input_container}
-								key={index}
-							>
-								<input
-									id="spokenLanguages"
-									name="spokenLanguages"
-									onChange={(event) =>
-										handleSpokenLanguagesInputChange(event, index)
-									}
-									required
-									type="text"
-									value={language}
-								/>
-								<button
-									onClick={() => {
-										const spokenLanguages = userData.spokenLanguages;
-										spokenLanguages.splice(index, 1);
-										setUserData({ ...userData, spokenLanguages });
-									}}
-									type="button"
-								>
-									<FormattedMessage id="delete" />
-								</button>
-							</div>
-						))}
-						<button
-							onClick={() => {
-								setUserData({
-									...userData,
-									spokenLanguages: [...userData.spokenLanguages, ""]
-								});
-							}}
-							type="button"
+							value={userData.hairColor}
 						>
-							<FormattedMessage id="languages" />
-						</button>
+							<option value="">
+								<FormattedMessage id="select" />
+							</option>
+							<option value="black">
+								<FormattedMessage id="black" />
+							</option>
+							<option value="brown">
+								<FormattedMessage id="brown" />
+							</option>
+							<option value="blonde">
+								<FormattedMessage id="blonde" />
+							</option>
+							<option value="red">
+								<FormattedMessage id="red" />
+							</option>
+							<option value="gray">
+								<FormattedMessage id="gray" />
+							</option>
+							<option value="other">
+								<FormattedMessage id="other" />
+							</option>
+						</select>
 
 						<label htmlFor="description_placeholder">
 							<FormattedMessage id="description_placeholder" />
