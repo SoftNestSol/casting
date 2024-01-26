@@ -76,22 +76,10 @@ const Dashboard = () => {
 					<select onChange={handleAgeChange}>
 						<option value="">Select Age</option>
 						<option value="0-18">0-18</option>
-						<option value="18-20">18-20</option>
-						<option value="20-22">20-22</option>
-						<option value="22-24">22-24</option>
-						<option value="24-26">24-26</option>
-						<option value="26-28">26-28</option>
-						<option value="28-30">28-30</option>
-						<option value="30-32">30-32</option>
-						<option value="32-34">32-34</option>
-						<option value="34-36">34-36</option>
-						<option value="36-38">36-38</option>
-						<option value="38-40">38-40</option>
-						<option value="40-42">40-42</option>
-						<option value="42-44">42-44</option>
-						<option value="44-46">44-46</option>
-						<option value="46-48">46-48</option>
-						<option value="48-50">48-50</option>
+						<option value="18-25">18-25</option>
+						<option value="25-30">25-30</option>
+						<option value="35-40">35-40</option>
+						<option value="40-50">40-50</option>
 						<option value="50-100">50-100</option>
 					</select>
 
