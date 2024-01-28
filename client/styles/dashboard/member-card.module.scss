@@ -5,7 +5,12 @@
 }
 .selection {
 	margin-top: 6rem;
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	justify-content: center;
 }
+
 .tableHeader {
 	display: flex;
 	justify-content: center;

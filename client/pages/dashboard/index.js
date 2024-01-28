@@ -75,7 +75,7 @@ const Dashboard = () => {
 
 					<select onChange={handleAgeChange}>
 						<option value="">Select Age</option>
-						<option value="0-18">0-18</option>
+						<option value="1-18">1-18</option>
 						<option value="18-25">18-25</option>
 						<option value="25-30">25-30</option>
 						<option value="35-40">35-40</option>
