@@ -115,5 +115,8 @@
 	"gray": "Gri",
 	"yellow": "Galben",
 	"footer-navigation": "Navigare",
-	"castings-no-casting":"Niciun casting deschis!"
+	"castings-no-casting":"Niciun casting deschis!",
+	"navbar-profile": "Profil",
+	"navbar-logout": "Logout",
+	"navbar-dashboard": "Dashboard"
 }

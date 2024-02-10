@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa6";
 import { HiMenu } from "react-icons/hi";
-import GoogleTranslate from "./google-translate";
 import LanguageSwitcher from "./langSwithcer";
 import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 import { FormattedMessage } from "react-intl";
@@ -12,17 +11,47 @@ import { FormattedMessage } from "react-intl";
 import styles from "../styles/navbar.module.scss";
 import Logo from "../public/logo.png";
 
+const AdminDropDown = ({ logout }) => {
+	return (
+		<div className={styles.logoutOptionDropDown}>
+			<Link href="/dashboard">
+				<FormattedMessage id="navbar-dashboard" />
+			</Link>
+			<button onClick={logout}>
+				<FormattedMessage id="navbar-logout" />
+			</button>
+		</div>
+	);
+};
+
+const UserDropDown = ({ logout }) => {
+	return (
+		<div className={styles.logoutOptionDropDown}>
+			<Link href="/profile">
+				<a>
+					<FormattedMessage id="navbar-profile" />
+				</a>
+			</Link>
+			<button onClick={logout}>
+				<FormattedMessage id="navbar-logout" />
+			</button>
+		</div>
+	);
+};
+
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
-
+	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 	const router = useRouter();
 
 	const { currentUser } = useAuthContext();
 
+	const { logout } = useAuthContext();
+
 	useEffect(() => {
 		setIsMenuOpen(false);
-	}, [router]);
+	}, [router.asPath]);
 
 	useEffect(() => {
 		if (currentUser) {
@@ -31,6 +60,10 @@ const Navbar = () => {
 			setIsAdmin(false);
 		}
 	}, [currentUser]);
+
+	const handleProfileClick = () => {
+		setIsDropDownOpen(!isDropDownOpen);
+	};
 
 	return (
 		<>
@@ -45,19 +78,19 @@ const Navbar = () => {
 				<ul>
 					<li>
 						<Link href="/servicii">
-						<FormattedMessage id="navbar-service" />
+							<FormattedMessage id="navbar-service" />
 						</Link>
 					</li>
 
 					<li>
 						<Link href="/castings">
-						<FormattedMessage id="navbar-casting" />
+							<FormattedMessage id="navbar-casting" />
 						</Link>
 					</li>
 
 					<li>
 						<Link href="/portofoliu">
-						<FormattedMessage id="navbar-projects" />
+							<FormattedMessage id="navbar-projects" />
 						</Link>
 					</li>
 
@@ -72,13 +105,13 @@ const Navbar = () => {
 
 					<li>
 						<Link href="/despre-noi">
-						<FormattedMessage id="navbar-about" />
+							<FormattedMessage id="navbar-about" />
 						</Link>
 					</li>
 
 					<li>
 						<Link href="/contact">
-						<FormattedMessage id="navbar-contact" />
+							<FormattedMessage id="navbar-contact" />
 						</Link>
 					</li>
 
@@ -88,15 +121,21 @@ const Navbar = () => {
 				</ul>
 
 				<div className={styles.buttons}>
-					
-				<LanguageSwitcher />
-					<div className={styles.profile}>
+					<LanguageSwitcher />
+					<div
+						className={styles.profile}
+						onClick={handleProfileClick}
+					>
 						{currentUser ? (
-							<Link
-								href={isAdmin ? `/dashboard` : `/profile/${currentUser.uid}`}
-							>
+							<>
 								<FaUser />
-							</Link>
+								{isDropDownOpen &&
+									(isAdmin ? (
+										<AdminDropDown logout={logout} />
+									) : (
+										<UserDropDown logout={logout} />
+									))}
+							</>
 						) : (
 							<Link href="/login">
 								<FaUser />

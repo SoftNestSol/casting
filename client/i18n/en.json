@@ -113,5 +113,8 @@
 	"reset-password-call": "Send Password Reset Link",
 	"all rights reserved": "All rights reserved",
 	"footer-navigation": "Navigation",
-	"castings-no-casting": "No open casting!"
+	"castings-no-casting": "No open casting!",
+	"navbar-profile": "Profile",
+	"navbar-logout": "Logout",
+	"navbar-dashboard": "Dashboard"
 }

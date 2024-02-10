@@ -21,6 +21,9 @@ const corsOptions = {
 
 const app = express();
 
+const admin = require("firebase-admin");
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
@@ -28,7 +31,7 @@ app.use(cors(corsOptions));
 app.post("/contact", (req, res) => {
 	const { name, email, message } = req.body;
 
-	// Create a transporter
+
 	const transporter = nodemailer.createTransport({
 		host: "hosting2303630.online.pro",
 		port: 587,

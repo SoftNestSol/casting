@@ -12,7 +12,11 @@ import {
 	updatePassword,
 	sendPasswordResetEmail
 } from "firebase/auth";
-import { adminsCollection, aggregationsCollection, db } from "../config/firebase";
+import {
+	adminsCollection,
+	aggregationsCollection,
+	db
+} from "../config/firebase";
 import { doc, setDoc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
@@ -101,7 +105,7 @@ export const AuthContextProvider = ({ children }) => {
 				try {
 					const snapshot = await uploadBytes(photoRef, file);
 					const url = await getDownloadURL(snapshot.ref);
-				
+
 					return resizedName(url);
 				} catch (uploadError) {
 					if (attempt < MAX_RETRIES) {
@@ -128,15 +132,23 @@ export const AuthContextProvider = ({ children }) => {
 			delete userData.confirmPassword;
 			delete userData.files;
 
+			const date = new Date(); 
+
+			const day = date.getDate().toString().padStart(2, "0");
+			const month = (date.getMonth() + 1).toString().padStart(2, "0"); 
+			const year = date.getFullYear(); 
+			const formattedDate = `${day}/${month}/${year}`; 
+
 			await setDoc(doc(usersCollection, userCredential.user.uid), {
 				...userData,
 				photos,
-				uid: userCredential.user.uid
+				uid: userCredential.user.uid,
+				creationDate: formattedDate
 			});
 			const docRef = doc(db, "aggregates", "100");
-			await updateDoc(docRef, { 
-				userCounter: increment(1) 
-			})
+			await updateDoc(docRef, {
+				userCounter: increment(1)
+			});
 			setCurrentUser(userCredential.user);
 
 			router.push(`/profile/${userCredential.user.uid}`);

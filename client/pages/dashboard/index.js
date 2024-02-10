@@ -1,14 +1,12 @@
 import Link from "next/link";
-import { use, useEffect, useState } from "react";
-import { useRouter } from "next/router";
-
+import {useEffect, useState } from "react";
+import {useRouter} from "next/router";
 import MemberCard from "./member-card";
 import styles from "../../styles/dashboard/member-card.module.scss";
 import { useAuthContext } from "../../contexts/auth.context";
 import { useDashboardContext } from "../../contexts/dashboard.context";
 import { db, aggregationsCollection } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { get } from "http";
 
 const Dashboard = () => {
 	const { currentUser, logout, loading } = useAuthContext();
@@ -37,7 +35,9 @@ const Dashboard = () => {
 		setAgeRange,
 		setHeightRange,
 		setWeightRange,
-		resetAllFilters
+		resetAllFilters,
+		name,
+		setName
 	} = useDashboardContext();
 
 	if (loading) {
@@ -46,6 +46,10 @@ const Dashboard = () => {
 
 	const handleGenderChange = (e) => {
 		setGenderFilter(e.target.value);
+	};
+
+	const handleNameChange = (e) => {
+		setName(e.target.value);
 	};
 
 	const handleAgeChange = (e) => {
@@ -113,14 +117,16 @@ const Dashboard = () => {
 						Reset Filters
 					</button>
 				</div>
+
 				<div className={styles.search}>
-					<button
-						className={styles.logout}
-						onClick={logout}
-					>
-						Logout
-					</button>
+					<input
+						type="text"
+						placeholder="Search by name"
+						onChange={handleNameChange}
+					/>
 				</div>
+
+		
 
 				<div className={styles.container}>
 					<h1 className={styles.header}>

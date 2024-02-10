@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { collection, getDocs } from "firebase/firestore";
-
 import { db } from "../config/firebase";
 import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 
@@ -29,6 +28,7 @@ export const DashboardContextProvider = ({ children }) => {
 	const [ageRange, setAgeRange] = useState({ min: null, max: null });
 	const [heightRange, setHeightRange] = useState({ min: null, max: null });
 	const [weightRange, setWeightRange] = useState({ min: null, max: null });
+	const [name, setName]	= useState("");
 
 	const getMembersData = async () => {
 		const arr = [];
@@ -36,6 +36,7 @@ export const DashboardContextProvider = ({ children }) => {
 		querySnapshot.forEach((doc) => {
 			arr.push(doc.data());
 		});
+
 		return arr;
 	};
 
@@ -44,6 +45,7 @@ export const DashboardContextProvider = ({ children }) => {
 		setAgeRange({ min: null, max: null });
 		setHeightRange({ min: null, max: null });
 		setWeightRange({ min: null, max: null });
+		setName("");
 	};
 
 	useEffect(() => {
@@ -67,6 +69,10 @@ export const DashboardContextProvider = ({ children }) => {
 
 		checkAdminAndFetchMembers();
 	}, [currentUser, loading]);
+
+	useEffect(() => {
+		resetAllFilters();
+	}, [router]);
 
 	useEffect(() => {
 		let filteredMembers = [...members];
@@ -100,8 +106,18 @@ export const DashboardContextProvider = ({ children }) => {
 			);
 		});
 
+		filteredMembers = filteredMembers.filter((member) => {
+			return (
+				(!name || member.name.toLowerCase().includes(name.toLowerCase()))
+			);
+		}
+		);
+
 		setFiltered(filteredMembers);
-	}, [genderFilter, ageRange, heightRange, weightRange, members, members]);
+	}, [genderFilter, ageRange, heightRange, weightRange, members, members, name]);
+
+
+
 
 	const ComputeAge = (dateString) => {
 		const today = new Date();
@@ -128,7 +144,9 @@ export const DashboardContextProvider = ({ children }) => {
 		weightRange,
 		setWeightRange,
 		ComputeAge,
-		resetAllFilters
+		resetAllFilters,
+		name,
+		setName
 	};
 
 	return (

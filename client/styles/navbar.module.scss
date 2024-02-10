@@ -190,6 +190,58 @@
 	}
 }
 
+
+.logoutOptionDropDown {
+  position: absolute;
+  right: 0;
+  top: 100%; /* Position it right below the trigger element */
+  background-color: #1e1e1e;
+	color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden; /* Ensures the border-radius applies to child elements */
+  z-index: 100; /* Ensure it's above other content */
+  display: flex;
+  flex-direction: column;
+  min-width: 180px; /* Adjust based on your content */
+}
+
+.logoutOptionDropDown a,
+.logoutOptionDropDown button {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0; /* Adds a separator */
+}
+
+/* Remove the border from the last child for a cleaner look */
+.logoutOptionDropDown a:last-child,
+.logoutOptionDropDown button:last-child {
+  border-bottom: none;
+}
+
+.logoutOptionDropDown a:hover,
+.logoutOptionDropDown button:hover {
+ color: $color-accent;
+}
+
+/* Additional styles for better accessibility */
+.logoutOptionDropDown button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 120, 250, 0.75);
+}
+
+.logoutOptionDropDown a:focus {
+  outline: none;
+  background-color: #e8e8e8;
+}
+
+
 .goog-te-banner-frame.skiptranslate {
 	display: none !important;
 }
