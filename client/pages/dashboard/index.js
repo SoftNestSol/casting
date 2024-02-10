@@ -1,6 +1,6 @@
 import Link from "next/link";
-import {useEffect, useState } from "react";
-import {useRouter} from "next/router";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import MemberCard from "./member-card";
 import styles from "../../styles/dashboard/member-card.module.scss";
 import { useAuthContext } from "../../contexts/auth.context";
@@ -126,26 +126,26 @@ const Dashboard = () => {
 					/>
 				</div>
 
-		
-
 				<div className={styles.container}>
 					<h1 className={styles.header}>
 						Membrii Inscrisi :{numberOfMembers}{" "}
 					</h1>
 					<div className={styles.tableHeader}>
+						<div>Index</div>
 						<div>Poza</div>
 						<div>Sex</div>
 						<div>Varsta</div>
 						<div>Inaltime</div>
 						<div>Greutate</div>
 					</div>
-					{filtered.map((member) => (
+					{filtered.map((member, index) => (
 						<div
 							key={member.uid}
 							className={styles.memberCard}
 						>
 							<Link href={`/dashboard/member/${member.uid}`}>
-								<MemberCard member={member} />
+								<MemberCard member={member}
+								index = {index+1} />
 							</Link>
 						</div>
 					))}

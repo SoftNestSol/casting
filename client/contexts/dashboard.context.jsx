@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
+import { format } from "path";
 
 export const DashboardContext = createContext({});
 
@@ -28,7 +29,22 @@ export const DashboardContextProvider = ({ children }) => {
 	const [ageRange, setAgeRange] = useState({ min: null, max: null });
 	const [heightRange, setHeightRange] = useState({ min: null, max: null });
 	const [weightRange, setWeightRange] = useState({ min: null, max: null });
-	const [name, setName]	= useState("");
+	const [name, setName] = useState("");
+
+const FormatUsersByDate = (users = []) => {
+    users.sort((a, b) => {
+
+        const dateAParts = a.creationDate.split('/');
+        const dateBParts = b.creationDate.split('/');
+        const yearA = parseInt(dateAParts[2], 10) + 2000;
+        const yearB = parseInt(dateBParts[2], 10) + 2000;
+        const dateA = new Date(yearA, dateAParts[1] - 1, dateAParts[0]);
+        const dateB = new Date(yearB, dateBParts[1] - 1, dateBParts[0]);
+
+        return dateB - dateA; 
+    });
+    return users;
+};
 
 	const getMembersData = async () => {
 		const arr = [];
@@ -59,6 +75,7 @@ export const DashboardContextProvider = ({ children }) => {
 				if (isAdminUser) {
 					const membersData = await getMembersData();
 					setMembers(membersData);
+					setMembers(FormatUsersByDate(membersData));
 				} else {
 					router.push("/profile/[uid]", `/profile/${currentUser.uid}`);
 				}
@@ -75,7 +92,8 @@ export const DashboardContextProvider = ({ children }) => {
 	}, [router]);
 
 	useEffect(() => {
-		let filteredMembers = [...members];
+		let filteredMembers = FormatUsersByDate([...members]);
+		console.log("filteredMembers", filteredMembers);
 
 		if (genderFilter) {
 			filteredMembers = filteredMembers.filter(
@@ -107,17 +125,19 @@ export const DashboardContextProvider = ({ children }) => {
 		});
 
 		filteredMembers = filteredMembers.filter((member) => {
-			return (
-				(!name || member.name.toLowerCase().includes(name.toLowerCase()))
-			);
-		}
-		);
+			return !name || member.name.toLowerCase().includes(name.toLowerCase());
+		});
 
 		setFiltered(filteredMembers);
-	}, [genderFilter, ageRange, heightRange, weightRange, members, members, name]);
-
-
-
+	}, [
+		genderFilter,
+		ageRange,
+		heightRange,
+		weightRange,
+		members,
+		members,
+		name
+	]);
 
 	const ComputeAge = (dateString) => {
 		const today = new Date();
@@ -146,7 +166,8 @@ export const DashboardContextProvider = ({ children }) => {
 		ComputeAge,
 		resetAllFilters,
 		name,
-		setName
+		setName,
+		FormatUsersByDate
 	};
 
 	return (

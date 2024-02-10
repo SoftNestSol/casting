@@ -28,9 +28,7 @@ const UserDropDown = ({ logout }) => {
 	return (
 		<div className={styles.logoutOptionDropDown}>
 			<Link href="/profile">
-				<a>
-					<FormattedMessage id="navbar-profile" />
-				</a>
+				<FormattedMessage id="navbar-profile" />
 			</Link>
 			<button onClick={logout}>
 				<FormattedMessage id="navbar-logout" />
