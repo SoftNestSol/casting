@@ -47,23 +47,19 @@ const Register = () => {
 	};
 
 	const handleFileInputChange = (event) => {
-		if (
-			[...event.target.files].length < 5 ||
-			[...event.target.files].length > 8
-		)
-			return alert("Adauga intre 5 si 8 fotografii!");
 		[...event.target.files].forEach((file) => {
 			if (!file.name.match(/\.(jpg|jpeg|png)$/))
 				return alert("Fisierul nu este o imagine!");
 
 			const reader = new FileReader();
 
-			reader.onload = () =>
+			reader.onload = () => {
 				setUserData((prevState) => ({
 					...prevState,
 					photos: [reader.result, ...prevState.photos],
 					files: [file, ...prevState.files]
 				}));
+			};
 
 			reader.readAsDataURL(file);
 		});
@@ -72,9 +68,10 @@ const Register = () => {
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 		if (userData.spokenLanguages.length === 0)
-			return alert("Adauga cel putin o limba vorbita!");
-		if (userData.files.length === 0)
-			return alert("Adauga cel putin o fotografie!");
+			return alert("Add at least one spoken language!");
+		if (userData.files.length === 0) return alert("Add at least one photo!");
+		if (userData.files.length > 8 || userData.photos.length < 5)
+			return alert("between 5 and 8 photos allowed!");
 		if (userData.password !== userData.confirmPassword) return;
 		await signUp(userData);
 	};
