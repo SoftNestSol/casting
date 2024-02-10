@@ -413,7 +413,23 @@ const Register = () => {
 							value={userData.confirmPassword}
 						/>
 					</div>
-
+					&nbsp;
+					<span>
+						<input
+							type="checkbox"
+							id="terms"
+							name="terms"
+							required
+						/>
+						&nbsp; &nbsp;
+						<label htmlFor="terms">
+							<Link href="/terms">
+								<u>
+									<FormattedMessage id="terms" />
+								</u>
+							</Link>
+						</label>
+					</span>
 					<button type="submit">
 						<FormattedMessage id="register" />
 					</button>
