@@ -53,12 +53,13 @@ const Register = () => {
 
 			const reader = new FileReader();
 
-			reader.onload = () =>
+			reader.onload = () => {
 				setUserData((prevState) => ({
 					...prevState,
 					photos: [reader.result, ...prevState.photos],
 					files: [file, ...prevState.files]
 				}));
+			};
 
 			reader.readAsDataURL(file);
 		});
@@ -67,9 +68,10 @@ const Register = () => {
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 		if (userData.spokenLanguages.length === 0)
-			return alert("Adauga cel putin o limba vorbita!");
-		if (userData.files.length === 0)
-			return alert("Adauga cel putin o fotografie!");
+			return alert("Add at least one spoken language!");
+		if (userData.files.length === 0) return alert("Add at least one photo!");
+		if (userData.files.length > 8 || userData.photos.length < 5)
+			return alert("between 5 and 8 photos allowed!");
 		if (userData.password !== userData.confirmPassword) return;
 		await signUp(userData);
 	};
@@ -343,6 +345,7 @@ const Register = () => {
 							htmlFor="photos"
 						>
 							<FormattedMessage id="load photos" />
+							<FormattedMessage id="photos constraints" />
 						</label>
 
 						<input
@@ -412,7 +415,23 @@ const Register = () => {
 							value={userData.confirmPassword}
 						/>
 					</div>
-
+					&nbsp;
+					<span>
+						<input
+							type="checkbox"
+							id="terms"
+							name="terms"
+							required
+						/>
+						&nbsp; &nbsp;
+						<label htmlFor="terms">
+							<Link href="/terms">
+								<u>
+									<FormattedMessage id="terms" />
+								</u>
+							</Link>
+						</label>
+					</span>
 					<button type="submit">
 						<FormattedMessage id="register" />
 					</button>
