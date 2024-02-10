@@ -113,5 +113,6 @@
 	"reset-password-call": "Send Password Reset Link",
 	"all rights reserved": "All rights reserved",
 	"footer-navigation": "Navigation",
-	"castings-no-casting": "No open casting!"
+	"castings-no-casting": "No open casting!",
+	"photos constraints": "-The pictures must be in jpg, jpeg, or png format. Between 5-8 pictures, full-body picture front - back, profile left - right, and the rest of the pictures are your choice - it is not necessary for the pictures to be professional."
 }

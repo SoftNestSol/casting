@@ -343,6 +343,7 @@ const Register = () => {
 							htmlFor="photos"
 						>
 							<FormattedMessage id="load photos" />
+							<FormattedMessage id="photos constraints" />
 						</label>
 
 						<input

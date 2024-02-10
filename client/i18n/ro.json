@@ -115,5 +115,6 @@
 	"gray": "Gri",
 	"yellow": "Galben",
 	"footer-navigation": "Navigare",
-	"castings-no-casting":"Niciun casting deschis!"
+	"castings-no-casting": "Niciun casting deschis!",
+	"photos constraints": " -\nPozele trebuie sa fie in format jpg, jpeg sau png.Intre 5-8 poze, poza in picioare fata - spate , profil stanga - dreapta si restul pozelor la alegere - nu este necesar ca pozele sa fie profesionale."
 }
