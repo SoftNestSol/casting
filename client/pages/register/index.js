@@ -47,6 +47,11 @@ const Register = () => {
 	};
 
 	const handleFileInputChange = (event) => {
+		if (
+			[...event.target.files].length < 5 ||
+			[...event.target.files].length > 8
+		)
+			return alert("Adauga intre 5 si 8 fotografii!");
 		[...event.target.files].forEach((file) => {
 			if (!file.name.match(/\.(jpg|jpeg|png)$/))
 				return alert("Fisierul nu este o imagine!");
