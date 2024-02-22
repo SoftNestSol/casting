@@ -25,7 +25,7 @@
 	align-items: center;
 	font-size: 1.2em;
 	font-weight: bold;
-	gap: 14vw;
+	gap: 18vw;
 	margin: 2em auto;
 	height: 2em;
 	padding: 0.5em;
@@ -40,8 +40,7 @@
 	margin: 1em;
 	display: flex;
 	justify-content: center;
-	flex-direction: row;
-	gap: 14vw;
+	gap: 16vw;
 	align-items: center;
 }
 
@@ -63,11 +62,8 @@
 @media (max-width: 768px) {
 	.tableHeader,
 	.memberCard {
-		flex-direction: row;
+		flex-direction: column;
 		gap: 1em;
-		.memberWeight {
-			display: none;
-		}
 	}
 
 	.profilePhoto {
@@ -112,12 +108,17 @@
 			// Alte stiluri necesare pentru text
 		}
 	}
+
+	
 }
 
-.search {
+.search
+{
 	margin-top: 1em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 1em;
 }
+
+

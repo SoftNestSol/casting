@@ -10,6 +10,8 @@ import Head from "next/head";
 import Footer from "../components/footer";
 import Image from "next/image";
 import { DashboardContextProvider } from "../contexts/dashboard.context";
+import { Metadata } from "next";
+import Document from "./_document.js";
 
 import { IntlProvider } from "react-intl";
 import en from "../i18n/en.json";
@@ -19,6 +21,7 @@ const messages = {
 	en,
 	ro
 };
+
 function getDirection(locale) {
 	return "itr";
 }
@@ -43,6 +46,7 @@ const App = ({ Component, pageProps }) => {
 	return (
 		<>
 			<Head>
+				
 				<title>MyCasting - Your Chance</title>
 
 				<meta

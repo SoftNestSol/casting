@@ -1,11 +1,32 @@
+import Head from "next/head";
 import Image from "next/image";
+import { Metadata } from "next";
 
 import styles from "../../styles/about-us/about-us.module.scss";
 import { FormattedMessage } from "react-intl";
+import { useRouter } from "next/router";
 
 const AboutUs = () => {
+	const { locale } = useRouter();
+
+	const metadata = {
+		title: {
+			en: "About Us",
+			ro: "Despre Noi"
+		},
+		template: "%s - MyCasting"
+	};
+
+	const pageTitle = metadata.title[locale]
+		? `${metadata.title[locale]} - MyCasting`
+		: `${metadata.title["en"]} - MyCasting`;
+
 	return (
 		<>
+			<Head>
+				<title>{pageTitle}</title>
+			</Head>
+
 			<div className={styles.container}>
 				<Image
 					alt={"About us"}
@@ -15,11 +36,10 @@ const AboutUs = () => {
 				/>
 				<div className={styles.gradient} />
 				<h1 className={styles.heading}>
-					
-					< FormattedMessage id="about_us" />
-					  <span className={styles.accent}>
+					<FormattedMessage id="about_us" />
+					<span className={styles.accent}>
 						<FormattedMessage id="about_us_2" />
-					 </span>
+					</span>
 				</h1>
 				<p className={styles.subtitle}>
 					<FormattedMessage id="about_us_description" />
