@@ -31,24 +31,28 @@ export const DashboardContextProvider = ({ children }) => {
 	const [weightRange, setWeightRange] = useState({ min: null, max: null });
 	const [name, setName] = useState("");
 
-const FormatUsersByDate = (users = []) => {
-	users.sort((a, b) => {
-		try {
-			const dateAParts = a.creationDate ? a.creationDate.split('/') : ['Invalid'];
-			const dateBParts = b.creationDate ? b.creationDate.split('/') : ['Invalid'];
+	const FormatUsersByDate = (users = []) => {
+		users.sort((a, b) => {
+			try {
+				const dateAParts = a.creationDate
+					? a.creationDate.split("/")
+					: ["Invalid"];
+				const dateBParts = b.creationDate
+					? b.creationDate.split("/")
+					: ["Invalid"];
 
-			const yearA = parseInt(dateAParts[2], 10) + 2000;
-			const yearB = parseInt(dateBParts[2], 10) + 2000;
-			const dateA = new Date(yearA, dateAParts[1] - 1, dateAParts[0]);
-			const dateB = new Date(yearB, dateBParts[1] - 1, dateBParts[0]);
+				const yearA = parseInt(dateAParts[2], 10) + 2000;
+				const yearB = parseInt(dateBParts[2], 10) + 2000;
+				const dateA = new Date(yearA, dateAParts[1] - 1, dateAParts[0]);
+				const dateB = new Date(yearB, dateBParts[1] - 1, dateBParts[0]);
 
-			return dateB - dateA;
-		} catch (error) {
-			console.log(error);
-		}
-	});
-	return users;
-};
+				return dateB - dateA;
+			} catch (error) {
+				console.log(error);
+			}
+		});
+		return users;
+	};
 
 	const getMembersData = async () => {
 		const arr = [];
