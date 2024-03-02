@@ -7,6 +7,14 @@ import { useAuthContext } from "../../contexts/auth.context";
 import styles from "../../styles/auth/auth.module.scss";
 import { FormattedMessage } from "react-intl";
 
+const LoadingCircle = () => {
+	return (
+		<div className={styles.loading}>
+			<div className={styles.circle}></div>
+		</div>
+	);
+};
+
 const userDataInitialState = {
 	name: "",
 	email: "",
@@ -31,6 +39,7 @@ const userDataInitialState = {
 
 const Register = () => {
 	const [userData, setUserData] = useState(userDataInitialState);
+	const [loading, setLoading] = useState(false);
 
 	const { signUp } = useAuthContext();
 
@@ -67,12 +76,16 @@ const Register = () => {
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
+
 		if (userData.spokenLanguages.length === 0)
 			return alert("Add at least one spoken language!");
 		if (userData.files.length === 0) return alert("Add at least one photo!");
 		if (userData.files.length > 8 || userData.photos.length < 5)
 			return alert("between 5 and 8 photos allowed!");
 		if (userData.password !== userData.confirmPassword) return;
+
+		if (loading) return;
+		setLoading(true);
 		await signUp(userData);
 	};
 
@@ -168,7 +181,6 @@ const Register = () => {
 									onChange={(event) =>
 										handleSpokenLanguagesInputChange(event, index)
 									}
-									required
 									type="text"
 									value={language}
 								/>
@@ -354,7 +366,6 @@ const Register = () => {
 							onChange={handleFileInputChange}
 							type="file"
 							multiple
-							required
 						/>
 
 						{userData.photos.length > 0 ? (
@@ -375,6 +386,7 @@ const Register = () => {
 											className={styles.remove}
 											onClick={() => {
 												const photos = userData.photos;
+
 												const files = userData.files;
 												photos.splice(index, 1);
 												files.splice(index, 1);
@@ -432,9 +444,13 @@ const Register = () => {
 							</Link>
 						</label>
 					</span>
-					<button type="submit">
-						<FormattedMessage id="register" />
-					</button>
+					{loading ? (
+						<LoadingCircle />
+					) : (
+						<button type="submit">
+							<FormattedMessage id="register" />
+						</button>
+					)}
 				</form>
 
 				<div className={styles.bottom_section}>

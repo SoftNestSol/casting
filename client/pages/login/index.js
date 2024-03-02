@@ -5,13 +5,24 @@ import { useAuthContext } from "../../contexts/auth.context";
 import { FormattedMessage } from "react-intl";
 import styles from "../../styles/auth/auth.module.scss";
 
+const LoadingCircle = () => {
+	return (
+		<div className={styles.loading}>
+			<div className={styles.circle}></div>
+		</div>
+	);
+}
+
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const { signIn } = useAuthContext();
 
 	const handleFormSubmit = async (event) => {
+		if(loading) return;
+		setLoading(true);
 		event.preventDefault();
 		await signIn(email, password);
 	};
@@ -52,9 +63,13 @@ const Login = () => {
 						/>
 					</div>
 
-					<button type="submit">
-						<FormattedMessage id="login-call" />
-					</button>
+					{loading ? (
+						<LoadingCircle />
+					) : (
+						<button type="submit">
+							<FormattedMessage id="login-call" />
+						</button>
+					)}
 				</form>
 
 				<div className={styles.bottom_section}>

@@ -244,3 +244,26 @@
 		}
 	}
 }
+
+.loading {
+	display: flex;
+	margin-top: 1.5rem;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.circle {
+	width: 2rem;
+	height: 2rem;
+	border: 0.25rem solid #bfa75d;
+	border-top-color: transparent;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+}
