@@ -87,6 +87,7 @@ const Register = () => {
 		if (loading) return;
 		setLoading(true);
 		await signUp(userData);
+		setLoading(false);
 	};
 
 	return (

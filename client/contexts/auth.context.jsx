@@ -132,12 +132,12 @@ export const AuthContextProvider = ({ children }) => {
 			delete userData.confirmPassword;
 			delete userData.files;
 
-			const date = new Date(); 
+			const date = new Date();
 
 			const day = date.getDate().toString().padStart(2, "0");
-			const month = (date.getMonth() + 1).toString().padStart(2, "0"); 
-			const year = date.getFullYear(); 
-			const formattedDate = `${day}/${month}/${year}`; 
+			const month = (date.getMonth() + 1).toString().padStart(2, "0");
+			const year = date.getFullYear();
+			const formattedDate = `${day}/${month}/${year}`;
 
 			await setDoc(doc(usersCollection, userCredential.user.uid), {
 				...userData,

@@ -11,7 +11,7 @@ const LoadingCircle = () => {
 			<div className={styles.circle}></div>
 		</div>
 	);
-}
+};
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -21,10 +21,11 @@ const Login = () => {
 	const { signIn } = useAuthContext();
 
 	const handleFormSubmit = async (event) => {
-		if(loading) return;
+		if (loading) return;
 		setLoading(true);
 		event.preventDefault();
 		await signIn(email, password);
+		setLoading(false);
 	};
 
 	return (
