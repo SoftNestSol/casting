@@ -1,5 +1,6 @@
 import React from "react";
-
+import Head from "next/head";
+import { useRouter } from "next/router";
 import styles from "../../styles/projects/projects.module.scss";
 import ProjectCard from "./project-card";
 import { FormattedMessage } from "react-intl";
@@ -30,8 +31,15 @@ const projects = [
 ];
 
 const Projects = () => {
+	const { locale } = useRouter();
+
+	const pageTitle =
+		locale === "en" ? "Portofolio - MyCasting" : "Portofoliu - MyCasting";
 	return (
 		<>
+			<Head>
+			<title>{pageTitle}</title>
+			</Head>
 			<div className={styles.heading_text}>
 				<h1>
 					<FormattedMessage id="projects_title" />

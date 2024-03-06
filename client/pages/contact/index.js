@@ -1,3 +1,5 @@
+import Head from "next/head";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "../../styles/contact/contact.module.scss";
 import Link from "next/link";
@@ -6,6 +8,10 @@ import { FormattedMessage } from "react-intl";
 import { useState } from "react";
 
 const Contact = () => {
+	const { locale } = useRouter();
+
+	const pageTitle =
+		locale === "en" ? "Contact - MyCasting" : "Contact - MyCasting";
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -53,6 +59,9 @@ const Contact = () => {
 
 	return (
 		<>
+		<Head>
+			<title>{pageTitle}</title>
+			</Head>
 			<h2 className={styles.heading2}>
 				<FormattedMessage id="contact title" />
 			</h2>

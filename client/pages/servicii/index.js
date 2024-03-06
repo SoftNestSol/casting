@@ -1,5 +1,6 @@
 import Image from "next/image";
-
+import Head from "next/head";
+import { useRouter } from "next/router";
 import styles from "../../styles/servicii/servicii.module.scss";
 import { FormattedMessage } from "react-intl";
 const services = [
@@ -43,8 +44,16 @@ const services = [
 ];
 
 const Services = () => {
+	const { locale } = useRouter();
+
+	const pageTitle =
+		locale === "en" ? "Services - MyCasting" : "Servicii - MyCasting";
 	return (
-		<div className={styles.wrapper}>
+		<>
+		<Head>
+			<title>{pageTitle}</title>
+			</Head>
+			<div className={styles.wrapper}>
 			<div className={styles.top_section}>
 				<h1>
 					<FormattedMessage id="services_title" />
@@ -76,6 +85,8 @@ const Services = () => {
 				))}
 			</div>
 		</div>
+		</>
+		
 	);
 };
 
