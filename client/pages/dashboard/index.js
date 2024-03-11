@@ -133,6 +133,7 @@ const Dashboard = () => {
 					<div className={styles.tableHeader}>
 						<div>Index</div>
 						<div>Poza</div>
+						<div>Nume</div>
 						<div>Sex</div>
 						<div>Varsta</div>
 						<div>Inaltime</div>
@@ -144,8 +145,10 @@ const Dashboard = () => {
 							className={styles.memberCard}
 						>
 							<Link href={`/dashboard/member/${member.uid}`}>
-								<MemberCard member={member}
-								index = {index+1} />
+								<MemberCard
+									member={member}
+									index={index + 1}
+								/>
 							</Link>
 						</div>
 					))}

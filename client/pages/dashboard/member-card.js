@@ -16,7 +16,7 @@ const MemberCard = ({ member, index }) => {
 				className={styles.profilePhoto}
 				alt="Profile"
 			/>
-
+			<div className={styles.memberDetail}>{`Nume: ${member.name}`}</div>
 			<div className={styles.memberDetail}>{`Sex: ${member.gender}`}</div>
 			<div className={styles.memberDetail}>{`Varsta: ${ComputeAge(
 				member.dateOfBirth
