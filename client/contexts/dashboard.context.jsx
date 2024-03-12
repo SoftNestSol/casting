@@ -31,6 +31,8 @@ export const DashboardContextProvider = ({ children }) => {
 	const [weightRange, setWeightRange] = useState({ min: null, max: null });
 	const [name, setName] = useState("");
 
+
+
 	const FormatUsersByDate = (users = []) => {
 		users.sort((a, b) => {
 			try {
@@ -82,7 +84,8 @@ export const DashboardContextProvider = ({ children }) => {
 				const isAdminUser = await checkIfAdmin(currentUser.uid);
 				if (isAdminUser) {
 					const membersData = await getMembersData();
-					setMembers(membersData);
+					const actualMembersData = membersData.filter(member => member.varsta !== null);
+					setMembers(actualMembersData);
 					setMembers(FormatUsersByDate(membersData));
 				} else {
 					router.push("/profile/[uid]", `/profile/${currentUser.uid}`);

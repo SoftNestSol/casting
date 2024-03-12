@@ -60,40 +60,19 @@ const MemberPage = () => {
 							<strong>Nume:</strong> {user.name}
 						</p>
 						<p>
-							<strong>Email:</strong> {user.email}
-						</p>
-						<p>
-							<strong>Telefon:</strong> {user.phoneNumber}
-						</p>
-						<p>
-							<strong>Judet:</strong> {user.county}
-						</p>
-						<p>
+							<p>
+								<strong>Varsta:</strong> {ComputeAge(user.dateOfBirth)}
+							</p>
 							<strong>Oras:</strong> {user.city}
-						</p>
-						<p>
-							<strong>Gen:</strong> {user.gender}
-						</p>
-						<p>
-							<strong>Varsta:</strong> {ComputeAge(user.dateOfBirth)}
-						</p>
-						<p>
-							<strong>Inaltime:</strong> {user.height}
 						</p>
 						<p>
 							<strong>Greutate:</strong> {user.weight}
 						</p>
 						<p>
-							<strong>Culoare par:</strong> {user.hairColor}
+							<strong>Inaltime:</strong> {user.height}
 						</p>
 						<p>
 							<strong>Nationalitate:</strong> {user.nationality}
-						</p>
-						<p>
-							<strong>Culoare ochi:</strong> {user.eyeColor}
-						</p>
-						<p>
-							<strong>Descriere:</strong> {user.description}
 						</p>
 						<p>
 							<strong>Ultima scoala absolvita:</strong> {user.school}
@@ -101,6 +80,22 @@ const MemberPage = () => {
 						<p>
 							<strong>Limbi straine:</strong>{" "}
 							{user.spokenLanguages.map((language) => `${language} `)}
+						</p>
+						<p>
+							<strong>Email:</strong> {user.email}
+						</p>
+						<p>
+							<strong>Telefon:</strong> {user.phoneNumber}
+						</p>
+						<p>
+							<strong>Culoare par:</strong> {user.hairColor}
+						</p>
+
+						<p>
+							<strong>Culoare ochi:</strong> {user.eyeColor}
+						</p>
+						<p>
+							<strong>Descriere:</strong> {user.description}
 						</p>
 
 						{user.photos && user.photos.length > 0 && (

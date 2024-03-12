@@ -141,7 +141,6 @@ export const AuthContextProvider = ({ children }) => {
 
 			await setDoc(doc(usersCollection, userCredential.user.uid), {
 				...userData,
-				photos,
 				uid: userCredential.user.uid,
 				creationDate: formattedDate
 			});
@@ -149,8 +148,9 @@ export const AuthContextProvider = ({ children }) => {
 			await updateDoc(docRef, {
 				userCounter: increment(1)
 			});
-			setCurrentUser(userCredential.user);
 
+
+			setCurrentUser(userCredential.user);
 			router.push(`/profile/${userCredential.user.uid}`);
 			router.reload();
 		} catch (error) {

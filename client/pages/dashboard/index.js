@@ -139,19 +139,22 @@ const Dashboard = () => {
 						<div>Inaltime</div>
 						<div>Greutate</div>
 					</div>
-					{filtered.map((member, index) => (
-						<div
-							key={member.uid}
-							className={styles.memberCard}
-						>
-							<Link href={`/dashboard/member/${member.uid}`}>
-								<MemberCard
-									member={member}
-									index={index + 1}
-								/>
-							</Link>
-						</div>
-					))}
+					{filtered
+						.filter((member) => member.name !== "")
+						.map((member, index) => (
+							<div
+								key={member.uid}
+								className={styles.memberCard}
+							>
+								<Link href={`/dashboard/member/${member.uid}`}>
+									<MemberCard
+										member={member}
+										index={Math.abs(index - filtered.filter((member => member.name  !== "")).length)}
+									/>
+								</Link>
+							</div>
+						))}
+					{console.log("filtered", filtered)}
 				</div>
 			</div>
 		</>

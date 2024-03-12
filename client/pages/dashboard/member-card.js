@@ -4,7 +4,7 @@ import { useDashboardContext } from "../../contexts/dashboard.context";
 const MemberCard = ({ member, index }) => {
 	const { ComputeAge } = useDashboardContext();
 
-	if (!member || !member.photos || member.photos.length === 0) {
+	if (!member) {
 		return <div>No member data available</div>;
 	}
 	const imgSrc = member.photos[1];

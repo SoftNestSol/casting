@@ -86,8 +86,23 @@ const Register = () => {
 
 		if (loading) return;
 		setLoading(true);
-		await signUp(userData);
-		setLoading(false);
+
+		try {
+			if (
+				Object.values(userData).filter((value) => value !== "").length !==
+				Object.keys(userData).length
+			)
+				throw new Error("No data");
+			else {
+				await signUp(userData);
+				setLoading(false);
+			}
+		} catch (error) {
+			alert(
+				"A aparut o eroare la crearea contului! Verifica conexiunea la internet si incearca din nou si verifica daca ai completat toate campurile!"
+			);
+			setLoading(false);
+		}
 	};
 
 	return (
