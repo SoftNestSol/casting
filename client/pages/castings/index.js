@@ -54,8 +54,8 @@ const Castings = () => {
 
 	const pageTitle =
 		locale === "en"
-			? "Open Castings - MyCasting"
-			: "Castinguri deschise - MyCasting";
+			? "Castings - MyCasting"
+			: "Castinguri - MyCasting";
 
 	const renderArticle = () => {
 		return (

@@ -16,11 +16,11 @@ export default function LandingPage({ dir }) {
 
 	const metadata = {
 		title: {
-			en: "MyCasting - Your Chance",
-			ro: "MyCasting - Șansa Ta"
+			en: "MyCasting - Discover your chance with us! | Casting Bucharest",
+			ro: "MyCasting - Descoperă șansa ta cu noi! | Casting Bucuresti"
 		},
 		description:
-			"Agentia MyCasting este o platforma de casting pentru actori, modele, cantareti, copii, figuratie. Inregistreaza-te acum si ai sansa sa fii descoperit.",
+			"Agentia MyCasting este o platforma de casting din Bucuresti pentru actori, modele, cantareti si figuratie. Acum e sansa ta sa fii descoperit.",
 
 		twitter: {
 			card: "summary_large_image"
@@ -60,7 +60,7 @@ export default function LandingPage({ dir }) {
 					</div>
 					<div className={styles.hero_text}>
 						<h1>
-							<span>Your</span> <span>Chance</span>
+							<FormattedMessage id="your_chance" />
 						</h1>
 						<h2>
 							<FormattedMessage id="my_casting" />
