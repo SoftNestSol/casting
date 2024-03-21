@@ -29,33 +29,31 @@ const articleEN = `
 
 const articleRO = `<div style="text-align:center; max-width: 800px; margin: auto; padding-top: 100px;">
 
-<p>Pe cât de captivantă este lumea castingului, pe atât de descurajantă poate fi de asemenea. Fie că ești un actor aspirant, un interpret experimentat sau un scouter de talente, înțelegerea procesului de casting este un element crucial pentru succesul în industria divertismentului. În rândurile care urmează, vom explora aspectele esențiale ale castingului, oferind un ghid complet ce implică sfaturi de pregătire, dar și cum MyCasting.ro poate fi portalul tău spre descoperirea oportunităților.</p>
+<p>Pe cât de captivantă este lumea divertismentului, pe atât de descurajantă poate fi de asemenea. Fie că ești un actor aspirant, un interpret experimentat sau un scouter de talente, înțelegerea procesului de casting este un element crucial pentru succesul în această industrie. În rândurile care urmează, vom explora aspectele esențiale ale castingului, oferind un ghid complet ce implică sfaturi de pregătire, dar și cum MyCasting.ro poate fi portalul tău spre descoperirea oportunităților.</p>
 
 <h2>Înțelegerea procesului de casting</h2>
-<p>Castingul este piatra de temelie a oricărei producții, fie că este vorba de un film, un show de televiziune, un spectacol de teatru sau o reclamă. Acesta implică selecția talentului potrivit care poate aduce personajele la viață și poate rezona cu publicul. Procesul începe cu apeluri pentru casting sau audiții, unde actorii performează în fața directorilor de casting sau a unui panel, demonstrându-și astfel capacitatea de a interpreta diferite roluri.</p>
+<p>Castingul este piatra de temelie a oricărei producții, fie că este vorba de un film, un show de televiziune, un spectacol de teatru sau o reclamă. Acesta implică selecția actorului potrivit care poate aduce personajele la viață și poate rezona cu publicul. Procesul începe cu apeluri pentru casting sau audiții, unde actorii performează în fața directorilor de casting sau a unui panel, demonstrându-și astfel capacitatea de a interpreta diferite roluri.</p>
 
 <h2>Pregătirea este cheia succesului</h2>
-<p>Înainte de a intra în sala de audiție, o pregătire temeinică este cel mai bun aliat al tău. Aceasta include aducerea unei fotografii de profil profesională care îți captează esența, un CV care detaliază experiența ta în actorie și monologuri pregătite care să-ți pună în evidență diversitatea de personaje pe care le poți interpreta. Înțelegerea producției, dar și a rolului pentru care susții audiția îți vor oferi, de asemenea, un avantaj.</p>
+<p>Înainte de a intra în sala de audiție, cel mai bun aliat al tău este o pregătire temeinică. Aceasta include aducerea unei fotografii de profil profesională care să îți captează esența, un CV care detaliază experiența ta în actorie și câteva monologuri pregătite care să-ți pună în valoare diversitatea personajelor pe care le poți interpreta. Înțelegerea producției, dar și a rolului pentru care susții audiția îți vor oferi un avantaj.</p>
 
-<h2>Audiția</h2>
-<p>Audițiile pot varia, dar adesea implică interpretarea unei piese pregătite, citirea pe loc din scenariu și uneori improvizație. Acesta este momentul tău să strălucești și să demonstrezi nu doar abilitățile tale actoricești, dar și capacitatea ta de a urma direcții și de a te adapta neprevăzutului.</p>
+<h2>Susținerea audiției</h2>
+<p>Audițiile pot varia, dar acestea implică adesea interpretarea unei piese pregătite de către comisie, citirea unui text la prima vedere și uneori improvizație. Acesta este momentul tău să strălucești și să demonstrezi nu doar abilitățile tale actoricești, dar și capacitatea ta de a urma direcții și de a te adapta neprevăzutului.</p>
 
 <h2>Strategii post-audiție</h2>
 <p>După audiție, este important să arăți apreciere echipei de casting, mulțumind pentru oportunitate. De asemenea, gestionarea rezultatelor – indiferent dacă ai obținut rolul sau nu – este o experiență din care se învață. Respingerea poate fi descurajantă, dar face parte din industrie și este o șansă de a crește.</p>
 
 <h2>Crearea unui cont pe MyCasting.ro</h2>
-<p>Pentru cei care doresc să se avânte în lumea castingului, MyCasting.ro este o platformă menită să te conecteze cu oportunități de casting. Crearea unui cont este un proces simplu, care deschide ușa către numeroase apeluri pentru casting, contacte din industrie și resurse pentru a-ți avansa cariera actoricească.</p>
+<p>Pentru cei care doresc să se avânte în lumea castingului, MyCasting.ro este o platformă menită să te conecteze cu oportunități de casting din Bucuresti și nu numai! Crearea unui cont este simplă și deschide ușa către numeroase apeluri pentru casting, contacte din industrie și resurse pentru a avansa în cariera actoricească.</p>
 
-<p>Prin înțelegerea procesului de casting și valorificarea platformelor precum MyCasting.ro, actorii pot naviga prin industria divertismentului cu încredere. Rămâi pregătit, valorifică fiecare oportunitate și amintește-ți că fiecare audiție este un pas mai aproape de următorul tău rol.</p>
+<p>Prin înțelegerea procesului de casting și utilizarea platformei MyCasting.ro, actorii pot naviga prin industria divertismentului cu încredere. Rămâi pregătit, valorifică fiecare oportunitate și ține minte că fiecare audiție este un pas mai aproape de următorul tău rol.</p>
 </div>`;
 
 const Castings = () => {
 	const { locale } = useRouter();
 
 	const pageTitle =
-		locale === "en"
-			? "Castings - MyCasting"
-			: "Castinguri - MyCasting";
+		locale === "en" ? "Castings - MyCasting" : "Castinguri - MyCasting";
 
 	const renderArticle = () => {
 		return (
