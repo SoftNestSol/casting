@@ -131,13 +131,13 @@ const Dashboard = () => {
 						Membrii Inscrisi :{numberOfMembers}{" "}
 					</h1>
 					<div className={styles.tableHeader}>
-						<div>Index</div>
-						<div>Poza</div>
-						<div>Nume</div>
-						<div>Sex</div>
-						<div>Varsta</div>
-						<div>Inaltime</div>
-						<div>Greutate</div>
+						<div className={styles.memberDetail}>Index</div>
+						<div className={styles.memberDetail}>Poza</div>
+						<div className={styles.memberDetail}>Nume</div>
+						<div className={styles.memberDetail}>Sex</div>
+						<div className={styles.memberDetail}>Varsta</div>
+						<div className={styles.memberDetail}>Inaltime</div>
+						<div className={styles.memberDetail}>Greutate</div>
 					</div>
 					{filtered
 						.filter((member) => member.name !== "")
