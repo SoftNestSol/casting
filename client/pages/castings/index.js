@@ -134,15 +134,6 @@ const Castings = () => {
 
 									<div className={styles.casting_field}>
 										<h3>
-											<FormattedMessage id="casting duration" />:
-										</h3>
-										<h4>
-											{getDuration(casting.startDate, casting.endDate)} zile
-										</h4>
-									</div>
-
-									<div className={styles.casting_field}>
-										<h3>
 											<FormattedMessage id="casting compensation" />:
 										</h3>
 										<h4>{casting.compensation} RON</h4>
