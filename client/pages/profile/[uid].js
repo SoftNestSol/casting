@@ -218,6 +218,12 @@ const ProfilePage = () => {
 					{section === "profile" ? <h1>Profilul meu</h1> : null}
 					{section === "security" ? <h1>Securitate</h1> : null}
 
+					{section === "profile" && profileData.photos.length < 5 ? (
+						<div className={styles.photos_alert}>
+							Adauga cel putin 5 fotografii pentru a-ti completa profilul
+						</div>
+					) : null}
+
 					<form onSubmit={handleFormSubmit}>
 						{section === "profile" ? (
 							<div className={styles.fields}>
