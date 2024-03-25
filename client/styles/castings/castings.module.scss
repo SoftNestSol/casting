@@ -17,21 +17,7 @@
 			}
 		}
 	}
-	.modal {
-		background-color: rgba(0, 0, 0, 0.9); // Transparent black background
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		.modalContent {
-			display: flex;
-			img {
-				width: 100%;
-				height: auto;
-			}
-		}
-	}
+
 	.castings {
 		max-width: 1250px;
 		margin: 5rem auto 0;
@@ -169,5 +155,76 @@
 				font-size: 1.25rem;
 			}
 		}
+	}
+}
+.modal {
+	background-color: #191919;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.closeButton {
+		position: absolute; // Poziționare absolută pentru a-l plasa în dreapta sus
+		top: 100px; // Spațiu de la partea de sus a modalului
+		right: 10px; // Spațiu de la partea dreaptă a modalului
+		// background-color: transparent; // Fundal transparent pentru un aspect mai curat
+		border: none; // Elimină bordura implicită
+		font-size: 48px; // Mărimea textului/iconului
+		cursor: pointer; // Cursor de tip pointer pentru a indica acțiunea clicabilă
+		content: "X";
+		&:hover {
+			color: #ccc; // Schimbă culoarea la hover pentru feedback vizual
+		}
+	}
+}
+.modalContent {
+	display: flex; // Schimbat la flex pentru a gestiona mai bine direcția elementelor
+	flex-direction: column; // Elementele vor fi aranjate vertical
+	gap: 20px; // Spațiu între elemente
+	padding: 5em;
+	max-height: 90vh; // Înălțimea maximă înainte de a permite scroll
+	overflow-y: auto; // Permite scroll vertical dacă este necesar
+	align-items: center; // Centrat elementele pe axa transversală
+	img {
+		width: 60%;
+		//Lățimeredusăpentruaadăugaspațiuînjurulimaginilor
+		height: auto;
+		//Înălțimeaseajusteazăpentruapăstraproporțiile
+		object-fit: cover;
+		transition:
+			transform 0.2s ease,
+			z-index 0.2s ease;
+		z-index: 1;
+		//Asigurăcăimaginilesuntdeasuprafundaluluigrilei
+		&:hover {
+			transform: scale(1.05);
+			z-index: 2;
+			//Aduceimagineaselectatădeasupracelorlalte
+			-webkit-transform: scale(1.05);
+			-moz-transform: scale(1.05);
+			-ms-transform: scale(1.05);
+			-o-transform: scale(1.05);
+			-webkit-transform: scale(1.05);
+		}
+		h1 {
+			font-size: 1rem;
+			color: #fff;
+			text-align: center;
+		}
+	}
+	.yourButtonClass {
+		padding: 10px 20px;
+		background: radial-gradient(
+			75% 300% at 50% 50%,
+			hwb(45 37% 25%) 0%,
+			#000 100%
+		);
+		color: white;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		width: auto; // Lățimea se ajustează la conținut
+		margin-top: 20px; // Adaugă spațiu deasupra butonului
 	}
 }

@@ -9,14 +9,17 @@ Modal.setAppElement("#__next");
 const Castings = () => {
 	const { castings } = useCastingsContext();
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const [activeCasting, setActiveCasting] = useState(null);
 
 	useEffect(() => {
 		Modal.setAppElement("#__next");
 	}, []);
 
-	const toggleModal = () => {
+	const toggleModal = (casting = null) => {
 		setIsOpen(!modalIsOpen);
+		setActiveCasting(casting); // actualizează starea cu castingul selectat
 	};
+
 	const formatDate = (date, longFormat = false) => {
 		date = new Date(date);
 
@@ -70,7 +73,7 @@ const Castings = () => {
 					{castings.map((casting, index) => (
 						<div
 							className={styles.casting}
-							onClick={toggleModal}
+							onClick={() => toggleModal(casting)}
 							key={index}
 						>
 							<div className={styles.casting_head}>
@@ -172,14 +175,22 @@ const Castings = () => {
 								</button>{" "}
 								{/* Close button */}
 								<div className={styles.modalContent}>
-									{casting.imageUrls &&
-										casting.imageUrls.map((imageUrl, index) => (
-											<img
-												key={index}
-												src={imageUrl}
-												alt={`${casting.title} image ${index + 1}`}
-											/>
-										))}
+									{activeCasting?.imageUrls?.map((imageUrl, index) => (
+										<img
+											key={index}
+											src={imageUrl}
+											alt={`${activeCasting.title} image ${index + 1}`}
+										/>
+									))}
+									<h1 >
+										<FormattedMessage id="casting apply" />
+									</h1>
+									<button
+										onClick={() => (window.location.href = "/register")}
+										className={styles.yourButtonClass}
+									>
+										<FormattedMessage id="apply_now" />
+									</button>
 								</div>
 							</Modal>
 						</div>

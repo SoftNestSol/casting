@@ -21,9 +21,9 @@ const sampleCasting = {
 	description:
 		"Cautam femei si barbati figuratie speciala pentru o reclama la farmacie. Filmarile au loc in perioada 13-15 Noiembrie (1 sau 2 zile).",
 	imageUrls: [
-		"client/public/images/castings" + "1.jpg",
-		"client/public/images/castings" + "2.jpg",
-		"client/public/images/castings" + "3.jpg"
+		"images/castings/test/1.jpg",
+		"images/castings/test/2.jpg",
+		"images/castings/test/3.jpg"
 	]
 };
 
@@ -40,9 +40,9 @@ const sampleCasting2 = {
 	description:
 		"Cautam femei si barbati figuratie speciala pentru o reclama la farmacie. Filmarile au loc in perioada 13-15 Noiembrie (1 sau 2 zile).",
 	imageUrls: [
-		"client/public/images/castings/1.jpg",
-		"client/public/images/castings/2.jpg",
-		"client/public/images/castings/3.jpg"
+		"images/castings/test/4.jpg",
+		"images/castings/test/5.jpg",
+		"images/castings/test/6.jpg"
 	]
 };
 
@@ -61,12 +61,7 @@ export const CastingsContextProvider = ({ children }) => {
 	useEffect(() => {
 		if (setCastingsRef.current) return;
 
-		const castingsArray = [
-			sampleCasting,
-			sampleCasting2,
-			sampleCasting,
-			sampleCasting2
-		];
+		const castingsArray = [sampleCasting, sampleCasting2];
 
 		castingsArray.forEach((casting) => {
 			casting.remainingDays = getRemainingDays(casting.endDate);
