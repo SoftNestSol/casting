@@ -12,11 +12,7 @@ import {
 	updatePassword,
 	sendPasswordResetEmail
 } from "firebase/auth";
-import {
-	adminsCollection,
-	aggregationsCollection,
-	db
-} from "../config/firebase";
+import { adminsCollection, db } from "../config/firebase";
 import { doc, setDoc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
@@ -94,42 +90,10 @@ export const AuthContextProvider = ({ children }) => {
 			await setPersistence(auth, browserLocalPersistence);
 			await signInWithEmailAndPassword(auth, userData.email, userData.password);
 
-			const MAX_RETRIES = 3;
-
-			const uploadPhotoWithRetry = async (file, attempt = 0) => {
-				const photoRef = ref(
-					storage,
-					`photos/${userCredential.user.uid}/${file.name}`
-				);
-
-				try {
-					const snapshot = await uploadBytes(photoRef, file);
-					const url = await getDownloadURL(snapshot.ref);
-
-					return resizedName(url);
-				} catch (uploadError) {
-					if (attempt < MAX_RETRIES) {
-						console.warn(`Retry ${attempt + 1} for file:`, file.name);
-						return await uploadPhotoWithRetry(file, attempt + 1);
-					}
-
-					console.error(
-						"Final upload attempt failed for file:",
-						file.name,
-						uploadError
-					);
-					return null;
-				}
-			};
-
-			const photoUploadPromises = userData.files.map((file) =>
-				uploadPhotoWithRetry(file)
-			);
-			const photoResults = await Promise.all(photoUploadPromises);
-			const photos = photoResults.filter((url) => url != null);
-
 			delete userData.password;
 			delete userData.confirmPassword;
+
+			const files = userData.files;
 			delete userData.files;
 
 			const date = new Date();
@@ -144,11 +108,54 @@ export const AuthContextProvider = ({ children }) => {
 				uid: userCredential.user.uid,
 				creationDate: formattedDate
 			});
+
+			const uploadPhotoWithRetry = async (file, index, attempt = 0) => {
+				const extension = file.name.split(".").pop();
+				const photoRef = ref(
+					storage,
+					`photos/${userCredential.user.uid}/photo_${index + 1}.${extension}`
+				);
+
+				try {
+					const snapshot = await uploadBytes(photoRef, file);
+					const url = await getDownloadURL(snapshot.ref);
+
+					return resizedName(url);
+				} catch (uploadError) {
+					const MAX_RETRIES = 3;
+
+					if (attempt < MAX_RETRIES) {
+						console.warn(`Retry ${attempt + 1} for file:`, file.name);
+						return await uploadPhotoWithRetry(file, attempt + 1);
+					}
+
+					console.error(
+						"Final upload attempt failed for file:",
+						file.name,
+						uploadError
+					);
+					return null;
+				}
+			};
+
+			const photoUploadPromises = files.map((file, index) =>
+				uploadPhotoWithRetry(file, index)
+			);
+			const photoResults = await Promise.all(photoUploadPromises);
+			const photos = photoResults.filter((url) => url != null);
+			console.log(photos);
+
+			await updateDoc(doc(db, "users", userCredential.user.uid), {
+				...userData,
+				uid: userCredential.user.uid,
+				creationDate: formattedDate,
+				photos
+			});
+
 			const docRef = doc(db, "aggregates", "100");
 			await updateDoc(docRef, {
 				userCounter: increment(1)
 			});
-
 
 			setCurrentUser(userCredential.user);
 			router.push(`/profile/${userCredential.user.uid}`);

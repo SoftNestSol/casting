@@ -104,7 +104,6 @@ export const DashboardContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		let filteredMembers = FormatUsersByDate([...members]);
-		console.log("filteredMembers", filteredMembers);
 
 		if (genderFilter) {
 			filteredMembers = filteredMembers.filter(
