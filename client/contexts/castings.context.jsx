@@ -8,19 +8,23 @@ export const useCastingsContext = () => {
 		throw new Error("Something went wrong with the React Context API!");
 	return castingsContext;
 };
-
 const sampleCasting = {
 	title: "Figuratie speciala reclama farmacie",
 	project: "Farmacie",
 	lookingFor: ["Femei", "Barbati"],
 	ageRange: [18, 30],
 	startDate: new Date(2024, 0, 7),
-	endDate: new Date(2024, 0, 10),
+	endDate: new Date(2024, 7, 10),
 	location: "Bucuresti",
 	compensation: 1200,
 	country: "Romania",
 	description:
-		"Cautam femei si barbati figuratie speciala pentru o reclama la farmacie. Filmarile au loc in perioada 13-15 Noiembrie (1 sau 2 zile)."
+		"Cautam femei si barbati figuratie speciala pentru o reclama la farmacie. Filmarile au loc in perioada 13-15 Noiembrie (1 sau 2 zile).",
+	imageUrls: [
+		"client/public/images/castings" + "1.jpg",
+		"client/public/images/castings" + "2.jpg",
+		"client/public/images/castings" + "3.jpg"
+	]
 };
 
 const sampleCasting2 = {
@@ -29,12 +33,17 @@ const sampleCasting2 = {
 	lookingFor: ["Femei", "Barbati"],
 	ageRange: [18, 30],
 	startDate: new Date(2024, 0, 14),
-	endDate: new Date(2024, 0, 16),
+	endDate: new Date(2024, 7, 16),
 	location: "Bucuresti",
 	compensation: 1200,
 	country: "Romania",
 	description:
-		"Cautam femei si barbati figuratie speciala pentru o reclama la farmacie. Filmarile au loc in perioada 13-15 Noiembrie (1 sau 2 zile)."
+		"Cautam femei si barbati figuratie speciala pentru o reclama la farmacie. Filmarile au loc in perioada 13-15 Noiembrie (1 sau 2 zile).",
+	imageUrls: [
+		"client/public/images/castings/1.jpg",
+		"client/public/images/castings/2.jpg",
+		"client/public/images/castings/3.jpg"
+	]
 };
 
 export const CastingsContextProvider = ({ children }) => {

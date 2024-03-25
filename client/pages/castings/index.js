@@ -1,11 +1,22 @@
 import { useCastingsContext } from "../../contexts/castings.context";
-
+import { useEffect, useState } from "react";
 import styles from "../../styles/castings/castings.module.scss";
 import { FormattedMessage } from "react-intl";
+import Modal from "react-modal";
+
+Modal.setAppElement("#__next");
 
 const Castings = () => {
 	const { castings } = useCastingsContext();
+	const [modalIsOpen, setIsOpen] = useState(false);
 
+	useEffect(() => {
+		Modal.setAppElement("#__next");
+	}, []);
+
+	const toggleModal = () => {
+		setIsOpen(!modalIsOpen);
+	};
 	const formatDate = (date, longFormat = false) => {
 		date = new Date(date);
 
@@ -59,6 +70,7 @@ const Castings = () => {
 					{castings.map((casting, index) => (
 						<div
 							className={styles.casting}
+							onClick={toggleModal}
 							key={index}
 						>
 							<div className={styles.casting_head}>
@@ -146,12 +158,35 @@ const Castings = () => {
 								</h3>
 								<p>{casting.description}</p>
 							</div>
+							<Modal
+								isOpen={modalIsOpen}
+								onRequestClose={toggleModal}
+								className={styles.modal}
+								overlayClassName={styles.overlay}
+							>
+								<button
+									onClick={toggleModal}
+									className={styles.closeButton}
+								>
+									&times;
+								</button>{" "}
+								{/* Close button */}
+								<div className={styles.modalContent}>
+									{casting.imageUrls &&
+										casting.imageUrls.map((imageUrl, index) => (
+											<img
+												key={index}
+												src={imageUrl}
+												alt={`${casting.title} image ${index + 1}`}
+											/>
+										))}
+								</div>
+							</Modal>
 						</div>
 					))}
 				</div>
 			) : (
 				<div className={styles.no_castings}>
-					
 					<h2>
 						<FormattedMessage id="castings-no-casting" />
 					</h2>
