@@ -90,25 +90,6 @@ export const AuthContextProvider = ({ children }) => {
 			await setPersistence(auth, browserLocalPersistence);
 			await signInWithEmailAndPassword(auth, userData.email, userData.password);
 
-			delete userData.password;
-			delete userData.confirmPassword;
-
-			const files = userData.files;
-			delete userData.files;
-
-			const date = new Date();
-
-			const day = date.getDate().toString().padStart(2, "0");
-			const month = (date.getMonth() + 1).toString().padStart(2, "0");
-			const year = date.getFullYear();
-			const formattedDate = `${day}/${month}/${year}`;
-
-			await setDoc(doc(usersCollection, userCredential.user.uid), {
-				...userData,
-				uid: userCredential.user.uid,
-				creationDate: formattedDate
-			});
-
 			const uploadPhotoWithRetry = async (file, index, attempt = 0) => {
 				const extension = file.name.split(".").pop();
 				const photoRef = ref(
@@ -126,7 +107,7 @@ export const AuthContextProvider = ({ children }) => {
 
 					if (attempt < MAX_RETRIES) {
 						console.warn(`Retry ${attempt + 1} for file:`, file.name);
-						return await uploadPhotoWithRetry(file, attempt + 1);
+						return await uploadPhotoWithRetry(file, index, attempt + 1);
 					}
 
 					console.error(
@@ -138,14 +119,25 @@ export const AuthContextProvider = ({ children }) => {
 				}
 			};
 
-			const photoUploadPromises = files.map((file, index) =>
+			const photoUploadPromises = userData.files.map((file, index) =>
 				uploadPhotoWithRetry(file, index)
 			);
 			const photoResults = await Promise.all(photoUploadPromises);
 			const photos = photoResults.filter((url) => url != null);
-			console.log(photos);
 
-			await updateDoc(doc(db, "users", userCredential.user.uid), {
+			delete userData.password;
+			delete userData.confirmPassword;
+			delete userData.photos;
+			delete userData.files;
+
+			const date = new Date();
+
+			const day = date.getDate().toString().padStart(2, "0");
+			const month = (date.getMonth() + 1).toString().padStart(2, "0");
+			const year = date.getFullYear();
+			const formattedDate = `${day}/${month}/${year}`;
+
+			await setDoc(doc(usersCollection, userCredential.user.uid), {
 				...userData,
 				uid: userCredential.user.uid,
 				creationDate: formattedDate,

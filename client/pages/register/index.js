@@ -80,7 +80,7 @@ const Register = () => {
 		if (userData.spokenLanguages.length === 0)
 			return alert("Add at least one spoken language!");
 		if (userData.files.length === 0) return alert("Add at least one photo!");
-		if (userData.files.length > 8 || userData.photos.length < 5)
+		if (userData.files.length > 8 || userData.files.length < 5)
 			return alert("between 5 and 8 photos allowed!");
 		if (userData.password !== userData.confirmPassword) return;
 
@@ -402,7 +402,6 @@ const Register = () => {
 											className={styles.remove}
 											onClick={() => {
 												const photos = userData.photos;
-
 												const files = userData.files;
 												photos.splice(index, 1);
 												files.splice(index, 1);
