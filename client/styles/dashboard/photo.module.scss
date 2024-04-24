@@ -1,17 +1,152 @@
-.photo {
-	width: 100%;
-	height: 100%;
-	&:hover {
-		cursor: pointer;
-		transform: scale(1.5);
-		padding: 0.5rem;
-		margin: 0.5rem;
+.wrapper {
+	min-height: calc(100vh - 4.5rem);
+	margin-top: 4.5rem;
+	padding: 3rem;
+
+	.container {
+		padding: 3rem;
+		border: 2px solid #bfa75d;
+		border-top-style: solid;
+		border-left-style: solid;
+		border-radius: 1rem;
+		background-color: #1e1e1e;
+
+		.sidebar {
+			&.active {
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: -1.25rem;
+					width: 1px;
+					height: 100%;
+					margin-right: 1rem;
+					background: #bfa75d;
+					display: inline-block;
+				}
+			}
+		}
+
+		.content {
+			h1 {
+				margin: unset;
+				font-size: 2.5rem;
+				font-weight: 600;
+			}
+
+			.photos {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1rem;
+				margin-bottom: 15vh;
+				grid-row-gap: 5rem;
+
+				.removeButton {
+					background-color: #bfa75d;
+					border: none;
+					border-radius: 2rem;
+					color: #000;
+					padding: 0.5rem;
+					font-weight: bold;
+					text-transform: uppercase;
+					cursor: pointer;
+					transition: background 100ms ease-in-out;
+					margin: 1rem;
+					padding: 0.5rem 1rem;
+
+					&:hover {
+						background: #e3c772;
+					}
+				}
+
+				.photo {
+					border-radius: 0.5rem;
+					width: 90%;
+					height: 100%;
+					object-fit: cover;
+				}
+
+				input[type="file"] {
+					width: 100%;
+					margin-top: 1rem;
+				}
+			}
+		}
 	}
 }
 
-.photos {
-	display: grid;
-	grid-template-columns: auto auto auto;
-	grid-gap: 0.3rem;
+@media screen and (max-width: 1024px) {
+	.wrapper {
+		padding: 0;
+
+		.container {
+			min-height: calc(100vh - 4.5rem);
+			border: unset;
+			border-radius: unset;
+		}
+	}
 }
 
+@media screen and (max-width: 768px) {
+	.wrapper {
+		.container {
+			padding: 3rem 2rem;
+			flex-direction: column;
+
+			.sidebar {
+				width: 100%;
+
+				ul {
+					gap: 0.5rem;
+
+					li {
+						background: #292929;
+						border-radius: 2rem;
+						font-size: 1rem;
+						text-transform: uppercase;
+						text-align: center;
+					}
+				}
+
+				button {
+					margin-top: 0.5rem;
+				}
+			}
+
+			.content {
+				h1 {
+					font-size: 2rem;
+				}
+			}
+		}
+	}
+}
+
+
+.uploadButton {
+	background-color: #bfa75d;
+	border: none;
+	border-radius: 2rem;
+	color: #000;
+	padding: 0.5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background 100ms ease-in-out;
+	margin: 1rem;
+	padding: 0.5rem 1rem;
+
+	&:hover {
+		background: #e3c772;
+	}
+}
+
+
+.buttonsContainer
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
