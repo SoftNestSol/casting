@@ -7,7 +7,7 @@ const MemberCard = ({ member, index }) => {
 	if (!member) {
 		return <div>No member data available</div>;
 	}
-	const imgSrc = member.photos[1];
+	const imgSrc = member.photos[0];
 	return (
 		<div className={styles.memberCard}>
 			<h3 className={styles.memberDetail}>{index}</h3>

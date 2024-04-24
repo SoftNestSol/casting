@@ -15,10 +15,12 @@ import photoStyles from "../../../Styles/dashboard/photo.module.scss";
 const MemberPage = () => {
 	const [user, setUser] = useState(null);
 	const router = useRouter();
+	const [hasVideo, setHasVideo] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [profileData, setProfileData] = useState({
 		photos: [],
-		files: []
+		files: [],
+		videoURL: ""
 	});
 
 	const openFilePicker = () => {
@@ -43,6 +45,14 @@ const MemberPage = () => {
 			}
 	};
 
+	const handleVideoInputChange = (event) => {
+		setProfileData((prevState) => ({
+			...prevState,
+			videoURL: event.target.value
+		}));
+		setHasVideo(true);
+	};
+
 	useEffect(() => {
 		if (!router.isReady) return;
 
@@ -53,7 +63,8 @@ const MemberPage = () => {
 				setUser(userData);
 				setProfileData((prevState) => ({
 					...prevState,
-					photos: userData.photos
+					photos: userData.photos,
+					videoURL: userData.videoURL
 				}));
 			})
 			.catch((error) => {
@@ -117,7 +128,8 @@ const MemberPage = () => {
 
 		const userRef = doc(db, "users", user.uid);
 		await updateDoc(userRef, {
-			photos: [...user.photos, ...urls]
+			photos: [...user.photos, ...urls],
+			videoURL: profileData.videoURL
 		});
 		router.reload();
 	};
@@ -212,6 +224,33 @@ const MemberPage = () => {
 										multiple
 										style={{ display: "none" }}
 									/>
+								</div>
+								<div className={photoStyles.youtubeContainer}>
+									<label
+										htmlFor="videoURL"
+										className={photoStyles.label}
+									>
+										Introdu link-ul catre video-ul tau
+									</label>
+									<input
+										type="text"
+										id="videoURL"
+										name="videoURL"
+										value={profileData.videoURL}
+										onChange={handleVideoInputChange}
+										className={photoStyles.videoInput}
+									/>
+									<iframe
+									className={photoStyles.video}
+										width="560"
+										height="315"
+										src={profileData.videoURL}
+										title="YouTube video player"
+										frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										referrerpolicy="strict-origin-when-cross-origin"
+										allowfullscreen="true"
+									></iframe>
 								</div>
 								<button
 									className={photoStyles.uploadButton}

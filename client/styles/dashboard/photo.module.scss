@@ -122,7 +122,6 @@
 	}
 }
 
-
 .uploadButton {
 	background-color: #bfa75d;
 	border: none;
@@ -141,12 +140,74 @@
 	}
 }
 
-
-.buttonsContainer
-{
+.buttonsContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
+}
+
+.youtubeContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+	.wrapper {
+		.container {
+			padding: 3rem 2rem;
+			flex-direction: column;
+
+			.sidebar {
+				width: 100%;
+
+				ul {
+					gap: 0.5rem;
+
+					li {
+						background: #292929;
+						border-radius: 2rem;
+						font-size: 1rem;
+						text-transform: uppercase;
+						text-align: center;
+					}
+				}
+
+				button {
+					margin-top: 0.5rem;
+				}
+			}
+
+			.content {
+				h1 {
+					font-size: 2rem;
+				}
+
+				.photos {
+					display: grid;
+					grid-template-columns: repeat(
+						2,
+						1fr
+					); /* Changed from repeat(1, 2fr) to repeat(2, 1fr) */
+					gap: 1rem;
+					margin-bottom: 15vh;
+					grid-row-gap: 5rem;
+				}
+
+				.photo {
+					width: 80%; /* Adjust width as necessary */
+					height: auto; /* Changed from 100% to auto to maintain aspect ratio */
+				}
+
+				input[type="file"] {
+					width: 100%;
+					margin-top: 1rem;
+				}
+			}
+		}
+	}
 }
