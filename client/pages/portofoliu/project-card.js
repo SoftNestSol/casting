@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import Image from "next/image";
 import styles from "../../styles/projects/ProjectCard.module.scss";
 import Frame from "../../public/images/projects/Frame.svg";
+import { FormattedMessage } from "react-intl";
 
 Modal.setAppElement("#__next"); // Ensure accessibility for the modal
 
@@ -52,6 +53,9 @@ const ProjectCard = ({ title, description, type, imageUrls, reverse }) => {
 					<h2 className={styles.projectTitle}>{title}</h2>
 					<p className={styles.projectDescription}>{description}</p>
 					<h3 className={styles.projectType}>{type}</h3>
+					<h3 className={styles.viewMore}>
+						<FormattedMessage id="projects_view_more" />
+					</h3>
 				</div>
 			</div>
 

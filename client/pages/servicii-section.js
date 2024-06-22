@@ -58,9 +58,6 @@ const Carousel = () => {
 
 	return (
 		<div className={styles.carousel}>
-			<h1>
-				<FormattedMessage id="what_we_do" />
-			</h1>
 			<div
 				className={styles.carouselInner}
 				style={{ transform: `translateX(-${activeIndex * 100}%)` }}

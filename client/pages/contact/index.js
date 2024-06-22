@@ -66,19 +66,6 @@ const Contact = () => {
 							Strada Splaiul Unirii nr. 80-82 <span>Etaj 1, Bucuresti</span>{" "}
 						</p>
 					</div>
-
-					<div className={styles.schendule}>
-						<h2>
-							<FormattedMessage id="contact schendule" />
-						</h2>
-						<p className={styles.text}>
-							<FormattedMessage id="contact schendule text" />
-							<span> 10:00 - 17:00 </span>{" "}
-							<span>
-								<FormattedMessage id="contact schendule text 2" />
-							</span>{" "}
-						</p>
-					</div>
 				</div>
 
 				<div className={styles.mapContainer}>

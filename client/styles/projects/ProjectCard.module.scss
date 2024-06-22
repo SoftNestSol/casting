@@ -112,6 +112,17 @@
 		}
 	}
 }
+
+.viewMore {
+	color: #f1f1f1;
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: right;
+	border-right: 2px solid $color-accent;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 1rem;
+}
 .modal {
 	background-color: rgba(0, 0, 0, 0.9); // Transparent black background
 	width: 100%;

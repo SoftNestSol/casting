@@ -45,17 +45,16 @@ const Footer = () => {
 					<div className={styles.address}>
 						<h5>Contact</h5>
 						<p>Strada Splaiul Unirii nr. 80-82, etaj 1, Bucuresti</p>
-						<p> Phone: +40 750429949</p>
+						<p> Phone: +40 755 266 278</p>
 						<p>Email: contact@mycasting.ro </p>
-						<Link href="/terms">
-							<FormattedMessage id="navbar-privacy" />
-						</Link>
 					</div>
 					<div className={styles.schedule}>
 						<h5>
-							<FormattedMessage id="contact schendule" />
+							<FormattedMessage id="utility-links" />
 						</h5>
-						<p>L-V | 10:00 - 17:00</p>
+						<Link href="/terms">
+							<FormattedMessage id="navbar-privacy" />
+						</Link>
 					</div>
 					<div className={styles.social}>{/* Social links go here */}</div>
 				</div>
