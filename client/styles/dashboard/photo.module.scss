@@ -140,6 +140,44 @@
 	}
 }
 
+.hidden {
+	background-color: rgba(0, 0, 0, 0);
+	color: rgba(0, 0, 0, 0);
+	padding: 0;
+
+	.uploadButton {
+		display: none;
+	}
+
+	.photo {
+		display: none;
+	}
+
+	.removeButton {
+		display: none;
+	}
+
+	p {
+		display: none;
+	}
+
+	h1 {
+		display: none;
+	}
+}
+
+.expanded {
+	transform: scale(1.1);
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #bfa75d;
+	height: 100%;
+	margin-top: 1rem;
+	padding-bottom: 5rem;
+}
+
 .buttonsContainer {
 	display: flex;
 	flex-direction: column;

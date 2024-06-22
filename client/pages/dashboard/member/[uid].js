@@ -17,6 +17,7 @@ const MemberPage = () => {
 	const router = useRouter();
 	const [hasVideo, setHasVideo] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [expanded, setExpanded] = useState(-1);
 	const [profileData, setProfileData] = useState({
 		photos: [],
 		files: [],
@@ -136,7 +137,9 @@ const MemberPage = () => {
 
 	return (
 		<div className={photoStyles.wrapper}>
-			<div className={photoStyles.container}>
+			<div
+				className={expanded !== -1 ? photoStyles.hidden : photoStyles.container}
+			>
 				<div className={photoStyles.content}>
 					<h1>Profilul {user.name}</h1>
 					<div className={photoStyles.fields}>
@@ -188,10 +191,18 @@ const MemberPage = () => {
 									<div>
 										<div
 											key={index}
-											className={photoStyles.photo}
+											//	className={photoStyles.photo}
+											onClick={() => {
+												if (expanded === index) setExpanded(-1);
+												else setExpanded(index);
+											}}
 										>
 											<img
-												className={photoStyles.photo}
+												className={
+													expanded === index
+														? photoStyles.expanded
+														: photoStyles.photo
+												}
 												src={photoUrl}
 												alt={`Photo ${index + 1}`}
 											/>
@@ -241,7 +252,7 @@ const MemberPage = () => {
 										className={photoStyles.videoInput}
 									/>
 									<iframe
-									className={photoStyles.video}
+										className={photoStyles.video}
 										width="560"
 										height="315"
 										src={profileData.videoURL}
