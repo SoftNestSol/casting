@@ -24,13 +24,34 @@ const app = express();
 const admin = require("firebase-admin");
 
 
+const serviceAccount = JSON.parse(
+	JSON.stringify(functions.config().service_account)
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
+admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount)
+});
+
+app.get("/get-timestamp/:uid", async (req, res) => {
+	const uid = req.params.uid;
+
+	const user = await admin.auth().getUser(uid);
+
+	console.log(user);
+	console.log(user.metadata);
+	console.log(user.metadata.creationTime);
+
+	const authTimestamp = user.metadata.creationTime / 1000;
+
+	res.status(200).json({ timeStamp: authTimestamp });
+});
+
 app.post("/contact", (req, res) => {
 	const { name, email, message } = req.body;
-
 
 	const transporter = nodemailer.createTransport({
 		host: "hosting2303630.online.pro",
