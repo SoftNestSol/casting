@@ -55,6 +55,18 @@ export const DashboardContextProvider = ({ children }) => {
 		});
 		return users;
 	};
+	const FormatUsersByAuthDate = (users = []) => {
+    users.sort((a, b) => {
+        // Sort in descending order based on auth_timestamp
+        return b.auth_timestamp - a.auth_timestamp;
+    });
+
+    for (let i = 0; i < users.length; i++) {
+        console.log(users[i].auth_timestamp);
+    }
+
+    return users;
+};
 
 	const getMembersData = async () => {
 		const arr = [];
@@ -86,7 +98,7 @@ export const DashboardContextProvider = ({ children }) => {
 					const membersData = await getMembersData();
 					const actualMembersData = membersData.filter(member => member.varsta !== null);
 					setMembers(actualMembersData);
-					setMembers(FormatUsersByDate(membersData));
+					setMembers(FormatUsersByAuthDate(membersData));
 				} else {
 					router.push("/profile/[uid]", `/profile/${currentUser.uid}`);
 				}
@@ -103,7 +115,7 @@ export const DashboardContextProvider = ({ children }) => {
 	}, [router]);
 
 	useEffect(() => {
-		let filteredMembers = FormatUsersByDate([...members]);
+		let filteredMembers = FormatUsersByAuthDate([...members]);
 
 		if (genderFilter) {
 			filteredMembers = filteredMembers.filter(
@@ -177,7 +189,8 @@ export const DashboardContextProvider = ({ children }) => {
 		resetAllFilters,
 		name,
 		setName,
-		FormatUsersByDate
+		FormatUsersByDate,
+		FormatUsersByAuthDate,
 	};
 
 	return (
