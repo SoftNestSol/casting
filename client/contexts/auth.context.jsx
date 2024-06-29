@@ -12,6 +12,7 @@ import {
 	updatePassword,
 	sendPasswordResetEmail
 } from "firebase/auth";
+import axios from "axios";
 import { adminsCollection, db } from "../config/firebase";
 import { doc, setDoc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -80,6 +81,17 @@ export const AuthContextProvider = ({ children }) => {
 		return () => unsubscribe();
 	}, [router, auth]);
 
+	const formatDate = async () => {
+		const date = new Date();
+
+		const day = date.getDate().toString().padStart(2, "0");
+		const month = (date.getMonth() + 1).toString().padStart(2, "0");
+		const year = date.getFullYear();
+		const formattedDate = `${day}/${month}/${year}`;
+
+		return formattedDate;
+	};
+
 	const signUp = async (userData) => {
 		try {
 			const userCredential = await createUserWithEmailAndPassword(
@@ -87,6 +99,7 @@ export const AuthContextProvider = ({ children }) => {
 				userData.email,
 				userData.password
 			);
+
 			await setPersistence(auth, browserLocalPersistence);
 			await signInWithEmailAndPassword(auth, userData.email, userData.password);
 
@@ -130,18 +143,22 @@ export const AuthContextProvider = ({ children }) => {
 			delete userData.photos;
 			delete userData.files;
 
-			const date = new Date();
+			const formattedDate = await formatDate();
 
-			const day = date.getDate().toString().padStart(2, "0");
-			const month = (date.getMonth() + 1).toString().padStart(2, "0");
-			const year = date.getFullYear();
-			const formattedDate = `${day}/${month}/${year}`;
+			const authTimestamp = await axios
+				.get(
+					`https://europe-west1-mycasting-c5275.cloudfunctions.net/api/get-timestamp/${userCredential.user.uid}`
+				)
+				.then((response) => {
+					return response.data.timeStamp;
+				});
 
 			await setDoc(doc(usersCollection, userCredential.user.uid), {
 				...userData,
 				uid: userCredential.user.uid,
 				creationDate: formattedDate,
-				photos
+				photos,
+				auth_timestamp: authTimestamp
 			});
 
 			const docRef = doc(db, "aggregates", "100");
