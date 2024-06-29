@@ -10,7 +10,7 @@ import { resizedName } from "../../../contexts/auth.context";
 import { updateDoc } from "firebase/firestore";
 import { useRef } from "react";
 
-import photoStyles from "../../../Styles/dashboard/photo.module.scss";
+import photoStyles from "../../../styles/dashboard/photo.module.scss";
 
 const MemberPage = () => {
 	const [user, setUser] = useState(null);
