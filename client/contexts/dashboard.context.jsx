@@ -31,8 +31,6 @@ export const DashboardContextProvider = ({ children }) => {
 	const [weightRange, setWeightRange] = useState({ min: null, max: null });
 	const [name, setName] = useState("");
 
-
-
 	const FormatUsersByDate = (users = []) => {
 		users.sort((a, b) => {
 			try {
@@ -56,17 +54,23 @@ export const DashboardContextProvider = ({ children }) => {
 		return users;
 	};
 	const FormatUsersByAuthDate = (users = []) => {
-    users.sort((a, b) => {
-        // Sort in descending order based on auth_timestamp
-        return b.auth_timestamp - a.auth_timestamp;
-    });
+		users.sort((a, b) => {
+			if (
+				a.auth_timestamp == null ||
+				b.auth_timestamp == null ||
+				a.auth_timestamp === undefined ||
+				b.auth_timestamp === undefined
+			) {
+				return 0;
+			} else return b.auth_timestamp - a.auth_timestamp;
+		});
 
-    for (let i = 0; i < users.length; i++) {
-        console.log(users[i].auth_timestamp);
-    }
+		for (let i = 0; i < users.length; i++) {
+			console.log(users[i].auth_timestamp);
+		}
 
-    return users;
-};
+		return users;
+	};
 
 	const getMembersData = async () => {
 		const arr = [];
@@ -96,7 +100,9 @@ export const DashboardContextProvider = ({ children }) => {
 				const isAdminUser = await checkIfAdmin(currentUser.uid);
 				if (isAdminUser) {
 					const membersData = await getMembersData();
-					const actualMembersData = membersData.filter(member => member.varsta !== null);
+					const actualMembersData = membersData.filter(
+						(member) => member.varsta !== null
+					);
 					setMembers(actualMembersData);
 					setMembers(FormatUsersByAuthDate(membersData));
 				} else {
@@ -190,7 +196,7 @@ export const DashboardContextProvider = ({ children }) => {
 		name,
 		setName,
 		FormatUsersByDate,
-		FormatUsersByAuthDate,
+		FormatUsersByAuthDate
 	};
 
 	return (

@@ -19,10 +19,25 @@ const corsOptions = {
 	methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"]
 };
 
+const corsOptionsDNS = {
+	origin: "https://mycasting.ro",
+	optionsSuccessStatus: 200,
+	credentials: true,
+	allowedHeaders: [
+		"Content-Type",
+		"Authorization",
+		"X-Requested-With",
+		"Accept",
+		"Origin",
+		"X-Access-Token",
+		"Access-Control-Allow-Origin"
+	],
+	methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"]
+};
+
 const app = express();
 
 const admin = require("firebase-admin");
-
 
 const serviceAccount = JSON.parse(
 	JSON.stringify(functions.config().service_account)
@@ -30,13 +45,12 @@ const serviceAccount = JSON.parse(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount)
 });
 
-app.get("/get-timestamp/:uid", async (req, res) => {
+app.get("/get-timestamp/:uid", cors(corsOptionsDNS), async (req, res) => {
 	const uid = req.params.uid;
 
 	const user = await admin.auth().getUser(uid);
@@ -45,12 +59,23 @@ app.get("/get-timestamp/:uid", async (req, res) => {
 	console.log(user.metadata);
 	console.log(user.metadata.creationTime);
 
-	const authTimestamp = user.metadata.creationTime / 1000;
+	const timestamp = user.metadata.creationTime;
+
+	const date = new Date(timestamp);
+
+	// 1711704546.028
+	// 1719752181
+
+	const seconds = date.getTime();
+
+	const authTimestamp = seconds / 1000;
+
+	console.log("authTimestamp: ", authTimestamp);
 
 	res.status(200).json({ timeStamp: authTimestamp });
 });
 
-app.post("/contact", (req, res) => {
+app.post("/contact", cors(corsOptions), (req, res) => {
 	const { name, email, message } = req.body;
 
 	const transporter = nodemailer.createTransport({
