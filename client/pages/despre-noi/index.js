@@ -9,17 +9,16 @@ const AboutUs = () => {
 			<div className={styles.container}>
 				<Image
 					alt={"About us"}
-					src="/images/about-us.jpg"
+					src="/images/studio-8.png"
 					width={1000}
 					height={1000}
 				/>
 				<div className={styles.gradient} />
 				<h1 className={styles.heading}>
-					
-					< FormattedMessage id="about_us" />
-					  <span className={styles.accent}>
+					<FormattedMessage id="about_us" />
+					<span className={styles.accent}>
 						<FormattedMessage id="about_us_2" />
-					 </span>
+					</span>
 				</h1>
 				<p className={styles.subtitle}>
 					<FormattedMessage id="about_us_description" />
@@ -30,7 +29,7 @@ const AboutUs = () => {
 			<div className={styles.secondContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/about_second.jpg"
+					src="/images/studio-5.png"
 					width={1000}
 					height={1000}
 				/>
@@ -43,7 +42,7 @@ const AboutUs = () => {
 			<div className={styles.thirdContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/about_third.jpg"
+					src="/images/studio-6.png"
 					width={1000}
 					height={1000}
 				/>
@@ -56,7 +55,7 @@ const AboutUs = () => {
 			<div className={styles.fourthContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/about_fourth.jpg"
+					src="/images/studio-4.png"
 					width={1000}
 					height={1000}
 				/>
