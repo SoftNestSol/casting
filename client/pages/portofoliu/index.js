@@ -26,6 +26,28 @@ const projects = [
 			"/images/projects/2/3.jpg",
 			"/images/projects/2/4.jpg"
 		]
+	},
+	{
+		title: <FormattedMessage id="project_3_title" />,
+		description: <FormattedMessage id="project_3_description" />,
+		type: <FormattedMessage id="project_3_type" />,
+		imageUrls: [
+			"/images/projects/3/5.jpg",
+			"/images/projects/3/2.jpg",
+			"/images/projects/3/3.jpg",
+			"/images/projects/3/4.jpg"
+		]
+	},
+	{
+		title: <FormattedMessage id="project_4_title" />,
+		description: <FormattedMessage id="project_4_description" />,
+		type: <FormattedMessage id="project_4_type" />,
+		imageUrls: [
+			"/images/projects/4/6.jpg",
+			"/images/projects/4/2.jpg",
+			"/images/projects/4/3.jpg",
+			"/images/projects/4/4.jpg"
+		]
 	}
 ];
 
