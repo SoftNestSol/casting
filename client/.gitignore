@@ -16,6 +16,8 @@ firebase-debug.log
 
 client/package-lock.json
 
+
+
 # css
 *.css
 *.css.map
