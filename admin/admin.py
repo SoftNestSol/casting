@@ -7,13 +7,13 @@ from firebase_admin import auth
 
 import datetime
 
-import pandas as pd
+# import pandas as pd
 
 
 # sa nu uiti sa iei un service account key de la firebase 
 
 
-cred = credentials.Certificate("./service-account-aici.json")
+cred = credentials.Certificate("/home/raduc/Documents/Code/keys/casting.json")
 firebase_admin.initialize_app(cred)
 
 database = firestore.client()
@@ -33,7 +33,7 @@ def convert_timestamp_to_date(timestamp):
 
 
 
-def get_auth_user_data():
+def get_auth_user_data(): 
 
     users = []
 
@@ -57,11 +57,10 @@ def get_firestore_user_data():
 
     users_ref = database.collection(u'users')
     docs = users_ref.stream()
-
     for doc in docs:
-        docId = doc.id
-        users.append(docId)
-
+        # make it a dictionary
+        user = doc.to_dict()
+        users.append(user)
     return users
 
 
@@ -99,6 +98,15 @@ def update_all_users():
 
 
 
-          
+def get_languages(users):
+    languages = set()
+
+    for user in users:
+        for language in user['spokenLanguages']:
+            languages.add(language)
 
 
+    return languages
+
+
+print(get_languages(get_firestore_user_data()))

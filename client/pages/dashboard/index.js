@@ -37,7 +37,8 @@ const Dashboard = () => {
 		setWeightRange,
 		resetAllFilters,
 		name,
-		setName
+		setName,
+		setLanguage,
 	} = useDashboardContext();
 
 	if (loading) {
@@ -66,7 +67,31 @@ const Dashboard = () => {
 		const [min, max] = e.target.value.split("-").map(Number);
 		setWeightRange({ min, max });
 	};
-
+	const handleLanguageChange =(e) =>{
+		setLanguage(e.target.value)
+	}
+	const knownLanguages = [
+    'English', 'Engleză',
+    'French', 'Franceză',
+    'German', 'Germană',
+    'Spanish', 'Spaniolă',
+    'Romanian', 'Română',
+    'Italian', 'Italiană',
+    'Russian', 'Rusă',
+    'Hungarian', 'Maghiară',
+    'Arabic', 'Arabă',
+    'Chinese', 'Chineză',
+    'Greek', 'Greacă',
+    'Portuguese', 'Portugheză',
+    'Bulgarian', 'Bulgară',
+    'Hindi', 'Hindi',
+    'Korean', 'Coreeană',
+    'Turkish', 'Turcă',
+    'Ukrainian', 'Ucraineană',
+    'Persian', 'Persană',
+    'Punjabi', 'Punjabi',
+    'Urdu', 'Urdu'
+];
 	return (
 		<>
 			<div className={styles.container}>
@@ -76,6 +101,20 @@ const Dashboard = () => {
 						<option value="male">Male</option>
 						<option value="female">Female</option>
 					</select>
+
+					<select onChange={handleLanguageChange}>
+						<option value="">Select Language</option>
+						{knownLanguages.map((language, index) => {
+							if (index % 2 === 0) {
+								return (
+									<option key={index} value={language}>
+										{language}
+									</option>
+								);
+							}
+						})}
+					</select>
+
 
 					<select onChange={handleAgeChange}>
 						<option value="">Select Age</option>
