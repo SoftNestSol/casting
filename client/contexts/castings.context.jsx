@@ -62,6 +62,7 @@ const ceoCasting = {
 export const CastingsContextProvider = ({ children }) => {
 	const [callback, setCallback] = useState(false);
 	const [castings, setCastings] = useState([]);
+	const [oldCastings, setOldCastings] = useState([]);
 	const setCastingsRef = useRef(false);
 
 	const getRemainingDays = (endDate) => {
@@ -81,6 +82,7 @@ export const CastingsContextProvider = ({ children }) => {
 
 			if (casting.remainingDays > 0)
 				setCastings((prevCastings) => [...prevCastings, casting]);
+			else setOldCastings((prevOldCastings) => [...prevOldCastings, casting]);
 		});
 
 		setCastingsRef.current = true;
@@ -90,7 +92,8 @@ export const CastingsContextProvider = ({ children }) => {
 		callback,
 		setCallback,
 		castings,
-		setCastings
+		setCastings,
+		oldCastings
 	};
 
 	return (
