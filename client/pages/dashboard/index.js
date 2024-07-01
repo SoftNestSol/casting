@@ -193,7 +193,6 @@ const Dashboard = () => {
 								</Link>
 							</div>
 						))}
-					{console.log("filtered", filtered)}
 				</div>
 			</div>
 		</>

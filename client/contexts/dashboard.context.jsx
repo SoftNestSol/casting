@@ -4,9 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useAuthContext, checkIfAdmin } from "../contexts/auth.context";
 import { format } from "path";
-import Fuse from 'fuse.js';
-
-
+import Fuse from "fuse.js";
 
 export const DashboardContext = createContext({});
 
@@ -33,9 +31,7 @@ export const DashboardContextProvider = ({ children }) => {
 	const [heightRange, setHeightRange] = useState({ min: null, max: null });
 	const [weightRange, setWeightRange] = useState({ min: null, max: null });
 	const [name, setName] = useState("");
-	const [language, setLanguage] =useState("");
-
-
+	const [language, setLanguage] = useState("");
 
 	const FormatUsersByDate = (users = []) => {
 		users.sort((a, b) => {
@@ -71,10 +67,6 @@ export const DashboardContextProvider = ({ children }) => {
 			} else return b.auth_timestamp - a.auth_timestamp;
 		});
 
-		for (let i = 0; i < users.length; i++) {
-			console.log(users[i].auth_timestamp);
-		}
-
 		return users;
 	};
 
@@ -96,7 +88,6 @@ export const DashboardContextProvider = ({ children }) => {
 		setName("");
 		setLanguage("");
 	};
-
 
 	useEffect(() => {
 		const checkAdminAndFetchMembers = async () => {
@@ -123,65 +114,92 @@ export const DashboardContextProvider = ({ children }) => {
 
 		checkAdminAndFetchMembers();
 	}, [currentUser, loading]);
-	
-	
-	const options = {
-    includeScore: true,
-    threshold: 0.2, // Adjust the threshold as needed (lower is more strict)
-    keys: ['name']
-};
 
+	const options = {
+		includeScore: true,
+		threshold: 0.2, // Adjust the threshold as needed (lower is more strict)
+		keys: ["name"]
+	};
 
 	const knownLanguages = [
-		'English', 'Engleză',
-		'French', 'Franceză',
-		'German', 'Germană',
-		'Spanish', 'Spaniolă',
-		'Romanian', 'Română',
-		'Italian', 'Italiană',
-		'Russian', 'Rusă',
-		'Hungarian', 'Maghiară',
-		'Arabic', 'Arabă',
-		'Chinese', 'Chineză',
-		'Greek', 'Greacă',
-		'Portuguese', 'Portugheză',
-		'Bulgarian', 'Bulgară',
-		'Hindi', 'Hindi',
-		'Korean', 'Coreeană',
-		'Turkish', 'Turcă',
-		'Ukrainian', 'Ucraineană',
-		'Persian', 'Persană',
-		'Punjabi', 'Punjabi',
-		'Urdu', 'Urdu'
-];
-const isSpecificLanguage = (words, targetLanguage, threshold = 80) => {
-	// Pair known languages into objects with English and Romanian names
-	const pairedLanguages = [];
-	for (let i = 0; i < knownLanguages.length; i += 2) {
-			pairedLanguages.push({ english: knownLanguages[i], romanian: knownLanguages[i + 1] });
-	}
+		"English",
+		"Engleză",
+		"French",
+		"Franceză",
+		"German",
+		"Germană",
+		"Spanish",
+		"Spaniolă",
+		"Romanian",
+		"Română",
+		"Italian",
+		"Italiană",
+		"Russian",
+		"Rusă",
+		"Hungarian",
+		"Maghiară",
+		"Arabic",
+		"Arabă",
+		"Chinese",
+		"Chineză",
+		"Greek",
+		"Greacă",
+		"Portuguese",
+		"Portugheză",
+		"Bulgarian",
+		"Bulgară",
+		"Hindi",
+		"Hindi",
+		"Korean",
+		"Coreeană",
+		"Turkish",
+		"Turcă",
+		"Ukrainian",
+		"Ucraineană",
+		"Persian",
+		"Persană",
+		"Punjabi",
+		"Punjabi",
+		"Urdu",
+		"Urdu"
+	];
+	const isSpecificLanguage = (words, targetLanguage, threshold = 80) => {
+		// Pair known languages into objects with English and Romanian names
+		const pairedLanguages = [];
+		for (let i = 0; i < knownLanguages.length; i += 2) {
+			pairedLanguages.push({
+				english: knownLanguages[i],
+				romanian: knownLanguages[i + 1]
+			});
+		}
 
-	// Filter the paired languages for the target language
-	const targetLanguages = pairedLanguages.filter(pair =>
-			pair.english.toLowerCase() === targetLanguage.toLowerCase() ||
-			pair.romanian.toLowerCase() === targetLanguage.toLowerCase()
-	).flatMap(pair => [pair.english, pair.romanian]);
+		// Filter the paired languages for the target language
+		const targetLanguages = pairedLanguages
+			.filter(
+				(pair) =>
+					pair.english.toLowerCase() === targetLanguage.toLowerCase() ||
+					pair.romanian.toLowerCase() === targetLanguage.toLowerCase()
+			)
+			.flatMap((pair) => [pair.english, pair.romanian]);
 
-	// Initialize Fuse with the filtered list
-	const fuse = new Fuse(targetLanguages.map(lang => ({ name: lang })), options);
+		// Initialize Fuse with the filtered list
+		const fuse = new Fuse(
+			targetLanguages.map((lang) => ({ name: lang })),
+			options
+		);
 
-	// Preprocess the input words to split them into individual words
-	const splitWords = words.flatMap(word => word.split(/\s+/));
+		// Preprocess the input words to split them into individual words
+		const splitWords = words.flatMap((word) => word.split(/\s+/));
 
-	// Check each word in the array
-	for (const word of splitWords) {
+		// Check each word in the array
+		for (const word of splitWords) {
 			const result = fuse.search(word);
 			if (result.length > 0 && (1 - result[0].score) * 100 >= threshold) {
-					return true;
+				return true;
 			}
-	}
-	return false;
-};
+		}
+		return false;
+	};
 	useEffect(() => {
 		resetAllFilters();
 	}, [router]);
@@ -196,11 +214,10 @@ const isSpecificLanguage = (words, targetLanguage, threshold = 80) => {
 		}
 
 		if (language !== "") {
-			filteredMembers = filteredMembers.filter(
-					(member) => isSpecificLanguage(member.spokenLanguages, language)
+			filteredMembers = filteredMembers.filter((member) =>
+				isSpecificLanguage(member.spokenLanguages, language)
 			);
-	}
-	
+		}
 
 		filteredMembers = filteredMembers.filter((member) => {
 			return (

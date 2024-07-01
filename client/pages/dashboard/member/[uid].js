@@ -1,7 +1,6 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { doc, getDoc } from "firebase/firestore";
-
 import { db } from "../../../config/firebase";
 import { useDashboardContext } from "../../../contexts/dashboard.context";
 import { storage } from "../../../config/firebase";
@@ -9,20 +8,52 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { resizedName } from "../../../contexts/auth.context";
 import { updateDoc } from "firebase/firestore";
 import { useRef } from "react";
+import axios from "axios";
+import Modal from "react-modal";
 
 import photoStyles from "../../../styles/dashboard/photo.module.scss";
 
+Modal.setAppElement("#__next"); // Ensure accessibility for the modal
+
 const MemberPage = () => {
+	useEffect(() => {
+		Modal.setAppElement("#__next");
+	}, []);
+
 	const [user, setUser] = useState(null);
 	const router = useRouter();
 	const [hasVideo, setHasVideo] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [expanded, setExpanded] = useState(-1);
+	const [modalIsOpen, setIsOpen] = useState(false);
 	const [profileData, setProfileData] = useState({
 		photos: [],
 		files: [],
 		videoURL: ""
 	});
+
+	const handleDeleteUser = async () => {
+		console.log("User: ", user.uid);
+		const response = await axios
+			.post(
+				`https://europe-west1-mycasting-c5275.cloudfunctions.net/api/delete-user/${user.uid}`,
+				{
+					headers: {
+						"Content-Type": "application/json"
+					}
+				}
+			)
+			.then((response) => {
+				console.log("Response: ", response);
+			})
+			.catch((error) => {
+				console.error("Error deleting user: ", error);
+			});
+	};
+
+	const toggleModal = () => {
+		setIsOpen(!modalIsOpen);
+	};
 
 	const openFilePicker = () => {
 		inputRef.current.click();
@@ -141,7 +172,41 @@ const MemberPage = () => {
 				className={expanded !== -1 ? photoStyles.hidden : photoStyles.container}
 			>
 				<div className={photoStyles.content}>
-					<h1>Profilul {user.name}</h1>
+					<div className={photoStyles.topHeader}>
+						<h1>Profilul {user.name}</h1>
+						<button onClick={toggleModal}>
+							Sterge profilul utilizatorului
+						</button>
+					</div>
+
+					<Modal
+						isOpen={modalIsOpen}
+						onRequestClose={toggleModal}
+						className={photoStyles.modal}
+						overlayClassName={photoStyles.overlay}
+					>
+						<div className={photoStyles.modalContent}>
+							Esti sigur ca vrei sa stergi utilizatorul?
+						</div>
+						<></>
+						<button
+							onClick={toggleModal}
+							className={photoStyles.closeButton}
+						>
+							Cancel
+						</button>{" "}
+						<button
+							onClick={() => {
+								toggleModal();
+								handleDeleteUser();
+								router.push("/dashboard");
+							}}
+							className={photoStyles.confirmButton}
+						>
+							Confirm
+						</button>{" "}
+					</Modal>
+
 					<div className={photoStyles.fields}>
 						<p>
 							<strong>Nume:</strong> {user.name}

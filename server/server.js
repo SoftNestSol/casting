@@ -50,6 +50,30 @@ admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount)
 });
 
+app.post("/delete-user/:uid", cors(corsOptionsDNS), async (req, res) => {
+	const uid = req.params.uid;
+
+	console.log("UID: ", uid);
+
+	const userDeleteAuthSucces = await admin.auth().deleteUser(uid);
+
+	console.log("User deleted from Auth: ", userDeleteAuthSucces);
+
+	const userDeleteFirestoreSucces = await admin
+		.firestore()
+		.collection("users")
+		.doc(uid)
+		.delete();
+
+	console.log("User deleted from Firestore: ", userDeleteFirestoreSucces);
+
+	res.status(200).json({
+		message: "User deleted successfully!",
+		userDeleteAuthSucces,
+		userDeleteFirestoreSucces
+	});
+});
+
 app.get("/get-timestamp/:uid", cors(corsOptionsDNS), async (req, res) => {
 	const uid = req.params.uid;
 

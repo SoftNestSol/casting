@@ -19,6 +19,7 @@ const messages = {
 	en,
 	ro
 };
+
 function getDirection(locale) {
 	return "itr";
 }
