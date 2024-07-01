@@ -67,11 +67,7 @@ app.post("/delete-user/:uid", cors(corsOptionsDNS), async (req, res) => {
 
 	console.log("User deleted from Firestore: ", userDeleteFirestoreSucces);
 
-	res.status(200).json({
-		message: "User deleted successfully!",
-		userDeleteAuthSucces,
-		userDeleteFirestoreSucces
-	});
+	res.status(200).send("User deleted successfully!");
 });
 
 app.get("/get-timestamp/:uid", cors(corsOptionsDNS), async (req, res) => {
