@@ -104,7 +104,7 @@ def get_languages(users):
     for user in users:
         for language in user['spokenLanguages']:
             languages.add(language)
-
+    
 
     return languages
 

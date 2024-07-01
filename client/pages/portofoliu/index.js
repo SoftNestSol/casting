@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "../../styles/projects/projects.module.scss";
 import ProjectCard from "./project-card";
 import { FormattedMessage } from "react-intl";
@@ -65,8 +64,8 @@ const Projects = () => {
 					<FormattedMessage id="projects_description" />
 				</p>
 			</div>
-
-			{projects.map((project, index) => (
+			
+			{projects.slice().reverse().map((project, index) => (
 				<div key={index}>
 					<ProjectCard
 						className={styles.project}
@@ -74,7 +73,7 @@ const Projects = () => {
 						description={project.description}
 						type={project.type}
 						imageUrls={project.imageUrls}
-						reverse={index % 2 !== 0}
+						reverse={index % 2 === 0} // reversing the logic as well
 					/>
 				</div>
 			))}
