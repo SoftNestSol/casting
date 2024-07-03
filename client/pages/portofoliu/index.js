@@ -34,7 +34,10 @@ const projects = [
 			"/images/projects/3/5.jpg",
 			"/images/projects/3/2.jpg",
 			"/images/projects/3/3.jpg",
-			"/images/projects/3/4.jpg"
+			"/images/projects/3/4.jpg",
+			"/images/projects/3/1.jpg",
+			"/images/projects/3/6.jpg",
+			"/images/projects/3/7.jpg"
 		]
 	},
 	{
@@ -45,7 +48,11 @@ const projects = [
 			"/images/projects/4/6.jpg",
 			"/images/projects/4/2.jpg",
 			"/images/projects/4/3.jpg",
-			"/images/projects/4/4.jpg"
+			"/images/projects/4/4.jpg",
+			"/images/projects/4/1.jpg",
+			"/images/projects/4/5.jpg",
+			"/images/projects/4/7.jpg",
+			"/images/projects/4/8.jpg"
 		]
 	}
 ];

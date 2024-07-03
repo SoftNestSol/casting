@@ -60,32 +60,32 @@ const ProjectCard = ({ title, description, type, imageUrls, reverse }) => {
 			</div>
 
 			<Modal
-				isOpen={modalIsOpen}
-				onRequestClose={toggleModal}
-				className={styles.modal}
-				overlayClassName={styles.overlay}
-			>
-				<button
-					onClick={toggleModal}
-					className={styles.closeButton}
-				>
-					&times;
-				</button>{" "}
-				{/* Close button */}
-				<div className={styles.modalContent}>
-					{imageUrls &&
-						imageUrls.map((url, index) => (
-							<Image
-								key={index}
-								src={url}
-								alt={`${title} image ${index + 1}`}
-								layout="responsive"
-								width={500}
-								height={500}
-							/>
-						))}
-				</div>
-			</Modal>
+        isOpen={modalIsOpen}
+        onRequestClose={toggleModal}
+        className={styles.modal}
+        overlayClassName={styles.overlay}
+      >
+        <button onClick={toggleModal} className={styles.closeButton}>
+          &times;
+        </button>{" "}
+        {/* Close button */}
+        <div className={styles.modalContent}>
+          {imageUrls &&
+            imageUrls.map((url, index) => (
+              <div key={index} className={styles.imgContainer}>
+                <Image
+                  src={url}
+                  alt={`${title} image ${index + 1}`}
+                  layout="fill"
+									// height={500}
+									// width={500}
+                  objectFit="cover"
+                  className={styles.modalImage}
+                />
+              </div>
+            ))}
+        </div>
+      </Modal>
 		</>
 	);
 };
