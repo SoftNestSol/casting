@@ -200,9 +200,9 @@ export const DashboardContextProvider = ({ children }) => {
 		}
 		return false;
 	};
-	useEffect(() => {
-		resetAllFilters();
-	}, [router]);
+	// useEffect(() => {
+	// 	resetAllFilters();
+	// }, [router]);
 
 	useEffect(() => {
 		let filteredMembers = FormatUsersByAuthDate([...members]);
