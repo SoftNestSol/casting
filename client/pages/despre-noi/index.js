@@ -10,8 +10,8 @@ const AboutUs = () => {
 				<Image
 					alt={"About us"}
 					src="/images/studio-8.png"
-					width={1000}
-					height={1000}
+					width={700}
+					height={700}
 				/>
 				<div className={styles.gradient} />
 				<h1 className={styles.heading}>
@@ -29,9 +29,9 @@ const AboutUs = () => {
 			<div className={styles.secondContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/studio-5.png"
-					width={1000}
-					height={1000}
+					src="/images/studio-2.png"
+					width={700}
+					height={700}
 				/>
 				<div className={styles.gradient} />
 				<p className={styles.text}>
@@ -43,8 +43,8 @@ const AboutUs = () => {
 				<Image
 					alt={"About us"}
 					src="/images/studio-6.png"
-					width={1000}
-					height={1000}
+					width={700}
+					height={700}
 				/>
 				<div className={styles.gradient} />
 				<p className={styles.text}>
@@ -56,8 +56,8 @@ const AboutUs = () => {
 				<Image
 					alt={"About us"}
 					src="/images/studio-4.png"
-					width={1000}
-					height={1000}
+					width={700}
+					height={700}
 				/>
 				<div className={styles.gradient} />
 				<p className={styles.text}>
@@ -68,9 +68,9 @@ const AboutUs = () => {
 			<div className={styles.fifthContainer}>
 				<Image
 					alt={"About us"}
-					src="/images/carousel/6.jpg"
-					width={1000}
-					height={1000}
+					src="/images/studio-7.png"
+					width={700}
+					height={700}
 				/>
 				<div className={styles.gradient} />
 				<p className={styles.text}>
