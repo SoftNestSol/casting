@@ -19,8 +19,8 @@ const corsOptions = {
 	methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"]
 };
 
-const corsOptionsDNS = {
-	origin: "https://mycasting.ro",
+const CorsOptionsLocal = {
+	origin: "http://localhost:3000",
 	optionsSuccessStatus: 200,
 	credentials: true,
 	allowedHeaders: [
@@ -31,6 +31,22 @@ const corsOptionsDNS = {
 		"Origin",
 		"X-Access-Token",
 		"Access-Control-Allow-Origin"
+	],
+	methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"]
+};
+
+const corsOptionsDNS = {
+	origin: "https://mycasting.ro",
+	optionsSuccessStatus: 200,
+	credentials: true,
+	allowedHeaders: [
+		"Access-Control-Allow-Origin",
+		"Content-Type",
+		"Authorization",
+		"X-Requested-With",
+		"Accept",
+		"Origin",
+		"X-Access-Token"
 	],
 	methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"]
 };

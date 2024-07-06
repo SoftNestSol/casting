@@ -34,21 +34,15 @@ const MemberPage = () => {
 
 	const handleDeleteUser = async () => {
 		console.log("User: ", user.uid);
-		const response = await axios
-			.post(
-				`https://europe-west1-mycasting-c5275.cloudfunctions.net/api/delete-user/${user.uid}`,
-				{
-					headers: {
-						"Content-Type": "application/json"
-					}
-				}
-			)
-			.then((response) => {
-				console.log("Response: ", response);
-			})
-			.catch((error) => {
-				console.error("Error deleting user: ", error);
-			});
+
+		const response = await fetch(
+			`https://https://europe-west1-mycasting-c5275.cloudfunctions.net/api/delete-user/${user.uid}`,
+			{
+				method: "POST"
+			}
+		);
+
+		const data = await response.text();
 	};
 
 	const toggleModal = () => {
