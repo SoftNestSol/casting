@@ -36,7 +36,7 @@ const MemberPage = () => {
 		console.log("User: ", user.uid);
 
 		const response = await fetch(
-			`https://https://europe-west1-mycasting-c5275.cloudfunctions.net/api/delete-user/${user.uid}`,
+			`https://europe-west1-mycasting-c5275.cloudfunctions.net/api/delete-user/${user.uid}`,
 			{
 				method: "POST"
 			}
