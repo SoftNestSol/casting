@@ -38,6 +38,7 @@ export default function LandingPage({ dir }) {
 				<div className={styles.pagecontainer}>
 					<TextRain />
 
+
 					<div className={styles.button_container}>
 						<Link
 							className={styles.button}
@@ -45,7 +46,6 @@ export default function LandingPage({ dir }) {
 						>
 							<FormattedMessage id="apply_now" />
 						</Link>
-						<div></div>
 					</div>
 					<div className={styles.hero_text}>
 						<h1>

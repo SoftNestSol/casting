@@ -5,6 +5,15 @@
 	overflow-x: hidden;
 	pointer-events: none;
 }
+
+.heroSection {
+	position: relative;
+	height: 100vh;
+	overflow: hidden;
+	pointer-events: none;
+	// Additional styling if required
+}
+
 .spline {
 	position: absolute;
 	top: 0;
