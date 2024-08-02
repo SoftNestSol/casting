@@ -10,6 +10,7 @@ import Head from "next/head";
 import Footer from "../components/footer";
 import Image from "next/image";
 import { DashboardContextProvider } from "../contexts/dashboard.context";
+import HeroSection from "../components/hero-section.js";
 
 import { IntlProvider } from "react-intl";
 import en from "../i18n/en.json";
@@ -30,10 +31,6 @@ const App = ({ Component, pageProps }) => {
 	const [isMobile, setIsMobile] = useState(false);
 	const isLandingPage = router.pathname === "/";
 
-	const [word, setWord] = useState("Popularity");
-
-	const words = ["Moments", "Exposure", "Popularity"];
-
 	const { locale } = useRouter();
 
 	useEffect(() => {
@@ -45,15 +42,6 @@ const App = ({ Component, pageProps }) => {
 			clearTimeout(timer);
 		};
 	}, []);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			const index = words.indexOf(word);
-			setWord(words[(index + 1) % words.length]);
-		}, 2000);
-
-		return () => clearInterval(interval);
-	}, [word]);
 
 	return (
 		<>
@@ -84,82 +72,13 @@ const App = ({ Component, pageProps }) => {
 
 							<Navbar />
 
-							<div className="main-content">
-								<div
-									className={`spline-desktop ${isLandingPage ? "" : "hidden"}`}
-								>
-									<img
-										src="/HeroBackground.png"
-										alt="Desktop Image"
-										style={{
-											position: "relative",
-											top: "0",
-											left: "0",
-											width: "100%",
-											height: "100%"
-										}}
-									/>
-									<div
-										style={{
-											position: "absolute",
-											top: "20%",
-											left: "25vw",
-											width: "100%",
-											height: "100%",
-											fontSize: "7vw"
-										}}
-									>
-										Your Chance to{" "}
-										<div
-											style={{
-												marginLeft: "-5%"
-											}}
-										>
-											Achieve
-											<span
-												style={{
-													color: "hsl(45, 43%, 56%)",
-													animation: "colorChange 2s infinite"
-
-												}}
-											>
-												{" "}
-												{word}
-											</span>
-											<p
-												style={{
-													marginTop: "2rem",
-													marginLeft: "5%",
-													fontSize: "1.8vw",
-													marginBottom: "2vh"
-												}}
-											>
-												Găsește talentul perfect pentru proiectul tău! Echipa
-												<span
-													style={{
-														display: "block",
-														fontSize: "1.8vw"
-													}}
-												>
-													{" "}
-													noastră te ajută să selectezi actorii și modelele
-													ideale.
-												</span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div
-									className={`spline-mobile ${isLandingPage ? "" : "hidden"}`}
-								>
-									<Image
-										className="splineImage"
-										src="/images/spline-image.jpg"
-										alt="Mobile Image"
-										width={3200} // Adjust as needed
-										height={3200} // Adjust as needed
-									/>
-								</div>
+							<div
+								className="main-content"
+								style={{
+									margin: "0"
+								}}
+							>
+								<HeroSection />
 
 								<Component {...pageProps} />
 							</div>

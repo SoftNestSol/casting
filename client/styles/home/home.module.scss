@@ -1,0 +1,96 @@
+.heroSection {
+	height: 100vh;
+	margin-bottom: 0;
+	position: relative;
+
+	.heroBackground {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.heroContent {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		top: 20%;
+		left: 25vw;
+		width: 100%;
+		height: 100%;
+		font-size: 7vw;
+
+		.achieveText {
+			margin-left: -5%;
+
+			.highlightWord {
+				color: hsl(45, 43%, 56%);
+				animation: colorChange 2s infinite;
+			}
+
+			.description {
+				position: relative;
+				right: 1vw;
+				margin-top: 2rem;
+				margin-left: 5%;
+				font-size: 2vw;
+
+				.subDescription {
+					position: relative;
+					display: block;
+					font-size: 1.7vw;
+					right: 4vw;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		.heroContent {
+			top: 10%;
+			left: 10%;
+			font-size: 5vw;
+
+			.achieveText {
+				margin-left: 0;
+				font-size: 5vw;
+
+				.description {
+					right: 0;
+					margin-left: 0;
+					font-size: 5vw;
+
+					.subDescription {
+						font-size: 5vw;
+						right: 0;
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		.heroContent {
+			top: 20%;
+			left: 5%;
+			font-size: 10vw;
+
+			.achieveText {
+				margin-left: 0;
+				font-size: 10vw;
+
+				.description {
+					right: 0;
+					margin-left: 0;
+					font-size: 5vw;
+
+					.subDescription {
+						font-size: 5vw;
+						right: 0;
+					}
+				}
+			}
+		}
+	}
+}

@@ -26,8 +26,8 @@
 .button_container {
 	width: 80%;
 	position: relative;
-	margin-top: 80vh;
-	left: 50%;
+	margin-top: 5vh; 
+	left: 25%;
 	transform: translateX(-50%);
 	z-index: 5;
 	display: flex;
@@ -212,6 +212,7 @@
 	.button_container {
 		top: 15%; // Even smaller fixed value for mobile screens
 		width: 90%; // Optional: Increase width on very small screens
+		left: 45%;
 	}
 }
 @media screen and (max-width: 768px) {

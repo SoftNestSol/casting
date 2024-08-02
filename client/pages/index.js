@@ -39,14 +39,6 @@ export default function LandingPage({ dir }) {
 					<TextRain />
 
 
-					<div className={styles.button_container}>
-						<Link
-							className={styles.button}
-							href="/register"
-						>
-							<FormattedMessage id="apply_now" />
-						</Link>
-					</div>
 					<div className={styles.hero_text}>
 						<h1>
 							<span>Your</span> <span>Chance</span>
