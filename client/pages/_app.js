@@ -27,21 +27,21 @@ function getDirection(locale) {
 
 const App = ({ Component, pageProps }) => {
 	const router = useRouter();
-	const [showLoading, setShowLoading] = useState(true);
+	const [showLoading, setShowLoading] = useState(false);
 	const [isMobile, setIsMobile] = useState(false);
 	const isLandingPage = router.pathname === "/";
 
 	const { locale } = useRouter();
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setShowLoading(false);
-		}, 2500);
+	// useEffect(() => {
+	// 	const timer = setTimeout(() => {
+	// 		setShowLoading(false);
+	// 	}, 2500);
 
-		return () => {
-			clearTimeout(timer);
-		};
-	}, []);
+	// 	return () => {
+	// 		clearTimeout(timer);
+	// 	};
+	// }, []);
 
 	return (
 		<>

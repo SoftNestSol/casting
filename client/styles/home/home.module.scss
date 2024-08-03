@@ -1,96 +1,159 @@
 .heroSection {
-	height: 100vh;
-	margin-bottom: 0;
-	position: relative;
+  height: 100vh;
+  margin-bottom: 0;
+  position: relative;
+  border-bottom: 5px solid #bfa75f; // Add a border to separate from the next section
 
-	.heroBackground {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
+  .heroBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-	.heroContent {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		top: 20%;
-		left: 25vw;
-		width: 100%;
-		height: 100%;
-		font-size: 7vw;
+  .heroContent {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 20%;
+    left: 25vw;
+    width: 100%;
+    height: 100%;
+    font-size: 7vw;
 
-		.achieveText {
-			margin-left: -5%;
+    .achieveTextContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-			.highlightWord {
-				color: hsl(45, 43%, 56%);
-				animation: colorChange 2s infinite;
-			}
+      .achieveText {
+        margin-left: -5%;
+      }
 
-			.description {
-				position: relative;
-				right: 1vw;
-				margin-top: 2rem;
-				margin-left: 5%;
-				font-size: 2vw;
+      .wordCarousel {
+        width: 100%;
+        position: relative;
+        height: 1.2em; // Ensures proper height for the text
+        overflow: hidden;
+        margin-bottom: 0.3em;
+        margin-left: 0.3em; // Add some space between "Achieve" and the carousel words
+      }
 
-				.subDescription {
-					position: relative;
-					display: block;
-					font-size: 1.7vw;
-					right: 4vw;
-				}
-			}
-		}
-	}
+      .highlightWord {
+        color: hsl(45, 43%, 56%);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: all 0.5s ease;
 
-	@media (max-width: 768px) {
-		.heroContent {
-			top: 10%;
-			left: 10%;
-			font-size: 5vw;
+        &.enter {
+          top: 100%;
+          opacity: 0;
+          z-index: 1;
+        }
 
-			.achieveText {
-				margin-left: 0;
-				font-size: 5vw;
+        &.enter-active {
+          top: 0;
+          opacity: 1;
+          z-index: 2;
+        }
 
-				.description {
-					right: 0;
-					margin-left: 0;
-					font-size: 5vw;
+        &.exit {
+          top: 0;
+          opacity: 1;
+          z-index: 2;
+        }
 
-					.subDescription {
-						font-size: 5vw;
-						right: 0;
-					}
-				}
-			}
-		}
-	}
+        &.exit-active {
+          top: -100%;
+          opacity: 0;
+          z-index: 1;
+        }
+      }
+    }
 
-	@media (max-width: 480px) {
-		.heroContent {
-			top: 20%;
-			left: 5%;
-			font-size: 10vw;
+    .description {
+      position: relative;
+      right: 1vw;
+      margin-top: 2rem;
+      margin-left: 5%;
+      font-size: 2vw;
 
-			.achieveText {
-				margin-left: 0;
-				font-size: 10vw;
+      .subDescription {
+        position: relative;
+        display: block;
+        font-size: 1.7vw;
+        right: 4vw;
+      }
+    }
+  }
 
-				.description {
-					right: 0;
-					margin-left: 0;
-					font-size: 5vw;
+  @media (max-width: 768px) {
+    .heroContent {
+      top: 10%;
+      left: 10%;
+      font-size: 5vw;
 
-					.subDescription {
-						font-size: 5vw;
-						right: 0;
-					}
-				}
-			}
-		}
-	}
+      .achieveTextContainer {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .achieveText {
+          margin-left: 0;
+          font-size: 5vw;
+        }
+
+        .wordCarousel {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+
+      .description {
+        right: 0;
+        margin-left: 0;
+        font-size: 5vw;
+
+        .subDescription {
+          font-size: 5vw;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .heroContent {
+      top: 20%;
+      left: 5%;
+      font-size: 10vw;
+
+      .achieveTextContainer {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .achieveText {
+          margin-left: 0;
+          font-size: 10vw;
+        }
+
+        .wordCarousel {
+          margin-left: 0;
+        }
+      }
+
+      .description {
+        right: 0;
+        margin-left: 0;
+        font-size: 5vw;
+
+        .subDescription {
+          font-size: 5vw;
+          right: 0;
+        }
+      }
+    }
+  }
 }
