@@ -10,7 +10,7 @@ import Head from "next/head";
 import Footer from "../components/footer";
 import Image from "next/image";
 import { DashboardContextProvider } from "../contexts/dashboard.context";
-import HeroSection from "../components/hero-section.js";
+
 
 import { IntlProvider } from "react-intl";
 import en from "../i18n/en.json";
@@ -78,7 +78,7 @@ const App = ({ Component, pageProps }) => {
 									margin: "0"
 								}}
 							>
-								<HeroSection />
+							
 
 								<Component {...pageProps} />
 							</div>

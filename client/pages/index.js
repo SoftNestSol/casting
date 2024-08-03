@@ -5,7 +5,7 @@ import CTA from "./cta-section";
 import TextRain from "./text-overlay";
 import styles from "../styles/landing-page/landing-page.module.scss";
 import React, { Suspense } from "react";
-import Link from "next/link";
+import HeroSection from "../components/hero-section.js";
 
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -38,6 +38,7 @@ export default function LandingPage({ dir }) {
 				<div className={styles.pagecontainer}>
 					<TextRain />
 
+					<HeroSection />
 
 					<div className={styles.hero_text}>
 						<h1>
